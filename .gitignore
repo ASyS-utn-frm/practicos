@@ -1,0 +1,7 @@
+*.log
+*.pptx
+*.gz
+*.aux
+*.cut
+**/GeoGebra
+*.ggb
