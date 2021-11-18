@@ -1,0 +1,1148 @@
+% ***********************************************
+%***********COSAS A MEJORAR O CORREGIR***********
+%   - Soluciones->1b: sacar la regla de D'Alembert ?
+%   - Soluciones->2a: agregar gráfica
+%	- CMABIAR j por i en el 3.d
+%
+%
+%
+%
+% ***********************************************
+% Preamble
+% ---
+\documentclass[10pt,a4paper]{article}
+
+% Packages
+% ---
+\usepackage[latin1]{inputenc}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{mathabx} 
+\usepackage{layout}
+\usepackage{graphics}
+\usepackage{graphicx}
+\usepackage[spanish]{babel}
+\usepackage{lastpage}
+\usepackage{tabto}
+\usepackage{xcolor}
+\usepackage{verbatim}
+\usepackage[a4paper, top=1 in,bottom=1in, left=1 in, right=0.7 in]{geometry}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\usepackage{comment}
+\usepackage{bigints}
+\usepackage{tikz}
+
+%ELEGIR VERSION 
+%Comentar para eliminar la solucion de todos los ejercicios y dejar la version para los 
+% alumnos, a saber con un solo punto resuelto por ejercicio.
+
+%\includecomment{profesor}    % version profesor
+\excludecomment{profesor}	  % version alumnos
+
+\lhead{\footnotesize An\'alisis de Se\~nales y Sistemas  - Ver. 2021/05/27}
+\chead{}
+\rhead{\footnotesize Trabajo Pr\'actico N$^\text o$4: Series}
+\lfoot{}
+\cfoot{}
+\rfoot{\footnotesize P\'agina \thepage\ de \pageref{LastPage}}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+\title{
+	\textsc{\includegraphics[width=0.55\textwidth]{logoUTN.jpg}} ~\\
+	{\large Departamento de Electr\'onica}\\ 
+	[0.1cm]
+	{\Huge{An\'alisis de Se\~nales y Sistemas}} \\
+	[0.25cm]
+	{\Large{Trabajo Pr\'{a}ctico N$^{\text {o}}$4: Series} \\
+	}}
+\author{}
+\date{}
+
+% Main document ********************************************
+% ---
+\begin{document}
+\maketitle
+\begin{profesor}
+ \hspace{6cm}(Versión PROFESOR)
+\end{profesor}
+\thispagestyle{fancy}
+
+\section*{Enunciados:}
+\label{sec:enun}
+
+\textbf{Sucesiones y series}
+\begin{enumerate}
+% ***********************************************
+% 					Ejercicio 1
+% ***********************************************
+\item {Dadas las siguientes sucesiones, encontrar los cuatro primeros términos (n=1,2,...), determinar
+si son acotadas y si son convergentes. En caso de converger, hallar el limite de la sucesión.}
+\begin{enumerate}
+	\item $z_n=in(n+1)$ ~~~~~~~~~ Rta: $z_1=2i;z_2=6i;z_3=12i;z_4=20i;$ No acotada; No converge
+	\item $z_n=\frac{1}{n!}(1+2i)^n$~~**~~~Rta: $z_1=1+2i;z_2=\frac{1}{2}(1+2i)^2;
+	z_3=\frac{1}{6}(1+2i)^3;z_4=\frac{1}{24}(1+2i)^4;$\\ 
+	\hspace*{0pt}\hspace{3.35cm} Es acotada; Si converge; $0$
+	\item $z_n=i^n\cos{(n\pi)}$~~** ~~~ Rta: $z_1=-i;z_2=-1;z_3=i;z_4=1;$ Es acotada; No converge
+\end{enumerate}
+
+
+% ***********************************************
+% 					Ejercicio 2
+% ***********************************************
+\item {Determinar si las siguientes series son convergentes o divergentes.}
+\begin{enumerate}
+	\item  $\sum_{n=0}^\infty \frac{(-1)^n (2i)^{2n+1}}{(2n+1)!}$~~** \tab Rta: Convergente	
+	\item  $\sum_{n=0}^\infty \frac{n-1}{n+1}$~~** \tab Rta: Divergente 	
+	\item  $\sum_{n=0}^\infty \frac{5^{2n}}{n!}$  \tab Rta: Convergente 	
+\end{enumerate}
+
+
+\textbf{Serie de Taylor}
+% ***********************************************
+% 					Ejercicio 3
+% ***********************************************
+\item {Desarrollar las siguientes funciones en serie de potencias, alrededor del origen. Delimitar la regi\'on de convergencia.}
+\begin{enumerate}
+	% (a)
+	\item $ f(z) = \dfrac{1}{1-z} $	\tab 
+	Rta: $\sum_{n=0}^\infty z^n$ ~~ para $|z|<1$.		
+	% (b)
+	\item $ f(z) = \dfrac{1}{1+z} $~~**	\tab 
+	Rta: $\sum_{n=0}^\infty (-1)^n z^n$ ~~ para $|z|<1$.
+	% (c)
+	\item $ f(z) = e^z $~~**\tab 
+	Rta: $\sum_{n=0}^\infty \frac{z^n}{n!}$ ~~ para $|z|<\infty$.
+	% (d)
+	\item $ f(z) = \cos z $ \tab 
+	Rta: $\sum_{n=0}^\infty \frac{(-1)^n z^{2n}}{(2n)!}$ ~~ para $|z|<\infty$.
+	% (e)
+	\item $ f(z) = \sin z $~~** \tab 
+	Rta: $\sum_{n=0}^\infty \frac{(-1)^n z^{2n+1}}{(2n+1)!}$ ~~ para $|z|<\infty$.
+	
+\end{enumerate}
+
+% ***********************************************
+%					Ejercicio 4
+% ***********************************************
+\item {Desarrollar las siguientes funciones en serie de potencias, en torno al punto indicado. Delimitar la regi\'on de 
+convergencia}
+\begin{enumerate}
+	\item $f(z) =\frac{1}{1-z}$ alrededor de $z_0=-1$ \tab Rta: 
+	$\sum_{n=0}^\infty \frac{(z+1)^n}{2^{n+1}}$ ~~ para $|z+1|<2$.
+	\item $f(z) =e^{3z}$ alrededor de $z_0=-1$ \tab Rta: 
+	$e^{-3}\sum_{n=0}^\infty \frac{3^n(z+1)^n}{n!}$ ~~ para $|z+1|<\infty$.
+	\item $f(z) =\frac{1}{1+z}$ alrededor de $z_0=2$ \tab Rta: 
+	$\sum_{n=0}^\infty \frac{(-1)^n(z-2)^n}{3^{n+1}}$ ~~ para $|z-2|<3$.
+	\item $f(z) =\sin{(z)}$ alrededor de $z_0=\frac{\pi}{2}$~~** \tab Rta: 
+	$\sum_{n=0}^\infty \frac{(-1)^n(z-\frac{\pi}{2})^{2n}}{2n!}$ ~~ para $|z-\frac{\pi}{2}|<\infty$.
+	\item $f(z) =e^{2z}$ alrededor de $z_0=2i$ \tab Rta: 
+	$e^{4i}\sum_{n=0}^\infty \frac{2^n}{n!}(z-2i)^n$ ~~ para $|z-2i|<\infty$.
+	\item $f(z) =\frac{1}{z}$ alrededor de $z_0=1$~~**\tab Rta: 
+	$\sum_{n=0}^\infty (-1)^n(z-1)^n$ ~~ para $|z-1|<1$.
+\end{enumerate}
+
+
+% ***********************************************
+% 					Ejercicio 5
+% ***********************************************
+\item Desarrollar la siguiente funci\'on en serie de potencias
+seg\'un la regi\'on de convergencia indicada: \\
+$ f(z) = \dfrac{1}{(z-1)(z-2)} $ **		
+\begin{enumerate}
+	\item para $ |z|<1 $	\tab Rta: $f(z)=\sum_{n=0}^\infty z^n - 
+									\sum_{n=0}^\infty \frac{z^n}{2^{n+1}}$
+	\item para $ 1<|z|<2 $	\tab Rta: $f(z)=-1\sum_{n=1}^\infty\left(\frac{1}{z}\right)^n-
+									\sum_{n=0}^\infty\frac{z^n}{2^{n+1}}$
+\end{enumerate}
+
+% ***********************************************
+%					Ejercicio 6
+% ***********************************************
+\textbf{Serie de Laurent}
+\item {Desarrollar las siguientes funciones alrededor de cada una de sus singularidades, indicando en cada caso la 
+región de convergencia y el valor del residuo.}
+\begin{enumerate}
+	\item $f(z)=\dfrac{e^{2z}}{(z-1)^2}$ \\
+			Rta: $f(z)=e^2(z-1)^{-2}+2e^2(z-1)^{-1}+2e^2+\frac{4}{3}e^2(z-1)+
+					\frac{2}{3}e^2(z-1)^2+\cdots$,\\
+					para $0<|z-1|<\infty$. $Res[f(z),1]=2e^2.$
+	\vspace{.3cm}
+	\item $f(z)=\dfrac{z}{(z+1)(z+2)}$ \\
+			Rta: en $z_0=-1$: $f(z)=-1(z+1)^{-1}+2-2(z+1)+2(z+1)^2-
+					2(z+1)^3+2(z+1)^4-\cdots$\\
+					para $0<|z+1|<1$. $Res[f(z),-1]=-1$.\\
+			Rta: en $z_0=-2$: $f(z)=2(z+2)^{-1}+1+(z+2)+(z+2)^2+(z+2)^3+(z+2)^4+\cdots$\\
+					para $0<|z+2|<1$. $Res[f(z),-2]=2$.
+	\vspace{.3cm}
+	\item $f(z)=\dfrac{z+1}{z^2+2z}$ ** \\
+			Rta: en $z_0=0$: $f(z)=\frac{1}{2}z^{-1}+\frac{1}{4}
+						-\frac{1}{4}\left(\frac{z}{2}\right)
+						+\frac{1}{4}\left(\frac{z}{2}\right)^2
+						-\frac{1}{4}\left(\frac{z}{2}\right)^3
+						+\frac{1}{4}\left(\frac{z}{2}\right)^4-\cdots$\\
+					para $0<|z|<2$. $Res[f(z),0]=\frac{1}{2}$.\\
+			Rta: en $z_0=-2$: $f(z)=\frac{1}{2}(z+2)^{-1}-\frac{1}{4}
+						-\frac{1}{4}\left(\frac{z+2}{2}\right)
+						-\frac{1}{4}\left(\frac{z+2}{2}\right)^2
+						-\frac{1}{4}\left(\frac{z+2}{2}\right)^3
+						-\frac{1}{4}\left(\frac{z+2}{2}\right)^4-\cdots$\\
+					para $0<|z+2|<2$. $Res[f(z),-2]=\frac{1}{2}$.
+	\vspace{.3cm}
+	\item $f(z)=\dfrac{z-\sin(z)}{z^3}$ **\\
+			Rta: $f(z)=\sum_{n=0}^{\infty}\frac{(-1)^nz^{2n}}{(2n+3)!}$,
+					\quad para $0<|z|<\infty$. $Res[f(z),0]=0$.
+	\vspace{.3cm}
+	\item $f(z)=\dfrac{\sin(4z)}{z^4}$ \\
+			Rta: $f(z)=\sum_{n=0}^{\infty}\frac{(-1)^n4^{2n+1}z^{2n-3}}{(2n+1)!}$,
+					\quad para $0<|z|$. $Res[f(z),0]=-\frac{32}{3}$.
+\end{enumerate}
+% ***********************************************
+%					Ejercicio 7
+% ***********************************************
+\textbf{C\'alculo de integrales por el teorema de residuos}
+\item { Evaluar las siguientes integrales siguiendo las trayectorias indicadas: }
+\begin{enumerate}
+	\item $\bigointsss_C \dfrac{z^3}{2z+1}dz$ 
+			\tabto{4cm} $C:|z|=1$ 
+			\tabto{8cm} Rta: $I=-i\frac{\pi}{8}$
+	\item $\bigointsss_C \dfrac{e^{-z}}{(z-1)^2}dz$ **
+			\tabto{4cm} $C:|z|=2$ 
+			\tabto{8cm} Rta: $I=-i\frac{2\pi}{e}$
+	\item $\bigointsss_C \dfrac{1}{z(z+1)}dz$
+			\tabto{4cm} $C_1:|z|=\frac{1}{2}$ 
+			\tabto{8cm} Rta: $I_1=i2\pi$
+			\tabto{4cm} $C_2:|z|=2$ 
+			\tabto{8cm} Rta: $I_2=0$
+			\tabto{4cm} $C_3:|z+1|=\frac{3}{4}$ 
+			\tabto{8cm} Rta: $I_3=-i2\pi$
+	\item $\bigointsss_C \dfrac{z}{(z-1)(z-2)^2}dz$ **
+			\tabto{4cm} $C_1:|z-2|=\frac{1}{2}$ 
+			\tabto{8cm} Rta: $I_1=-i2\pi$
+			\tabto{4cm} $C_2:|z-1|=2$ 
+			\tabto{8cm} Rta: $I_2=0$
+\end{enumerate}
+
+% ***********************************************
+%					Ejercicio 8
+% ***********************************************
+\item {Resolver las siguientes integrales reales mediante el calculo de los residuos}
+\begin{enumerate}
+	\item $\int_{0}^{2\pi}\frac{1}{2+\cos(\theta)}d\theta$
+			\tab Rta: $\frac{2\pi}{\sqrt3}$
+	\item $\int_0^{2\pi}\frac{4}{5+4\sin(\theta)}d\theta$ **
+			\tab Rta: $\frac{8\pi}{3}$
+	\item $\int_0^{2\pi}\frac{1}{3-2\sin(\theta)}d\theta$ **
+			\tab Rta: $\frac{2\pi}{\sqrt5}$
+	\item $\int_{-\infty}^\infty\frac{1}{x^2+1}dx$
+			\tab Rta: $\pi$
+	\item $\int_{-\infty}^\infty\frac{1}{x^2-2x+2}$ **
+			\tab Rta: $\pi$
+\end{enumerate}
+
+% end raíz
+\end{enumerate}
+
+% ***********************************************
+% 			Herramientas Teóricas (HT)
+% ***********************************************
+
+% *** PAUTAS A SEGUIR ***
+\begin{comment}
+Esta sección esta pensada para incluir toda la ayuda teórica necesaria 
+para resolver el practico.
+Algunas reglas generales:
+	-Mantener el contenido al minimo, referir a la bibliografía para mayor 
+		información (hay q armar un archivo .bib).
+	-Enumerar todas las ecuaciones.
+	-No repetir ecuaciones ya dadas en las HT de otro práctico, 
+		solo referir a ella.
+	-Para resaltar palabras usar \textit.
+	-Utilizar la nomencaltura oficial de la catátedra !!  
+		(Hay que definirlo, yo diria seguir al pie de la letra el kreiszig)
+	-
+\end{comment}
+
+% *** CONTENIDO ***
+\section*{Herramientas Te\'oricas:}
+\label{sec:herr}
+
+%------------------------------------
+\subsection*{Pruebas de convergencia}
+
+\textit{Prueba de la raz\'on}: Si para una serie dada $z_1+z_2+\cdots$ con $z_n \neq 0$ $(n=1,2,\cdots)$ se tiene que,
+\begin{equation}\label{eq:pruebarazon}
+\lim_{n \to \infty}\left|\dfrac{z_{n+1}}{z_n}\right|=L,
+\end{equation}
+entonces,
+\begin{align*}
+&\text{Si }L< 1 \text{, la serie converge absolutamente.}\\
+&\text{Si }L> 1 \text{, la serie diverge.}\\
+&\text{Si }L=1 \text{(o el limite no existe), la prueba fracasa y no puede concluirse nada..}\\
+\end{align*}
+la serie diverge. 
+
+\textit{Prueba de la ra\'iz}: Si una serie $z_1+z_2+\cdots$ es tal que para toda $n$ mayor que alguna $N$,
+\begin{equation}\label{eq:pruebaraiz}
+\lim_{n \to \infty}\sqrt[n]{\left| z_n \right|} < 1,
+\end{equation}
+entonces, esta serie converge absolutamente. Si, en cambio, para una infinidad de $n$ se tiene que
+\begin{equation}
+\lim_{n \to \infty}\sqrt[n]{\left| z_n \right|} \geq 1,
+\end{equation}
+la serie diverge. 
+
+%--------------------------------
+\subsection*{Series de potencias}
+Una {serie de potencias} de $z-z_0$ es una serie de la forma:
+\begin{equation}\label{eq:seriepotencias}
+\sum_{n=0}^{\infty} a_n (z-z_0)^n = a_0+a_1 (z-z_0) + a_2 (z-z_0)^2 + \cdots
+\end{equation}
+en donde $z$ es una variable, $a_0, a_1, \cdots$ son constantes, denominadas {coeficientes} de la serie, y $z_0$ es una 
+constante, 
+denominada {centro} de la serie. 
+
+Toda serie de potencias que converge en su centro $z_0$, lo hace también para todo $z$ 
+en un círculo de radio $R$ centrado en 
+$z_0$. Esto es para todo $z$ que satisfaga $|z-z_0|<R$, donde $R$ puede ser hallado aplicando los limites dados por el 
+teorema de la razón, Ec. \ref{eq:pruebarazon}, o de la raíz, Ec. \ref{eq:pruebaraiz}.
+%Si existe el limite, 
+%\begin{equation}
+%\lim_{n \to \infty}\sqrt[n]{|a_n|}=L,
+%\end{equation} entonces el radio de convergencia está dado por, 
+%\begin{equation}
+%R=\frac{1}{L}.
+%\end{equation}
+
+Es importante destacar que toda función analítica puede ser representada mediante una serie de potencias como 
+ determina el teorema de Taylor (ver abajo).
+%----------------------------
+\subsection*{Serie de Taylor}
+Se denomina {serie de Taylor} de una función $f(z)$ analítica en un punto $z_0$ (centro de la serie) y su vecindad, 
+a la serie de potencias dada por:
+\begin{equation}\label{eq:serietaylor}
+f(z) = \sum_{n=0}^\infty \dfrac{f^{(n)}(z_0)}{n!} (z-z_0)^n.
+\end{equation}
+El caso particular con centro $z_0=0$ se denomina {serie de Maclaurin} de $f(z)$.
+
+%-------------------------------
+\subsection*{Series generadoras}
+Se utilizan para encontrar la representaci\'on en serie de otras funciones (notar que el centro de estas series 
+es $z_0=0$).
+\begin{align}
+	\dfrac{1}{1-z} &= \sum_{n=0}^{\infty} z^n; 
+	\qquad |z|<1													\label{eq:ht1} \\
+	e^z &= \sum_{n=0}^{\infty} \dfrac{z^n}{n!}; 
+	\qquad |z|<\infty												\label{eq:ht2} \\
+	\cos z &= \sum_{n=0}^{\infty} (-1)^n\dfrac{z^{2n}}{(2n)!}; 
+	\qquad |z|<\infty												\label{eq:ht3} \\
+	\sin z &= \sum_{n=0}^{\infty} (-1)^n\dfrac{z^{2n+1}}{(2n+1)!}; 
+	\qquad |z|<\infty												\label{eq:ht4}	
+\end{align}
+
+
+%----------------------------
+\subsection*{Serie de Laurent}
+La serie de Laurent generaliza a la serie de Taylor. Si se desea desarrollar una funci\'on $f(z)$ en potencias de 
+$z-z_0$ cuando $f(z)$ es singular en $z_0$, no se puede usar la serie de Taylor. En su lugar se usa la llamada {serie 
+de Laurent}, que consiste de potencias enteras positivas de $z-z_0$ tanto como de potencias enteras negativas de 
+$z-z_0$.
+Se denomina {serie de Laurent} de $f(z)$ \textit{con centro} $z_0$ a
+\begin{equation}\label{eq:serielaurent}
+f(z) = \sum_{n=-\infty}^\infty a_n(z-z_0)^n,~~~a_n=\frac{1}{2\pi i}\oint_{C}{\frac{f(z)}{(z-z_0)^{n+1}} dz},
+\end{equation}
+donde $C$ es una curva que contienen a $z_0$ (Prestar atenci\'on a que la sumatoria empieza en $-\infty$ en tanto que en la Ec. \ref{eq:seriepotencias} empieza en cero). Si $f(z)$ es no analítica en $z_0$, entonces al coeficiente $a_{-1}$ se le denomina Residuo de la serie de $f(z)$ con centro en $z_0$, o bien,
+\begin{equation}\label{eq:residuo}
+Res[f(z),z_0]=a_{-1}=\frac{1}{2\pi i}\oint_{C}{f(z)}dz.
+\end{equation}
+
+\textit{Nota importante:} No es com\'un utilizar la expresi\'on para $a_n$ dada en la Ec. \ref{eq:serielaurent} para 
+encontrar un desarrollo en serie de Laurent. Lo que se hace es tratar de indentificar en la $f(z)$ la \textit{parte 
+anal\'itica} de la funci\'on, desarrollar esa parte utilizando series generadoras o serie de Taylor correspondiente, y 
+luego, mediante operaciones matem\'aticas, llegar a la expresi\'on en serie de Laurent. (Ver ejercicio de ejemplo para 
+m\'as detalles)
+
+%----------------------------
+\subsection*{Formulas para la obtención de residuos}
+\textit{Dos f\'ormulas para obtener residuos de polos simples:}
+La primer f\'ormula para obtener el residuo de una $f(z)$ con un polo simple en $z=z_0$ es,
+\begin{equation}\label{eq:respolosimple1}
+Res[f(z),z_0]=\lim_{z \to z_0} \left[(z-z_0) f(z)\right].
+\end{equation}
+Se podr\'a observar que la Ec. \ref{eq:respolosimple1} es la Ec. \ref{eq:respolosup} con $m=1$. La otra f\'ormula puede 
+usarse cuando $f(z)$ es de la forma,
+\begin{equation}
+f(z)=\frac{p(z)}{q(z)},
+\end{equation}
+con $p(z)$ y $q(z)$ anal\'iticas, en donde se supone que $p(z_0)\neq 0$ y $q(z)$ tiene un cero simple en $z=z_0$. En 
+este caso, la f\'ormula para obtener el residuo en un polo simple es entonces,
+\begin{equation}\label{eq:respolosimple2}
+Res[f(z),z_0]=\frac{p(z_0)}{q'(z_0)}.
+\end{equation}
+
+\textit{F\'ormula para el residuo de un polo de cualquier orden:} Si la funcion $f(z)$ tienen un polo de m-esimo orden 
+en el punto $z=z_0$, entonces el residuo esta dado por,
+\begin{equation}\label{eq:respolosup}
+Res[f(z),z_0]=\frac{1}{(m-1)!}\lim_{z \to z_0} \left[\frac{d^{m-1}}{dz^{m-1}}\left[(z-z_0)^m f(z)\right]\right].
+\end{equation}
+
+
+%----------------------------
+\subsection*{Teorema de los residuos}
+Sea $f(z)$ una función analítica dentro y sobre una trayectoria cerrada $C$, excepto en un numero finito de puntos ${z_1,z_2,...,z_k}$ dentro de C, entonces
+\begin{equation}\label{eq:resteorema}
+\oint_{C}{f(z)}dz=2\pi i \sum_{j=1}^{k} Res[f(z),z_j].
+\end{equation}
+
+\subsection*{Resolución de integrales reales por el método de los residuos}
+\textit{Integrales propias de funciones racionales de $\cos(\theta)$ y $\sin(\theta)$:}
+
+Para resolver integrales propias de funciones racionales que involucren $\cos(\theta)$ y $\sen(\theta)$, primero 
+transformamos 
+la integral real a una compleja utilizando la definición de estas funciones (ver TP1) y luego realizamos el cambio de 
+variables $z=e^{i\theta}$, notando que $dz/d\theta=iz$ y que, si $0<\theta<2\pi$, entonces la $z$ varia sobre la 
+circunferencia $|z|<1$. Esto permite resolver la integral real mediante el teorema de los residuos. \\
+
+\textit{Integrales impropias de funciones racionales:}
+
+Se consideran las integrales impropias reales de la forma
+\begin{equation}
+\int_{-\infty}^{\infty}f(x)dx.
+\end{equation}
+Donde $f(x)$ no debe poseer polos sobre el eje $x$ y debe ser una función racional tal que, el grado del denominador 
+sea 
+dos o mas ordenes mayor que el grado del numerador.
+B\'asicamente el m\'etodo consiste en reemplazar $x$ por $z$ para obtener una expresi\'on para $f(z)$ y resolver,
+\begin{align}
+\int_{-\infty}^{\infty}f(x)dx &= \oint_C f(z)dz, \\
+&= 2\pi i\sum \text{Res} f(z),
+\end{align}
+en donde se suma sobre todos los residuos de $f(z)$ correspondientes a los polos de $f(z)$ en el \textit{semiplano 
+superior}. 
+
+% ***********************************************
+% 					SOLUCIONES
+% ***********************************************
+% *** PAUTAS A SEGUIR ***
+\begin{comment}
+En esta sección se resuelven los ejercicios paso a paso.
+Algunas reglas generales:
+	-Utilizar la resolución mas didáctica posible y 
+		que sea consistente con los otros prácticos.
+	-Dar la suficiente cantidad de detalle para que sea sencillo
+		entender lo que se está haciendo, pero sin caer en trivialidades.
+	-Para explicar lo que se hace en un desarrollo, ir comentando a la derecha
+		de cada paso, usando usando "\begin{align}"
+	
+\end{comment}
+
+% *** DESARROLLO ***
+\section*{Soluciones}
+\label{sec:sol}
+
+\begin{enumerate}
+% ***********************************************
+% 					Ejercicio 1
+% ***********************************************
+\item
+\begin{enumerate}
+
+	% --- (a) ---
+	\begin{profesor}
+		\item[\textit{a})] Ver Fig. \ref{fig:ej1a}
+		\begin{figure}[!htbp]
+			\centering
+			\includegraphics[width=9cm]{tp4_1a.png}
+			\label{fig:ej1a}
+			\caption{Gráfico con los 10 primeros términos de la sucesión del Ej. 1.a. Notar como los términos de la 
+				sucesión crecen indefinidamente sin converger.}
+		\end{figure}
+	\end{profesor}
+	
+	% --- (b) ---
+	\item[\textit{b})] Escribimos los primeros cuatro términos reemplazando el valor correspondiente
+	de $n$ en la expresión generadora $z_n=\frac{1}{n!}(1+2i)^n$,
+	\begin{align}
+	n=&1~~~;~~~z_1=1+2i,\\
+	n=&2~~~;~~~z_2=\frac{1}{2}(1+2i)^2,\\
+	n=&3~~~;~~~z_3=\frac{1}{6}(1+2i)^3,\\
+	n=&4~~~;~~~z_4=\frac{1}{24}(1+2i)^4. 
+	\end{align}
+	Para determinar si la sucesión es acotada, escribimos su módulo utilizando la representación 
+	polar del numerador:
+	\begin{align}
+		z_n=&\frac{1}{n!}(\sqrt{5}e^{i63,43})^n,\\
+		=&\frac{1}{n!}\sqrt{5}^ne^{i63,43 n},
+	\end{align}
+	por lo que queda,
+	\begin{align}		
+		|z_n|=&\frac{\sqrt{5}^n}{n!},\\
+		=&\frac{\sqrt{5}}{1}\frac{\sqrt{5}}{2}\frac{\sqrt{5}}{3}...\frac{\sqrt{5}}{n}.\\
+	\end{align}
+	La última expresión tiene $n$ términos. A partir del tercero, $\frac{\sqrt{5}}{3}$, podemos ver que dichos 
+	términos son $<1$, por lo que la sucesión  es acotada ya que,
+	\begin{align}		
+	|z_n|=&\frac{5}{2}\frac{\sqrt{5}}{3}...\frac{\sqrt{5}}{n},\\
+	|z_n|\le&\boxed{\frac{5}{2}}.
+	\end{align}	 
+	Para determinar la convergencia, aplicamos la regla de Alembert que establece que si se cumple: $\lim_{n \to 
+	\infty}\left|\frac{z_{n+1}}{z_n}\right|<1$, entonces la sucesión converge a 0 (notar que no es idéntico al criterio 
+	de la razón para series):
+	\begin{align}
+	\lim_{n \to \infty}\left|\frac{z_{n+1}}{z_n}\right|&=\lim_{n \to \infty} 
+	\left|\frac{(1+2i)^{n+1}}{(n+1)!}\frac{n!}{(1+2i)^n}\right|,\\
+	&=\lim_{n \to \infty} \left|\frac{1+2i}{n+1}\right|.\\
+	&=0.
+	\end{align}	
+	Por lo que la sucesión converge al valor,
+	\begin{equation*}
+		\lim_{n \to \infty} z_n=\boxed{0}.
+	\end{equation*}	
+	
+	Otra manera intuitiva de verificar la convergencia de la sucesión es evaluando muchos términos y graficando, ver 
+	Fig. \ref{fig:ej1b}
+	
+	\begin{figure}[!htbp]
+	\centering
+	\includegraphics[width=9cm]{tp4_1b.png}
+	\label{fig:ej1b}
+	\caption{Gráfico con los 100 primeros términos de la sucesión del Ej. 1.b. Notar como converge rápidamente a 
+	\{0,0i\}, por lo que solo se distinguen los primeros 8 términos.}
+	\end{figure}
+	 	
+	% --- (c) ---	 	
+	\begin{profesor}
+	\item[\textit{c})] Ver Fig. \ref{fig:ej1c}	
+	\begin{figure}[!htbp]
+	\centering
+	\includegraphics[width=9cm]{tp4_1c.png}
+	\label{fig:ej1c}
+	\caption{Gráfico con los 100 primeros términos de la sucesión del Ej. 1.c. Notar como la sucesión oscila entre los 
+	cuatro vértices del cuadrado sin converger a un valor.}
+	\end{figure}
+	\end{profesor}
+
+\end{enumerate}
+
+
+% ***********************************************
+% 					Ejercicio 2
+% ***********************************************
+\item 
+\begin{enumerate}
+	% --- (a) ---
+	\item Aplicamos la prueba de la raz\'on, Ec. \ref{eq:pruebarazon},
+	\begin{align}
+		\lim_{n \to \infty}\left|\frac{z_{n+1}}{z_n}\right|&=\lim_{n \to \infty}\left|\frac{(-1)^{n+1} 
+		(2i)^{2(n+1)+1}}{[2(n+1)+1]!}\frac{(2n+1)!}{(-1)^{n}(2i)^{2n+1}}\right|, & \\
+		&=\lim_{n \to \infty}\left|\frac{(-1)(2i)^2 (2n+1)!}{(2n+3)(2n+2)(2n+1)!}\right|, \\
+		&=\lim_{n \to \infty}\left|\frac{4}{(2n+3)(2n+2)}\right|,\\
+		&=\boxed{0}.
+	\end{align}
+	Por lo que se concluye que la serie converge.
+	
+	% --- (b) ---
+	\begin{profesor}
+		\item Pendiente
+	\end{profesor}
+
+	% --- (c) ---
+	\begin{profesor}
+		\item Aplicamos la prueba de la raz\'on, Ec. \ref{eq:pruebarazon},
+		\begin{align}
+		\lim_{n \to \infty}\left|\frac{z_{n+1}}{z_n}\right|&=\lim_{n \to 
+		\infty}\left|\frac{5^{2(n+1)}}{(n+1)!}\frac{n!}{5^{2n}}\right|, & \\
+     	&=\lim_{n \to \infty}\left|\frac{5^{2n}5^2}{(n+1)n!}\frac{n!}{5^{2n}}\right|, & \\
+		&=\lim_{n \to \infty}\left|\frac{25}{(n+1)}\right|, \\
+		&=\boxed{0}.
+		\end{align}
+		Por lo que se concluye que la serie converge.
+	\end{profesor}
+\end{enumerate}
+
+
+%***********************************************
+% 				Ejercicio 3
+%***********************************************
+\item 
+\begin{enumerate}
+% --- (a) ---
+\item 
+Se buscan los coeficientes de la serie. Para eso obtenemos las derivadas 
+de $f(z)$ y evaluamos en el centro $z=0$.
+\begin{align}
+f(z)&=(1-z)^{-1}	& f(0)&=1	&  \\
+f'(z)&=(-1)(1-z)^{-2}(-1) = (1-z)^{-2}	& f'(0)&=1\\
+f''(z)&=(-2)(1-z)^{-3}(-1) = 2(1-z)^{-3} & f''(0)&=2 & \\
+f'''(z)&=(-3)2(1-z)^{-4}(-1) = 3\cdot2(1-z)^{-4} & f'''(0)&=3\cdot2 =6 &\\
+\vdots  & & \vdots \\
+f^{(n)}(z) &= n!(1-z)^{-(n+1)} & f^{(n)}(0)&= n!
+\end{align}
+Seg\'un la definici\'on dada en la Ec. \ref{eq:serietaylor} se tiene
+\begin{equation}
+f(z)=\frac{1}{1-z}=\sum_{n=0}^{\infty}\dfrac{n!}{n!}(z-0)^n=\boxed{\sum_{n=0}^{\infty}z^n}
+\end{equation}
+% convergencia
+Para hallar el radio de convergencia por la prueba de la raz\'on, 
+seg\'un la Ec. \ref{eq:pruebarazon},
+\begin{align}
+\lim_{n \to \infty}{\left| \dfrac{z^{n+1}}{z^n} \right|} &< 1, \\
+\lim_{n \to \infty}{\left| \dfrac{z^{n}z^1}{z^n} \right|} &< 1,\\
+\lim_{n \to \infty}{\left| {z} \right|} &< 1,\\
+\left| {z} \right| &< 1.
+\end{align}
+Por la prueba de la ra\'iz, seg\'un la Ec. \ref{eq:pruebaraiz},
+\begin{align}
+\lim_{n \to \infty}{\sqrt[n]{\left| z^{n} \right|}} &< 1, \\
+\lim_{n \to \infty}{\sqrt[n]{\left| z \right|^n}} &< 1, & \\
+\lim_{n \to \infty}{\left| {z} \right|} &< 1, \\
+\left| {z} \right| &< 1.
+\end{align}
+ 
+
+% --- (b) ---
+\begin{profesor}
+	
+\item 
+Se buscan los coeficientes de la serie. Para eso obtenemos las derivadas 
+de $f(z)$ y evaluamos en el centro $z=0$.
+\begin{align}
+f(z)&=(1+z)^{-1}	& f(0)&=1	&  \\
+f'(z)&=(-1)(1+z)^{-2} & f'(0)&=-1 \\
+f''(z)&=(-2)(-1)(1+z)^{-3} = 2(1+z)^{-3} & f''(0)&=2=(-1)^2\cdot 2! \\
+f'''(z)&=(-3)(-2)(-1)(1+z)^{-4} = -6(1+z)^{-4} & f'''(0)&=-6=(-1)^3\cdot 3!  \\
+\vdots  & & \vdots \\
+f^{(n)}(z) &= (-1)^n\cdot n!(1+z)^{-(n+1)} & f^{(n)}(0)&= (-1)^n \cdot n! 
+\end{align}
+Seg\'un la definici\'on dada en la Ec. \ref{eq:serietaylor} se tiene
+\begin{equation}
+f(z)=\frac{1}{1+z}=\sum_{n=0}^{\infty}\dfrac{(-1)^n\cdot n!}{n!}(z-0)^n=\boxed{\sum_{n=0}^{\infty}(-1)^n\cdot z^n}
+\end{equation}
+% convergencia
+Para hallar el radio de convergencia por la prueba de la raz\'on, 
+seg\'un la Ec. \ref{eq:pruebarazon},
+\begin{align}
+\lim_{n \to \infty}{\left| \dfrac{(-1)^{n+1}z^{n+1}}{(-1)^nz^n} \right|} &< 1, \\
+\lim_{n \to \infty}{\left| (-1)z \right|} &< 1,\\
+\left| {z} \right| &< 1.
+\end{align}
+Por la prueba de la ra\'iz, seg\'un la Ec. \ref{eq:pruebaraiz},
+\begin{align}
+\lim_{n \to \infty}{\sqrt[n]{\left| (-1)^n z^{n} \right|}} &< 1, \\
+\lim_{n \to \infty}{\sqrt[n]{\left| z \right|^n}} &< 1, \\
+\lim_{n \to \infty}{\left| {z} \right|} &< 1,\\
+\left| {z} \right| &< 1.
+\end{align}
+ 
+
+% --- (c) ---
+\item 
+Se buscan los coeficientes de la serie. Para eso obtenemos las derivadas 
+de $f(z)$ y evaluamos en el centro $z=0$.
+\begin{align}
+f(z)&=e^z	& f(0)&=1	&  \\
+f'(z)&=e^z & f'(0)&=1&\\
+f''(z)&=e^z & f''(0)&=1 & \\
+\vdots  & & \vdots \\
+f^{(n)}(z) &= e^z & f^{(n)}(0)&= 1 &
+\end{align}
+Seg\'un la definici\'on dada en la Ec. \ref{eq:serietaylor} se tiene
+\begin{equation}\label{eq:exp}
+f(z)=e^z=\sum_{n=0}^{\infty}\dfrac{1}{n!}(z-0)^n=\boxed{\sum_{n=0}^{\infty}\dfrac{1}{n!} z^n}
+\end{equation}
+% convergencia
+Para hallar el radio de convergencia por la prueba de la raz\'on, 
+seg\'un la Ec. \ref{eq:pruebarazon},
+\begin{align}
+\lim_{n \to \infty}{\left| \dfrac{z^{n+1}\cdot n!}{(n+1)! \cdot z^n} \right|} &< 1, \\
+\lim_{n \to \infty}{\left| \dfrac{z}{n+1} \right|} &< 1, &\\
+\lim_{n \to \infty}{\dfrac{|z|}{|n+1|} } &< 1, & \\
+\left| {z} \right| &< \lim_{n \to \infty}|n+1|, & \\
+\left| {z} \right| &< \infty. &
+\end{align}
+ 
+
+% --- (d) ---
+\item \textit{Obtenci\'on de la serie de Taylor para $\cos (z)$ y $\sin (z)$}. \\
+Se parte de la expresi\'on de la serie para $f(z)=e^z$ (Ec. \ref{eq:exp}), reemplazando $z$ por $jz$. Esto es,
+\begin{equation}
+e^{jz} = \sum_{n=0}^{\infty} \dfrac{(jz)^n}{n!}.
+\end{equation}
+Desarrollando esta expresi\'on para una cierta cantidad de valores de $n$ se tiene
+\begin{equation}
+e^{jz}=1+jz-\dfrac{z^2}{2!}-j\dfrac{z^3}{3!}+\dfrac{z^4}{4!}+j\dfrac{z^5}{5!}-\dfrac{z^6}{6!}
+-j\dfrac{z^7}{7!}+\dfrac{z^8}{8!}+j\dfrac{z^9}{9!}+\cdots.
+\end{equation}
+Reordenando,
+\begin{equation}\label{eq:serie_ejz}
+e^{jz}= \left( 1-\dfrac{z^2}{2!}+\dfrac{z^4}{4!}-\dfrac{z^6}{6!}+\dfrac{z^8}{8!}+\cdots \right)
++j\left( z-\dfrac{z^3}{3!}+\dfrac{z^5}{5!}-\dfrac{z^7}{7!}+\dfrac{z^9}{9!}+\cdots \right).
+\end{equation}
+Para lo que sigue, recordamos la f\'ormula de Euler dada por $e^{jz}=\cos z+j\sin(z)$.
+
+De la Ec. \ref{eq:serie_ejz} y la f\'ormula de Euler podemos escribir
+\begin{equation}
+\cos(z) = 1-\dfrac{z^2}{2!}+\dfrac{z^4}{4!}-\dfrac{z^6}{6!}+\dfrac{z^8}{8!}+\cdots =
+\boxed{\sum_{n=0}^{\infty}(-1)^n \dfrac{z^{2n}}{2n!}}
+\end{equation}
+
+% convergencia
+Para hallar el radio de convergencia por la prueba de la raz\'on, 
+seg\'un la Ec. \ref{eq:pruebarazon},
+\begin{align}
+\lim_{n \to \infty}{\left| \dfrac{(-1)^{n+1}\cdot z^{2(n+1)}\cdot (2n)!}
+{[2(n+1)]!\cdot(-1)^n \cdot z^{2n}} \right|} &< 1, \\
+\lim_{n \to \infty}{\left| \dfrac{(-1)\cdot z^2}{2n+2} \right|} &< 1, & \\
+\lim_{n \to \infty}{\dfrac{|(-1)\cdot z^2|}{|2n+2|} } &< 1, & \\
+\left| {z} \right|^2 &< \lim_{n \to \infty}|2n+2|, & \\
+\left| {z} \right| &< \infty. &
+\end{align}
+\\ 
+\end{profesor}
+
+\end{enumerate}
+
+% ***********************************************
+% 					Ejercicio 4
+% ***********************************************
+\item 
+\begin{enumerate}
+	% --- (a) ---
+	\item En vez de aplicar directamente el teorema de Taylor, Ec. \ref{eq:serietaylor}, utilizamos las series 
+	generadoras. Notamos que la función dada tiene la forma de la Ec. \ref{eq:ht1}, excepto que el centro del 
+	desarrollo que deseamos es -1 y no 0. Para cambiar de centro hacemos un cambio de variables: 
+	
+	\begin{equation}
+	w=\frac{z+1}{2}~~\rightarrow~~z=2w-1.
+	\end{equation}
+Reemplazando por la nueva variable se tiene:
+
+	\begin{align}
+		\frac{1}{1-z}&=\frac{1}{1-2w+1},\\
+		&=\frac{1}{2}\frac{1}{1-w},
+	\end{align}
+	Desarrollamos en serie la \'ultima expresión tomando como variable independiente a $w$ y usando la Ec. 
+	\ref{eq:ht1},
+	\begin{align}
+		\frac{1}{2}\frac{1}{1-w}&=\frac{1}{2} \sum_{n=0}^{\infty} w^n \text{, que tiene centro 0 y 
+		converge en }\left|w\right|<1.\\
+	\end{align}
+	Volvemos a la variable original $z$,
+	\begin{align}
+\frac{1}{1-z}&=\frac{1}{2} \sum_{n=0}^{\infty} \left(\frac{z+1}{2}\right)^n \text{, que tiene centro -1 y 
+	converge en }\left|\frac{z+1}{2}\right|<1.\\
+\end{align}
+	
+	Operando obtenemos el desarrollo buscado,
+	\begin{align}
+		f(z)=\frac{1}{1-z}&=\boxed{\sum_{n=0}^{\infty}\frac{(z+1)^n}{2^{n+1}}\text{, que converge en 
+		}\left|z+1\right|<2.}\\
+	\end{align}
+
+\begin{profesor}
+	% --- (b) ---
+	\item En vez de aplicar directamente el teorema de Taylor, Ec. \ref{eq:serietaylor}, utilizamos las series 
+	generadoras. Notamos que la función dada tiene la forma de la Ec. \ref{eq:ht2}, excepto que el centro del 
+	desarrollo que deseamos es -1 y no 0. Para cambiar de centro hacemos un cambio de variables: 
+	
+	\begin{equation}
+	w=z+1~~\rightarrow~~z=w-1.
+	\end{equation}
+	Reemplazando por la nueva variable se tiene:
+	\begin{align}
+	e^{3z}&=e^{3(w-1)},\\
+	&=e^{-3}e^{3w}.
+	\end{align}
+	Desarrollamos en serie la \'ultima expresión tomando como variable independiente a $3w$ y usando la Ec. 
+	\ref{eq:ht2},
+	\begin{align}
+	e^{-3}e^{3w}&=e^{-3}\sum_{n=0}^{\infty} \frac{(3w)^n}{n!} \text{, que tiene centro 0 y 
+		converge en }\left|3w\right|<\infty.\\
+	\end{align}
+	Volvemos a la variable original $z$ para encontrar el desarrollo buscado con centro en $z_0=-1$,
+	\begin{align}
+	f(z)=e^{3z}&=\boxed{e^{-3}\sum_{n=0}^{\infty} \frac{3^n}{n!}(z+1)^n \text{, que converge en }|z+1|<\infty.}\\
+	\end{align}
+
+	\item Pendiente
+	\item Pendiente
+	% --- (e) ---
+	\item En vez de aplicar directamente el teorema de Taylor, Ec. \ref{eq:serietaylor}, utilizamos las series 
+	generadoras. Notamos que la función dada tiene la forma de la Ec. \ref{eq:ht2}, excepto que el centro del 
+	desarrollo que deseamos es $2i$ y no 0. Para cambiar de centro hacemos un cambio de variables: 
+	
+	\begin{equation}
+	w=z-2i~~\rightarrow~~z=w+2i.
+	\end{equation}
+	Reemplazando por la nueva variable se tiene:
+	\begin{align}
+	e^{2z}&=e^{2(w+2i)},\\
+	&=e^{4i}e^{2w}.
+	\end{align}
+	Desarrollamos en serie la \'ultima expresión tomando como variable independiente a $2w$ y usando la Ec. 
+	\ref{eq:ht2},
+	\begin{align}
+	e^{4i}e^{2w}&=e^{4i}\sum_{n=0}^{\infty} \frac{(2w)^n}{n!} \text{, que tiene centro 0 y 
+		converge en }\left|2w\right|<\infty.\\
+	\end{align}
+	Volvemos a la variable original $z$ para encontrar el desarrollo buscado con centro en $z_0=2i$,
+	\begin{align}
+	f(z)=e^{2z}&=\boxed{e^{4i}\sum_{n=0}^{\infty} \frac{2^n}{n!}(z-2i)^n \text{, que converge en }|z-2i|<\infty.}\\
+	\end{align}
+
+\end{profesor}
+\end{enumerate}
+
+% ***********************************************
+% 					Ejercicio 5
+% ***********************************************
+\item Se desarrolla $f(z)$ en fracciones parciales:
+\begin{equation*}
+f(z) = \dfrac{1}{(z-1)(z-2)}=\dfrac{k_1}{z-1} + \dfrac{k_2}{z-2}
+\end{equation*}
+Siendo $k_1$,
+\begin{equation*}
+k_1 = \dfrac{1}{z-2}\Big|_{z=1}=-1,
+\end{equation*}
+Y $k_2$,
+\begin{equation*}
+k_2 = \dfrac{1}{z-1}\Big|_{z=2}=1.
+\end{equation*}
+Queda entonces,
+\begin{equation}\label{eq:ej3a_parcial}
+f(z) = \dfrac{-1}{z-1} + \dfrac{1}{z-2}.
+\end{equation}
+
+\begin{enumerate}
+\item % (a)
+Se busca el desarrollo en serie para el primer t\'ermino,
+\begin{equation}
+\dfrac{-1}{z-1} = \dfrac{1}{1-z} = \sum_{n=0}^\infty z^n,
+\end{equation}
+que ya sabemos que converge para $|z|<1$. \\
+Para el segundo t\'ermino,
+\begin{equation}
+\dfrac{1}{z-2} = \dfrac{-1}{2-z} = -\dfrac{1}{2}\dfrac{1}{1-\frac{z}{2}} =
+-\dfrac{1}{2}\sum_{n=0}^{\infty} \left( \dfrac{z}{2} \right) ^n =
+-\sum_{n=0}^{\infty} \dfrac{z^n}{2^{n+1}}.
+\end{equation}
+% convergencia
+Para hallar el radio de convergencia por la prueba de la raz\'on, 
+seg\'un la Ec. \ref{eq:pruebarazon},
+\begin{align}
+\lim_{n \to \infty}{\left| \dfrac{z^{n+1}~2^{n+1}}{2^{n+1+1}~z^n} \right|} &< 1, \\
+\lim_{n \to \infty}{\left| \dfrac{z}{2} \right|} &< 1,\\
+\left| {z} \right| &< 2.
+\end{align}
+Finalmente queda,
+\begin{equation}
+f(z) = \boxed {\sum_{n=0}^\infty z^n-\sum_{n=0}^{\infty} \dfrac{z^n}{2^{n+1}}}
+\end{equation}
+Con convergencia en $|z|<1$, ya que es la intersecci\'on de los conjuntos de convergencia para ambos t\'erminos.
+\item % (b)
+Tomando en cuenta la Ec. \ref{eq:ej3a_parcial}, vemos que, en el desarrollo hecho para el segundo t\'ermino, se llega a una regi\'on de convergencia para $|z|<2$, por lo que bastar\'ia con hacer que el primer t\'ermino converja en $1<|z|$ para cumplir con la regi\'on de convergencia requerida en este punto.
+Entonces,
+\begin{equation}
+\dfrac{-1}{z-1} = \dfrac{-1}{z(1-\frac{1}{z})} = 
+-\dfrac{1}{z} \sum_{n=0}^\infty \left( \dfrac{1}{z} \right) ^n =
+- \sum_{n=0}^\infty \left( \dfrac{1}{z} \right) ^{n+1} =
+- \sum_{n=1}^\infty \left( \dfrac{1}{z} \right) ^{n}.
+\end{equation}
+Estando la regi\'on de convergencia dada por
+\begin{align}
+\left| \dfrac{1}{z} \right| & < 1, \\
+1 &< |z|.
+\end{align}
+Finalmente
+\begin{equation}
+f(z) = \boxed {- \sum_{n=1}^\infty \left( \dfrac{1}{z} \right) ^{n}-
+\sum_{n=0}^{\infty} \dfrac{z^n}{2^{n+1}}}
+\end{equation}
+Con regi\'on de convergencia $1<|z|<2$.
+\end{enumerate}
+ 
+
+% ***********************************************
+% 					Ejercicio 6
+% ***********************************************
+\item 
+\begin{enumerate}
+	% --- (a) ---
+	\item En lugar de aplicar directamente el teorema de Laurent, Ec. \ref{eq:serielaurent}, identificamos las partes analítica y no analítica de la función dada para luego desarrollar por serie de Taylor la primera de estas,
+	\begin{align}
+	f(z)=\frac{e^{2z}}{(z-1)^2}&=e^{2z} \frac{1}{(z-1)^2}.
+	\label{eq:5a1}
+	\end{align}
+	Por lo que desarrollamos $e^{2z}$, que es la parte anal\'itica, en serie de Taylor tomando como centro la singularidad, $z_0=1$. Podemos hacer uso de la conocida serie de Maclaurin, Ec. \ref{eq:ht2}, haciendo un cambio de variables de la forma $w=z-z_0$. Esto ser\'ia,
+	\begin{equation}
+	w=z-1,\quad \text{y despejando}\rightarrow z=w+1.
+	\end{equation}
+	Reemplazando para la nueva variable se tiene
+	\begin{align}
+	f(w) 	&= e^{2(w+1)} \frac{1}{w^2}, \\
+			&= e^2e^{2w}  \frac{1}{w^2}, \\
+			&= \frac{e^2}{w^2}~ e^{2w},
+	\end{align}
+	Ahora s\'i, reemplazando la serie de Maclaurin para $e^{2w}$,
+	\begin{equation}\label{eq:ej6a_Maclaurin}
+	f(w) = \frac{e^2}{w^2}\sum_{n=0}^{\infty}\frac{(2w)^n}{n!},
+	\end{equation}
+	teniendo dicha serie la regi\'on de convergencia,
+	\begin{equation}\label{eq:ej6a_conv}
+	|2w|<\infty \quad \rightarrow \quad |w|<\infty.
+	\end{equation}
+	Reacomodando la Ec. \ref{eq:ej6a_Maclaurin} se escribe,
+	\begin{equation}
+	f(w) = e^2 \sum_{n=0}^\infty \frac{2^nw^{n-2}}{n!},
+	\end{equation}
+	y finalmente, reemplazando para la variable original $z$ resulta,
+	\begin{equation}
+	f(z) 	= e^2 \sum_{n=0}^\infty \frac{2^n(z-1)^{n-2}}{n!} =
+				\boxed{e^2\sum_{n=-2}^{\infty}\frac{2^{n+2}}{(n+2)!}(z-1)^{n}}
+	\end{equation}
+	Desarrollando para algunos t\'erminos,
+	\begin{equation}\label{eq:ej6a_desarrollo}
+	f(z) = e^2(z-1)^{-2}+2e^2(z-1)^{-1}+2e^2+\frac{4}{3}e^2(z-1)+
+					\frac{2}{3}e^2(z-1)^2+\cdots
+	\end{equation}
+	Para la regi\'on de convergencia de esta serie, se reemplaza en la Ec. \ref{eq:ej6a_conv} seg\'un el cambio de variable,
+	\begin{equation}
+	|z-1|<\infty,
+	\end{equation}
+	y teniendo en cuenta que en el centro de la serie es donde se tiene la singularidad, o sea que en ese punto la serie no converge, se deja fuera de la regi\'on de convergencia escribiendo,
+	\begin{equation}
+	\boxed{0<|z-1|<\infty}
+	\end{equation}
+	Observando el desarrollo de la Ec. \ref{eq:ej6a_desarrollo}, se puede identificar que el residuo (Ec. \ref{eq:residuo}) vale,
+	\begin{equation}
+     Res[f(z),1]=\boxed{2e^2}
+	\end{equation}
+
+	
+%%% DEJO COMENTADA OTRA FORMA DE RESOLVER EL EJERCICIO, POR LAS DUDAS QUE SIRVA
+%%% EN EL FUTURO (PABLO)	
+%	si modificamos el centro de la serie de la siguiente manera.
+%	\begin{align}
+%	e^{2z}=e^{2(z+1-1)}=e^{2}e^{2(z-1)}=e^2\sum_{n=0}^{\infty}\frac{2^n(z-1)^n}{n!}\text{, que converge en }0<\left| 2(z-1)\right|<\infty
+%	\label{eq:5a2}
+%	\end{align}
+%	Reemplazando la Ec. \label{eq:5a2} en la Ec. \label{eq:5a1} y operando obtenemos el desarrollo buscado.
+%	\begin{align}
+%	\frac{e^{2z}}{(z-1)^2}&=\frac{e^2}{(z-1)^2}\sum_{n=0}^{\infty}\frac{2^n}{n!}(z-1)^n,\\
+%	&=e^2\sum_{n=0}^{\infty}\frac{2^n}{n!}(z-1)^{n-2},\\
+%	&=\boxed{e^2\sum_{n=-2}^{\infty}\frac{2^{n+2}}{(n+2)!}(z-1)^{n}\text{, que converge en }0<\left|z-1\right|<\infty}
+%	\end{align}
+%	El residuo, Ec. \ref{eq:residuo}, vale entonces,
+%	\begin{align}
+%     Res[f(z),1]=\boxed{2e^2}
+%	\end{align}
+
+
+%%% ***********************
+%%% PROFESOR
+\begin{profesor}
+	% --- (b) ---
+	\item Utilizamos fracciones simple para separar la función en dos partes según sus dos polos en $-1$ y $-2$:
+	\begin{align}
+	f(z)=\frac{z}{(z+1)(z+2)}&=\frac{A}{z+1}+\frac{B}{z+2}
+	\end{align}
+	donde los coeficientes se hallan de,
+	\begin{align}
+	A=\frac{z}{z+2}\Big|_{z=-1}=-1,\\
+	B=\frac{z}{z+1}\Big|_{z=-2}=2.
+	\end{align}	
+	Por lo que queda,
+	\begin{align}
+	f(z)=\frac{-1}{z+1}+\frac{2}{z+2}
+	\label{eq:5b1}
+	\end{align}	
+	
+	\textit{Desarrollo de $f(z)$ con centro en $z_0=-1$:}
+	
+	Desarrollamos la parte de $f(z)$ que es analítica (segundo término). Para esto puede usarse la conocida serie 
+	geométrica, Ec. \ref{eq:ht1}, si se realiza el cambio de centro correspondiente,
+	\begin{equation}
+	w=z+1,\quad \text{y despejando}\rightarrow z=w-1.
+	\end{equation}
+	Reemplazando se tiene,
+	\begin{align}
+	\frac{2}{z+2}&=2\frac{1}{w-1+2},\\
+	&=2\frac{1}{1-(-w)},\\
+	&=2\sum_{n=0}^{\infty}(-w)^n \text{, que converge en } |-w|<1.
+	\end{align}	
+	Volviendo a la variable original tenemos,	
+	\begin{align}
+	\frac{2}{z+2}&=2\sum_{n=0}^{\infty}(-1)^n(z+1)^n \text{, que converge en }|z+1|<1.
+	\label{eq:5b2}
+	\end{align}
+	Reemplazando la Ec. \ref{eq:5b2} en la Ec. \ref{eq:5b1} obtenemos el desarrollo buscado,
+	\begin{align}	
+	f(z)=\boxed{\frac{-1}{z+1}+2\sum_{n=0}^{\infty}(-1)^n(z+1)^n \text{, que converge en }0<\left|z+1\right|<1.}
+	\end{align}
+	El residuo, Ec. \ref{eq:residuo}, vale entonces,
+	\begin{align}
+	Res[f(z),-1]=\boxed{-1}
+	\end{align}
+	
+	\textit{Desarrollo de $f(z)$ con centro en $z_0=-2$:}
+	
+	Desarrollamos la parte de $f(z)$ que es analítica (primer término). Para esto puede usarse la conocida serie 
+	geométrica, Ec. \ref{eq:ht1}, si se realiza el cambio de centro correspondiente,
+	\begin{equation}
+	w=z+2,\quad \text{y despejando}\rightarrow z=w-2.
+	\end{equation}
+	\begin{align}
+	\frac{-1}{z+1}&=\frac{-1}{w-2+1},\\
+	&=\frac{1}{1-w},\\
+	&=\sum_{n=0}^{\infty}w^n \text{, que converge en }|w|<1.
+	\end{align}	
+	Volviendo a la variable original tenemos,	
+	\begin{align}
+	&=\sum_{n=0}^{\infty}(z+2)^n \text{, que converge en } |z+2|<1.
+	\label{eq:5b3}
+	\end{align}	
+	Reemplazando la Ec. \ref{eq:5b3} en la Ec. \ref{eq:5b1} obtenemos el desarrollo buscado,
+	\begin{align}	
+	f(z)=\boxed{\sum_{n=0}^{\infty}(z+2)^n+\frac{2}{z+2}\text{, que converge en }0<\left|z+2\right|<1.}
+	\end{align}
+	El residuo, Ec. \ref{eq:residuo}, vale entonces,
+	\begin{align}
+	Res[f(z),-2]=\boxed{2}
+	\end{align}	
+
+\end{profesor}
+
+\end{enumerate}
+
+% ***********************************************
+% 					Ejercicio 7
+% ***********************************************
+\item 
+\begin{enumerate}
+% --- a ---
+\item Buscamos las singularidades de la función a integrar igualando el polinomio denominador a cero:
+\begin{align}
+ f(z)=\frac{z^3}{2z+1}=\frac{z^3}{2(z+\frac{1}{2})}. 
+\end{align}	
+Como pude verse la función tiene un polo simple en $z=-\frac{1}{2}$. La trayectoria de integraci\'on dada, $C:~|z|=1$, 
+encierra a este polo por lo que aplica el teorema de los residuos.
+
+Tenemos dos m\'etodos posibles para calcular el residuo seg\'un lo dado en las Ecs. \ref{eq:respolosimple1} y \ref{eq:respolosimple2}, y encontrar la soluci\'on de la integral usando la Ec. \ref{eq:resteorema}.
+
+Para la primer f\'ormula, Ec. \ref{eq:respolosimple1}, resulta
+\begin{equation}
+Res\left[f(z),-\frac{1}{2}\right] 
+= \lim_{{z}\to{-\frac{1}{2}}} \left[ \left(z+\frac{1}{2}\right) \frac{z^3}{2(z+\frac{1}{2})} \right] 
+= \lim_{{z}\to{-\frac{1}{2}}} \left[ \frac{z^3}{2} \right] 
+= \left(-\frac{1}{2}\right)^3 \frac{1}{2} = -\frac{1}{16}.
+\end{equation}
+
+Para la segunda f\'ormula, Ec. \ref{eq:respolosimple2}, se tiene,
+\begin{equation}
+\text{Res}\left[f(z),-\frac{1}{2}\right] 
+= \frac{p(z_0)}{q'(z_0)}
+= \frac{z^3}{2} \biggr| _{z=-\frac{1}{2}}
+= -\frac{1}{16}.
+\end{equation}
+
+Finalmente, el valor de la integral es,
+\begin{equation}
+\oint f(z) dz = 2\pi i \left( -\frac{1}{16} \right) = \boxed{-i\frac{\pi}{8}}.
+\end{equation}
+
+\begin{profesor}
+	% --- (b) ---
+\item La función a integrar $f(z)=\dfrac{e^{-z}}{(z-1)^2}$ tiene un polo de segundo orden ($m=2$) en $z_0=1$, que se 
+localiza en el interior de la trayectoria de integración dada, $C:~|z|=2$, por lo que aplica el teorema de los 
+residuos.  
+Calculamos el residuo según la Ec. \ref{eq:respolosup}:
+\begin{align}
+Res\left[f(z),1\right]=&\frac{1}{(2-1)!}\lim_{z \to 1} \left[\frac{d^{2-1}}{dz^{2-1}}\left[(z-1)^2 
+\dfrac{e^{-z}}{(z-1)^2}\right]\right],\\
+=&\lim_{z \to 1} \left[\frac{d}{dz}e^{-z}\right],\\
+=&\lim_{z \to 1} \left[-e^{-z}\right],\\
+=&\frac{-1}{e}.
+\end{align}
+ Finalmente, el valor de la integral es,
+ \begin{equation}
+ \oint f(z) dz = 2\pi i \left( \frac{-1}{e}\right) = \boxed{\frac{-2\pi i}{e}}.
+ \end{equation}
+ 
+	% --- (c) ---
+\item La función a integrar $f(z)=\dfrac{1}{z(z+1)}$ tiene dos polos de primer orden ($m=1$) en $z_0=0$ y $z_1=-1$.\\
+
+\textit{Integral de $f(z)$ sobre $C2:~|z|=2$:}
+
+Ambos polos se localizan en el interior de la trayectoria de integración 
+por lo que aplica el teorema de los 
+residuos.  
+
+Calculamos el residuo en $z_0=0$ según la Ec. \ref{eq:respolosimple1}:
+\begin{align}
+Res\left[f(z),0\right]=&\lim_{{z}\to{0}}\left[ z \dfrac{1}{z(z+1)} \right]=1 
+\end{align}
+
+Calculamos el residuo en $z_1=-1$ según la Ec. \ref{eq:respolosimple1}:
+\begin{align}
+Res\left[f(z),-1\right]=&\lim_{{z}\to{-1}}\left[ (z+1) \dfrac{1}{z(z+1)} \right]=-1 
+\end{align}
+
+Finalmente, el valor de la integral es,
+\begin{equation}
+\oint f(z) dz = 2\pi i (Res\left[f(z),0\right]+Res\left[f(z),-1\right]) =  2\pi i(1-1)=\boxed{0}.
+\end{equation}
+\end{profesor}
+\end{enumerate}
+
+% ***********************************************
+% 					Ejercicio 8
+% ***********************************************
+\item 
+\begin{enumerate}
+	% --- (a) ---
+	\item Siguiendo la técnica descrita en las herramientas teóricas, hacemos el cambio de variables $z=e^{i\theta}$,
+	\begin{align}
+		I=\int_{0}^{2\pi}\frac{1}{2+\cos(\theta)}d\theta&=\oint_C\frac{1}{2+\frac{1}{2}(z+\frac{1}{z})}\frac{dz}{i z},\\
+		&=\oint_C\frac{-2i}{z^2+4z+1}dz,\\
+    	&=\oint_C\frac{-2i}{(z+2+\sqrt{3})(z+2-\sqrt{3})}dz.
+	\end{align}
+Puesto que solo el polo en $z_0=-2+\sqrt{3}$ esta dentro de la circunferencia unitaria $C$, aplicando el teorema de los residuos, Ec. \ref{eq:resteorema}, hallamos el resultado de la ultima integral,
+	\begin{align}
+	I=-2i\oint_C\frac{1}{(z+2+\sqrt{3})(z+2-\sqrt{3})}dz=(-2i)2\pi i~Res[f(z),-2+\sqrt{3}].
+	\end{align}
+El residuo del polo simple puede hallarse usando la Ec. \ref{eq:respolosimple1},
+	\begin{align}
+I&=4\pi\lim_{z \to -2+\sqrt{3} } \left[(z+2-\sqrt{3})\frac{1}{(z+2+\sqrt{3})(z+2-\sqrt{3})}\right],\\
+&=\boxed{\frac{2\pi}{\sqrt{3}}}
+\end{align}
+	
+	% --- (d) ---
+	\item[\textit{d}) ] Se procede seg\'un lo visto en la secci\'on de herramientas te\'oricas sobre resoluci\'on de integrales impropias de funciones racionales. Se tiene
+\begin{equation}
+f(z)=\frac{1}{z^2+1},
+\end{equation}
+entonces
+\begin{equation}
+\oint_C \frac{1}{z^2+1}dz=\oint_C \frac{1}{(1+i)(1-i)}dz.
+\end{equation}
+El polo ubicado en el semiplano superior es el ubicado en $z_0=i$. El residuo es
+\begin{equation}
+\text{Res}[f(z),i]=\frac{p(z_0)}{q'(z_0)}=\left.\frac{1}{2z}\right|_{z=i}=\frac{1}{2i}.
+\end{equation}
+Resulta entonces,
+\begin{equation}
+\int_{-\infty}^\infty\frac{1}{x^2+1}dx=2\pi i \left(\frac{1}{2i}\right)=\boxed{\pi}
+\end{equation}
+
+
+\end{enumerate}
+
+%Sec. soluciones
+\end{enumerate}
+\begin{center}
+	---------------------------------------
+\end{center}
+\end{document}

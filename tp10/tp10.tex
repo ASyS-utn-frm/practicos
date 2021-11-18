@@ -1,0 +1,841 @@
+% ***********************************************
+%***********COSAS A MEJORAR O CORREGIR***********
+%-Agregar ej. de energía para una señal de duracion finita
+%
+%
+%
+%
+% ***********************************************% Preamble
+% ---
+\documentclass[10pt,a4paper]{article}
+
+% Packages
+% ---
+\usepackage[latin1]{inputenc}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{mathabx}
+\usepackage{layout}
+\usepackage{graphics}
+\usepackage{graphicx}
+\usepackage[spanish]{babel}
+\usepackage{lastpage}
+\usepackage{tabto}
+\usepackage{xcolor}
+\usepackage{verbatim}
+\usepackage[a4paper, top=1 in,bottom=1in, left=1 in, right=0.7 in]{geometry}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\usepackage{subfigure}
+\usepackage{tikz}
+\usetikzlibrary{patterns}
+\usetikzlibrary{arrows.meta}
+\usepackage{pgfplots}
+\pgfplotsset{width=7cm,compat=1.15}
+\usepackage{comment}
+\usepackage{bigints}
+
+\usepackage{circuitikz}
+\usetikzlibrary{circuits.ee.IEC}
+
+
+%ELEGIR VERSION 
+%Comentar para eliminar la solucion de todos los ejercicios y dejar la version para los 
+% alumnos, a saber con un solo punto resuelto por ejercicio.
+
+%\includecomment{profesor}    % version profesor
+\excludecomment{profesor}	  % version alumnos
+
+\lhead{\footnotesize An\'alisis de Se\~nales y Sistemas  - A\~no 2020}
+\chead{}
+\rhead{\footnotesize Trabajo Pr\'actico N$^\text o$10: Transformada \textit{z}}
+\lfoot{}
+\cfoot{}
+\rfoot{\footnotesize P\'agina \thepage\ de \pageref{LastPage}}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+\title{
+	\textsc{\includegraphics[width=0.55\textwidth]{logoUTN.jpg}} ~\\
+	{\large Departamento de Electr\'onica}\\ 
+	[0.1cm]
+	{\Huge{An\'alisis de Se\~nales y Sistemas}} \\
+	[0.25cm]
+	{\Large{Trabajo Pr\'{a}ctico N$^{\text {o}}$10: Transformada \textit{z}} \\
+	}}
+\author{}
+\date{}
+
+% Main document ********************************************
+% ---
+\begin{document}
+\maketitle
+\begin{profesor}
+	\hspace{6cm}(Versión PROFESOR)
+\end{profesor}
+\thispagestyle{fancy}
+
+\section*{Enunciados:}
+\label{sec:enun}
+
+
+\subsection*{Cálculo operacional}
+\begin{enumerate}
+% ***********************************************
+% 					Ejercicio 1
+% ***********************************************
+\item 
+{Dada la señal $x[n]$, calcular la transformada $z$ a partir de la ecuación de definición y determinar la región de convergencia:}
+\begin{enumerate}
+	\item $x[n]=\delta[n]$ 
+	\item $x[n]=\delta[n-N]$
+	\item $x[n]=u[n]$
+	\item $x[n]=\alpha^nu[n]$
+\end{enumerate}
+
+
+% ***********************************************
+% 					Ejercicio 2
+% ***********************************************
+\item 
+{Partiendo de la ecuación de definición, comprobar las siguientes propiedades:}
+\begin{enumerate}
+	\item Desplazamiento: $\mathcal{Z}\{x[n-N]\}=z^{-N}X(z)$
+	\item Reflexión: $\mathcal{Z}\{x[-n]\}=X\left(\frac{1}{z}\right)$
+	\item Multiplicación por $n$: $\mathcal{Z}\{nx[n]\}=-z\frac{dX(z)}{dz}$
+\end{enumerate}
+
+
+% ***********************************************
+% 					Ejercicio 3
+% ***********************************************
+\item 
+{Calcular la transformada $z$ de las siguientes secuencias:}
+\begin{enumerate}
+	\item $x[n]=\{-1 \quad \underset{\uparrow}{3} \quad -2 \quad 4\}$
+	\item $x[n]=\{1 \quad 2 \quad \underset{\uparrow}{3} \quad -2 \quad -1\}$
+\end{enumerate}
+
+
+\subsection*{Plano $z$: gráfica de polos y ceros}
+%% ***********************************************
+%%					Ejercicio 4
+%% ***********************************************
+\item 
+{Graficar la constelación de polos y ceros de la función dada:}
+\begin{enumerate}
+\item
+$F(z)=\dfrac{7z(z-1)}{(z+2)(z^2-4z+5)}$
+\item
+$F(z)=\dfrac{z^2-4z}{(z-3)(z^2-2z+2)}$
+\end{enumerate}
+
+
+% ***********************************************
+% 					Ejercicio 5
+% ***********************************************
+\item 
+{¿Cuál es la transformada $z$ que corresponde a la constelación de polos y ceros de cada gráfica?}	
+\begin{figure}[htb]
+	\centering
+	% ___ gráfica
+	\begin{tikzpicture}[scale=1.6]
+	%\draw[help lines] (-2,-2) grid (2,2);
+	\draw[-{Stealth}] (-1.5,0) -- (1.5,0);
+	\draw[-{Stealth}] (0,-1.5) -- (0,1.5);
+	% circunferencia unitaria
+	\draw (0,0) circle [radius=1cm];
+    % polo en -0.5+j0.3
+    \draw[blue] (-0.57,0.37) -- (-0.43,0.23);
+    \draw[blue] (-0.57,0.23) -- (-0.43,0.37);
+    % polo en -0.5-j0.3
+    \draw[blue] (-0.57,-0.37) -- (-0.43,-0.23);
+    \draw[blue] (-0.57,-0.23) -- (-0.43,-0.37);    
+    \draw (0.2,0.3) node {$0.3$}; 
+    \draw (0.22,-0.3) node {$-0.3$}; 
+	\draw[dashed] (0,0.3) -- (-0.5,0.3) -- (-0.5,-0.3) -- (0,-0.3);
+    \draw (-0.75,-0.15) node {$-0.5$}; 
+	% cero en el origen
+	\draw[blue] (0,0) circle [radius=0.08cm];
+	% cero en (1,0)
+	\draw[blue] (1,0) circle [radius=0.08cm];	
+	\draw (1.1,1.5) arc [start angle=180, end angle=270, radius=0.4];
+	\draw (1.4,1.4) node {$z$};
+	\draw (-1.8,1.8) node {$a$)};
+	\end{tikzpicture}
+	\qquad\qquad
+	% ___ gráfica
+	\begin{tikzpicture}[scale=1.6]
+	%\draw[help lines] (-2,-2) grid (2,2);
+	\draw[-{Stealth}] (-1.5,0) -- (1.5,0);
+	\draw[-{Stealth}] (0,-1.5) -- (0,1.5);
+	% circunferencia unitaria
+	\draw (0,0) circle [radius=1cm];
+    % polo 1
+    \draw[blue] (-0.67,0.07) -- (-0.53,-0.07);
+    \draw[blue] (-0.67,-0.07) -- (-0.53,0.07);
+    % polo 2
+    \draw[blue] (-0.67,0.1) -- (-0.53,-0.04);
+    \draw[blue] (-0.67,-0.04) -- (-0.53,0.1);   
+    \draw (0.2,0.4) node {$0.4$}; 
+    \draw (0.22,-0.4) node {$-0.4$}; 
+	\draw[dashed] (0,0.4) -- (-0.25,0.4) -- (-0.25,-0.4) -- (0,-0.4);
+    \draw (-0.7,-0.18) node {$-0.6$}; 
+    \draw (0.6,0.2) node {$-0.25$}; 
+    \draw[-{Stealth}] (0.48,0.12) -- (-0.25,0);
+	% cero 1
+	\draw[blue] (-0.25,0.4) circle [radius=0.08cm];
+	% cero 2
+	\draw[blue] (-0.25,-0.4) circle [radius=0.08cm];	
+	\draw (1.1,1.5) arc [start angle=180, end angle=270, radius=0.4];
+	\draw (1.4,1.4) node {$z$};
+	\draw (-1.8,1.8) node {$b$)};
+	\end{tikzpicture}
+	%\caption{}
+	\label{}
+\end{figure}
+
+
+\subsection*{Cálculo de la transformada inversa}
+% ***********************************************
+%					Ejercicio 6
+% ***********************************************
+\item {Determinar la transformada inversa de las secuencias dadas:}
+\begin{enumerate}
+\item
+$X(z)=5-z^{-1}-3z^{-4}+5z^{-6}$
+\tabto{6.1cm} Rta.: $x[n]=5\delta[n]+\delta[n-1]-3\delta[n-4]+5\delta[n-6]$
+\item
+$Y(z)=3z^2-2-5z^{-1}+6z^{-4}+4z^{-7}$
+\tabto{6.1cm} Rta.: $x[n]=3\delta[n+2]-2\delta[n]-5\delta[n-1]+6\delta[n-4]+4\delta[n-7]$
+\end{enumerate}
+
+
+% ***********************************************
+%					Ejercicio 7
+% ***********************************************
+\item {Determinar la transformada $z$ inversa de las expresiones:}
+\begin{enumerate}
+\item
+$X(z)=\dfrac{z-1}{z(z+3)}$
+\tabto{7cm}Rta.: $x[n]=-\frac{1}{3}\delta[n-1]+\frac{4}{9}\delta[n]-\frac{4}{9}(-3)^nu[n]$ 
+\item
+$Y(z)=\dfrac{z^2}{(z-1)(z^2+z+\frac{1}{2})}$
+\tabto{7cm}Rta.: $y[n]=\frac{2}{5}u[n]+0.9(0.71)^n\cos(2.36n-2.03)u[n]$ 
+\item
+$F(z)=\dfrac{5z}{(z+1)^2(z+4)}$
+\tabto{7cm}Rta.: $f[n]=\frac{5}{3}n(-1)^{n-1}u[n]+\frac{5}{9}[(-4)^n-(-1)^n]u[n]$ 
+\end{enumerate}
+
+
+% ***********************************************
+%					Ejercicio 8
+% ***********************************************
+\item
+Utilizando la integral de inversión, determinar la transformada $z$ inversa de:
+\begin{enumerate}
+\item
+$X(z)=\dfrac{z^2}{(z-0.5)(z-2)}$
+\tabto{5cm}Rta.: 
+\tabto{6cm}
+ROC: $|z|>2 \Rightarrow h[n]=\frac{1}{3}\left[2^{n+2}-\left(\frac{1}{2}\right)^n\right]u[n];$ \\
+\vspace{.15cm}
+\tabto{6cm}
+ROC: $\frac{1}{2}<|z|<2 \Rightarrow h[n]=\frac{1}{3}\left\{-2^{n+2}u[-n-1]-\left(\frac{1}{2}\right)^n\right\}u[n];$ \\
+\vspace{.15cm}
+\tabto{6cm}
+ROC: $|z|<\frac{1}{2} \Rightarrow h[n]=\frac{1}{3}\left[-2^{n+2}+\left(\frac{1}{2}\right)^n\right]u[-n-1];$
+\item
+$Y(z)=\dfrac{z}{(z-0.25)(z+3)}$
+\end{enumerate}
+
+
+\subsection*{Función de transferencia y análisis de sistemas}
+% ***********************************************
+%					Ejercicio 9
+% ***********************************************
+\item
+Determinar la función de transferencia y la ecuación en diferencias de los siguientes sistemas:
+\begin{enumerate}
+\item
+$h[n]=\frac{1}{2}\delta [n]$
+\tabto{7cm}Rta.: $H(z)=\frac{1}{2}$; ~~~$y[n]=\frac{1}{2}x[n]$.
+\item
+$h[n]=2^{n}u[n]$
+\tabto{7cm}Rta.: $H(z)=\frac{z}{z-2}$; ~~~$y[n]=x[n]+2y[n-1]$.
+\end{enumerate}
+
+
+% ***********************************************
+%					Ejercicio 10
+% ***********************************************
+\item
+Considerando el sistema definido por el siguiente mapa de polos y ceros, con el valor $H_0=2$, determinar:
+
+\begin{figure}[htb]
+	\centering
+	% ___ gráfica
+	\begin{tikzpicture}[scale=1.2]
+	%\draw[help lines] (-2,-2) grid (2,2);
+	\draw[-{Stealth}] (-1.4,0) -- (1.4,0);
+	\draw[-{Stealth}] (0,-1.4) -- (0,1.4);
+	% circunferencia unitaria
+	\draw (0,0) circle [radius=1cm];
+    % polo
+    \draw[blue] (0.73,0.07) -- (0.87,-0.07);
+    \draw[blue] (0.73,-0.07) -- (0.87,0.07);    
+    \draw (0.75,-0.25) node {$0.8$}; 
+	% cero en el origen
+	\draw[blue] (0,0) circle [radius=0.08cm];
+	\draw (1.1,1.5) arc [start angle=180, end angle=270, radius=0.4];
+	\draw (1.4,1.4) node {$z$};
+	\end{tikzpicture}
+	\qquad\qquad
+	%\caption{}
+	\label{}
+\end{figure}
+
+\begin{enumerate}
+\item
+la función de transferencia $H(z)$
+\item
+la respuesta al impulso
+\item
+la ecuación en diferencias o algoritmo del sistema
+\item
+la implementación del mismo
+\end{enumerate}
+Rta.: 
+\begin{enumerate}
+\item
+$H(z)=\frac{2z}{z-0.8}$
+\item
+$h[n]=2(0.8)^nu(t)$
+\item
+$y[n]=2x[n]+0.8y[n-1]$
+\end{enumerate}
+
+
+% ***********************************************
+%					Ejercicio 11
+% ***********************************************
+\item
+Considerando el sistema cuyo diagrama de polos y ceros se muestra en la figura, tomando $H_0=1$, determinar:
+
+\begin{figure}[htb]
+	\centering
+	% ___ gráfica
+	\begin{tikzpicture}[scale=1.2]
+	%\draw[help lines] (-2,-2) grid (2,2);
+	\draw[-{Stealth}] (-1.4,0) -- (1.4,0);
+	\draw[-{Stealth}] (0,-1.4) -- (0,1.4);
+	% circunferencia unitaria
+	\draw (0,0) circle [radius=1cm];
+    % polo 1
+    \draw[blue] (-0.07,0.77) -- (0.07,0.63);
+    \draw[blue] (-0.07,0.63) -- (0.07,0.77);    
+    \draw (0.35,0.68) node {$0.7$}; 
+    % polo 2
+    \draw[blue] (-0.07,-0.77) -- (0.07,-0.63);
+    \draw[blue] (-0.07,-0.63) -- (0.07,-0.77);    
+    \draw (0.38,-0.65) node {$-0.7$}; 
+	% cero en el origen
+	\draw[blue] (0,0) circle [radius=0.08cm];
+	% cero 2
+	\draw[blue] (-1,0) circle [radius=0.08cm];
+	\draw (1.1,1.5) arc [start angle=180, end angle=270, radius=0.4];
+	\draw (1.4,1.4) node {$z$};
+	\end{tikzpicture}
+	\qquad\qquad
+	%\caption{}
+	\label{}
+\end{figure}
+
+\begin{enumerate}
+\item
+la función de transferencia $H(z)$
+\item
+la ecuación en diferencias del sistema
+\item
+la implementación del mismo
+\end{enumerate}
+Rta.: 
+\begin{enumerate}
+\item
+$H(z)=\frac{z(z+1)}{z^2+0.49}$
+\item
+$y[n]=x[n]+x[n-1]-0.49y[n-2]$
+\end{enumerate}
+
+
+% ***********************************************
+%					Ejercicio 12
+% ***********************************************
+\item
+Considerando el sistema determinado por: $y[n]=x[n]+2.5y[n-1]+y[n-2]$
+\begin{enumerate}
+\item
+determinar la función de transferencia $H(z)$
+\item
+graficar la constelación de polos y ceros
+\item
+determinar la respuesta al impulso
+\item implementar el sistema
+\end{enumerate}
+Rta.:
+\begin{enumerate}
+\item
+$H(z)=\frac{z^2}{z^2-2.5z-1}$
+\item[\textit{c})]
+$h[n]=[0.89\times2.85^n+0.11(-0.35)^n]u[n]$
+\end{enumerate}
+
+
+% ***********************************************
+%					Ejercicio 13
+% ***********************************************
+\item
+Determinar la ecuación en diferencias y la respuesta al impulso del sistema cuya función de transferencia es: $H(z)=\dfrac{z}{8z^2+6z+1}$
+
+Rta.: $y[n]=8y[n]+6y[n-1]+y[n-2]=x[n-1]$; $h[n]=\frac{1}{2}\left[\left(-\frac{1}{4}^n\right)-\left(-\frac{1}{2}^n\right)\right]u[n]$
+
+
+\subsection*{Respuesta de sistemas a señales arbitrarias de entrada}
+% ***********************************************
+%					Ejercicio 14
+% ***********************************************
+\item
+Considerando el sistema determinado por: $y[n]-\frac{1}{2}y[n-1]=x[n]$, con condiciones iniciales nulas, determinar la respuesta del mismo a las siguientes entradas:
+\begin{enumerate}
+\item
+$x[n]=u[n]$
+\tabto{6cm}Rta.: $y[n]=-\left(\frac{1}{2}\right)^nu[n]+2u[n]$
+\item
+$x[n]=\left(\frac{1}{3}\right)^nu[n]$
+\tabto{6cm}Rta.: $y[n]=3\left(\frac{1}{2}\right)^nu[n]+2\left(\frac{1}{3}\right)^nu[n]$
+\item
+$x[n]=(-1)^nu[n]$
+\tabto{6cm}Rta.: $y[n]=\frac{1}{3}\left(\frac{1}{2}\right)^nu[n]+\frac{2}{3}(-1)^nu[n]$
+\end{enumerate}
+
+\end{enumerate}
+
+% ***********************************************
+% 			Herramientas Teóricas (HT)
+% ***********************************************
+
+% *** PAUTAS A SEGUIR ***
+\begin{comment}
+Esta sección esta pensada para incluir toda la ayuda teórica necesaria 
+para resolver el practico.
+Algunas reglas generales:
+	-Mantener el contenido al minimo, referir a la bibliografía para mayor 
+		información (hay q armar un archivo .bib).
+	-Enumerar todas las ecuaciones.
+	-No repetir ecuaciones ya dadas en las HT de otro práctico, 
+		solo referir a ella.
+	-Para resaltar palabras usar \textit.
+	-Utilizar la nomencaltura oficial de la cátedra !!  
+		(Hay que definirlo, yo diria seguir al pie de la letra el kreiszig)
+	-
+\end{comment}
+
+% *** CONTENIDO ***
+\section*{Herramientas Te\'oricas:}
+\label{sec:herr}
+
+%%--------------------------------
+\subsection*{Transformada $z$}
+
+De manera análoga a lo que ocurre con la transformada de Laplace (TL), la transformada $z$ (TZ) es una generalización 
+de la transformada de Fourier, en este caso, para señales de tiempo discreto (TFTD). Esto puede verse en la definición 
+de la TZ,
+\begin{equation}
+	X(z)=\mathcal{Z}\{x[n]\}=\sum_{n=-\infty}^{\infty}x[n]z^{-n},
+	\label{ec:tz}
+\end{equation}
+al considerar que la variable transformada es $z=r^ne^{-j\Omega n}$. Por lo que la TZ se reduce a la TFTD para $r=1$, 
+es decir sobre la circunferencia de radio unitario en el plano $z$. Para que la serie infinita en la Ec.~\ref{ec:tz} 
+converga absolutamente, el modulo $|x[n]r^ne^{-j\Omega n}|=|x[n]r^n|$ debe ser acotado. Por lo que la TZ existirá en 
+regiones de convergencia con forma circular o de disco. Al igual que con la TL, en general los límites de la región de 
+convergencia de la TZ, estarán determinados por los polos de $X(z)$.
+
+La transformada $z$ inversa se define mediante la integral de línea:
+\begin{equation}
+	x[n]=\frac{1}{2\pi i}\oint _{C}X(z) z^{n-1} dz,
+	\label{ec:tzi}
+\end{equation}
+donde $C$ es una curva cerrada contenida en la región de convergencia de $X(z)$ considerada. En la 
+práctica, para realizar la antitransformación podemos:
+\begin{itemize}
+	\item Resolver la Ec.~\ref{ec:tzi} utilizando integración por el método de los residuos, estudiada en el TP4.
+	\item Utilizar las tablas de transformadas $z$ junto con las operaciones necesarias, comunmente desarrollar en 
+	fracciones simples. Al 
+	inspeccionar la tabla de transformadas mas comunes, vemos que en el denominador aparece $z^{-1}$. Debido a esto, 
+	será mas conveniente desarrollar en fracciones simples a $\frac{X(z)}{z}$ y luego multiplicar el desarrollo por 
+	$z$, para obtener términos que incluyan a $z^{-1}$ en el denominador y que puedan ser directamente 
+	antitransformados usando la tabla.
+	\item Expresar la $X(z)$ como una suma de potencias de $z$ y obtener $x[n]$, para cada valor de $n$, a partir de 
+	los coeficientes de dicha suma (ver Ec.~\ref{ec:tz}).
+\end{itemize}
+
+\subsection*{Estabilidad de sistemas LTI}
+Si un sistema LTI es estable, entonces existe la TFTD de su respuesta impulsiva $\mathcal{F}\{h[n]\}=H(j\Omega)$ 
+(respuesta en frecuencia). Por lo que la región de convergencia de $\mathcal{Z}\{h[n]\}=H(z)$, debe contener 
+a la circunferencia unitaria ($r=1$).   
+
+\subsection*{Causalidad de sistemas LTI}
+Si un sistema LTI es causal, entonces la región de convergencia de $\mathcal{Z}\{h[n]\}=H(z)$, es el exterior de una 
+circunferencia. Si el sistema es no causal, entonces la región es el interior de una circunferencia.    
+
+% ***********************************************
+% 					SOLUCIONES
+% ***********************************************
+% *** DESARROLLO ***
+\section*{Soluciones}
+\label{sec:sol}
+
+\begin{enumerate}
+% ***********************************************
+% 					Ejercicio 1
+% ***********************************************
+\item 
+\begin{enumerate}
+\item[\textit{b})] Según la definición de la transformada $z$ dada en la Ec.~\ref{ec:tz},
+\begin{equation}
+	X(z)=\sum_{n=-\infty}^{\infty}\delta[n-N]z^{-n}=z^{-N}=\boxed{\frac{1}{z^N}}.
+\end{equation}
+La región de convergencia es todo el plano complejo, salvo $z=0$.
+
+\item[\textit{d})] Se desarrolla de la siguiente manera,
+\begin{align}
+X(z)&= \sum_{n=-\infty}^{\infty}\alpha^nu[n]z^{-n},\\
+	&= \sum_{n=0}^{\infty}\alpha^nz^{-n},\\
+	&= \sum_{n=0}^{\infty}(\alpha z^{-1})^n=\frac{1}{1-\alpha z^{-1}}=\boxed{\frac{z}{z-\alpha}}.
+\end{align}
+La región de convergencia está dada por,
+\begin{equation}
+|\alpha z^{-1}|<1 \quad \Rightarrow \quad |z|>|\alpha|.
+\end{equation}
+Al graficar la región de convergencia en el plano $z$, notamos que es el exterior del circulo de radio $\alpha$ (sin 
+incluir la circunferencia limite). Vemos también que la región está delimitada por la posición del polo de $X(z)$.
+\end{enumerate}
+
+% ***********************************************
+% 					Ejercicio 2
+% ***********************************************
+\item 
+\begin{enumerate}
+	\item[\textit{b})] Asumiendo $\mathcal{Z}\{x[n]\}=X(z)$ y utilizando la definición de la TZ en la Ec.~\ref{ec:tz}, podemos 
+	escribir:
+	\begin{align}
+		\mathcal{Z}\{x[-n]\}&=\sum_{n=-\infty}^{\infty}x[-n]z^{-n}, \\
+		&=\sum_{n=\infty}^{-\infty}x[n]z^{n}, \\
+		&=\sum_{n=\infty}^{-\infty}x[n](z^{-1})^{-n}, \\
+		&=\boxed{X\left(\frac{1}{z}\right)}.
+	\end{align}
+\end{enumerate}
+% ***********************************************
+% 					Ejercicio 3
+% ***********************************************
+\item
+\begin{enumerate}
+	\item[\textit{a})] Debido a que la señal a transformar, $x[n]=\{-1 \quad \underset{\uparrow}{3} \quad -2 \quad 4\}$, posee 
+	pocas 	muestras, podemos hallar su TZ explícitamente:
+	\begin{align}
+		X(z)&=\sum_{n=-\infty}^{\infty}x[n]z^{-n}, \\
+		&=\sum_{n=-1}^{2}x[n]z^{-n}, \\
+		&=-1z^1+3z^0-2z^{-1}+4z^{-2},\\
+		&=\boxed{4z^{-2}-2z^{-1}-z+3}.
+	\end{align}
+	Otra forma de hallar esta transformada es expresando a $x[n]$ como una suma de impulsos escalados y desplazados,
+	\begin{equation}
+	x[n]=-\delta[n+1]+3\delta[n]-2\delta[n-1]+4\delta[n-2],
+	\end{equation}
+	y posteriormente transformar usando las transformadas conocidas del impulso y el impulso desplazado. Se deja al alumno la verificación del resultado.
+\end{enumerate}
+
+% ***********************************************
+% 					Ejercicio 4
+% ***********************************************
+\item
+\begin{enumerate}
+	\item[\textit{a})] Para poder graficar la constelación de polos y ceros (ver Fig.~\ref{fig:ej4}), factorizamos los 
+	polinomios en numerador y denominador: 
+	\begin{align}
+	 F(z)&=\dfrac{7z(z-1)}{(z+2)(z^2-4z+5)},\\
+	 &=\boxed{\dfrac{7z(z-1)}{(z+2)(z-2-j)(z-2+j)}}
+	\end{align}
+
+\begin{figure}[htb]
+	\centering
+	% ___ gráfica
+	\begin{tikzpicture}[scale=1.4]
+	\draw[-{Stealth}] (-3,0) -- (3,0);
+	\draw[-{Stealth}] (0,-2) -- (0,2);
+	% circunferencia unitaria
+	\draw (0,0) circle [radius=1cm];	
+	% polo 1
+	\draw[blue] (1.97,0.93) -- (2.07,1.07);
+	\draw[blue] (2.07,0.93) -- (1.97,1.07);    
+	\draw (2,0.68) node {$\{2;1\}$}; 
+	% polo 2
+	\draw[blue] (1.97,-0.93) -- (2.07,-1.07);
+	\draw[blue] (2.07,-0.93) -- (1.97,-1.07);    
+	\draw (2,-0.68) node {$\{2;-1\}$}; ; 
+	% polo 3
+	\draw[blue] (-2.07,-0.07) -- (-1.93,0.07);
+	\draw[blue] (-2.07,0.07) -- (-1.93,-0.07); 
+	\draw (-2.1,0.3) node {$-2$}; 	
+	% cero en el origen
+	\draw[blue] (0,0) circle [radius=0.08cm];
+	% cero 2
+	\draw[blue] (1,0) circle [radius=0.08cm];
+    \draw (1,0.3) node {$1$}; 
+	\draw (2.1,2.1) arc [start angle=180, end angle=270, radius=0.4];
+	\draw (2.3,2.0) node {$z$};
+	\end{tikzpicture}
+	\caption{Gráfico de polos y ceros del Ej.4a).}
+	\label{fig:ej4}
+\end{figure}	
+\end{enumerate}
+
+% ***********************************************
+% 					Ejercicio 5
+% ***********************************************
+\item
+\begin{enumerate}
+	\item[\textit{a})] En base al gráfico de polos y ceros dados podemos escribir:
+	\begin{align}
+	F(z)&=\boxed{\dfrac{z(z-1)}{(z+0.5+j0.3)(z+0.5-j0.3)}}.
+	\end{align}	
+\end{enumerate}		
+
+
+% ***********************************************
+% 					Ejercicio 6
+% ***********************************************
+\item
+A resolver por el alumno.
+
+
+% ***********************************************
+% 					Ejercicio 7
+% ***********************************************
+\item
+\begin{enumerate}
+\item
+La expresión a antitransformar es
+\begin{equation}
+X(z)=\frac{z-1}{z(z+3)},
+\end{equation}
+que al multiplicar ambos miembros por $\frac{1}{z}$ resulta,
+\begin{equation}
+\frac{X(z)}{z}=\frac{z-1}{z^2(z+3)}.
+\end{equation}
+A continuación se procede a descomponer en fracciones simples, y se aplican los métodos ya estudiados en transformada de Laplace.
+\begin{equation}
+\frac{z-1}{z^2(z+3)}=\frac{A}{z^2}+\frac{B}{z}+\frac{C}{z+3},
+\end{equation}
+\begin{equation}
+A=\lim_{z \to 0}\frac{z-1}{z+3}=-\frac{1}{3},
+\end{equation}
+\begin{equation}
+B=\lim_{z \to 0}\frac{d}{dz}\left(\frac{z-1}{z+3}\right)=\lim_{z \to 0}\frac{z+3-z+1}{(z+3)^2}=\frac{4}{9},
+\end{equation}
+\begin{equation}
+C=\lim_{z \to -3}\frac{z-1}{z^2}=-\frac{4}{9}.
+\end{equation}
+Entonces,
+\begin{equation}
+\frac{X(z)}{z}=\frac{-1/3}{z^2}+\frac{4/9}{z}+\frac{-4/9}{z+3},
+\end{equation}
+despejando y acomodando,
+\begin{align}
+X(z)&= \frac{-1/3}{z}+\frac{4}{9}+\frac{-4}{9}\frac{z}{z+3}, \\
+	&= -\frac{1/3}{z}+\frac{4}{9}-\frac{4}{9}\frac{z}{z+3}, \\
+	&= -\frac{1}{3}z^{-1}+\frac{4}{9}-\frac{4}{9}~\frac{1}{1+3z^{-1}}, 
+\end{align}
+finalmente antitransformando queda,
+\begin{equation}
+\boxed{x[n]=-\frac{1}{3}\delta[n-1]+\frac{4}{9}\delta[n]-\frac{4}{9}(-3)^n u[n]}
+\end{equation}
+Para la región de convergencia se observa que según el primer término se excluye el valor $z=0$, para el segundo término la región de convergencia es todo el plano complejo y para el tercer término la región de convergencia es $|z|>3$. Se concluye finalmente que la región de convergencia es la última mencionada.
+
+\item
+Para antitransformar, factorizamos el polinomio en el denominador,
+\begin{equation}
+Y(z)=\dfrac{z^2}{(z-1)(z^2+z+\frac{1}{2})}=\dfrac{z^2}{(z-1)(z-z_0)(z-\bar{z_0})},
+\end{equation}
+donde $z_0=-0.5+0.5j$. Luego separamos en fracciones simples:
+\begin{align}
+	\frac{Y(z)}{z}&=\dfrac{z}{(z-1)(z-z_0)(z-\bar{z_0})},\\
+	&=\frac{A}{z-1}+\frac{B}{z-z_0}+\frac{\bar{B}}{z-\bar{z_0}},
+\end{align}
+donde:
+\begin{equation}
+	A=\lim_{z \to 1}\frac{z}{(z-z_0)(z-\bar{z_0})}=\frac{2}{5},
+\end{equation}
+\begin{equation}
+	B=\lim_{z \to z_0}\frac{z}{(z-1)(z-\bar{z_0})}=-0.2-0.4j.
+\end{equation}
+Por lo que la expresión a antitransformar es:
+\begin{equation}
+	Y(z)=A\frac{z}{z-1}+B\frac{z}{z-z_0}+\bar{B}\frac{z}{z-\bar{z_0}}.
+\end{equation}
+Utilizando la tabla de transformadas queda:
+\begin{align}
+	y[n]&=Au[n]+B z_0^nu[n]+\bar{B}\bar{z_0}^nu[n]\\
+\end{align}
+Usando $z_0=0.71e^{2.36j}$, $B=0.45e^{-2.03j}$ y reordenando obtenemos:
+\begin{align}
+	y[n]&=\Big(\frac{2}{5}+0.45e^{-2.03j}(0.71e^{2.36j})^n+0.45e^{2.03j}(0.71e^{-2.36j})^n\Big)u[n]\\
+	&=\Big[\frac{2}{5}+0.45\times 0.71^n \Big(e^{(2.36n-2.03)j}+e^{-(2.36n-2.03)j}\Big)\Big]u[n]\\
+	&=\boxed{\Big[\frac{2}{5}+0.90\times 0.71^n \cos(2.36n-2.03)\Big]u[n]}
+\end{align}
+\end{enumerate}
+
+% ***********************************************
+% 					Ejercicio 8
+% ***********************************************
+\item 
+\begin{enumerate}
+	\item Planteamos la integral de antitransformación:
+	\begin{align}
+	x[n]&=\oint_{C}X(z)z^{n-1} dz,\\
+	&=\oint_{C}\dfrac{z^2}{(z-0.5)(z-2)}z^{n-1} dz, \\
+	&=\oint_{C}\dfrac{z^{n+1}}{(z-0.5)(z-2)} dz,\\
+	&=\oint_{C}f(z) dz
+	\end{align}
+	Para resolver por el método de los residuos, primero debemos elegir la curva de integración $C$, la cual define la 
+	región 
+	de 
+	convergencia considerada. Si hacemos $C:|z|>2$ y tomamos $n\ge-1$, la curva encierra a los dos polos del integrando 
+	$f(z)$, por lo que calculamos los residuos:
+	\begin{align}
+	Res[f(z),0.5]&=(z-0.5)\dfrac{z^{n+1}}{(z-0.5)(z-2)}\Big|_{z=0.5},\\
+	&=\dfrac{0.5^{n+1}}{0.5-2},\\
+	&=-\frac{1}{3}0.5^n,
+	\end{align}
+	y,
+	\begin{align}
+	Res[f(z),2]&=(z-2)\dfrac{z^{n+1}}{(z-0.5)(z-2)}\Big|_{z=2},\\
+	&=\dfrac{2^{n+1}}{2-0.5},\\
+	&=-\frac{1}{3}2^{n+2},
+	\end{align}
+	para resolver mediante:
+	\begin{align}
+	h[n]&=\sum_{k}Res[f(z),z_k],\\
+	&=\boxed{\frac{1}{3}[0.5^n+2^{n+2}]u[n]}.
+	\end{align}
+\end{enumerate}
+ 
+% ***********************************************
+% 					Ejercicio 9
+% ***********************************************
+\item
+\begin{enumerate}
+\item[\textit{b})]
+Para la ecuación dada $h[n]=2^nu[n]$, la función de transferencia es fácilmente obtenida al aplicar transformada $z$, resultando,
+\begin{equation}
+H(z)=\frac{1}{1-2z^{-1}}=\boxed{\frac{z}{z-2}},
+\end{equation}
+con región de convergencia $|z|>2$.
+
+La ecuación en diferencias se obtiene despejando de $\frac{Y(z)}{X(z)}=\frac{1}{1-2z^{-1}}$, obteniendo,
+\begin{equation}
+Y(z)-2z^{-1}Y(z)=X(z),
+\end{equation}
+y aplicando transformación inversa,
+\begin{align}
+y[n]-2y[n-1]&=x[n],
+\end{align}
+\begin{equation}
+\boxed{y[n]=x[n]+2y[n-1].}
+\end{equation}
+\end{enumerate}
+
+% ***********************************************
+% 					Ejercicio 10
+% ***********************************************
+\item
+A resolver por el alumno.
+
+% ***********************************************
+% 					Ejercicio 11
+% ***********************************************
+\item
+A resolver por el alumno.
+
+% ***********************************************
+% 					Ejercicio 12
+% ***********************************************
+\item
+\begin{enumerate}
+	\item Transformamos la ecuación en diferencias del sistema:
+	\begin{align}
+		Y(z)&=X(z)+2.5z^{-1}Y(z)+z^{-2}Y(z),\\
+		X(z)&=Y(z)(1-2.5z^{-1}-z^{-2}),
+	\end{align}
+,para obtener su función de transferencia:
+	\begin{align}
+H(z)&=\frac{Y(z)}{X(z)},\\
+&=\frac{1}{1-2.5z^{-1}-z^{-2}}\frac{z^2}{z^2},\\
+&=\boxed{\frac{z^2}{z^2-2.5z-1}}.
+\end{align}
+\item A resolver por el alumno
+\item Para hallar $h[n]$, antitransformamos $H(z)$ utilizando fracciones simples y las tablas de transformadas:
+\begin{align}
+	\frac{H(z)}{z}&=\frac{z^2}{(z-2.85)(z+0.351)},\\
+	&=\frac{A}{z-2.85}+\frac{B}{z+0.351},\\
+	&=\frac{0.890}{z-2.85}+\frac{0.110}{z+0.351},\\
+	H(z)&=0.890\frac{z}{z-2.85}+0.110\frac{z}{z+0.351},\\
+	h[n]&=\boxed{[0.89(2.85)^n+0.110(-0.351)^n]u[n]}.
+\end{align}
+\item A resolver por el alumno	
+\end{enumerate}
+
+% ***********************************************
+% 					Ejercicio 13
+% ***********************************************
+\item
+A resolver por el alumno.
+
+% ***********************************************
+% 					Ejercicio 14
+% ***********************************************
+\item
+\begin{enumerate}
+	\item Transformamos la ecuación del sistema $y[n]-\frac{1}{2}y[n-1]=x[n]$ para obtener su función de transferencia:
+	\begin{align}
+		Y(z)-\frac{1}{2}z^{-1}Y(z)&=X(z),\\
+		Y(z)&=\frac{1}{1-\frac{1}{2}z^{-1}}X(z).
+	\end{align}
+	Transformamos la señal de entrada dada $x[n]=u[n]$ para obtener $X(z)=\frac{1}{1-z^{-1}}$. Luego calculamos la 
+	salida mediante:
+	\begin{align}
+		Y(z)&=\frac{1}{(1-\frac{1}{2}z^{-1})(1-z^{-1})},\\
+		&=\frac{1}{(1-\frac{1}{2}z^{-1})(1-z^{-1})} \frac{z^2}{z^2},\\
+		&=\frac{z^2}{(z-\frac{1}{2})(z-1)},\\
+		\frac{Y(z)}{z}&=\frac{z}{(z-\frac{1}{2})(z-1)},
+	\end{align} 
+\end{enumerate}
+donde hemos multiplicado por $\frac{z^2}{z^2}$ para simplificar la antitrasformacion de $Y(z)$. Separamos 
+en fracciones simples y antitransformamos usando tablas:
+\begin{align}
+	\frac{Y(z)}{z}&=\frac{A}{z-\frac{1}{2}}+\frac{B}{z-1},\\
+	&=\frac{-1}{z-\frac{1}{2}}+\frac{2}{z-1},\\
+	Y(z)&=-\frac{z}{z-\frac{1}{2}}+2\frac{z}{z-1},\\
+	y[n]&=\boxed{\Big[-\Big(\frac{1}{2}\Big)^n+2\Big]u[n]}.
+\end{align}
+
+
+
+
+\end{enumerate}
+\begin{center}
+	---------------------------------------
+\end{center}
+\end{document}

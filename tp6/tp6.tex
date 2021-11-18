@@ -1,0 +1,1211 @@
+% ***********************************************
+%***********COSAS A MEJORAR O CORREGIR***********
+% Incluir epxplicacion teorica sobre excitacion de sistemas LTI con funciones exp. y solucion al ej 13.
+% expliacr U(t) eq 67		
+% Poner resultado final al Ej 6		
+% Agregar t a la figura 1		
+% Corregir Parrafo debajo de Eq 74		
+% sacar || de eq 103		
+%
+%
+% ***********************************************
+% Preamble
+% ---
+\documentclass[10pt,a4paper]{article}
+
+% Packages
+% ---
+\usepackage[latin1]{inputenc}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{layout}
+\usepackage{graphics}
+\usepackage{graphicx,subcaption}
+\usepackage[spanish]{babel}
+\usepackage{lastpage}
+\usepackage{tabto}
+\usepackage{xcolor,colortbl}
+\usepackage{verbatim}
+\usepackage[a4paper, top=1 in,bottom=1in, left=1 in, right=0.7 in]{geometry}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\usepackage{comment}
+\usepackage{bigints}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{width=7cm,compat=1.15}
+
+%\usepackage{schemabloc}
+
+\usetikzlibrary{circuits,arrows,positioning}
+
+%\usepackage{pst-sigsys}
+%\usepackage{auto-pst-pdf}
+
+\newcommand{\mc}[2]{\multicolumn{#1}{c}{#2}}
+\definecolor{Gray}{gray}{0.85}
+\definecolor{LightCyan}{rgb}{0.88,1,1}
+%
+\newcolumntype{a}{>{\columncolor{Gray}}c}
+\newcolumntype{b}{>{\columncolor{white}}c}
+
+
+%ELEGIR VERSION 
+%Comentar para eliminar la solucion de todos los ejercicios y dejar la version para los 
+% alumnos, a saber con un solo punto resuelto por ejercicio.
+
+%\includecomment{profesor}    % version profesor
+\excludecomment{profesor}	  % version alumnos
+
+\lhead{\footnotesize An\'alisis de Se\~nales y Sistemas  - A\~no 2020}
+\chead{}
+\rhead{\footnotesize Trabajo Pr\'actico N$^\text o$6: Sistemas.}
+\lfoot{}
+\cfoot{}
+\rfoot{\footnotesize P\'agina \thepage\ de \pageref{LastPage}}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+\title{
+	\textsc{\includegraphics[width=0.55\textwidth]{logoUTN.jpg}} ~\\
+	{\large Departamento de Electr\'onica}\\ 
+	[0.1cm]
+	{\Huge{An\'alisis de Se\~nales y Sistemas}} \\
+	[0.25cm]
+	{\Large{Trabajo Pr\'{a}ctico N$^{\text {o}}$6: Sistemas}		\\
+	}}
+\author{}
+\date{}
+
+
+% Main document ********************************************
+% ---
+\begin{document}
+\maketitle
+\begin{profesor}
+	\hspace{6cm}(Versión PROFESOR)
+\end{profesor}
+\thispagestyle{fancy}
+
+\section*{Enunciados:}
+\label{sec:enun}
+
+\begin{enumerate}
+\subsubsection*{Generalidades sobre sistemas}
+% ***********************************************
+% 					Ejercicio 1
+% ***********************************************
+\item {Determinar la linealidad de los siguientes sistemas:}
+\begin{enumerate}
+	\item $ y(t) = \cos [x(t)] $
+	\item $ y(t) = t^2x(t-1) $
+	\item $ y[n] = x[n+2]-x[n-2] $
+\end{enumerate}
+
+% ***********************************************
+% 					Ejercicio 2
+% ***********************************************
+\item {Considerar un sistema con relación entre su entrada $x(t)$ y salida $y(t)$ dada por $y(t)=tu(t)x(t)$. Determinar si el sistema es invariante en el tiempo y justificar la respuesta.}
+
+% ***********************************************
+% 					Ejercicio 3
+% ***********************************************
+\item{Determinar la linealidad e invariancia en el tiempo de los siguientes sistemas:}	
+		
+\begin{enumerate}
+	\item $y(t)=\sin{[x(t)]}$								
+	\item $y(t)=[x(t)]^2$
+	\item $y[n]=x[n-h_0]$
+	\item $y[n]=x[kn]$ (diezmador)
+	\item $y[n]=x[-n]$					
+\end{enumerate}
+
+% ***********************************************
+%					Ejercicio 4
+% ***********************************************
+\item {Determinar la linealidad, invariancia en el tiempo y causalidad de los siguientes sistemas:}
+\begin{enumerate}
+	\item $y(t)=x\left(\frac{1}{2}t\right)$
+	\item $y[n]=nx[n]$	
+	\item $y[n]=x[2n]$	
+\end{enumerate}
+% ***********************************************
+%					Ejercicio 5
+% ***********************************************
+\item {Demostrar que el sistema descripto por la relación $y(t)=x(t-6)-x(1-t)$, es lineal y no causal.}
+
+\subsubsection*{Convolución  de señales}
+
+% ***********************************************
+%					Ejercicio 6
+% ***********************************************
+\item Dadas las señales de entrada $x(t)$ y respuesta impulsiva $h(t)$, 
+	determinar la salida del sistema $y(t)$.% ver Fig.~\ref{fig:ej6}:}
+
+%\begin{figure}[!htb] 
+%	\centering
+%%	\includegraphics[width=9cm]{ej6.png}
+%{	\centering
+%	\begin{pspicture}%[showgrid](-3,-1)(3,1)
+%	\psset{style=RoundCorners,gratioWh=1.25}
+%		
+%	\pssignal(-3.5,0){x}{$x(t)$}
+%	\psfblock[](-1.25,0){h}{$h(t)$}
+%	\pssignal(1.25,0){y}{$y(t)$}
+%	\nclist[style=Arrow]{ncline}[naput]{x,h,y}
+%	
+%	\end{pspicture}
+%}
+%%	\caption{Señales del ejercicio 6.}
+%%	\label{fig:ej6}
+%\end{figure}
+
+\begin{figure}[!htb]
+\begin{center}
+\includegraphics[width=2in]{tp6-pics_sistema1}
+%\caption{ }
+%\label{ }
+\end{center}
+\end{figure}
+
+\begin{enumerate}
+	\item $x(t)=e^{-3t}u(t)~;~h(t)=e^{-\frac{1}{2}t}u(t)$
+	\item $x(t)=(t+1)u(t)~;~h(t)=e^{-2t}u(t)$		
+	\item $x(t)=tu(t)~;~h(t)=\cos{(3t)}u(t)$	
+\end{enumerate}
+
+
+% ***********************************************
+%					Ejercicio 7
+% ***********************************************
+\item {Obtener la convolución entre $h(t)=e^{-t}u(t)u(5-t)$ y $x(t)=tu(t)u(3-t)$ aplicando la definición.}
+
+% ***********************************************
+%					Ejercicio 8
+% ***********************************************
+\item {Determinar $y(t)=x(t)*h(t)$, siendo:}
+
+$x(t)=
+\begin{cases}
+1, & ~0\leq t\leq 1, \\
+0, & ~t<0~ \vee t>1,
+\end{cases}$
+~~ y ~~
+$h(t)=
+\begin{cases}
+t, & ~0\leq t\leq 2, \\
+0, & ~t<0~ \vee t>2.
+\end{cases}$
+
+% ***********************************************
+%					Ejercicio 9
+% ***********************************************
+\item Determinar $y[n]=x[n]*h[n]$, sabiendo que:
+\begin{figure}[htb]
+	\centering
+	
+	% ___ gráfica x[n]
+	\begin{tikzpicture}[scale=0.8]
+		\begin{axis}[
+		axis y line=center,
+		axis x line=middle,
+		xmin=-2,	xmax=6,
+		ymin=-2,	ymax=6,
+		xlabel={$n$},
+		ylabel={$x[n]$},
+		grid=both,
+		grid style={line width=.1pt, draw=gray!40},
+    major grid style={line width=.2pt,draw=gray!60},
+		minor tick num=3,
+    cycle list name=mark list,
+    mark size=1.3,
+		]
+		\addplot+[ycomb,black,thick,line width=.8pt] 
+			plot coordinates {
+				(-1,0) (0,5) (1,4) (2,3) (3,2) (4,1) (5,0)};
+	\end{axis}
+	\end{tikzpicture}
+	\qquad\qquad
+		% ___ gráfica h[n]
+	\begin{tikzpicture}[scale=0.8]
+		\begin{axis}[
+		axis y line=center,
+		axis x line=middle,
+		xmin=-2,	xmax=6,
+		ymin=-2,	ymax=6,
+		xlabel={$n$},
+		ylabel={$h[n]$},
+		grid=both,
+		grid style={line width=.1pt, draw=gray!40},
+    major grid style={line width=.2pt,draw=gray!60},
+		minor tick num=3,
+    cycle list name=mark list,
+    mark size=1.3,
+		]
+		\addplot+[ycomb,black,thick,line width=.8pt] 
+			plot coordinates {
+				(-1,0) (0,1) (1,2) (2,3) (3,-1) (4,0) (5,0)};
+	\end{axis}
+	\end{tikzpicture}
+
+\end{figure}
+
+% ***********************************************
+%					Ejercicio 10
+% ***********************************************
+\item Calcular la convolución entre las señales dadas y representar gráficamente.
+\begin{enumerate}
+\item
+$x_1[n]=\sum_{k=0}^5\delta[n-k]$ ~~y~~ $x_2[n]=\sum_{m=0}^3\delta[n-m]$
+\item
+$x_1[n]=\sum_{k=0}^3\delta[n-k]$ ~~y~~ $x_2[n]=\frac{1}{2^n},~\forall n: n \in\mathbb{Z}\land 0\leq n\leq 4.$
+\end{enumerate}
+
+
+% ***********************************************
+%					Ejercicio 11
+% ***********************************************
+\item Tomando
+$x[n]=\{\underset{\uparrow}{1}\quad 0\quad -1\quad -\frac{1}{2}\}$
+~y~~
+$h[n]=\left(\frac{1}{2}\right)^n u[n]u[4-n]$,
+obtener $y[n]$.
+
+
+\subsubsection*{Interconexión de sistemas}
+
+% ***********************************************
+%					Ejercicio 12
+% ***********************************************
+\item Determinar la respuesta $y[n]$ del sistema:
+
+\textit{a})
+%\begin{enumerate}
+%\item
+%\begin{figure}[!htb]
+%\centering
+%\begin{pspicture}%[showgrid](-3,-1)(3,1)
+%	\psset{style=RoundCorners,gratioWh=1.25}
+%		
+%	\pssignal(-3.5,0){x}{$x[n]$}
+%	\psfblock[](-1.25,0){h1}{$h_1[n]$}
+%	\psfblock[](1.25,0){h2}{$h_2[n]$}
+%	\pssignal(3.5,0){y}{$y[n]$}
+%	\nclist[style=Arrow]{ncline}[naput]{x,h1,h2 $$,y}
+%	
+%\end{pspicture}
+%\end{figure}
+\vspace{-.5cm}
+\begin{figure}[!htb]
+\begin{center}
+\includegraphics[width=3in]{tp6-pics_sistema2}
+%\caption{ }
+%\label{ }
+\end{center}
+\end{figure}
+
+\textit{b})
+%\item
+%\begin{figure}[!htb]
+%\centering
+%\begin{pspicture}%[showgrid](-3,-1)(3,1)
+%	\psset{style=RoundCorners,gratioWh=1.25}
+%		
+%	\pssignal(-3,0){x}{$x[n]$}
+%	\dotnode(-1.5,0){dot}
+%	\psfblock[](0,.75){H1}{$h_1[n]$}
+%	\psfblock[](0,-.75){H2}{$h_2[n]$}
+%	\pscircleop(1.5,0){oplus}
+%	\pssignal(3,0){y}{$y[n]$}
+%	
+%	\psset{style=Arrow}
+%	\ncline{-}{x}{dot}
+%	\ncangle[angleA=90,angleB=180]{dot}{H1}
+%	\ncangle[angleA=-90,angleB=180]{dot}{H2}
+%	\ncangle[angleB=90]{H1}{oplus}
+%	\ncangle[angleB=-90]{H2}{oplus}
+%	\ncline{oplus}{y}
+%\end{pspicture}
+%\end{figure}
+
+\vspace{-.5cm}
+\begin{figure}[!htb]
+\begin{center}
+\includegraphics[width=2.6in]{tp6-pics_sistema3}
+%\caption{ }
+%\label{ }
+\end{center}
+\end{figure}
+
+%\end{enumerate}
+
+%\subsubsection*{Respuesta en frecuencia de sistemas}
+
+% ***********************************************
+%					Ejercicio 13
+% ***********************************************
+\item Determinar la respuesta en frecuencia del sistema:
+
+%\begin{figure}[!htb]
+%\centering
+%\begin{pspicture}%[showgrid](-3,-1)(3,1)
+%	\psset{style=RoundCorners,gratioWh=1.25}
+%		
+%	\pssignal(-3.5,0){x}{$x[n]$}
+%	\pscircleop(-2,0){oplus}
+%	\psfblock[](-.5,0){h1}{$h_1[n]$}
+%	\psfblock[](-.5,-1.5){h2}{$h_2[n]$}
+%	\dotnode(1,0){dot}
+%	\pssignal(2.5,0){y}{$y[n]$}
+%%	\nclist[style=Arrow]{ncline}[naput]{x,oplus,h1,h2 $$,y}
+%
+%	\psset{style=Arrow}
+%	\nclist{ncline}{x,oplus,h1,dot,y}
+%%	\ncstar{<-}{ncline}[naput]{h2}{dot}
+%%	\ncangle{<-}{ncline}{angleA=-90,angleB=-180}{dot}{h2}
+%%	\ncline{h2}{oplus}
+%	\ncangle[angleA=180,angleB=-90]{h2}{oplus}
+%	\ncangle[angleA=-90]{dot}{h2}
+%
+%\end{pspicture}
+%\end{figure}
+
+\begin{figure}[!htb]
+\begin{center}
+\includegraphics[width=2.6in]{tp6-pics_sistema4}
+%\caption{ }
+%\label{ }
+\end{center}
+\end{figure}
+
+
+
+\subsubsection*{Estabilidad de sistemas}
+
+% ***********************************************
+%					Ejercicio 14
+% ***********************************************
+\item ¿Cuáles de las siguientes respuestas al impulso corresponden a sistemas estables LIT? ¿Son sistemas causales?
+\begin{enumerate}
+\item
+$h(t)=e^{-(1-2i)t}u(t)$
+\item
+$h(t)=e^{2t}\cos(3t)u(t+1)$
+\item
+$h(t)=e^{-t}\sin(2t)u(t)$
+\end{enumerate}
+
+% ***********************************************
+%					Ejercicio 15
+% ***********************************************
+\item ¿Cuáles de las siguientes respuestas al impulso corresponden a sistemas estables LIT?\begin{enumerate}
+\item
+$h[n]=n\cos\left[\frac{\pi}{3}\right] u[n]$
+\item
+$h[n]=2^n u[5-n]$
+\end{enumerate}
+
+
+
+
+
+
+\end{enumerate}
+
+% ***********************************************
+% 			Herramientas Teóricas (HT)
+% ***********************************************
+
+% *** PAUTAS A SEGUIR ***
+\begin{comment}
+Esta sección esta pensada para incluir toda la ayuda teórica necesaria 
+para resolver el practico.
+Algunas reglas generales:
+	-Mantener el contenido al minimo, referir a la bibliografía para mayor 
+		información (hay q armar un archivo .bib).
+	-Enumerar todas las ecuaciones.
+	-No repetir ecuaciones ya dadas en las HT de otro práctico, 
+		solo referir a ella.
+	-Para resaltar palabras usar \textit.
+	-Utilizar la nomencaltura oficial de la catátedra !!  
+		(Hay que definirlo, yo diria seguir al pie de la letra el kreizig)
+	-
+\end{comment}
+
+% *** CONTENIDO ***
+\section*{Herramientas Te\'oricas:}
+\label{sec:herr}
+
+\subsection*{Linealidad}
+Un sistema es \textit{lineal} si posee la propiedad de \textit{superposici\'on}, que deriva de las siguientes dos propiedades. \\
+La propiedad de \textbf{aditividad}, que se enuncia de la siguiente manera,
+\begin{align}
+x_1(t) &\to y_1(t), \\
+x_2(t) &\to y_2(t), \\
+x_1(t)+x_2(t) &\to y_1(t)+y_2(t).
+\end{align}
+Y la propiedad de \textbf{homogeneidad}, o escalamiento, que se enuncia de la siguiente manera,
+\begin{align}
+x_1(t) &\to y_1(t), \\
+ax_1(t) &\to ay_1(t).
+\end{align}
+Las dos propiedades combinadas resultan en,
+\begin{equation}
+a_1x_1(t)+a_2x_2(t) \to a_1y_1(t)+a_2y_2(t).
+\end{equation}
+De forma general, la propiedad de superposici\'on es,
+\begin{equation}
+\sum_k a_kx_k(t) \to \sum_k a_ky_k(t).
+\end{equation}
+Notar que un sistema es lineal siempre que las operaciones matemáticas que lo describen son lineales.
+\subsection*{Causalidad}
+Un sistema es causal si su salida depende unicamente de valores presentes y pasados de la entrada. Usualmente se
+demuestra la no causalidad del sistema mediante un ejemplo. 
+
+\subsection*{Invariancia en el tiempo}
+Un sistema es invariante en el tiempo si para una entrada desplazada en el tiempo, le corresponde la salida 
+igualmente desplazada, es decir:
+\begin{align}
+\label{eq:ti}
+x(t) &\to y(t), \\
+x(t-t_0) &\to y(t-t_0).
+\label{eq:ti2}
+\end{align}
+La invariancia en el tiempo esta relacionada a que la función que define la acción del sistema no incluye
+escalado temporal y presenta términos multiplicativos o aditivos constantes.
+
+\subsection*{Sistema LTI}
+Un sistema es LTI (del Inglés, Linear Time Invariant) si es lineal e invariante en el tiempo. Esta clase de sistemas 
+es de fundamental importancia en ingeniería debido a que permiten modelar sistemas físicos prácticos de diversa 
+naturaleza (sistemas mecánicos, circuitos eléctricos, etc.). La salida de un sistema LTI, $y(t)$, para una entrada 
+genérica, $x(t)$, puede calcularse conociendo únicamente su respuesta impulsiva, $h(t)$, mediante $y(t)=x(t)*h(t)$.
+
+\subsection*{Integral de convolución}
+La integral de convolución se representa y define como
+\begin{equation}\label{eq:intconv}
+y(t)=x(t)*h(t)=\int_{-\infty}^{\infty}x(\tau)h(t-\tau)d\tau.
+\end{equation} 
+
+\subsection*{Suma de convolución}
+La suma de convolución se representa y define como
+\begin{equation}
+y[n]=x[n]*h[n]=\sum_{k=-\infty}^\infty x[k]h[n-k].
+\end{equation}
+
+\subsection*{Estabilidad}
+La estabilidad de un sistema puede determinarse según la respuesta al impulso de dicho sistema.
+
+Para tiempo discreto, si la respuesta al impulso unitario es absolutamente sumable, entonces $y[n]$ está limitada en magnitud y por consiguiente el sistema es estable. Esto se escribe,
+\begin{equation}
+\sum_{k=-\infty}^{+\infty} |h[k]|<\infty.
+\end{equation}
+Esta es condición suficiente para garantizar la estabilidad de un sistema LIT de tiempo discreto.
+
+De la misma manera, para sistemas de tiempo continuo, un sistema es estable si la respuesta al impulso es absolutamente integrable, esto es,
+\begin{equation}
+\int_{-\infty}^{+\infty}|h(\tau)|d\tau <\infty
+\end{equation}
+
+
+
+% ***********************************************
+% 					SOLUCIONES
+% ***********************************************
+% *** PAUTAS A SEGUIR ***
+\begin{comment}
+En esta sección se resuelven los ejercicios paso a paso.
+Algunas reglas generales:
+	-Utilizar la resolución mas didáctica posible y 
+		que sea consistente con los otros prácticos.
+	-Dar la suficiente cantidad de detalle para que sea sencillo
+		entender lo que se está haciendo, pero sin caer en trivialidades.
+	-Para explicar lo que se hace en un desarrollo, ir comentando a la derecha
+		de cada paso, usando usando "\begin{align}" u otro que lo permita
+	-Todas las soluciones finales de los ejercicios deben estar recuadradas 
+		con \boxed{}
+	-Cuando haya que desarrollar partes con jerarquía, usar primero negrita
+		y luego cursiva para sub partes.
+\end{comment}
+
+% *** DESARROLLO ***
+\section*{Soluciones}
+\label{sec:sol}
+
+\begin{enumerate}
+% ***********************************************
+% 					Ejercicio 1
+% ***********************************************
+\item 
+\begin{enumerate}
+
+% --- (a) ---
+\begin{profesor}
+\item[\textit{a})] 
+	Para una entrada $x_1(t)$ en el sistema, se obtiene,
+	\begin{equation}
+	x_1(t) \to y_1(t)=\cos [x_1(t)],
+	\end{equation}
+	y de la misma manera para una $x_2(t)$,
+	\begin{equation}
+	x_2(t) \to y_2(t)=\cos [x_2(t)].
+	\end{equation}
+	Para probar si se cumple la propiedad de aditividad, consideramos una se\~nal $x(t)=x_1(t)+x_2(t)$, con lo que se 
+	tiene,
+	\begin{equation}
+	x(t) \to y(t)=\cos [x(t)]=\cos [x_1(t)+x_2(t)].
+	\end{equation}
+	Comparando, se observa que,
+	\begin{equation}
+	y(t)=\cos [x_1(t)+x_2(t)] \neq y_1(t) + y_2(t).
+	\end{equation}
+	Se concluye entonces que el sistema \boxed{\text{no es lineal}}.
+\end{profesor}
+% --- (b) ---
+\item[\textit{b})] 
+Para una entrada $x_1(t)$ en el sistema, se obtiene,
+\begin{equation}
+x_1(t) \to y_1(t)=t^2 x_1(t-1),
+\end{equation}
+y de la misma manera para una $x_2(t)$,
+\begin{equation}
+x_2(t) \to y_2(t)=t^2 x_2(t-1).
+\end{equation}
+Para probar si se cumple la propiedad de aditividad, consideramos una se\~nal $x(t)=x_1(t)+x_2(t)$, con lo que se tiene,
+\begin{align}
+x(t) \to y(t) 	&= t^2 x(t-1), \\
+				&= t^2 [x_1(t-1)+x_2(t-1)], \\
+				&= t^2 x_1(t-1) + t^2 x_2(t-1), \\
+				&= y_1(t) + y_2(t).
+\end{align}
+De lo anterior se observa que se cumple la propiedad de aditividad. Es necesario verificar ahora si se cumple la propiedad de homogeneidad.
+Se toma una entrada $x(t)=kx_1(t)$, con la que se obtiene,
+\begin{align}
+x(t) \to y(t) 	&= t^2 x(t-1), \\
+				&= t^2 [kx_1(t-1)], \\
+				&= k t^2 x_1(t-1), \\
+				&= ky_1(t).
+\end{align}
+Se ve finalmente que el sistema cumple con la propiedad de homogeneidad, por lo que se concluye que el sistema 
+\boxed{\text{sí es lineal}}.
+\end{enumerate}
+
+% ***********************************************
+% 					Ejercicio 2
+% ***********************************************
+\item La presencia de términos multiplicativos variables determina que el sistema:
+\begin{align}
+x(t) \to y(t)=tu(t)x(t),
+\end{align}
+ sea \boxed{\text{variante en el tiempo}}. Esto puede demostrarse al escribir por separado la salida del sistema a una 
+ entrada desplazada:
+\begin{align}
+x(t-t_0) \to tu(t)x(t-t_0),
+\end{align}
+y notar que es distinta de la salida desplazada:
+\begin{align}
+y(t-t_0)=(t-t_0)u(t-t_0)x(t-t_0).
+\end{align}
+Por lo que no cumple con la definición dada en las Ec.~\ref{eq:ti} y \ref{eq:ti2}.
+
+% ***********************************************
+% 					Ejercicio 3
+% ***********************************************
+\item 
+\begin{enumerate}
+    \item[\textit{a})] El sistema,
+    \begin{align}
+    x(t) \to y(t)=\sin{[x(t)]},
+    \end{align}    
+     \boxed{\text{ es invariante en el tiempo}}, ya que la salida para una entrada 
+    desplazada:
+	\begin{align}
+	x(t-t_0) \to \sin{[x(t-t_0)]},
+	\end{align}
+	es idéntica a la salida desplazada:
+	\begin{align}
+	y(t-t_0)=\sin{[x(t-t_0)]}.
+	\end{align}		
+	Para determinar la linealidad del sistema, dada dos entradas:
+	\begin{align}
+	x_1(t) \to y_1(t)=&\sin{[x_1(t)]},\\
+	x_2(t) \to y_2(t)=&\sin{[x_2(t)]},
+	\end{align}	
+    escribimos la salida para la combinación lineal de las entradas:
+	\begin{align}
+	x(t)=a_1 x_1(t)+a_2 x_2(t) \to y(t)=&\sin{[a_1 x_1(t) +a_2 x_2(t)]},
+	\end{align}    
+	y la comparamos con la combinación lineal de las salidas:
+	\begin{align}
+	a_1 y_1(t)+a_2 y_2(t)=& a_1 \sin{[x_1(t)]} +a_2 \sin{[x_2(t)]}.
+	\end{align}
+	Dado que no son iguales, se concluye que el sistema \boxed{\text{no es lineal}}.
+
+\begin{profesor}
+    \item[\textit{d})] El sistema,
+    \begin{align}
+    x[n] \to y[n]=x[kn],
+    \end{align}
+    \boxed{\text{es variante en el tiempo}}, ya que la salida para una entrada 
+    desplazada:
+    \begin{align}
+    x[n-n_0] \to x[kn-n_0],
+    \end{align}
+    no es igual a la salida desplazada:
+    \begin{align}
+    y[n-n_0]=x[k(n-n_0)].
+    \end{align}		
+    Para determinar la linealidad del sistema, dada dos entradas:
+    \begin{align}
+    x_1[n] \to y_1[n]=&x_1[kn],\\
+    x_2[n] \to y_2[n]=&x_2[kn],
+    \end{align}	
+    escribimos la salida para la combinación lineal de las entradas:
+    \begin{align}
+    x[n]=a_1 x_1[n]+a_2 x_2[n] \to y[n]=&a_1 x_1[kn] +a_2 x_2[kn],
+    \end{align}    
+    y la comparamos con la combinación lineal de las salidas:
+    \begin{align}
+    a_1 y_1[n]+a_2 y_2[n]=& a_1 x_1[kn] +a_2 x_2[kn].
+    \end{align}
+    Dado que son iguales, se concluye que el sistema \boxed{\text{es lineal}}.		
+\end{profesor}    
+\end{enumerate}	
+% ***********************************************
+% 					Ejercicio 4
+% ***********************************************
+\item 
+\begin{enumerate}
+	\item[\textit{a})]
+	Para probar la linealidad del sistema se considera,
+	\begin{align}
+		x_1(t) \to y_1(t)=x_1\left(\tfrac{1}{2}t\right),\label{eq:4a1} \\
+		x_2(t) \to y_2(t)=x_2\left(\tfrac{1}{2}t\right).
+	\end{align}
+	La salida correspondiente para una combinación lineal de las entradas es,
+	\begin{equation}
+		x(t)=a_1x_1(t)+a_2x_2(t) \to 
+			y(t)=a_1x_1\left(\tfrac{1}{2}t\right)
+				+a_2x_2\left(\tfrac{1}{2}t\right),
+	\end{equation}
+	que comparando con la combinación lineal de las salidas dada por,
+	\begin{equation}
+	a_1y_1(t)+a_2y_2(t)=a_1x_1\left(\tfrac{1}{2}t\right)
+						+a_2x_2\left(\tfrac{1}{2}t\right),
+	\end{equation}
+	se concluye que el sistema \boxed{\text{es lineal}}.
+	
+	Para verificar si el sistema es invariante en el tiempo se toma un
+	desplazamiento en la entrada,
+	\begin{equation}
+	x_1(t-t_0) \to x_1 \left(\tfrac{1}{2}t-t_0\right),
+	\end{equation}
+	Y se compara con el desplazamiento para la salida correspondiente, 
+	Ec. \ref{eq:4a1},
+	\begin{equation}
+	y_1(t-t_0) = x_1 \left(\tfrac{1}{2}(t-t_0)\right),
+	\end{equation}
+	de lo que se puede concluir que el sistema 
+	\boxed{\text{es variante en el tiempo}}.
+	Para obtener conclusiones con respecto a la causalidad, se puede asignar
+	valores a la variable $t$ y observar qué sucede para la entrada y la salida
+	correspondientes.
+	
+	\begin{center}
+	\renewcommand{\arraystretch}{1.5}
+	\begin{tabular}{|c|c|c|}
+	\hline 
+	$t$ & $y(t)$ & $x\left(\tfrac{1}{2}t\right)$ \\
+	\hline 
+	$-1$ & $y(-1)$ & $x\left(\tfrac{1}{2}(-1)\right)=x\left(-\tfrac{1}{2}\right)$
+						\textit{(entrada futura)} \\
+	\hline 
+	0 & $y(0)$ & $x(0)$ \\
+	\hline 
+	$1$ & $y(1)$ & $x\left(\tfrac{1}{2}(1)\right)=x\left(\tfrac{1}{2}\right)$
+						\textit{(entrada pasada)} \\
+	\hline 
+	\end{tabular}
+	\end{center}
+
+	Se observa que para $t=-1$, y en realidad para cualquier valor $t<0$, 
+	la salida depende de valores futuros de la entrada, por lo que el sistema
+	\boxed{\text{no es causal}}.
+	
+\begin{profesor}
+	%b 
+	\item[\textit{b})]  El sistema,
+	\begin{align}
+	x[n] \to y[n]=nx[n],
+	\end{align}    
+	\boxed{\text{es variante en el tiempo}}, ya que la salida para una entrada 
+	desplazada:
+	\begin{align}
+	x[n-n_0] \to nx[n-n_0],
+	\end{align}
+	no es igual a la salida desplazada:
+	\begin{align}
+	y[n-n_0]=(n-n_0)x[n-n_0].
+	\end{align}		
+	Para determinar la linealidad del sistema, dada dos entradas:
+	\begin{align}
+	x_1[n] \to y_1[n]=&nx_1[n],\\
+	x_2[n] \to y_2[n]=&nx_2[n],
+	\end{align}	
+	escribimos la salida para la combinación lineal de las entradas:
+	\begin{align}
+	x[n]=a_1 x_1[n]+a_2 x_2[n] \to y[n]=&n(a_1 x_1[n] +a_2 x_2[n])= a_1 n x_1[n] +a_2 n x_2[n],
+	\end{align}    
+	y la comparamos con la combinación lineal de las salidas:
+	\begin{align}
+	a_1 y_1[n]+a_2 y_2[n]=& a_1 n x_1[n] +a_2 n x_2[n].
+	\end{align}
+	Dado que son iguales, se concluye que el sistema \boxed{\text{es lineal}}. El sistema \boxed{\text{es 
+			causal}} 	
+\end{profesor}
+	
+\end{enumerate}
+
+
+% ***********************************************
+% 					Ejercicio 5
+% ***********************************************
+\item El sistema,
+    \begin{align}
+	x(t) \to y(t)=x(t-6)-x(1-t),
+	\end{align}    
+	\boxed{\text{es no causal}}. Esto se demuestra con un contra ejemplo. La salida en $t=0$ es:
+    \begin{align}
+  	y(0)=x(-6)-x(1),
+  	\end{align}
+  	que requiere de la entrada en un tiempo futuro, $x(1)$.
+  	
+	Para determinar la linealidad del sistema, dada dos entradas:
+	\begin{align}
+	x_1(t) \to y_1(t)=&x_1(t-6)-x_1(1-t),\\
+	x_2(t) \to y_2(t)=&x_2(t-6)-x_2(1-t),
+	\end{align}	
+	escribimos la salida para la combinación lineal de las entradas:
+	\begin{align}
+	x(t)=a_1 x_1(t)+a_2 x_2(t) \to y(t)=&a_1 x_1(t-6)+a_2 x_2(t-6)-[a_1 x_1(1-t)+a_2 x_2(1-t)],\\
+	=&a_1 x_1(t-6)-a_1 x_1(1-t)+a_2 x_2(t-6)-a_2 x_2(1-t),
+	\end{align}    
+	y la comparamos con la combinación lineal de las salidas:
+	\begin{align}
+	a_1 y_1(t)+a_2 y_2(t)=& a_1[x_1(t-6)-x_1(1-t)]+a_2[x_2(t-6)-x_2(1-t)],\\
+	=&a_1 x_1(t-6)-a_1 x_1(1-t)+a_2 x_2(t-6)-a_2 x_2(1-t).
+	\end{align}	
+	Dado que son iguales, se concluye que el sistema \boxed{\text{es lineal}}.  	  
+
+
+% ***********************************************
+% 					Ejercicio 6
+% ***********************************************
+\item 
+\begin{enumerate}
+\item
+Reemplazando las expresiones dadas para las señales $x(t)$ y $h(t)$ en la Ec. \ref{eq:intconv} se obtiene,
+\begin{equation}
+y(t)=\int_{-\infty}^{\infty}e^{-3\tau}u(\tau)e^{-\frac{1}{2}(t-\tau)}u(t-\tau)d\tau
+\end{equation}
+El primer paso para resolver la integral es observar el impacto que tienen los escalones en la expresión. 
+
+El escalón $u(\tau)$ toma el valor $1$ cuando $\tau > 0$, y de este modo define el límite inferior de la integral que 
+será justamente $1$.
+
+El escalón $u(t-\tau)$ es un escalón en la variable $\tau$ rebatido y desplazado $t$ unidades. Tomará el valor $1$ cuando se cumpla que $t-\tau>0$, que despejando queda $\tau<t$. Esto fija el valor del límite superior de la integral que toma el valor $t$.
+
+Se escribe entonces,
+\begin{equation}
+y(t)=u(t)\int_{0}^{t}e^{-3\tau}e^{-\frac{1}{2}(t-\tau)}d\tau.
+\end{equation}
+
+Resolviendo,
+\begin{align}
+y(t) &=u(t) \int_0^t e^{-3\tau}e^{-\frac{1}{2}t}e^{\frac{1}{2}\tau}d\tau \\
+	 &=u(t) e^{-\frac{1}{2}t}\int_0^t e^{-3\tau}e^{\frac{1}{2}\tau}d\tau \\	
+	 &=u(t) e^{-\frac{1}{2}t}\int_0^t e^{-2.5\tau}d\tau \\
+	 &=u(t)e^{-\frac{1}{2}t}\left(\frac{e^{-2.5\tau}}{-2.5}\right|_0^t \\
+	 &=u(t)e^{-\frac{1}{2}t}\left(\frac{e^{-2.5t}-1}{-2.5}\right) \\
+	 &= \boxed{\frac{2}{5}\left(e^{-\frac{1}{2}t}-e^{-3t}\right)u(t)}
+\end{align}
+
+\end{enumerate}
+
+% ***********************************************
+% 					Ejercicio 7
+% ***********************************************
+\item Reemplazando las expresiones dadas para las señales $h(t)=e^{-t}u(t)u(5-t)$ y $x(t)=tu(t)u(3-t)$ en la Ec. 
+\ref{eq:intconv} se obtiene,
+\begin{equation}
+y(t)=\int_{-\infty}^{\infty} \tau u(\tau)u(3-\tau) e^{-t+\tau}u(t-\tau)u(5-t+\tau) d\tau
+\end{equation}
+Notar que en estos tramos el producto de los escalones en el integrando valdrá 0 o 1. La resolución de la integral de 
+convolución debe hacerse para los tramos en donde el integrando no vale 0. Por lo que primeramente resolvemos la 
+integral para dos limites genéricos $a$ y $b$ que dependerán del tramo considerado:
+
+\begin{align}
+y(t)&=\int_{a}^{b} \tau e^{-t+\tau} d\tau \\
+&=e^{-t}\int_{a}^{b} \tau e^{\tau} d\tau
+\end{align}
+Resolvemos por partes con $u=\tau,~dv=e^{\tau}d\tau,~du=d\tau,~v=e^{\tau}$:
+\begin{align}
+y(t)&=e^{-t}\Big[ \tau e^{\tau}|_a^b-\int_{a}^{b} e^{\tau}  d\tau\Big] \\
+&=e^{-t}\Big[ \tau e^{\tau}|_a^b-e^{\tau}|_a^b\Big]\\
+&=e^{-t}\Big[e^{\tau}(\tau-1)\Big]_a^b
+\label{eq:ej7}
+\end{align}
+
+En la Fig. \ref{fig:ej7a}) se ve que ambas señales son de duración finita. Para derivar los intervalos de integración 
+de los diferentes tramos en los que el integrando es no nulo, lo mas conveniente es realizar un gráfico:
+
+\begin{itemize}
+	\item Para $t<0$: Como puede verse en la Fig. \ref{fig:ej7b} no hay solapamiento, por lo que el producto de las 
+	señales en el integrando es nulo: 
+	\begin{equation}
+	y_1(t)=0~~\forall~~t<0
+	\end{equation}
+
+	\item Para $0\leq t \leq 3$: Como puede verse en la Fig. \ref{fig:ej7c} hay solapamiento. Este tramo se extiende 
+	desde que la $h(t)$ rebatida y desplazada toca a $x(t)$ en $t=0$ hasta que hay un solapamiento completo en $t=3$. 
+	Para cada $t$ en este intervalo los limites de integración son de $0$ a $t$ por lo que la Ec. \ref{eq:ej7} queda:
+	\begin{align}
+	y_2(t)&=e^{-t}\Big[e^{\tau}(\tau-1)\Big]_0^t\\
+	&=e^{-t}\Big[e^{t}(t-1)-e^{0}(0-1)\Big]\\
+	&=t-1+e^{-t}~~\forall~~0\leq t \leq 3 \\
+	&=(t-1+e^{-t})u(t)u(-t+3)
+	\end{align}
+
+	\item Para $3< t \leq 5$: Como puede verse en la Fig. \ref{fig:ej7d} hay solapamiento. Este tramo se extiende 
+	desde que la $h(t)$ rebatida y desplazada cubre completamente a $x(t)$ en $t=3$ hasta que deja de haber un 
+	solapamiento completo en $t=5$. 
+	Para cada $t$ en este intervalo los limites de integración son de $0$ a $3$ por lo que la Ec. \ref{eq:ej7} queda:
+	\begin{align}
+	y_3(t)&=e^{-t}\Big[e^{\tau}(\tau-1)\Big]_0^3\\
+	&=e^{-t}\Big[e^{3}(3-1)-e^{0}(0-1)\Big]\\
+	&=e^{-t}(2e^3+1)~~\forall~~3< t \leq 5 \\
+	&=e^{-t}(2e^3+1)u(t-3)u(-t+5)
+	\end{align}
+
+	\item Para $5< t \leq 8$: Como puede verse en la Fig. \ref{fig:ej7e} hay solapamiento. Este tramo se extiende 
+	desde que la $h(t)$ rebatida y desplazada deja de solaparse completamente con $x(t)$ en $t=5$ hasta que deja de 
+	haber solapamiento  en $t=8$. 
+	Para cada $t$ en este intervalo los limites de integración son de $t-5$ a $0$ por lo que la Ec. \ref{eq:ej7} queda:
+	\begin{align}
+	y_4(t)&=e^{-t}\Big[e^{\tau}(\tau-1)\Big]_{t-5}^3\\
+	&=e^{-t}\Big[e^{3}(3-1)-e^{t-5}(t-5-1)\Big]\\
+	&=2e^{3-t}-te^{-5}+6e^-5~~\forall~~5< t \leq 8\\
+	&=\Big[2e^{3-t}-te^{-5}+6e^-5\Big]u(t-5)u(-t+8)
+	\end{align}
+
+	\item Para $t>8$: Como puede verse en la Fig. \ref{fig:ej7f} no hay solapamiento, por lo que el producto de las 
+	señales en el integrando es nulo: 
+	\begin{equation}
+	y_5(t)=0~~\forall~~t>8
+	\end{equation}
+
+Finalmente, la convolución buscada se muestra en la  Fig. \ref{fig:ej7g} y puede escribirse como:
+\begin{equation}
+y(t)=\boxed{y_2(t)+y_3(t)+y_4(t)}
+\end{equation}
+
+\end{itemize}
+
+\begin{figure}[ht!]
+\begin{subfigure}[t]{.49\textwidth}
+	\includegraphics[width=8cm, trim=0.5cm 0.5cm 0cm 1cm]{tp6_7_1.png}
+	\caption{Señales del Ej. 7. Se muestra $3h(t)$ por claridad}\label{fig:ej7a}
+\end{subfigure}
+\begin{subfigure}[t]{.49\textwidth}
+	\includegraphics[width=8cm, trim=0.5cm 0.5cm 0cm 1cm]{tp6_7_2.png}
+	\caption{$h(t)$ rebatida y desplazada con $t<0$}\label{fig:ej7b}
+\end{subfigure}
+\begin{subfigure}[t]{.49\textwidth}
+	\includegraphics[width=8cm, trim=0.5cm 0.5cm 0cm 0.1cm]{tp6_7_3.png}
+	\caption{$h(t)$ rebatida y desplazada con $0<t<3$}\label{fig:ej7c}
+\end{subfigure}
+\begin{subfigure}[t]{.49\textwidth}
+	\includegraphics[width=8cm, trim=0.5cm 0.5cm 0cm 0.1cm]{tp6_7_4.png}
+	\caption{$h(t)$ rebatida y desplazada con $3<t<5$}\label{fig:ej7d}
+\end{subfigure}
+\begin{subfigure}[t]{.49\textwidth}
+	\includegraphics[width=8cm, trim=0.5cm 0.5cm 0cm 0.1cm]{tp6_7_5.png}
+	\caption{$h(t)$ rebatida y desplazada con $5<t<8$}\label{fig:ej7e}
+\end{subfigure}
+\begin{subfigure}[t]{.49\textwidth}
+	\includegraphics[width=8cm, trim=0.5cm 0.5cm 0cm 0.1cm]{tp6_7_6.png}
+	\caption{$h(t)$ rebatida y desplazada con $t>8$}\label{fig:ej7f}
+\end{subfigure}
+\begin{subfigure}[t]{.49\textwidth}
+	\includegraphics[width=8cm, trim=0.5cm 0.5cm 0cm 0.1cm]{tp6_7_7.png}
+	\caption{Resultado de la convolución}\label{fig:ej7g}
+\end{subfigure}
+\caption{Resolución del ejercicio 7}
+\end{figure}
+
+% ***********************************************
+% 					Ejercicio 8
+% ***********************************************
+\item A resolver por los estudiantes. Tiene resolución similar al ejercicio 7.
+
+% ***********************************************
+% 					Ejercicio 9
+% ***********************************************
+\item A resolver por los estudiantes.  De los gráficos de las señales dadas puede escribirse 
+$x[n]=\{\underset{\uparrow}{5}\quad 4\quad 3\quad 2\quad 1\quad \}$
+~y~~
+$h[n]=\{\underset{\uparrow}{1}\quad 2\quad 3\quad -1\quad \}$.  Luego se calcula $y[n]$ resolviendo la convolución 
+mediante la tabla como en el ejercicio 10. 
+
+% ***********************************************
+% 					Ejercicio 10
+% ***********************************************
+\item 
+\begin{enumerate}
+\item
+Las gráficas correspondientes a las dos señales son las mostradas en la Fig. \ref{fig:ej10a_signals},
+
+\begin{figure}[htb]
+	\centering	
+	% ___ gráfica x1[n]
+	\begin{tikzpicture}[scale=0.8]
+		\begin{axis}[
+		axis y line=center,
+		axis x line=middle,
+		xmin=-2,	xmax=6,
+		ymin=-1,	ymax=3,
+		xlabel={$n$},
+		ylabel={$x_1[n]$},
+		grid=both,
+		grid style={line width=.1pt, draw=gray!40},
+    major grid style={line width=.2pt,draw=gray!60},
+		minor tick num=3,
+    cycle list name=mark list,
+    mark size=1.3,
+		]
+		\addplot+[ycomb,black,thick,line width=.8pt] 
+			plot coordinates {
+				(-1,0) (0,1) (1,1) (2,1) (3,1) (4,1) (5,1) (6,0)};
+	\end{axis}
+	\end{tikzpicture}
+	\qquad\qquad
+		% ___ gráfica x2[n]
+	\begin{tikzpicture}[scale=0.8]
+		\begin{axis}[
+		axis y line=center,
+		axis x line=middle,
+		xmin=-2,	xmax=6,
+		ymin=-1,	ymax=3,
+		xlabel={$n$},
+		ylabel={$x_2[n]$},
+		grid=both,
+		grid style={line width=.1pt, draw=gray!40},
+    major grid style={line width=.2pt,draw=gray!60},
+		minor tick num=3,
+    cycle list name=mark list,
+    mark size=1.3,
+		]
+		\addplot+[ycomb,black,thick,line width=.8pt] 
+			plot coordinates {
+				(-1,0) (0,1) (1,1) (2,1) (3,1) (4,0) (5,0)};
+	\end{axis}
+	\end{tikzpicture}
+\caption{Gráficas de las señales del ejercicio 10 $a$).}
+\label{fig:ej10a_signals}
+\end{figure}
+
+Una forma práctica para calcular la convolución de señales de tiempo discreto, es decir, la suma de convolución, es 
+mediante el uso de una tabla, tal como se muestra en el Cuadro \ref{tab:tabla_ej10a}
+
+\begin{table}[htb]
+\begin{center}
+\begin{tabular}{|a|c|c|c|c|c|c|c|c|c|c|c|c|c|c|a|a|}
+\hline
+\rowcolor{LightCyan}
+$k$ 		& -4 & -3 & -2 & -1 & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 	   & \\
+\hline 
+\rowcolor{blue!15}
+$x_1[k]$ 	&    &    &    &    & 1 & 1 & 1 & 1 & 1 & 1 &   &   &   &   &      &  \\
+\hline 
+\rowcolor{blue!15}
+$x_2[k]$ 	&    &    &    &    & 1 & 1 & 1 & 1 &   &   &   &   &   &   & $n$  & $y[n]$ \\
+\hline 
+$x_2[-1-k]$	& 1  & 1  & 1  & 1  &   &   &   &   &   &   &   &   &   &   & $-1$ & 0  \\
+\hline 
+$x_2[0-k]$	&    & 1  & 1  & 1  & 1 &   &   &   &   &   &   &   &   &   & $0$  & 1  \\
+\hline 
+$x_2[1-k]$ 	&    &    & 1  & 1  & 1 & 1 &   &   &   &   &   &   &   &   & $1$  & 2  \\
+\hline 
+$x_2[2-k]$ 	&    &    &    & 1  & 1 & 1 & 1 &   &   &   &   &   &   &   & $2$  & 3 \\
+\hline 
+$x_2[3-k]$ 	&    &    &    &   & 1  & 1 & 1 & 1 &   &   &   &   &   &   & $3$  & 4 \\
+\hline 
+$x_2[4-k]$ 	&    &    &    &   &    & 1 & 1 & 1 & 1 &   &   &   &   &   & $4$  & 4 \\
+\hline 
+$x_2[5-k]$ 	&    &    &    &   &    &   & 1 & 1 & 1 & 1 &   &   &   &   & $5$  & 4 \\
+\hline 
+$x_2[6-k]$ 	&    &    &    &   &    &   &   & 1 & 1 & 1 & 1 &   &   &   & $6$  & 3 \\
+\hline 
+$x_2[7-k]$ 	&    &    &    &   &    &   &   &   & 1 & 1 & 1 & 1 &   &   & $7$  & 2 \\
+\hline 
+$x_2[8-k]$ 	&    &    &    &   &    &   &   &   &   & 1 & 1 & 1 & 1 &   & $8$  & 1 \\
+\hline 
+$x_2[9-k]$ 	&    &    &    &   &    &   &   &   &   &   & 1 & 1 & 1 & 1 & $9$  & 0 \\
+\hline 
+\end{tabular} 
+\end{center}
+\caption{Cálculo de la suma de convolución del ejercicio 10 $a$).}
+\label{tab:tabla_ej10a}
+\end{table}
+
+\begin{figure}[htb]
+	\centering	
+	% ___ gráfica x1[k]
+	\begin{tikzpicture}[scale=0.8]
+		\begin{axis}[
+		axis y line=center,
+		axis x line=middle,
+		xmin=-4,	xmax=6,
+		ymin=-1,	ymax=3,
+		xlabel={$k$},
+		ylabel={$x_1[k]$},
+		grid=both,
+		grid style={line width=.1pt, draw=gray!40},
+    major grid style={line width=.2pt,draw=gray!60},
+		minor tick num=3,
+    cycle list name=mark list,
+    mark size=1.3,
+		]
+		\addplot+[ycomb,black,thick,line width=.8pt] 
+			plot coordinates {
+				(-3,0) (-2,0) (-1,0) (0,1) (1,1) (2,1) (3,1) (4,1) (5,1) (6,0)};
+	\end{axis}
+	\end{tikzpicture}
+
+	% ___ gráfica x2[k-n]
+	\begin{tikzpicture}[scale=0.8]
+		\begin{axis}[
+		axis y line=center,
+		axis x line=middle,
+		xmin=-4,	xmax=6,
+		ymin=-1,	ymax=3,
+		xlabel={$k$},
+		ylabel={$x_2[n-k]$},
+		grid=both,
+		grid style={line width=.1pt, draw=gray!40},
+    major grid style={line width=.2pt,draw=gray!60},
+		minor tick num=3,
+    cycle list name=mark list,
+    mark size=1.3,
+		]
+		\addplot+[ycomb,black,thick,line width=.8pt] 
+			plot coordinates {
+				(-3,1) (-2,1) (-1,1) (0,1) (1,0) (2,0) (3,0) (4,0) (5,0)};
+	\end{axis}
+	\end{tikzpicture}
+\caption{Gráficas para $0\leq n\leq 3$ del ejercicio 10 $a$.}
+\label{fig:ej10a_intervalo2}
+\end{figure}
+
+\end{enumerate}
+
+% ***********************************************
+% 					Ejercicio 11
+% ***********************************************
+\item A resolver por los estudiantes.  De la definición de las señales dadas se conoce $x[n]$ y puede escribirse 
+explícitamente: $h[n]=\{\underset{\uparrow}{1}\quad \frac{1}{2}\quad \frac{1}{4}\quad \frac{1}{8}\quad 
+\frac{1}{16}\quad 
+\}$. Luego se calcula $y[n]$ resolviendo la convolución mediante la tabla como en el ejercicio 10.  
+
+% ***********************************************
+% 					Ejercicio 12
+% ***********************************************
+\item 
+\begin{enumerate}
+\item
+Se observa qué sucede cuando se conectan dos sistemas en cascada. 
+
+Se toma en primer lugar una señal de salida $y_1[n]$ para el sistema cuya respuesta al impulso es $h_1[n]$. Esta salida es,
+\begin{equation}
+y_1[n]=x[n]*h_1[n],
+\end{equation}
+y tomando en cuenta esto, la salida del sistema cuya respuesta al impulso es $h_2[n]$ es,
+\begin{equation}
+y[n]=y_1[n]*h_2[n]=\boxed{x[n]*h_1[n]*h_2[n]}.
+\end{equation}
+Lo anterior está relacionado con la propiedad asociativa de sistemas, que nos dice básicamente que dos sistemas conectados en cascada, con respuesta impulsiva $h_1[n]$ y $h_2[n]$, equivalen a un único sistema con respuesta impulsa dada por $h_1[n]*h_2[n]$.
+
+\begin{profesor}
+\item
+Se observa qué sucede cuando se conectan dos sistemas en paralelo.
+
+Llegan al punto de suma las señales de salida de los sistemas con respuesta al impulso $h_1[n]$ y $h_2[n]$, lo que permite escribir a la señal de salida como,
+\begin{equation}
+y[n]=x[n]*h_1[n]+x[n]*h_2[n]=x[n]*\lbrace h_1[n]+h_2[n]\rbrace,
+\end{equation}
+lo que indica que la combinación en paralelo de dos sistemas está asociado con la propiedad distributiva, resultando los dos sistemas en paralelo en un único sistema con respuesta al impulso dada por $h_1[n]+h_2[n]$.
+\end{profesor}
+\end{enumerate}
+
+% ***********************************************
+% 					Ejercicio 13
+% ***********************************************
+\item 
+Hallamos la salida del sistema escribiendo primero la salida del sumador como:
+
+\begin{equation}
+	x_2[n]=x[n]+y[n]*h_2[n]
+\end{equation}
+
+Por lo que la salida queda:
+
+\begin{align}
+y[n]&=x_2[n]*h_1[n] \\
+&=\boxed{x[n]*h_1[n]+y[n]*h_2[n]*h_1[n]}
+\end{align}
+
+Para hallar la respuesta en frecuencia del sistema, se lo debe excitar con una función exponencial compleja, pues éstas 
+son funciones propias (eigenfunctions) de los sistemas LTI. Ver solución en el apunte de teoría.
+
+% ***********************************************
+% 					Ejercicio 14
+% ***********************************************
+\item 
+\begin{enumerate}
+\item
+Se observa si la respuesta al impulso dada es absolutamente integrable. Se tiene entonces,
+\begin{align}
+\int_{-\infty}^{+\infty}|h(\tau)|d\tau &= \int_{-\infty}^{+\infty}|e^{-(1-2i)\tau}u(\tau)|d\tau \\
+&= \int_{0}^{+\infty}|e^{-\tau}e^{2i\tau}|d\tau \\
+&= \int_{0}^{+\infty}|e^{-\tau}|d\tau =\boxed{1}.
+\end{align}
+Con lo que se concluye que \boxed{\text{el sistema es estable}}.
+
+Cuando se presenta un caso en el que no es viable realizar el cálculo analítico de la integral, basta con observar el 
+comportamiento de la respuesta al impulso a medida que la variable independiente tiende a infinito. Si la respuesta 
+diverge, el sistema no es estable. Si la respuesta converge, el sistema es estable.
+\end{enumerate}
+
+% ***********************************************
+% 					Ejercicio 15
+% ***********************************************
+\item 
+\begin{enumerate}
+\item Se observa si la respuesta al impulso dada es absolutamente sumable. Se tiene entonces,
+
+\begin{align}
+	\sum_{n=-\infty}^{+\infty}|h[n]|&=\sum_{n=-\infty}^{+\infty}|n\cos\left[\frac{\pi}{3}\right] u[n]|\\
+	&=\sum_{n=0}^{+\infty}|n\cos\left[\frac{\pi}{3}\right]|\\
+	&=\frac{1}{2}\sum_{n=0}^{+\infty}n
+\end{align}
+Que es una serie divergente. Por lo que el sistema \boxed{\text{no es estable}}. Recordar que puede probarse la 
+convergencia de una serie sin necesidad de hallar el valor de su suma, mediante el uso de las pruebas de la razón o de 
+la raíz (ver Ec. 1 y 2 en el trabajo práctico número 4).
+\end{enumerate}
+
+\end{enumerate}
+\begin{center}
+	---------------------------------------
+\end{center}
+\end{document}

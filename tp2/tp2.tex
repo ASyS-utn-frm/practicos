@@ -1,0 +1,533 @@
+% ***********************************************
+%***********COSAS A MEJORAR O CORREGIR***********
+%-
+%
+%
+%
+%
+% ***********************************************
+% Preamble
+% ---
+\documentclass[10pt,a4paper]{article}
+
+% Packages
+% ---
+\usepackage[latin1]{inputenc}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{layout}
+\usepackage{graphics}
+\usepackage{graphicx}
+\usepackage[spanish]{babel}
+\usepackage{lastpage}
+\usepackage[a4paper, top=1 in,bottom=1in, left=1 in, right=0.7 in]{geometry}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\usepackage{tabto}
+\usepackage{comment}
+
+%ELEGIR VERSION 
+%Comentar para eliminar la solucion de todos los ejercicios y dejar la version para los 
+% alumnos, a saber con un solo punto resuelto por ejercicio.
+
+%\includecomment{profesor}    % version profesor
+\excludecomment{profesor}	  % version alumnos
+
+\lhead{\footnotesize An\'alisis de Se\~nales y Sistemas  - A\~no 2021}
+\chead{}
+\rhead{\footnotesize Trabajo Pr\'actico N$^\text o$2: Funciones Anal\'iticas.}
+\lfoot{}
+\cfoot{}
+\rfoot{\footnotesize P\'agina \thepage\ de \pageref{LastPage}}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+\title{
+	\textsc{\includegraphics[width=0.55\textwidth]{logoUTN.jpg}} ~\\
+	{\large Departamento de Electr\'onica}\\ 
+	[0.1cm]
+	{\Huge{An\'alisis de Se\~nales y Sistemas}} \\
+	[0.25cm]
+	{\Large{Trabajo Pr\'{a}ctico N$^{\text {o}}$2: Funciones Anal\'iticas}		\\
+	}}
+\author{}
+\date{}
+
+% Main document ********************************************
+% ---
+\begin{document}
+\maketitle
+\begin{profesor}
+	\hspace{6cm}(Versión PROFESOR)
+\end{profesor}
+\thispagestyle{fancy}
+
+\section*{Enunciados:}
+\label{sec:enun}
+% ***********************************************
+% 					Ejercicio 1
+% ***********************************************
+\begin{enumerate}
+\item {Determinar la derivada de las siguientes funciones analíticas en forma convencional y utilizando derivadas 
+parciales.}
+\begin{enumerate}
+	\item $f(z)=5z^2+7z-12$		\tabto{5cm}Rta:$f'(z)=10z+7$
+	\item $f(z)=z^2$ (*)		\tabto{5cm}Rta:$f'(z)=2z=2x+i2y$
+	\item $f(z)=e^z$ (*)		\tabto{5cm}Rta:$f'(z)=e^z=e^x\cos y+ie^x\sin y$
+\end{enumerate}
+
+% ***********************************************
+% 					Ejercicio 2
+% ***********************************************
+\item {Aplicando las condiciones de Cauchy-Riemann (forma cartesiana o polar), determinar si las funciones dadas son 
+analíticas.}
+\begin{enumerate}
+	\item $f(z)=\frac{1}{z}$				\tabto{5cm}Rta: Sí (excepto para $z=0$)
+	\item $f(z)=Im\{z\}$ (*)				\tabto{5cm}Rta: No
+	\item $f(z)=\tfrac{1}{1-z}$				\tabto{5cm}Rta: Sí (excepto para $z=1$)
+	\item $f(z)=z+\bar z$					\tabto{5cm}Rta: No
+	\item $f(z)=\tfrac{1}{z^2}$ (*)			\tabto{5cm}Rta: Sí (excepto para $z=0$)
+	\item $f(z)=e^{\bar z}$ (*)				\tabto{5cm}Rta: No
+\end{enumerate}
+
+% ***********************************************
+% 					Ejercicio 3
+% ***********************************************
+\item {Determinar si las siguientes funciones son arm\'onicas. En caso afirmativo, encontrar la funci\'on anal\'itica 
+correspondiente $f(z)=u(x,y)+iv(x,y)$.}	
+		
+\begin{enumerate}
+	\item $u(x,y)=x$					\tabto{5cm}Rta: $f(z)=z+iC$
+	\item $u(x,y)=2x-2xy$				\tabto{5cm}Rta: $f(z)=2x-2xy+i(x^2+2y-y^2+C)$
+	\item $u(x,y)=x^3-3xy^2$ (*)		\tabto{5cm}Rta: $f(z)=x^3-3xy^2+i(3x^2y-y^3+C)=z^3+iC$
+	\item $u(x,y)=e^x\sinh y$			\tabto{5cm}Rta: La función no es armónica.
+	\item $v(x,y)=2xe^y$ (*)			\tabto{5cm}Rta: La función no es armónica.
+	\item $v(x,y)=3x^2y-y^3-4xy$ (*)	\tabto{5cm}Rta: $f(z)=x^3-3xy^2-2x^2+2y^2+C+i(3x^2y-y^3-4xy)$
+	\item $v(x,y)=-\cosh x \cos y$		\tabto{5cm}Rta: $f(z)=\sinh x\sin y +C-i\cosh x\cos y$
+\end{enumerate}
+
+% ***********************************************
+%					Ejercicio 4
+% ***********************************************
+\item {Determinar la armónica conjugada de la función dada, conociendo para cada caso el valor $f(z_0)$.}
+\begin{enumerate}
+	\item $u(x,y)=xy;f(2+3i)=6+3i$ (*)		
+		\tabto{6.5cm}Rta: $v(x,y)=\frac{1}{2}(y^2-x^2)+C$; $f(z)=xy+i\left[\frac{y^2-x^2+1}{2}\right]$
+	\item $v(x,y)=x^3-3xy^2;f(-1+2i)=5+11i$	(*)	
+		\tabto{7.5cm}Rta: $u(x,y)=y^3-3x^2y+C;f(z)=(y-xi   )^3+3$
+	\item $u(x,y)=\cos x\cosh y;f(3-i)=-1.53+2.17i$		
+		\tabto{7.5cm}Rta: $v(x,y)=-\sin x\sinh y+C;f(z)=\cos z+2i$
+\end{enumerate}
+
+% ***********************************************
+% 					Ejercicio 5
+% ***********************************************
+\item {Determinar los valores de \textit{a, b, c} tales que las funciones dadas sean armónicas y encontrar una armónica 
+conjugada.}	
+\begin{enumerate}
+	\item $u(x,y)=e^{2x}\cos ay$		\tabto{6.5cm}Rta: $a=\pm2$; $v(x,y)=e^{2x}\sin 2y+C$
+	\item $u(x,y)=\cos bx\cosh y$		\tabto{6.5cm}Rta: $b=\pm1$; $v(x,y)=-\sin x\sinh y+C$
+	\item $u(x,y)=\sin x\cosh cy$		\tabto{6.5cm}Rta: $c=\pm1$; $v(x,y)=\cos x\sinh y+C$ 
+\end{enumerate}
+
+
+\end{enumerate}
+
+
+% ***********************************************
+% 					Herramientas Teóricas (HT)
+% ***********************************************
+% Esta sección esta pensada para incluir toda la ayuda teórica necesaria para resolver el practico
+% Algunas reglas generales:
+%	-Mantener el contenido al minimo, referir a la bibliografía para mayor información (hay q armar un archivo .bib)
+%	-Enumerar todas las ecuaciones
+%	-No repetir ecuaciones ya dadas en las HT de otro práctico, solo referir a ella
+%	-Para resaltar palabras usar \textit
+%	-Utilizar la nomencaltura oficial de la catátedra !!  (Hay que definirlo, yo diria seguir al pie de la letra el 
+%kreizig)
+%	-
+\section*{Herramientas Te\'oricas:}
+\label{sec:herr}
+
+%% Derivada
+\subsection*{Derivada}
+La derivada de una función compleja $f$ en un punto $z_0$ se define como
+\begin{equation}
+f'(z_0)=\lim_{{\Delta z}\to{0}}\frac{f(z)-f(z_0)}{z-z_0}.
+\end{equation}
+Esta definición es como la definición de derivada en cálculo real. Por lo que las reglas de diferenciación son las 
+mismas, y pueden usarse acá para encontrar la derivada de una función compleja.
+
+A la función compleja $f(z)$ también la podemos escribir
+\begin{equation}
+f(z)=u(x,y)+iv(x,y),
+\end{equation}
+donde $u(x,y)$ y $v(x,y)$ son funciones reales que dependen de las variables reales $x$ e $y$, siendo $z=x+iy$. 
+
+Las derivadas parciales de una función compleja $f(z)=f(x,y)$ pueden escribirse como:
+\begin{equation}\label{eq:deri_parcial}
+\frac{\partial f(x,y)}{\partial x}=\frac{\partial u}{\partial x}+i\frac{\partial v}{\partial x}, \qquad
+\frac{\partial f(x,y)}{\partial y}=\frac{\partial v}{\partial y}-i\frac{\partial u}{\partial y}.
+\end{equation}
+
+%% Ecuaciones de Cauchy-Riemann
+\subsection*{Ecuaciones de Cauchy-Riemann}
+Las ecuaciones de Cauchy-Riemann permiten verificar la analiticidad de una función compleja. En términos generales, $f$ 
+es analítica en un dominio $D$ si y sólo si las primeras derivadas parciales de $u$ y $v$ satisfacen las dos ecuaciones
+\begin{equation}
+\label{eq:cauchy-riemann}
+\frac{\partial u}{\partial x} = \frac{\partial v}{\partial y}, \qquad \qquad
+\frac{\partial u}{\partial y} = -\frac{\partial v}{\partial x}.
+\end{equation}
+Las Ec. \ref{eq:cauchy-riemann} son las ecuaciones de Cauchy-Riemann.
+
+Si se usa la forma polar $z=r(\cos\theta+i\sin\theta)$ y se hace $f(z)=u(r,\theta)+iv(r,\theta)$, entonces las 
+ecuaciones de Cauchy-Riemann en forma polar son
+\begin{equation}
+\frac{\partial u}{\partial r} = \frac{1}{r}\frac{\partial v}{\partial \theta}, \qquad \qquad
+\frac{\partial v}{\partial r} = -\frac{1}{r}\frac{\partial u}{\partial \theta}.
+\end{equation}
+
+%% Ecuación de Laplace
+\subsection*{Ecuación de Laplace. Funciones armónicas.}
+Una funci\'on que satisface la ecuaci\'on de Laplace $\nabla^2 u = 0$ en cierta regi\'on, se dice que es 
+\textit{arm\'onica} en esa regi\'on.
+
+Si $f(z)=u(x,y)+iv(x,y)$ es anal\'itica en un dominio $D$, entonces $u$ y $v$ satisfacen la ecuaci\'on de Laplace.
+	\begin{align}
+	\label{eq:ht_laplace}
+		\nabla^2 u &= \frac{\partial^2u}{\partial x^2} + \frac{\partial^2u}{\partial y^2} =0,&
+		\nabla^2 v &= \frac{\partial^2v}{\partial x^2} + \frac{\partial^2v}{\partial y^2} =0.
+	\end{align}
+
+Si dos funciones arm\'onicas $u$ y $v$ satisfacen las ecuaciones de Cauchy-Riemann en un dominio $D$, entonces son las 
+partes real e imaginaria de una funci\'on anal\'itica $f$ en $D$. Entonces se dice que $v$ es la \textit{funci\'on 
+arm\'onica conjugada} de $u$ en $D$.
+
+
+
+
+
+
+% ***********************************************
+% 					Soluciones
+% ***********************************************
+% Esta sección esta pensada para incluir toda la ayuda teórica necesaria para resolver el practico
+% Algunas reglas generales:
+%	-Utilizar la resolucion mas didactica posible y que sea consistente con los otros prácticos
+%	-
+\section*{Soluciones}
+\label{sec:sol}
+
+\begin{enumerate}
+
+% ***********************************************
+% 					Ejercicio 1
+% ***********************************************
+\item
+\begin{enumerate}
+\item
+Usando derivadas convencionales, encontrar la derivada de $f(z)$ es claramente sencillo,
+\begin{align}
+f(z) &= 5z^2+7z-12, \\
+f'(z) &= 2\cdot5z+7 = 10z+7.
+\end{align}
+
+Para encontrar la derivada de $f(z)$ usando derivadas parciales (Ec. \ref{eq:deri_parcial}), se debe escribir $f(z)$ 
+como una función de $u(x,y)$ y $v(x,y)$. Esto se hace reemplazando $z=x+iy$ en $f(z)$ de la siguiente manera,
+\begin{align}
+f(x+iy)	&= 5(x+iy)^2+7(x+iy)-12, \\
+		&= 5(x^2+i2xy-y^2)+7x+i7y-12, \\
+		&= 5x^2+i10xy-5y^2+7x+i7y-12, \\
+		&= 5x^2-5y^2+7x-12+i(10xy+7y).\label{eq:ej1a_1}
+\end{align}
+De la Ec. \ref{eq:ej1a_1} se puede escribir entonces,
+\begin{equation}
+u(x,y)=5x^2-5y^2+7x-12, \qquad v(x,y)=10xy+7y.
+\end{equation}
+Entonces, usando la Ec. \ref{eq:deri_parcial} se tiene,
+\begin{align}
+f'(z)	&= \frac{\partial (5x^2-5y^2+7x-12)}{\partial x}+i\frac{\partial (10xy+7y)}{\partial x}, \\
+		&= 10x+7+i10y = 10(x+iy)+7 = 10z+7.
+\end{align}
+O de la misma forma,
+\begin{align}
+f'(z)	&= \frac{\partial (10xy+7y)}{\partial y}-i\frac{\partial (5x^2-5y^2+7x-12)}{\partial y}, \\
+		&= 10x+7+i10y = 10(x+iy)+7 =\boxed{10z+7}.
+\end{align}
+
+\end{enumerate}
+
+% ***********************************************
+% 					Ejercicio 2
+% ***********************************************
+\item
+\begin{enumerate}
+%% (a)
+\item Se determinará la analiticidad de la función de ambas formas, cartesiana y polar.
+
+\textit{Forma cartesiana}
+
+Primero se reemplaza $z=x+iy$, y se opera para separar en parte real e imaginaria
+\begin{align}
+f(x+iy)	&= \frac{1}{x+iy}, \\
+		&= \frac{1}{x+iy}\cdot\frac{x-iy}{x-iy}, \\
+		&= \frac{x}{x^2+y^2}-i\frac{y}{x^2+y^2}.
+\end{align}
+De esto se obtiene
+\begin{equation}
+u(x,y)=\frac{x}{x^2+y^2}, \qquad\qquad v(x,y)=-\frac{y}{x^2+y^2}.
+\end{equation}
+Se realizan las derivadas parciales
+\begin{equation}
+\frac{\partial u}{\partial x} = \frac{x^2+y^2-x2x}{(x^2+y^2)^2} = \frac{y^2-x^2}{(x^2+y^2)^2},
+\end{equation}
+\begin{equation}
+\frac{\partial v}{\partial y} = \frac{(-1)(x^2+y^2)-(-y)2y}{(x^2+y^2)^2} = \frac{-x^2-y^2+2y^2}{(x^2+y^2)^2} = 
+\frac{y^2-x^2}{(x^2+y^2)^2}.
+\end{equation}
+Se cumple la primer ecuación $\frac{\partial u}{\partial x} = \frac{\partial v}{\partial y}$. Se sigue el desarrollo,
+\begin{equation}
+\frac{\partial v}{\partial x} = \frac{-(-y)2x}{(x^2+y^2)^2} = \frac{2xy}{(x^2+y^2)^2},
+\end{equation}
+\begin{equation}
+\frac{\partial u}{\partial y} = \frac{-x2y}{(x^2+y^2)^2} = \frac{-2xy}{(x^2+y^2)^2}.
+\end{equation}
+Se cumple la segunda ecuación $\frac{\partial v}{\partial x} = -\frac{\partial u}{\partial y}$, por lo que se concluye 
+que $f(z)$ es analítica, salvo en $z=0$.
+
+\textit{Forma polar}
+
+Se reemplaza $z=re^{i\theta}$,
+\begin{equation}
+f(r,\theta)=\frac{1}{re^{i\theta}}=\frac{1}{r}e^{-i\theta}=\frac{1}{r}\cos \theta-i\frac{1}{r}\sin \theta.
+\end{equation}
+Se realizan las derivadas parciales,
+\begin{equation}
+\frac{\partial u}{\partial r} = \frac{-\cos \theta}{r^2},
+\end{equation}
+\begin{equation}
+\frac{\partial v}{\partial \theta} = \frac{-\cos \theta \cdot r}{r^2} = \frac{-\cos \theta}{r},
+\end{equation}
+lo que verifica la ecuación $\frac{\partial u}{\partial r} = \frac{1}{r}\frac{\partial v}{\partial \theta}$. Seguimos,
+\begin{equation}
+\frac{\partial v}{\partial r} = \frac{-(-\sin \theta)}{r^2}=\frac{\sin \theta}{r^2},
+\end{equation}
+\begin{equation}
+\frac{\partial u}{\partial \theta} = \frac{-\sin \theta \cdot r}{r^2} = \frac{-\sin \theta}{r},
+\end{equation}
+Que verifica la ecuación $\frac{\partial v}{\partial r} = -\frac{1}{r}\frac{\partial u}{\partial \theta}$. Verificando 
+nuevamente que $f(z)$ es analítica.
+
+\begin{profesor}
+	\item Buscamos la parte real e imaginaria de la función dada,
+	\begin{align}
+	f(z)=&Im(z), \\
+	=&Im(x+iy), \\
+	=&y,		
+	\end{align}	
+por lo que obtenemos,
+	\begin{align}
+	u(x,y)=y ~~;~~ v(x,y)=0	
+	\end{align}	
+Escribimos las condiciones de Cauchy-Riemann, Ec. \ref{eq:cauchy-riemann}:
+	\begin{align}
+	\frac{\partial u}{\partial x}&=0~~;~~\frac{\partial v}{\partial y}=0,\\
+	\frac{\partial u}{\partial y}&=1~~;~~\frac{\partial v}{\partial x}=0.			
+	\end{align}	
+Donde puede verse que la segunda condición de Cauchy-Riemann, 
+$\frac{\partial u}{\partial y}=-\frac{\partial v}{\partial x}$, no se cumple y la función no es analítica.
+\end{profesor}
+\end{enumerate}
+
+% ***********************************************
+% 					Ejercicio 3
+% ***********************************************
+\item 
+\begin{enumerate}
+	\item $ u(x,y) = x $
+	
+	Verificamos que $u(x,y)$ sea arm\'onica, observando si satisface la ecuaci\'on de Laplace:
+	
+	\begin{equation}\label{parcialux3.a}
+		\dfrac{\partial u}{\partial x} = 1 ; ~~~~ \dfrac{\partial^2 u}{\partial x^2} = 0.
+	\end{equation}
+	\begin{equation}\label{parcialuy3.a}
+		\dfrac{\partial u}{\partial y} = 0 ; ~~~~ \dfrac{\partial^2 u}{\partial y^2} = 0.
+	\end{equation}
+	
+	Sumando (\ref{parcialux3.a}) y (\ref{parcialuy3.a}) vemos que la funci\'on es arm\'onica.
+	
+	Para encontrar la funci\'on anal\'itica correspondiente, hacemos uso de las ecuaciones de Cauchy-Riemann.
+	
+	Escribimos
+	\begin{equation}
+		\dfrac{\partial u}{\partial x} = \dfrac{\partial v}{\partial y} = 1.
+	\end{equation}
+	
+	Con el objetivo de encontrar $v(x,y)$, integramos la expresión anterior con respecto a $y$,
+	\begin{equation}
+		\int 1 dy = y + h(x) = v(x,y).
+	\end{equation}
+	
+	Ahora derivamos $v(x,y)$ con respecto a $x$,
+	\begin{equation}
+		\dfrac{\partial v}{\partial x} = \dfrac{\partial h(x)}{\partial x}.
+	\end{equation}
+	
+	Por la condici\'on de Cauchy-Riemann debe ser,
+	\begin{equation}
+		\dfrac{\partial h(x)}{\partial x} = - \dfrac{\partial u}{\partial y} = 0
+	\end{equation}
+	
+	Con lo que queda que,
+	\begin{equation}
+		\dfrac{\partial h(x)}{\partial x} = 0 ~~~ \Rightarrow ~~~ h(x) = C.
+	\end{equation}
+	
+	Escribimos entonces,
+	\begin{equation}
+		v(x,y) = y + C.
+	\end{equation}
+	
+	Finalmente,
+	\begin{equation}
+		\boxed{f(x,y) = u(x,y) + i v(x,y) = x + i (y+C) = x + iy + iC = z + iC}.
+	\end{equation}
+
+\end{enumerate}
+
+
+% ***********************************************
+% 					Ejercicio 4
+% ***********************************************
+\item 
+\begin{enumerate}
+	\item $ u(x,y) = xy~\wedge~f(2,3)=6+3i$
+	
+	Escribimos las derivadas parciales de la función dada para futura referencia:
+	\begin{equation}
+	\dfrac{\partial u}{\partial x} = y~~\wedge~~\dfrac{\partial u}{\partial y} = x.
+	\end{equation}
+	
+	Para encontrar la funci\'on anal\'itica correspondiente, hacemos uso de las ecuaciones de Cauchy-Riemann, ver Ec. 
+	\ref{eq:cauchy-riemann}:
+	
+	\begin{equation}
+	\dfrac{\partial u}{\partial x} = \dfrac{\partial v}{\partial y} = y.
+	\end{equation}
+	
+	Con el objetivo de encontrar $v(x,y)$, integramos la expresión anterior con respecto a $y$,
+	\begin{equation}
+	v(x,y)=\int y~dy = \frac{y^2}{2} + h(x).
+	\end{equation}
+	
+	Ahora derivamos $v(x,y)$ con respecto a $x$,
+	\begin{equation}
+	\dfrac{\partial v}{\partial x} = \dfrac{\partial h(x)}{\partial x}.
+	\end{equation}
+	
+	Por la condici\'on de Cauchy-Riemann, Ec. \ref{eq:cauchy-riemann}, debe ser,
+	\begin{equation}
+    \dfrac{\partial h(x)}{\partial x} = - \dfrac{\partial u}{\partial y} = -x
+	\end{equation}
+	
+	Con lo que queda que,
+	\begin{equation}
+	\dfrac{\partial h(x)}{\partial x} = -x ~~~ \Rightarrow ~~~ h(x) = \int -x~dx=-\frac{x^2}{2}+C.
+	\end{equation}
+	
+	Escribimos entonces,
+	\begin{equation}
+	v(x,y) = \frac{y^2}{2}-\frac{x^2}{2}+C.
+	\end{equation}
+	
+	La función compleja es entonces,
+	\begin{equation}
+	f(x,y) = u(x,y) + i v(x,y) = xy + i\Big(\frac{y^2}{2}-\frac{x^2}{2}+C\Big).
+	\end{equation}
+	Utilizando el punto dado como dato podemos esccribir,
+	
+	\begin{equation}
+	f(2,3) = 2\times 3 + i\Big(\frac{3^2}{2}-\frac{2^2}{2}+C\Big)=6+i\Big(\frac{5}{2}+C\Big)=6+3i.
+	\end{equation}
+	
+	Despejando $C$ de la última igualdad, obtenemos $C=1/2$. Por lo que la función buscada es:
+
+	\begin{equation}
+	\boxed{f(x,y) = xy + i\Big(\frac{y^2-x^2+1}{2}\Big)}.
+	\end{equation}
+
+\end{enumerate}
+% ***********************************************
+% 					Ejercicio 5
+% ***********************************************
+\item 
+\begin{enumerate}
+	\item $ u(x,y) =e^{2x}\cos{(ay)}$
+	
+	Para que $u(x,y)$ sea arm\'onica, debe satisfacer la ecuaci\'on de Laplace:
+
+	\begin{equation}\label{parcialux5.a}
+	\dfrac{\partial u}{\partial x} =2e^{2x}\cos{(ay)} ; ~~~~ \dfrac{\partial^2 u}{\partial x^2} = 4e^{2x}\cos{(ay)}.
+	\end{equation}
+	\begin{equation}\label{parcialuy5.a}
+	\dfrac{\partial u}{\partial y} = -e^{2x}\sin{(ay)a} ; ~~~~ \dfrac{\partial^2 u}{\partial y^2} = 
+	-a^2e^{2x}\cos{(ay)}.
+	\end{equation}
+	
+	La funci\'on es arm\'onica si se anula su Laplaciano (Ec.\ref{eq:ht_laplace}), es decir si la suma de las derivadas 
+	segundas en Ec. 
+	\ref{parcialux5.a} y \ref{parcialuy5.a} es nula :
+	
+	\begin{align}
+	4e^{2x}\cos{(ay)}-a^2e^{2x}\cos{(ay)}=0 \\
+	(4-a^2)e^{2x}\cos{(ay)}=0\\
+	(4-a^2)=0\\
+	a=\pm2
+	\end{align}	
+
+	Para encontrar la funci\'on anal\'itica correspondiente, hacemos uso de las ecuaciones de Cauchy-Riemann, ver Ec. 
+	\ref{eq:cauchy-riemann}:
+	
+	\begin{equation}
+	\dfrac{\partial u}{\partial x} = \dfrac{\partial v}{\partial y} = 2e^{2x}\cos{(ay)}.
+	\end{equation}
+	
+	Con el objetivo de encontrar $v(x,y)$, integramos la expresión anterior con respecto a $y$,
+	\begin{equation}
+	v(x,y)=\int 2e^{2x}\cos{(ay)}~dy =2e^{2x} \int \cos{(ay)}~dy=\frac{2e^{2x}}{a}\sin{(ay)} + h(x).
+	\end{equation}
+	
+	Ahora derivamos $v(x,y)$ con respecto a $x$,
+	\begin{equation}
+	\dfrac{\partial v}{\partial x} = \frac{4e^{2x}}{a}\sin{(ay)}+\dfrac{\partial h(x)}{\partial x}.
+	\end{equation}
+	
+	Por la condici\'on de Cauchy-Riemann, Ec. \ref{eq:cauchy-riemann}, debe ser,
+	\begin{equation}
+	 \frac{4e^{2x}}{a}\sin{(ay)}+\dfrac{\partial h(x)}{\partial x} = - \dfrac{\partial u}{\partial y} = 
+	 e^{2x}\sin{(ay)a}
+	\end{equation}
+	
+	Comparando primer y tercer miembro, y reconrdando que $a=\pm2$, obtenemos,
+	\begin{equation}
+	\dfrac{\partial h(x)}{\partial x} = 0 ~~~ \Rightarrow ~~~ h(x) = \int 0~dx=C.
+	\end{equation}
+	
+	Escribimos entonces la función armónica conjugada,
+	\begin{equation}
+	\boxed{v(x,y) = e^{2x}\sin{(2y)} +C.}
+	\end{equation}
+	
+	
+\end{enumerate}
+
+\end{enumerate}
+
+\begin{center}
+	---------------------------------------
+\end{center}
+\end{document}

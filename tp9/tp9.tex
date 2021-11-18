@@ -1,0 +1,1285 @@
+% ***********************************************
+%***********COSAS A MEJORAR O CORREGIR***********
+%-Agregar ej. de energía para una señal de duracion finita
+%
+%
+%
+%
+% ***********************************************% Preamble
+% ---
+\documentclass[10pt,a4paper]{article}
+
+% Packages
+% ---
+\usepackage[latin1]{inputenc}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{mathabx}
+\usepackage{layout}
+\usepackage{graphics}
+\usepackage{graphicx}
+\usepackage[spanish]{babel}
+\usepackage{lastpage}
+\usepackage{tabto}
+\usepackage{xcolor}
+\usepackage{verbatim}
+\usepackage[a4paper, top=1 in,bottom=1in, left=1 in, right=0.7 in]{geometry}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\usepackage{subfigure}
+\usepackage{tikz}
+\usetikzlibrary{patterns}
+\usetikzlibrary{arrows.meta}
+\usepackage{pgfplots}
+\pgfplotsset{width=7cm,compat=1.15}
+\usepackage{comment}
+\usepackage{bigints}
+\usepackage{circuitikz}
+\usetikzlibrary{circuits.ee.IEC}
+
+
+%ELEGIR VERSION 
+%Comentar para eliminar la solucion de todos los ejercicios y dejar la version para los 
+% alumnos, a saber con un solo punto resuelto por ejercicio.
+
+\includecomment{profesor}    % version profesor
+%\excludecomment{profesor}	  % version alumnos
+
+\lhead{\footnotesize An\'alisis de Se\~nales y Sistemas  - A\~no 2021}
+\chead{}
+\rhead{\footnotesize Trabajo Pr\'actico N$^\text o$9: Transformada de Laplace}
+\lfoot{}
+\cfoot{}
+\rfoot{\footnotesize P\'agina \thepage\ de \pageref{LastPage}}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+\title{
+	\textsc{\includegraphics[width=0.55\textwidth]{logoUTN.jpg}} ~\\
+	{\large Departamento de Electr\'onica}\\ 
+	[0.1cm]
+	{\Huge{An\'alisis de Se\~nales y Sistemas}} \\
+	[0.25cm]
+	{\Large{Trabajo Pr\'{a}ctico N$^{\text {o}}$9: Transformada de Laplace} \\
+	}}
+\author{}
+\date{}
+
+% Main document ********************************************
+% ---
+\begin{document}
+\maketitle
+\begin{profesor}
+	\hspace{6cm}(Versión PROFESOR)
+\end{profesor}
+\thispagestyle{fancy}
+
+\section*{Enunciados:}
+\label{sec:enun}
+
+\subsection*{Cálculo de la transformada}
+\begin{enumerate}
+% ***********************************************
+% 					Ejercicio 1
+% ***********************************************
+\item 
+{Dada la señal $x(t)$, calcular la transformada de Laplace a partir de la ecuación de definición:} **
+\begin{enumerate}
+	\item $x(t)=\delta(t)$ 
+	\item $x(t)=t^nu(t)$
+	\item $x(t)=e^{-\alpha t}u(t)$
+\end{enumerate}
+
+
+% ***********************************************
+% 					Ejercicio 2
+% ***********************************************
+\item 
+{Determinar la transformada de Laplace y la región de convergencia de:} **
+\begin{enumerate}
+	\item $x(t)=e^{5t}u(t)$
+	\item $x(t)=e^{-2t}u(t)$
+\end{enumerate}
+
+
+% ***********************************************
+% 					Ejercicio 3
+% ***********************************************
+\item 
+{Partiendo de la ecuación de definición, comprobar las siguientes propiedades:}
+\begin{enumerate}
+	\item $x(t)=\alpha x_1(t)+\beta x_2(t) \quad \Rightarrow \quad 
+				X(s)=\mathcal{L}\{x(t)\}=\alpha X_1(s)+\beta X_2(s)$
+	\item $x_d(t)=x(t-\alpha)u(t-\alpha) \land \alpha >0 \quad \Rightarrow \quad 
+				X_d(s)=\mathcal{L}\{x_d(t)\}=e^{-\alpha s}X(s)$ **
+	\item $f(t)=e^{-\alpha t}x(t) \quad \Rightarrow \quad 
+				F(s)=\mathcal{L}\{f(t)\}=X(s+\alpha)$ **
+	\item $g(t)=x'(t) \quad \Rightarrow \quad 
+				G(s)=\mathcal{L}\{x'(t)\}=sX(s)-x(0)$ **
+	\item $y(t)=\cos \omega t \cdot x(t) \quad \Rightarrow \quad 
+				Y(s)=\mathcal{L}\{y(t)\}=\frac{1}{2}[X(s+j\omega)+X(s-j\omega)]$ **
+\end{enumerate}
+
+
+%% ***********************************************
+%%					Ejercicio 4
+%% ***********************************************
+\item {Calcular la transformada de las siguientes señales descritas de forma gráfica:} **
+\begin{figure*}[htb]
+	\centering
+	
+	% ___ gráfica x1
+	\begin{tikzpicture}[scale=0.9]
+	\begin{axis}[
+		axis y line=center,
+		axis x line=middle,
+		xmin=-0.1,	xmax=1.7,
+		ymin=-0.1,	ymax=1.7,
+		xlabel={$t$},
+		ylabel=$w_1(t)$,
+		grid=none,
+		grid style={line width=.1pt, draw=gray!40},
+    major grid style={line width=.2pt,draw=gray!60},
+		minor tick num=4,
+		]
+		\addplot[line width=.8pt] coordinates {(0,0) (0,1) (1,1) (1,0)};
+	\end{axis}	
+	\end{tikzpicture}
+	\qquad \qquad
+	% ___ gráfica x2
+	\begin{tikzpicture}[scale=0.9]
+		\begin{axis}[
+		axis y line=center,
+		axis x line=middle,
+		xmin=-0.1,	xmax=1.7,
+		ymin=-0.1,	ymax=1.7,
+		xlabel={$t$},
+		ylabel=$w_2(t)$,
+		grid=none,
+		grid style={line width=.1pt, draw=gray!40},
+    major grid style={line width=.2pt,draw=gray!60},
+		minor tick num=4,
+		]
+		\addplot[line width=.8pt] coordinates {(0,0) (1,1) (1,0)};
+	\end{axis}
+	\end{tikzpicture}
+\end{figure*}
+
+\begin{figure*}[htb]
+	\centering
+
+	% ___ gráfica w3
+	\begin{tikzpicture}[scale=0.9]
+	\begin{axis}[
+		axis y line=center,
+		axis x line=middle,
+		xmin=-0.1,	xmax=1.7,
+		ymin=-0.1,	ymax=1.7,
+		xlabel={$t$},
+		ylabel=$w_3(t)$,
+		grid=none,
+		grid style={line width=.1pt, draw=gray!40},
+    major grid style={line width=.2pt,draw=gray!60},
+		minor tick num=4,
+		]
+		\draw[line width=.8pt,domain=0:1,xrange=0:1] plot (\x,{exp(-5*\x)}) 
+			(0.5,0.5) node[above] {$\mathrm e^{-5t}$};
+	\end{axis}	
+	\end{tikzpicture}
+	\qquad \qquad
+	% ___ gráfica w4
+	\begin{tikzpicture}[scale=0.9]
+	\begin{axis}[
+		axis y line=center,
+		axis x line=middle,
+		xmin=-0.1,	xmax=1.7,
+		ymin=-0.1,	ymax=1.7,
+		xlabel={$t$},
+		ylabel=$w_4(t)$,
+		grid=none,
+		grid style={line width=.1pt, draw=gray!40},
+    major grid style={line width=.2pt,draw=gray!60},
+		minor tick num=4,
+		]
+		\draw[line width=.8pt,domain=0:1,xrange=0:1] plot (\x,{sin(pi*\x r)}) 
+			(1,1) node[above] {$\sin \pi t$};
+	\end{axis}	
+	\end{tikzpicture}
+\end{figure*}
+
+
+\subsection*{Cálculo de la transformada inversa}
+% ***********************************************
+% 					Ejercicio 5
+% ***********************************************
+\item 
+{Determinar la transformada inversa de:} \\	
+\begin{enumerate}
+\item
+$X(s)=\dfrac{2s+9}{(s+3)(s+4)}$
+\tabto{8cm} Rta.: $x(t)=[3e^{-3t}-e^{-4t}]u(t)$
+\item
+$Y(s)=\dfrac{4s+13}{s^2+4s-5}$
+\tabto{8cm} Rta.: $y(t)=[\frac{7}{6}e^{-5t}+\frac{17}{6}e^{t}]u(t)$
+\item
+$F(s)=\dfrac{3(s+1)}{s^2+2s+5}$  **
+\tabto{8cm} Rta.: $f(t)=3e^{-t}\cos (2t) u(t)$
+\item
+$G(s)=\dfrac{5s-11}{s^2+4s+13}$  **
+\tabto{8cm} Rta.: $g(t)=[5e^{-2t}\cos (3t)-7e^{-2t}\sin (3t)]u(t)$
+\item
+$H(s)=\dfrac{2s}{(s+1)^2(s+2)}$
+\tabto{8cm} Rta.: $h(t)=[4e^{-t}-4e^{-2t}-2te^{-t}]u(t)$
+\end{enumerate}
+
+
+\subsection*{Resolución de ecuaciones diferenciales}
+% ***********************************************
+%					Ejercicio 6
+% ***********************************************
+\item {Resolver las siguientes ecuaciones utilizando la transformada de Laplace:}
+\begin{enumerate}
+\item
+$x''(t)+3x'(t)+2x(t)=\delta (t)$, siendo $x'(0)=x(0)=0$
+\tabto{9cm} Rta.: $x(t)=[e^{-t}-e^{-2t}]u(t)$
+\item
+$6x'(t)-2x(t)=3$, siendo $x(0)=1$  **
+\tabto{9cm} Rta.: $x(t)=\frac{1}{2}[5e^{\frac{1}{3}t}-3]u(t)$
+\item
+$y''(t)-6y'(t)+8y(t)=t$, siendo $y'(0)=y(0)=0$. **
+\tabto{9cm} Rta.: $y(t)=\frac{1}{8}\left[\frac{3}{4}+t-e^{2t}+\frac{1}{4}e^{4t}\right]u(t)$
+\item
+$y''(t)+4y'(t)+5y(t)=7\delta (t)$, siendo $y'(0)=5$;$y(0)=2$
+\tabto{9cm} Rta.: $y(t)=2e^{-2t}[\cos t + 8\sin t]u(t)$
+\end{enumerate}
+
+
+\subsection*{Resolución de sistemas de ecuaciones diferenciales}
+% ***********************************************
+%					Ejercicio 7
+% ***********************************************
+\item {Resolver el sistema de ecuaciones dado utilizando la transformada de Laplace:}
+\begin{enumerate}
+\item
+$
+\left\{\begin{gathered}
+  y'(t)+3y(t)+x'(t)+5x(t)=e^{-t}\\
+  y'(t)+y(t)+2x'(t)+x(t)=3
+\end{gathered}
+\right.
+\quad \land \quad x(0)=2; y(0)=1.
+$\\
+Rta.: 
+$
+\left\{\begin{gathered}
+  x(t)=\left[-\tfrac{9}{2}-\tfrac{11}{6}e^{-2t}+\tfrac{25}{3}e^t\right]u(t)\\
+  y(t)=\left[\tfrac{15}{2}+\tfrac{1}{2}e^{-t}+\tfrac{11}{2}e^{-2t}-\tfrac{25}{2}e^t\right]u(t)
+\end{gathered}
+\right.
+$
+\item
+$
+\left\{\begin{gathered}
+  x''(t)=y(t)-2x(t)\\
+  y''(t)=x(t)-2y(t)
+\end{gathered}
+\right.
+\quad \land \quad x(0)=4; y(0)=2; x'(0)=y'(0)=0.
+$\\
+Rta.: 
+$
+\left\{\begin{gathered}
+  x(t)=[3\cos t+\cos \sqrt 3 t]u(t)\\
+  y(t)=[3\cos t-\cos \sqrt 3 t]u(t)
+\end{gathered}
+\right.
+$
+\end{enumerate}
+
+
+\subsection*{Función de transferencia y análisis de sistemas}
+% ***********************************************
+%					Ejercicio 8
+% ***********************************************
+\item
+El sistema que muestra la figura satisface la siguiente ecuación: $y'(t)+5y(t)=x(t)$.
+\begin{figure}[htb]
+\begin{center}
+%\includegraphics[width=7cm]{diagrama_ej8.png}
+\begin{tikzpicture}[scale=0.7]
+	\draw (-0.5,0) node {$x(t)$};
+	\draw[-{Latex}] (0,0) -- (1,0);
+	\draw (1.5,0) circle [radius=0.5cm];
+	\draw (1.2,0) node {$+$};
+	\draw (1.5,-0.3) node {$-$};
+	\draw[-{Latex}] (2,0) -- (5,0) -- (5,-1);
+	\draw (5-1.41/2,-1) -- (5+1.41/2,-1) -- (5,-2.5) -- (5-1.41/2,-1);
+	\draw (5,-1.5) node {{\small $0.2$}};
+	\draw (5,-2.5) -- (5,-3.5);
+	\draw[-{Latex}] (5,-3.5) -- (6,-3.5);
+	\draw (6.5,-3.5) node {$y(t)$};
+	\draw[-{Latex}] (5,-3.5) -- (4,-3.5);
+	\draw (2.5,-4) rectangle (4,-3);
+	\draw (3.25,-3.5) node {$du/dt$};
+	\draw[-{Latex}] (2.5,-3.5) -- (1.5,-3.5) -- (1.5,-0.5);
+\end{tikzpicture}
+
+% 	\caption{ }
+\label{ }
+\end{center}
+\end{figure}
+
+\newpage
+Demostrar que:
+\begin{enumerate}
+\item
+la función de transferencia del sistema es $H(s)=\frac{1}{s+5}$
+\item
+la respuesta al impulso es $h(t)=e^{-5t}u(t)$
+\item
+El sistema es causal y/o estable
+\end{enumerate}
+
+
+% ***********************************************
+%					Ejercicio 9
+% ***********************************************
+\item
+Para los siguientes sistemas, determinar la función de transferencia, la ecuación diferencial e indicar si son causales 
+y/o estables. Realizar la implementación del mismo con bloques sumadores, multiplicadores y derivadores.
+\begin{enumerate}
+\item
+$h(t)=\frac{5}{4}\delta (t)$
+\tabto{7cm}Rta.: $H(s)=\frac{5}{4}$; ~~~$y(t)=\frac{5}{4}x(t)$.
+\item
+$h(t)=e^{-3t}u(t)$ **
+\tabto{7cm}Rta.: $H(s)=\frac{1}{s+3}$; ~~~$y'(t)+3y(t)=x(t)$.
+\item
+$h(t)=te^{-t}u(t)$
+\tabto{7cm}Rta.: $H(s)=\frac{1}{(s+1)^2}$; ~~~$y''(t)+2y'(t)+y(t)=x(t)$.
+\end{enumerate}
+
+
+% ***********************************************
+%					Ejercicio 10
+% ***********************************************
+\item
+Para el sistema que se muestra en la figura determinar: **
+
+\begin{figure}[htb]
+\begin{center}
+\begin{tikzpicture}[scale=0.7]
+	\draw (-0.5,0) node {$x(t)$};
+	\draw[-{Latex}] (0,0) -- (1,0);
+	% sumador 1
+	\draw (1.5,0) circle [radius=0.5cm];
+	\draw (1.2,0) node {$+$};
+	\draw (1.5,-0.3) node {$+$};	
+	\draw[-{Latex}] (2,0) -- (4.5,0);
+	% sumador 2
+	\draw (5,0) circle [radius=0.5cm];
+	\draw (4.7,0) node {$+$};
+	\draw (5,-0.3) node {$+$};
+	\draw[-{Latex}] (5.5,0) -- (8.5,0) -- (8.5,-1);		
+	% multiplicador -1/2
+	\draw (8.5-1.41/2,-1) -- (8.5+1.41/2,-1) -- (8.5,-2.5) -- (8.5-1.41/2,-1);
+	\draw (8.5,-1.4) node {{\small $-\frac{1}{2}$}};
+	\draw (8.5,-2.5) -- (8.5,-3.5);
+	\draw[-{Latex}] (8.5,-3.5) -- (9.5,-3.5);
+	\draw (10,-3.5) node {$y(t)$};
+	\draw[-{Latex}] (9.5,-3.5) -- (7.5,-3.5);
+	% derivador 2
+	\draw (2.5+3.5,-4) rectangle (4+3.5,-3);
+	\draw (3.25+3.5,-3.5) node {$du/dt$};
+	\draw[-{Latex}] (5,-3.5) -- (5,-2.5);
+	% multiplicador 6
+	\draw (5-1.41/2,-2.5) -- (5+1.41/2,-2.5) -- (5,-1) -- (5-1.41/2,-2.5);
+	\draw (5,-1.9) node {{\small $6$}};
+	\draw[-{Latex}] (5,-1) -- (5,-0.5);
+	\draw[-{Latex}] (6,-3.5) -- (4,-3.5);
+	% derivador 1
+	\draw (2.5,-4) rectangle (4,-3);
+	\draw (3.25,-3.5) node {$du/dt$};
+	% multiplicador 2
+	\draw (1.5-1.41/2,-2.5) -- (1.5+1.41/2,-2.5) -- (1.5,-1) -- (1.5-1.41/2,-2.5);
+	\draw (1.5,-1.9) node {{\small $2$}};
+	\draw[-{Latex}] (1.5,-1) -- (1.5,-0.5);
+	\draw[-{Latex}] (2.5,-3.5) -- (1.5,-3.5) -- (1.5,-2.5);
+\end{tikzpicture}
+
+% 	\caption{ }
+\label{ }
+\end{center}
+\end{figure}
+
+\begin{enumerate}
+\item
+la ecuación diferencial correspondiente
+\item
+la función de transferencia del sistema y la ubicación de los polos
+\item
+la respuesta al impulso
+\item
+estabilidad y causalidad
+\end{enumerate}
+Rta.: 
+\begin{enumerate}
+\item
+$y''(t)+3y'(t)+y(t)=-\frac{1}{2}x(t)$
+\item
+$H(s)=\frac{-0.5}{s^2+3s+1}$
+\item
+$h(t)=0.22[e^{-2.62t}-e^{-0.38t}]u(t)$
+\end{enumerate}
+
+
+% ***********************************************
+%					Ejercicio 11
+% ***********************************************
+\item
+Dada la función de transferencia: $H(s)=\frac{12}{s(s+1)(s+4)}$, determinar:
+\begin{enumerate}
+\item
+la gráfica de polos y ceros
+\item
+la transformada inversa
+\item
+la implementación del sistema utilizando bloques derivadores e integradores
+\item
+estabilidad y causalidad
+\end{enumerate}
+Rta.: $h(t)=3u(t)-4e^{-t}u(t)+e^{-4t}u(t)$
+
+
+% ***********************************************
+%					Ejercicio 12
+% ***********************************************
+\item
+Considerando el sistema determinado por: $y''(t)+3y'(t)+2y(t)=2x'(t)+3x(t)$
+\begin{enumerate}
+\item
+determinar la función de transferencia $H(s)$
+\item
+graficar la constelación de polos y ceros
+\item
+determinar la respuesta al impulso
+\item
+determinar si es estable y/o causal
+\end{enumerate}
+Rta.:
+\begin{enumerate}
+\item
+$H(s)=\frac{2(s+\frac{3}{2})}{(s+1)(s+2)}$
+\item[\textit{c})]
+$h(t)=[e^{-t}+e^{-2t}]u(t)$
+\end{enumerate}
+
+
+% ***********************************************
+%					Ejercicio 13
+% ***********************************************
+\item
+Dada la respuesta al impulso de un sistema: $h(t)=2[\cos (5t)+3\sin (5t)]u(t)$, determinar:
+\begin{enumerate}
+\item
+la función de transferencia
+\item
+el mapa de polos y ceros
+\item
+la ecuación diferencial del sistema dado
+\item
+estabilidad y causalidad
+\end{enumerate}
+Rta.:
+\begin{enumerate}
+\item
+$H(s)=\frac{2(s+150)}{s^2+25}$
+\item[\textit{c})]
+$y''(t)+25y(t)=2x'(t)+30x(t)$
+\end{enumerate}
+
+
+% ***********************************************
+%					Ejercicio 14
+% ***********************************************
+\item
+Dada la respuesta al impulso de un sistema: $h(t)=2e^{-t}[\cos (5t)+3\sin (5t)]u(t)$, determinar:
+\begin{enumerate}
+\item
+la función de transferencia
+\item
+el mapa de polos y ceros
+\item
+la ecuación diferencial del sistema dado
+\item
+estabilidad y causalidad
+\end{enumerate}
+Rta.:
+\begin{enumerate}
+\item
+$H(s)=\frac{2(s+16)}{s^2+2s+26}$
+\item[\textit{c})]
+$y''(t)+2y'(t)+26y(t)=2x'(t)+32x(t)$
+\end{enumerate}
+
+
+% ***********************************************
+%					Ejercicio 15
+% ***********************************************
+\item
+Un sistema está definido a través de su gráfica de polos y ceros como muestra la figura: **
+
+\begin{figure}[htb]
+	\centering
+	% ___ gráfica
+	\begin{tikzpicture}[scale=1]
+	\begin{axis}[
+	axis on top,
+	axis y line=middle,
+	axis x line=middle,
+	xmin=-7,	xmax=3,
+	ymin=-3.9,	ymax=3.9,
+	xlabel={$\sigma$},
+	ylabel={$j\omega$},
+%	minor tick num=4,
+	]
+%    \addplot[dashed, line width=.3pt] coordinates {(-2,4) (-2,-4)};
+% 	\pattern[pattern=north west lines, pattern color=cyan] (-2,-5) rectangle (7,9);
+    % polo en -2
+    \addplot[line width=.9pt, blue] coordinates {(-2.2,-0.2) (-1.8,0.2)};
+    \addplot[line width=.9pt, blue] coordinates {(-2.2,0.2) (-1.8,-0.2)};
+    % polo en -6
+    \addplot[line width=.9pt, blue] coordinates {(-6.2,-0.2) (-5.8,0.2)};
+    \addplot[line width=.9pt, blue] coordinates {(-6.2,0.2) (-5.8,-0.2)};
+	% cero
+	\draw[line width=.9pt, blue] (-1,0) circle [radius=0.12cm];
+	\draw (-1,-0.6) node {$-1$};
+	\end{axis}	
+	\end{tikzpicture}
+	%\caption{}
+	\label{}
+\end{figure}
+
+Si la constante es $H_0=4$, determinar su función de transferencia, respuesta al impulso, ecuación diferencial y si es 
+estable y/o causal.
+
+Rta.: $H(s)=\frac{4(s+1)}{(s+2)(s+6)}$; $h(t)=[5e^{-6t}-e^{-2t}]u(t)$;
+		$y''(t)+8y'(t)+12y(t)=4x'(t)+4x(t)$.
+
+
+% ***********************************************
+%					Ejercicio 16
+% ***********************************************
+\item
+Determinar la función de transferencia y la respuesta al impulso de los circuitos dados, considerando que $R=1k\Omega$, $L=100mHy$ y $C=1nF$:
+
+\textit{a})\\
+%\begin{enumerate}
+%\item { }
+\begin{center}
+\begin{tikzpicture}[circuit ee IEC]
+	\draw (0,2) to [short,o-] (1,2)
+							to [inductor={info'={$L$}}] (3,2)
+								to [short] (3,2)
+								to [short,-o] (5,2)
+				(4,2)	to [resistor={info'={$R$}}] (4,0)
+				(0,0) to [short,o-o] (5,0);
+\end{tikzpicture}
+\end{center}
+%\item
+\textit{b})\\
+\begin{center}
+\begin{tikzpicture}[circuit ee IEC]
+	\draw (0,2) to [short,o-] (1,2)
+							to [resistor={info'={$R$}}] (3,2)
+							to [short] (3,2)
+							to [short,-o] (5,2)
+				(4,2)	to [capacitor={info'={$C$}}] (4,0)
+				(0,0) to [short,o-o] (5,0);
+\end{tikzpicture}
+\end{center}
+%\end{enumerate}
+
+\end{enumerate}
+
+
+% ***********************************************
+% 			Herramientas Teóricas (HT)
+% ***********************************************
+
+% *** PAUTAS A SEGUIR ***
+\begin{comment}
+Esta sección esta pensada para incluir toda la ayuda teórica necesaria 
+para resolver el practico.
+Algunas reglas generales:
+	-Mantener el contenido al minimo, referir a la bibliografía para mayor 
+		información (hay q armar un archivo .bib).
+	-Enumerar todas las ecuaciones.
+	-No repetir ecuaciones ya dadas en las HT de otro práctico, 
+		solo referir a ella.
+	-Para resaltar palabras usar \textit.
+	-Utilizar la nomencaltura oficial de la catátedra !!  
+		(Hay que definirlo, yo diria seguir al pie de la letra el kreiszig)
+	-
+\end{comment}
+
+% *** CONTENIDO ***
+\section*{Herramientas Te\'oricas:}
+\label{sec:herr}
+
+%%--------------------------------
+\subsection*{Transformada de Laplace (TL)}
+La transformada bilateral (notar los limites de integración) de Laplace se define como: 
+\begin{equation}
+	X(s)=\mathcal{L}\{x(t)\}=\int_{-\infty}^{\infty}x(t)e^{-st} dt.
+	\label{ec:tl}
+\end{equation}
+Notar que la Ec. \ref{ec:tl} es una transformada integral, que generaliza a la transformada de Fourier pues  
+$s=\sigma + j\omega$. Dada esta definición de las variables transformadas, puede verse que $X(s)=X(j\omega)$ para 
+$\sigma=0$. Para que la integral impropia de la Ec. \ref{ec:tl} converja absolutamente, el modulo del integrando 
+$|x(t)e^{-st}|=|x(t)e^{-\sigma t}e^{-j\omega t}|=|x(t)|e^{-\sigma t}$, debe ser absolutamente integrable. Por lo que en 
+general, $X(s)$ existirá únicamente para algunos valores o intervalos de $\sigma$ (bandas verticales o semiplanos en el 
+plano $s$). Frecuentemente $X(s)$ será una función racional de polinomios en $s$, con sus polos determinando los 
+limites de la región de convergencia.
+
+Obviamos la definición de la TL inversa, pues para realizar la operación de anti-transformación, suelen 
+utilizarse las tablas de pares de TL. 
+
+\subsection*{Resolución de ecuaciones diferenciales mediante la transformada de Laplace}
+La propiedad de derivación de la TL establece que si $X(s)=\mathcal{L}\{x(t)\}$, entonces:
+\begin{equation}
+	\mathcal{L}\Big\{\frac{dx(t)}{dt}\Big\}=sX(s)-x(0).
+\end{equation}
+Notar que esta propiedad simplifica considerablemente la resolución de ecuaciones diferenciales lineales a coeficientes 
+constantes (las cuales son el modelo matemático de los sistemas LTI), pues la reduce a la resolución de una ecuación 
+algebraica en el plano $s$.
+
+De forma general, la fórmula de la transformada de Laplace de la derivada de cualquier orden $n$ es,
+\begin{equation}
+	\mathcal{L}\left\{\frac{d^{(n)}x(t)}{dt^{(n)}}\right\}=
+	s^nX(s)-s^{n-1}x(0)-s^{n-2}x'(0)-\cdots-x^{(n-1)}(0).
+\end{equation}
+
+\subsection*{Función de transferencia de sistemas LTI}
+La propiedad de convolución de la TL  establece que si $X(s)=\mathcal{L}\{x(t)\}$, $H(s)=\mathcal{L}\{h(t)\}$ y 
+$Y(s)=\mathcal{L}\{y(t)\}$, entonces:
+\begin{equation}
+\mathcal{L}\Big\{x(t)*h(t)\Big\}=X(s)H(s).
+\end{equation}
+Notar que esta propiedad reduce el cálculo de la operación de convolución a una simple multiplicación en el plano $s$, 
+y 
+permite el cálculo de la operación inversa (deconvolución). 
+Dado que la salida $y(t)$ de un sistema LTI con respuesta impulsiva $h(t)$ a una entrada $x(t)$ es: $y(t)=x(t)*h(t)$, 
+la TL simplifica la obtención de $y(t)$. Además, la $H(s)$ se denomina \textit{funcion de transferencia del sistema}, 
+y describe completamente el funcionamiento de todo sistema LTI ya que es una generalización de la respuesta en 
+frecuencia del mismo ($H(j\omega)=H(s)$ para $\sigma=0$).
+
+\subsection*{Desarrollo de funciones racionales en fracciones simples}
+La TL inversa se realiza en la práctica mediante tablas de pares transformados. Para esto, generalmente 
+se requiere operar sobre la expresión que se desea anti-transformar, a fin de expresarla en términos de funciones 
+presentes en la tabla. Debido a que muchas de las funciones transformadas que surgen al tratar con sistemas LTI son 
+cocientes de 
+polinomios en $s$, una herramienta muy útil es la descomposición en fracciones simples.
+
+Dada la expresión racional,
+\begin{equation}
+H(s)=\frac{Y(s)}{X(s)},
+\end{equation}
+donde $Y(s)$ y $X(s)$ son polinomios en $s$ sin factores comunes entre sí, y con el grado de  $Y(s)$ menor que el de  
+$X(s)$. Podemos expresarla como una suma de fracciones simples siguiendo las reglas que se detallan a continuación. 
+
+Según el tipo de factor presente en $X(s)$ tenemos:
+\begin{itemize}
+	\item[Caso 1:] Al factor $(s-a)$ le corresponde la fracción:
+	\begin{equation}
+		\frac{A}{s-a}.
+	\end{equation} 
+	Donde el coeficiente se calcula según:
+	\begin{equation}
+		A=\lim_{s\to a}\Big[(s-a)\frac{Y(s)}{X(s)}\Big].
+	\end{equation}
+			
+	\item[Caso 2:] Al factor $(s-a)^m$  le corresponde la suma de fracciones:
+	\begin{equation}
+	\frac{A_m}{(s-a)^m}+\frac{A_{m-1}}{(s-a)^{m-1}}+...+\frac{A_1}{(s-a)}.
+	\end{equation} 
+	Donde el primer coeficiente $A_m$ se calcula según:
+	\begin{equation}
+	A_m=\lim_{s\to a}\Big[(s-a)^m\frac{Y(s)}{X(s)}\Big],
+	\end{equation}
+	y el resto de los coeficientes $A_k$ según:
+	\begin{equation}
+	A_k=\frac{1}{(m-k)!}\lim_{s\to a}\frac{d^{m-k}}{ds^{m-k}}\Big[(s-a)^m\frac{Y(s)}{X(s)}\Big]~\text{para}~k=1,...m-1.
+	\end{equation}	
+	\item[Caso 3:] Si hallamos el factor $(s-a)(s-\bar{a})$ en el denominador, no aplicamos el método de fracciones 
+	simples pues es mas sencillo reemplazar:
+	\begin{equation}
+	\frac{Y(s)}{(s-a)(s-\bar{a})}=\frac{Y(s)}{(s-\alpha)^2+\beta^2},
+	\end{equation}	
+	donde $a=\alpha+j\beta$. A esta expresión puede llegarse también completando cuadrados en el denominador. Luego 
+	notamos que el denominador en el miembro derecho puede ser antitransformado utilizando la tabla, como 
+	$e^{-\alpha t}cos(\omega t)u(t)$ o $e^{-\alpha t}sin(\omega t)u(t)$, dependiendo de la forma de $Y(s)$.
+	\end{itemize}
+
+\subsection*{Estabilidad de sistemas LTI}
+Si un sistema LTI es estable, entonces existe la TF de su respuesta impulsiva $\mathcal{F}\{h(t)\}=H(j\omega)$ 
+(respuesta en frecuencia). Por lo que la región de convergencia de su función de transferencia, 
+$\mathcal{L}\{h(t)\}=H(s)$, debe contener 
+al eje imaginario ($\sigma=0$).   
+
+\subsection*{Causalidad de sistemas LTI}
+Si un sistema LTI es causal, entonces la región de convergencia de su función de transferencia,  
+$\mathcal{L}\{h(t)\}=H(s)$, es un semiplano 
+derecho. Si el sistema es no causal, entonces la región es un semiplano izquierdo.    
+
+% ***********************************************
+% 					SOLUCIONES
+% ***********************************************
+% *** DESARROLLO ***
+\section*{Soluciones}
+\label{sec:sol}
+
+\begin{enumerate}
+% ***********************************************
+% 					Ejercicio 1
+% ***********************************************
+\item 
+\begin{enumerate}
+\item[c)] Escribimos la TL utilizando la definición dada en la Ec.~\ref{ec:tl}:
+\begin{align}
+	X(s)&=\int_{-\infty}^{\infty}e^{-\alpha t}u(t)e^{-st} dt,\\
+	&=\int_{0}^{\infty}e^{-\alpha t}e^{-st} dt,\\
+	&=\int_{0}^{\infty}e^{-(\alpha+s)t} dt,\\
+	&=-\frac{e^{-(\alpha+s)t}}{\alpha+s}\Big |_0^\infty, \label{ec:ej1}\\
+	&=\boxed{\frac{1}{\alpha +s},~\text{para}~\alpha+s>0~\to s>-\alpha}. \label{ec:ej1b}
+\end{align}
+Notar que la región de convergencia en el plano $s$ resultante (determinada para que exista el límite superior 
+en la Ec.~\ref{ec:ej1}) es el semiplano derecho a la linea $\sigma=-\alpha$ si $\alpha \in \mathbb{R}$ (sin 
+incluir la linea). 
+\end{enumerate}
+
+% ***********************************************
+% 					Ejercicio 2
+% ***********************************************
+\item 
+\begin{enumerate}
+\item[b)] Este ejercicio es un caso especial del 1.c) para $\alpha=2$. Por lo que podemos escribir la TL utilizando la 
+Ec.~\ref{ec:ej1b}:
+\begin{align}
+X(s)&=\boxed{\frac{1}{2+s}~\text{para } s>-2}.
+\end{align}
+\end{enumerate}	
+La región de convergencia en el plano $s$ está representada en la Fig.~\ref{fig:2b}. 
+\begin{figure}[htb]
+	\centering
+	% ___ gráfica w3
+	\begin{tikzpicture}[scale=1]
+	\begin{axis}[
+	axis on top,
+	axis y line=middle,
+	axis x line=middle,
+	xmin=-4,	xmax=4,
+	ymin=-4,	ymax=4,
+	xlabel={$\sigma$},
+	ylabel={$j\omega$},
+	grid=none,
+	grid style={line width=.1pt, draw=gray!40},
+	major grid style={line width=.2pt,draw=gray!60},
+	minor tick num=4,
+	]
+    \addplot[dashed, line width=.3pt] coordinates {(-2,4) (-2,-4)};
+ 	\pattern[pattern=north west lines, pattern color=cyan] (-2,-5) rectangle (7,9);
+    \addplot[line width=.9pt, blue] coordinates {(-2.2,-0.2) (-1.8,0.2)};
+    \addplot[line width=.9pt, blue] coordinates {(-2.2,0.2) (-1.8,-0.2)};
+	\end{axis}	
+	\end{tikzpicture}
+	\caption{Región de convergencia del Ej. 2.b (celeste). Notar que la linea en $\sigma=-2$ no está incluida y que la 
+	región está delimitada por la posición del polo de $X(s)$ (cruz azul).}
+	\label{fig:2b}
+\end{figure}
+% ***********************************************
+% 					Ejercicio 3
+% ***********************************************
+\item A resolver por el alumno
+
+% ***********************************************
+% 					Ejercicio 4
+% ***********************************************
+\item
+\begin{enumerate}
+\item[c)] De la información dada en el gráfico, podemos escribir $w_3(t)=e^{-5t}u(t)u(-t+1)$. Hallamos entonces la TL 
+utilizando la definición dada en la Ec.~\ref{ec:tl}:
+\begin{align}
+W_3(s)&=\int_{-\infty}^{\infty}e^{-5 t}u(t)u(-t+1)e^{-st} dt,\\
+&=\int_{0}^{1}e^{-(5+s)t} dt,\label{ec:ej4}\\
+&=-\frac{e^{-(5+s)t}}{5+s}\Big |_0^1,\\
+&=\boxed{\frac{1-e^{-(5+s)}}{5+s}}. \label{ec:ej41}
+\end{align}
+\end{enumerate}
+Notar que la integral en la Ec.~\ref{ec:ej4} converge para todo $s$, por lo que la región de convergencia de $W_3(s)$ 
+es el plano completo. Esto se refleja también en la Ec.~\ref{ec:ej41}, la cual no posee un polo para $S\to -5$, si 
+no que ese limite vale 1.
+
+% ***********************************************
+% 					Ejercicio 5
+% ***********************************************
+\item
+\begin{enumerate}
+	\item[\textit{a})] Expresamos la $X(s)$ en fracciones simples:
+		\begin{align}
+		X(s)&=\frac{2s+9}{(s+3)(s+4)},\\
+		&=\frac{A}{(s+3)}+\frac{B}{(s+4)}.
+		\end{align}	
+
+	Los coeficientes se calculan según:
+	\begin{align}
+	A&=\frac{2s+9}{(s+4)}\Big|_{s=-3}=\frac{2(-3)+9}{(-3+4)}=3,\\
+	B&=\frac{2s+9}{(s+3)}\Big|_{s=-4}=\frac{2(-4)+9}{(-4+3)}=-1.
+	\end{align}	
+	Por lo que podemos expresar $X(s)$ y su anti-transformada $x(t)$ (obtenida 
+	mediante la tabla) como sigue:
+	\begin{align}
+	X(s)&=\frac{3}{(s+3)}+\frac{-1}{(s+4)},\\
+	x(t)&=\boxed{3u(t)e^{-3t}-u(t)e^{-4t}}.
+	\end{align}	
+
+	\item[\textit{d})]
+	La expresión a antitransformar es $G(s)=\frac{5s-11}{s^2+4s+13}$. Lo primero que 
+	se debe hacer es factorizar el polinomio denominador. Al obtener las raíces de 
+	este polinomio se observa que son raíces complejas conjugadas,
+	\begin{equation}
+	s_1=-2+3i, \qquad s_2=-2-3i.
+	\end{equation}
+	Por lo que aplicamos el Caso 3 de las herramientas teóricas.
+	\begin{equation}
+	s^2+4s+13=s^2+4s+4-4+13=s^2+4s+4+9=(s+2)^2+9.
+	\end{equation}
+	Entonces,
+	\begin{equation}
+	G(s)=\frac{5s-11}{(s+2)^2+9}.
+	\end{equation}
+	Se puede observar que el denominador corresponde a la transformada de un seno o 
+	un coseno, pero aún es necesario trabajar sobre el numerador. El detalle más
+	importante es que la $s$ del denominador tiene un desplazamiento, y todas
+	las $s$ de la expresión deberían tener el mismo desplazamiento para poder ser
+	antitransformada. Para lograr eso se procede como sigue,
+	\begin{align}
+	G(s)	&=\frac{5s-11}{(s+2)^2+9}, \\
+			&=\frac{5(s+2-2)-11}{(s+2)^2+9}, \\
+			&=\frac{5(s+2)-21}{(s+2)^2+9}, \\
+			&=5\frac{(s+2)}{(s+2)^2+9}-7\frac{3}{(s+2)^2+9}.
+	\end{align}
+	Finalmente antitransformando,
+	\begin{equation}
+	\boxed{g(t)=\left[5e^{-2t}\cos(3t)-7e^{-2t}\sin(3t)\right]u(t)}
+	\end{equation}
+
+	\item[\textit{e})]
+	La expresión a antitransformar es $H(s)=\frac{2s}{(s+1)^2(s+2)}$. Se observa que
+	estamos ante una situación de polos repetidos o múltiples debido al factor 
+	$(s+1)^2$. Siguiendo lo indicado como ``Caso 2'' en las herramientas teóricas, 
+	se tiene,
+	\begin{equation}
+	H(s)=\frac{2s}{(s+1)^2(s+2)}=\frac{A_2}{(s+1)^2}+\frac{A_1}{(s+1)}+\frac{B}{(s+2)}.
+	\end{equation}
+	Se procede con el cálculo de las constantes.
+	\begin{equation}
+	A_2 = \lim_{s\to-1}\left[(s+1)^2 \frac{2s}{(s+1)^2(s+2)}\right]=
+	\frac{2(-1)}{-1+2}=-2.
+	\end{equation}
+	\begin{equation}
+	A_1 = \lim_{s\to-1}\frac{d}{ds}\left[\frac{2s}{(s+2)}\right]=
+	\lim_{s\to-1}\left[\frac{2(s+2)-2s}{(s+2)}\right]=4.
+	\end{equation}
+	\begin{equation}
+	B = \lim_{s\to-2}\left[(s+2) \frac{2s}{(s+1)^2(s+2)}\right]=-4.
+	\end{equation}
+	Entonces,
+	\begin{equation}
+	H(s)=\frac{-2}{(s+1)^2}+\frac{4}{(s+1)}+\frac{-4}{(s+2)}.
+	\end{equation}
+	Finalmente antitransformando,
+	\begin{equation}
+	\boxed{h(t)=\left(-2te^{-t}+4e^{-t}-4e^{-2t}\right)u(t)}
+	\end{equation}
+\end{enumerate}	
+
+% ***********************************************
+% 					Ejercicio 6
+% ***********************************************
+\item
+\begin{enumerate}
+\item
+Para resolver la ecuación diferencial, se aplica la TL término a término de la siguiente manera,
+\begin{align}
+x''(t)+3x'(t)+2x(t)&=\delta (t) \\
+s^2X(s)-s~x(0)-x'(0)+3\left[sX(s)-x(0)\right]+2X(s)&=1.
+\end{align}
+Se reemplazan posteriormente los valores de las condiciones iniciales quedando,
+\begin{equation}
+s^2X(s)+3sX(s)+2X(s)=1.
+\end{equation}
+Se despeja para $X(s)$,
+\begin{equation}
+X(s)=\frac{1}{s^2+3s+2},
+\end{equation}
+se calculan las raíces del polinomio denominador,
+\begin{equation}
+X(s)=\frac{1}{(s+1)(s+2)},
+\end{equation}
+observando que son raíces reales distintas, se procede con la descomposición en fracciones simples,
+\begin{equation}
+X(s)=\frac{1}{(s+1)(s+2)}=\frac{A}{s+1}+\frac{B}{s+2},
+\end{equation}
+\begin{align}
+A &= \left. \frac{1}{s+2}\right|_{s=-1}=1, \\
+B &= \left. \frac{1}{s+1}\right|_{s=-2}=-1,
+\end{align}
+reemplazando estos valores se obtiene una expresión que es posible antitransformar mediante el uso directo de tabla de tansformadas,
+\begin{equation}
+X(s)=\frac{1}{s+1}-\frac{1}{s+2},
+\end{equation}
+resultando finalmente,
+\begin{equation}
+\boxed{x(t)=[e^{-t}-e^{-2t}]u(t)}
+\end{equation}
+\end{enumerate}
+
+% ***********************************************
+% 					Ejercicio 7
+% ***********************************************
+\item
+\begin{enumerate}
+	\item Comenzamos aplicando la TL en ambas ecuaciones (considerando las condiciones iniciales, $x(0)=2$ y $y(0)=1$):
+\begin{align}
+y'(t)+3y(t)+x'(t)+5x(t)&=e^{-t},\\
+y'(t)+y(t)+2x'(t)+x(t)&=3,
+\end{align} 
+para obtener un sistema de ecuaciones algebraicas:
+\begin{align}
+sY(s)-1+3Y(s)+sX(s)-2+5X(s)=&\frac{1}{s+1},\\
+sY(s)-1+Y(s)+2[sX(s)-2]+X(s)=&\frac{3}{s}.
+\end{align}
+Reordenando y operando podemos escribir:
+\begin{align}
+Y(s)(s+3)+X(s)(s+5)=&\frac{3s+4}{s+1},\\
+Y(s)(s+1)+X(s)(2s+1)=&\frac{5s+3}{s}.
+\end{align}
+Este sistema lineal de dos ecuaciones con dos incógnitas, puede ser resuelto con cualquiera de los métodos del álgebra 
+lineal. Siguiendo el método de los determinantes, primero calculamos:
+\begin{align}
+\Delta =& 
+\begin{pmatrix}
+s+3 & s+5 \\
+s+1 & 2s+1
+\end{pmatrix}, \\
+=&(s+3)(2s+1)-(s+5)(s+1),\\
+=&s^2+s-2,\\
+=&(s+2)(s-1).
+\end{align}
+
+\begin{align}
+\Delta_x =& 
+\begin{pmatrix}
+s+3 & \frac{3s+4}{s+1} \\
+s+1 & \frac{5s+3}{s} 
+\end{pmatrix}, \\
+=&(s+3)\frac{5s+3}{s}-\frac{3s+4}{s+1}(s+1),\\
+=&\frac{5s^2+18s+9}{s}-(3s+4),\\
+=&\frac{2s^2+14s+9}{s}.
+\end{align}
+
+\begin{align}
+\Delta_y =& 
+\begin{pmatrix}
+\frac{3s+4}{s+1} & s+5 \\
+ \frac{5s+3}{s} & 2s+1 
+\end{pmatrix}, \\
+=&\frac{3s+4}{s+1}(2s+1)-(s+5) \frac{5s+3}{s},\\
+=&\frac{6s^2+11s+4}{s+1}-\frac{5s^2+28s+15}{s},\\
+=&\frac{s^3-22s^2-39s-15}{s(s+1)}.
+\end{align}
+Con lo que podemos escribir la solución del sistema como:
+\begin{align}
+	X(s)&=\frac{\Delta_x}{\Delta},\\
+	&=\frac{2s^2+14s+9}{s(s-1)(s+2)},\\
+	&=\frac{-9/2}{s}+\frac{25/3}{s-1}-\frac{11/6}{s+2},\\
+	Y(s)&=\frac{\Delta_y}{\Delta},\\
+	&=\frac{s^3-22s^2-39s-15}{s(s+1)(s+2)(s-1)},\\
+	&=\frac{15/2}{s}+\frac{1/2}{s+1}+\frac{11/2}{s+2}-\frac{25/2}{s-1}.	
+\end{align}
+Donde hemos expresado cada solución en fracciones simples (caso 1 pues son todos polos simples), para antitransformar 
+utilizando 
+la tabla:
+\begin{align}
+	x(t)&=\boxed{\Big[\frac{-9}{2}+\frac{25}{3}e^{t}-\frac{11}{6}e^{-2t}\Big]u(t)},\\
+    y(t)&=\boxed{\Big[\frac{15}{2}+\frac{1}{2}e^{-t}+\frac{11}{2}e^{-2t}-\frac{25}{2}e^{t}\Big]u(t)}.
+\end{align}
+\end{enumerate}
+
+% ***********************************************
+% 					Ejercicio 8
+% ***********************************************
+\item
+\begin{enumerate}
+	\item Para hallar la función de transferencia del sistema a partir de su ecuación diferencial de definición,
+	\begin{align}
+	y'(t)+5y(t)&=x(t),
+	\end{align} 
+	aplicamos la TL (asumiendo condiciones iniciales nulas),
+	\begin{align}
+		sY(s)+5Y(s)&=X(s),
+	\end{align}	
+    y obtenemos el cociente entre salida y entrada,
+   	\begin{align}
+		H(s)&=\frac{Y(s)}{X(s)}=\boxed{\frac{1}{s+5}.}
+	\end{align}
+	\item Para hallar la respuesta impulsiva $h(t)$, obtenemos $H(j\omega)$, al hacer $s=j\omega$ en $H(s)$, y 
+	antitransformamos 
+	usando las tablas de transformadas de Fourier,
+	 \begin{align}
+	 H(jw)&=\frac{1}{j\omega+5},\\
+	h(t)&=\boxed{e^{-5t}u(t).}
+	\end{align}
+	\item 
+	El sistema es estable pues la ROC de $H(s)$ contiene al eje imaginario (existe $H(j\omega)$). Es también causal, 
+	pues la ROC de $H(s)$ es un semiplano derecho (la $h(t)$ resultante es causal).
+\end{enumerate}	
+
+% ***********************************************
+% 					Ejercicio 9
+% ***********************************************
+\item
+\begin{enumerate}
+	\item[b)] Obtenemos la función de transferencia del sistema, calculando la transformada de Laplace de la respuesta impulsiva $h(t)=e^{-3t}u(t)$,
+	\begin{align}
+	H(s)&=\mathcal{L}\{e^{-3t}u(t)\},\\
+	&=\boxed{\frac{1}{s+3}.}
+	\end{align}
+	La ecuación diferencial del sistema se obtiene reordenando la expresión de $H(s)=Y(s)/X(s)$,
+	\begin{align}
+		\frac{Y(s)}{X(s)}&=\frac{1}{s+3},\\
+		sY(s)+3Y(s)&=X(s),\\
+		y'(t)+3y(t)&=x(t).
+	\end{align}
+	En base a la ecuación diferencial del sistema, podemos realizar su implementación despejando la salida 
+	$y(t)=1/3[x(t)-y'(t)]$, como se muestra en la Fig.~\ref{fig:s9b}.
+
+Notar que el sistema es estable pues la ROC de $H(s)$ contiene al eje imaginario (existe $H(j\omega)$). Es también 
+causal, 
+pues la ROC de $H(s)$ es un semiplano derecho ($h(t)$ es causal).
+
+\begin{figure}[htb]
+	\begin{center}
+		%\includegraphics[width=7cm]{diagrama_ej8.png}
+		\begin{tikzpicture}[scale=0.7]
+		\draw (-0.5,0) node {$x(t)$};
+		\draw[-{Latex}] (0,0) -- (1,0);
+		\draw (1.5,0) circle [radius=0.5cm];
+		\draw (1.2,0) node {$+$};
+		\draw (1.5,-0.3) node {$-$};
+		\draw[-{Latex}] (2,0) -- (5,0) -- (5,-1);
+		\draw (5-1.41/2,-1) -- (5+1.41/2,-1) -- (5,-2.5) -- (5-1.41/2,-1);
+		\draw (5,-1.5) node {{\small $1/3$}};
+		\draw (5,-2.5) -- (5,-3.5);
+		\draw[-{Latex}] (5,-3.5) -- (6,-3.5);
+		\draw (6.5,-3.5) node {$y(t)$};
+		\draw[-{Latex}] (5,-3.5) -- (4,-3.5);
+		\draw (2.5,-4) rectangle (4,-3);
+		\draw (3.25,-3.5) node {$du/dt$};
+		\draw[-{Latex}] (2.5,-3.5) -- (1.5,-3.5) -- (1.5,-0.5);
+		\end{tikzpicture}
+		\caption{Implementación del sistema del Ej. 9.\textit{b})}
+		\label{fig:s9b}
+	\end{center}
+\end{figure}
+	
+\end{enumerate}
+
+% ***********************************************
+% 					Ejercicio 10
+% ***********************************************
+\item
+\begin{enumerate}
+	\item En base al diagrama de implementación del sistema, podemos deducir su ecuación diferencial,
+	\begin{align}
+		y(t)&=\frac{-1}{2}[x(t)+2y''(t)+6y'(t)],\\
+		y''(t)+3y'(t)+y(t)&=\frac{-1}{2}x(t).
+	\end{align}
+	\item Transformado ambos miembros obtenemos la función de transferencia,
+	\begin{align}
+		s^2Y(s)+3sY(s)+Y(s)&=-\frac{1}{2}X(s),\\
+		H(s)&=\frac{Y(s)}{X(s)}=\boxed{\frac{-1/2}{s^2+3s+1}}
+	\end{align}
+	Factorizando el polinomio en el denominador, $s^2+3s+1=(s+2.62)(s+0.38)$, obtenemos dos polos simples. Uno en -2.62 
+	y el otro en -0.38.
+	\item Para hallar $h(t)$, desarrollamos $H(s)$ usando fracciones simples,
+	\begin{align}
+		H(s)&=\frac{-1/2}{(s+2.62)(s+0.38)},\\
+		&=\frac{A}{s+2.62}+\frac{B}{s+0.38},\\
+		A &=\frac{-1/2}{s+0.38}\Bigg |_{s=-2.62}=0.22,\\	
+		B &=\frac{-1/2}{s+2.62}\Bigg |_{s=-0.38}=-0.22,\\		
+		H(s)&=\frac{0.22}{s+2.62}-\frac{0.22}{s+0.38}.	
+	\end{align}
+    Luego obtenemos $H(j\omega)$, al hacer $s=j\omega$ en $H(s)$, y antitransformamos usando las tablas de 
+    transformadas de Fourier,
+    \begin{align}
+    	H(j\omega)=&0.22\Big[\frac{1}{j\omega+2.62}-\frac{1}{j\omega+0.38}\Big],\\
+    	h(t)=&\boxed{0.22\Big[e^{-2.62t}-e^{-0.38t}\Big]u(t).}
+    \end{align}
+
+	\item 
+El sistema es estable pues la ROC de $H(s)$ contiene al eje imaginario (existe $H(j\omega)$). Es también causal, 
+pues la ROC de $H(s)$ es un semiplano derecho (la $h(t)$ resultante es causal).
+
+\end{enumerate}
+
+% ***********************************************
+% 					Ejercicio 11
+% ***********************************************
+\item A resolver por el alumno
+
+% ***********************************************
+% 					Ejercicio 12
+% ***********************************************
+\item A resolver por el alumno
+
+% ***********************************************
+% 					Ejercicio 13
+% ***********************************************
+\item A resolver por el alumno
+
+% ***********************************************
+% 					Ejercicio 14
+% ***********************************************
+\item
+\begin{enumerate}
+	\item Para obtener la función de transferencia, transformamos la $h(t)=2e^{-t}[\cos (5t)+3\sin (5t)]u(t)$ dada,  
+	miembro a miembro y haciendo uso de la propiedad de desplazamiento en la frecuencia,
+\begin{align}
+	H(s)&=2\frac{s+1}{(s+1)^2+5^2}+6\frac{5}{(s+1)^2+5^2},\\
+	&=\boxed{\frac{2s+32}{s^2+2s+26}.}
+\end{align}
+\item Para hallar el mapa de polos y ceros, hallamos los ceros de numerador y denominador de la $H(s)$,
+\begin{equation}
+	H(s)=\frac{2(s+16)}{(s+1+j5)(s+1-j5)},
+\end{equation}
+y los dibujamos en el plano $s$ como se muestra en la Fig.~\ref{fig:14}.
+\begin{figure}[htb]
+	\centering
+	% ___ gráfica w3
+	\begin{tikzpicture}[scale=1]
+	\begin{axis}[
+	axis on top,
+	axis y line=middle,
+	axis x line=middle,
+	xmin=-18,	xmax=5,
+	ymin=-8,	ymax=8,
+	xlabel={$\sigma$},
+	ylabel={$j\omega$},
+	grid=none,
+	grid style={line width=.1pt, draw=gray!40},
+	major grid style={line width=.2pt,draw=gray!60},
+	minor tick num=4,
+	]
+	\addplot[line width=.9pt, blue] coordinates {(-1.5,4.5) (-0.5,5.5)};
+	\addplot[line width=.9pt, blue] coordinates {(-1.5,5.5) (-0.5,4.5)};
+	\addplot[line width=.9pt, blue] coordinates {(-1.5,-4.5) (-0.5,-5.5)};
+	\addplot[line width=.9pt, blue] coordinates {(-1.5,-5.5) (-0.5,-4.5)};	
+	\draw[line width=.9pt, blue] (-16,0) circle [radius=0.12cm];
+	\draw (-1,-0.6) node {$-1$};
+	\end{axis}	
+	\end{tikzpicture}
+	\caption{Diagrama de polos y ceros del Ej. 14.\textit{b}).}
+	\label{fig:14}
+\end{figure}
+\item Para hallar la ecuación diferencial del sistema, reordenamos su $H(s)$ y antitransformamos,
+\begin{align}
+	H(s)&=\frac{Y(s)}{X(s)},\\
+	&=\frac{2s+32}{s^2+2s+26},\\
+	s^2Y(s)+2sY(s)+26Y(S)&=2sX(s)+32X(s),\\
+	y''(t)+2y'(t)+26y(t)&=2x'(t)+32x(t).
+\end{align}
+	\item 
+El sistema es estable pues la ROC de $H(s)$ contiene al eje imaginario (existe $H(j\omega)$). Es también causal, 
+pues la ROC de $H(s)$ es un semiplano derecho (la $h(t)$ resultante es causal).
+
+\end{enumerate}
+% ***********************************************
+% 					Ejercicio 15
+% ***********************************************
+\item 
+Cuando la definición del sistema se da de forma gráfica, se debe construir la función de transferencia según los ceros, los polos y la constante $H_0$ del sistema. Para este caso, se puede observar que hay un cero en $s=-1$, un polo en $s=-2$ y otro polo en $s=-6$. La constante es $H_0 = 4$. Entonces,
+\begin{equation}
+H(s)=4\frac{(s+1)}{(s+2)(s+6)}.
+\end{equation}
+Luego, para encontrar la respuesta al impulso y la ecuación diferencial del sistema, y analizar su estabilidad y 
+causalidad, se debe proceder como en los ejercicios anteriores.
+% ***********************************************
+% 					Ejercicio 16
+% ***********************************************
+\item
+La transformada de Laplace es una herramienta matemática extremadamente útil para analizar el funcionamiento de sistemas físicos como son los circuitos eléctricos. Se ve a continuación un ejemplo. 
+\begin{enumerate}
+\item
+En este ejercicio se presenta un circuito $LR$, compuesto por un inductor y un resistor. Al describir el funcionamiento de este circuito en el dominio del tiempo, se obtiene una ecuación diferencial. Luego, aplicando las estrategias vistas anteriormente en este trabajo práctico, se usa la TL para resolver dicha ecuación diferencial, y de este modo obtener la respuesta correspondiente del circuito.
+
+Se plantea en primer lugar una \textit{ecuación de malla} de la siguiente forma,
+\begin{equation}
+v_i(t)=v_L(t)+v_o(t),
+\end{equation}
+donde,\\
+$v_i(t)$: voltaje de entrada (\textit{input}),\\
+$v_L(t)$: voltaje en el inductor,\\
+$v_o(t)$: voltaje de salida (\textit{output}), que en este caso es el voltaje en el resistor.
+
+Los voltajes en el inductor y el resistor están dados por las leyes físicas correspondientes, a saber,
+\begin{align}
+v_L(t)&=L\frac{di(t)}{dt},\\
+v_o(t)&=i(t)R.
+\end{align}
+La función de transferencia es la relación entre la salida y la entrada de un sistema en el dominio de la variable compleja $s$. Para llegar a dicha expresión, se puede operar de la siguiente manera,
+\begin{align}
+v_i(t)&=v_L(t)+v_o(t),\\
+v_i(t)&=L\frac{di(t)}{dt}+v_o(t),\\
+v_i(t)&=\frac{L}{R}\frac{dv_o(t)}{dt}+v_o(t).
+\end{align}
+Se aplica ahora transformada de Laplace,
+\begin{align}
+V_i(s)&=\frac{L}{R}sV_o(s)+Vo(s),\\
+V_i(s)&=\left(\frac{L}{R}s+1\right)V_o(s),
+\end{align}
+y finalmente se despeja para encontrar la expresión de la función de transferencia,
+\begin{align}
+H(s)&=\frac{V_o(s)}{V_i(s)}=\frac{1}{\frac{L}{R}s+1},\\
+&=\boxed{\frac{R/L}{s+R/L}}.
+\end{align}
+Para encontrar la respuesta al impulso, se hace $s=j\omega$ y se antitransforma la respuesta en frecuencia, 
+$H(j\omega)$,
+\begin{equation}
+H(j\omega)=\frac{R/L}{j\omega+R/L},
+\end{equation}
+finalmente antitransformando,
+\begin{equation}
+h(t)=\boxed{\tfrac{R}{L}e^{-\frac{R}{L}t}u(t)}.
+\end{equation}
+
+\item
+Se plantea de la misma forma que el ejercicio anterior resultando,
+\begin{gather}
+H(s)=\frac{V_o(s)}{V_i(s)}=\boxed{\frac{\frac{1}{RC}}{s+\frac{1}{RC}}}, \\
+h(t)=\boxed{\tfrac{1}{RC}e^{-\frac{t}{RC}}u(t)}.
+\end{gather}
+
+
+
+
+\end{enumerate}
+
+\end{enumerate}
+\begin{center}
+	---------------------------------------
+\end{center}
+\end{document}

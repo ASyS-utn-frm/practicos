@@ -1,0 +1,890 @@
+% ***********************************************
+%***********COSAS A MEJORAR O CORREGIR***********
+%	1-2020-04-27: Definir un metodo para resolver el ej 14. Francisco usa una Ec. cuadratica y un cambio de var. 
+%	2-2020-04-28: Definir un metodo para resolver el ej 11.
+%
+%
+%
+%
+%
+%
+%
+% ***********************************************
+% Preamble
+% ---
+\documentclass[10pt,a4paper]{article}
+
+% Packages
+% ---
+\usepackage[latin1]{inputenc}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{layout}
+\usepackage{graphics}
+\usepackage{graphicx}
+\usepackage[spanish]{babel}
+\usepackage{lastpage}
+\usepackage{tabto}
+\usepackage{xcolor}
+\usepackage[a4paper, top=1 in,bottom=1in, left=1 in, right=0.7 in]{geometry}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\usepackage{comment}
+
+%ELEGIR VERSION 
+%Comentar para eliminar la solucion de todos los ejercicios y dejar la version para los 
+% alumnos, a saber con un solo punto resuelto por ejercicio.
+
+\includecomment{profesor}    % version profesor
+%\excludecomment{profesor}	  % version alumnos
+
+\lhead{\footnotesize An\'alisis de Se\~nales y Sistemas  - A\~no 2021}
+\chead{}
+\rhead{\footnotesize Trabajo Pr\'actico N$^\text o$1: Variable Compleja.}
+\lfoot{}
+\cfoot{}
+\rfoot{\footnotesize P\'agina \thepage\ de \pageref{LastPage}}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+
+\title{
+	\textsc{\includegraphics[width=0.55\textwidth]{logoUTN.jpg}} ~\\
+	{\large Departamento de Electr\'onica}\\ 
+	[0.1cm]
+	{\Huge{An\'alisis de Se\~nales y Sistemas}} \\
+	[0.25cm]
+	{\Large{Trabajo Pr\'{a}ctico N$^{\text {o}}$1: Variable Compleja}		\\
+	}}
+\author{}
+\date{}
+
+% Main document ********************************************
+% ---
+\begin{document}
+\maketitle
+\begin{profesor}
+	\hspace{6cm}(Versión PROFESOR)
+\end{profesor}
+\thispagestyle{fancy}
+
+
+%%% comment
+\begin{comment}
+\section*{Enunciados:}
+\end{comment}
+
+
+\label{sec:enun}
+% ***********************************************
+% 					Ejercicio 1
+% ***********************************************
+\textbf{Operaciones con n\'umeros complejos}
+\begin{enumerate}
+\item {Dados $z_1=3-6i$; $z_2=2+5i$; $z_3=-3+4i$; comprobar el resultado de las operaciones indicadas}
+\begin{enumerate}
+	\item $z_1z_2=36+3i$						
+	\item $z_1\bar{z_2}=-24-27i$ **						
+	\item $z_1^{-1}=\frac{1}{15}+\frac{2}{15}i$		
+	\item $\frac{z_2}{z_3}=\frac{14}{25}-\frac{23}{25}i$ **			
+	\item $[z_1+z_3]^2=-4$ **				
+	\item $[z_2-z_3]^2=24+10i$						
+\end{enumerate}
+
+% ***********************************************
+% 					Ejercicio 2
+% ***********************************************
+\item {Expresar los complejos dados en forma polar y trigonométrica. Graficar.}
+\begin{enumerate}
+	\item $1$ \tabto{4cm} Rta: $1e^{i0}=1[\cos{(0)}+i\sin{(0)}]$
+	\item $-\frac{2}{5}$ \tabto{4cm} Rta: $\frac{2}{5}e^{i\pi}=\frac{2}{5}[\cos{(\pi)}+i\sin{(\pi)}]$
+	\item $i$ \tabto{4cm} Rta: $1e^{i\frac{\pi}{2}}=1[\cos{(\frac{\pi}{2})}+i\sin{(\frac{\pi}{2})}]$
+	\item $-\sqrt{3}i$ ** \tabto{4cm} Rta: 
+	$\sqrt{3}e^{-i\frac{\pi}{2}}=\sqrt{3}[\cos{(\frac{\pi}{2})}-i\sin{(\frac{\pi}{2})}]$
+	\item $4+4i$ ** \tabto{4cm} Rta: 
+	$\sqrt{32}e^{i\frac{\pi}{4}}=\sqrt{32}[\cos{(\frac{\pi}{4})}+i\sin{(\frac{\pi}{4})}]$ 
+%	\item $-2-5i$ \tabto{4cm} Rta: $\sqrt{29}e^{i4.3319}=\sqrt{29}[\cos{(4.3319)}+i\sin{(4.3319)}]$			
+\end{enumerate}
+
+% ***********************************************
+% 					Ejercicio 3
+% ***********************************************
+
+\item {Demostrar las siguientes igualdades.}	
+		
+\begin{enumerate}
+	\item $z+\bar{z}=2x$						
+	\item $z-\bar{z}=2yi$ **						
+	\item $\overline{z_1 + z_2}=\bar{z_1}+\bar{z_2}$
+		
+	\item $\overline{z_1-z_2}=\bar{z_1}-\bar{z_2}$			
+	\item $\overline{z_1 z_2}=\bar{z_1}\bar{z_2}$ **			
+	\item $\overline{ \big( \frac{z_1}{z_2}\big)}=\frac{\overline{z_1}}{\overline{z_2}}$						
+\end{enumerate}
+
+% ***********************************************
+%					Ejercicio 4
+% ***********************************************
+\item {Demostrar las siguientes igualdades.}
+\begin{enumerate}
+	\item $|z|=\sqrt{z\bar{z}}$	
+	\item $ |\frac{z}{\bar{z}}|=1$	
+	\item $|\cos{(\theta)}+i \sin{(\theta)}|=1$			
+\end{enumerate}
+% ***********************************************
+% 					Ejercicio 5
+% ***********************************************
+\textbf{Potencia de un número complejo}
+\item {Expresar los complejos dados en forma polar y trigonométrica.}	
+\begin{enumerate}
+	\item $(-1+\sqrt{3}i)^{10}$	\tabto{4cm} Rta: 
+	$2^{10}e^{i\frac{20}{3}\pi}=1024\big[\cos{(\frac{20}{3}\pi)}+i\sin{(\frac{20}{3}\pi)}\big]$
+	\item $(1+i)^4$ **	\tabto{4cm} Rta: $4e^{i\pi} =4[\cos{(\pi)}+i\sin{(\pi)}]$
+	\item $(-1+i)^3$	\tabto{4cm} Rta: 
+	$2\sqrt{2}e^{i\frac{9\pi}{4}}=2\sqrt{2}\big[\cos{(\frac{9\pi}{4})}+i\sin{(\frac{9\pi}{4})}\big]$
+	\item $\big(\frac{1-i}{1+i}\big)^{10}$ **	\tabto{4cm} Rta:$1e^{-i5\pi}=[\cos{(5\pi)}-i\sin{(5\pi)}]$	
+\end{enumerate}
+
+% ***********************************************
+% 					Ejercicio 6
+% ***********************************************
+\textbf{Raíz enésima de un número complejo}
+\item {Determinar el valor correspondiente y graficar.}	
+\begin{enumerate}
+	\item $w=\sqrt{1}$	\tabto{4cm} Rta: $1;-1$
+	\item $w=\sqrt[3]{1}$ **	\tabto{4cm} Rta: $1;-\frac{1}{2}+\frac{\sqrt{3}}{2}i;-\frac{1}{2}-\frac{\sqrt{3}}{2}i$
+	\item $w=\sqrt[4]{1}$ **	\tabto{4cm} Rta: $1;i;-1;-i$
+	\item $w=\sqrt{-16}$	\tabto{4cm} Rta: $4i;-4i$
+	\item $w=\sqrt[3]{i}$	\tabto{4cm} Rta: $\frac{\sqrt{3}}{2}+\frac{1}{2}i;-\frac{\sqrt{3}}{2}+\frac{1}{2}i;-i$
+	\item $w=\sqrt[3]{1+i}$ ** \tabto{4cm} Rta: $1,0842+0,291i; -0,7937+0,7973i; -0,291-1,0842i$
+\end{enumerate}
+
+% ***********************************************
+% 					Ejercicio 7
+% ***********************************************
+\textbf{Función Exponencial}
+\item {Expresar en forma cartesiana.}	
+\begin{enumerate}
+	\item $e^5$	\tabto{4cm} Rta: $148,4132$
+	\item $e^{5i}$ ** \tabto{4cm} Rta: $0,2837-0,9589i$
+	\item $e^{1+4i}$ **	\tabto{4cm} Rta: $-1,7768-2,0572i$
+	\item $e^{-3-2i}$	\tabto{4cm} Rta: $-0,0207-0,0453i$
+\end{enumerate}
+
+% ***********************************************
+% 					Ejercicio 8
+% ***********************************************
+\item {Determinar las partes real e imaginaria.}	
+\begin{enumerate}
+	\item $e^{5z}$  \tabto{4cm} Rta: $e^{5x}\cos{(5y)}+ie^{5x}\sin{(5y)}$
+	\item $e^{z^2}$ ** \tabto{4cm} Rta: $e^{x^2-y^2}\cos{(2xy)}+ie^{x^2-y^2}\sin{(2xy)}$
+	\item $3^z$ ** \tabto{4cm} Rta: $e^{x \ln{(3)}}\cos{[y\ln{(3)}]}+ie^{x\ln{(3)}}\sin{[y\ln{(3)}]}$
+\end{enumerate}
+
+% ***********************************************
+% 					Ejercicio 9
+% ***********************************************
+\item {Graficar la función $f(z)=e^z=e^{x+iy}$ para los siguientes casos.}	
+\begin{enumerate}
+	\item $x=5; 0\leq y \leq\frac{7\pi}{6}; \Delta y=\frac{\pi}{6}$ **
+	\item $0\leq x \leq 1,6; \Delta x=0,2; y=\frac{\pi}{4}$ **
+	\item $0\leq x \leq 1,6;\Delta x=0,2; 0\leq y \leq\frac{7\pi}{6}; \Delta y=\frac{\pi}{6}$ **		
+\end{enumerate}
+
+% ***********************************************
+% 					Ejercicio 10
+% ***********************************************
+\item {Determinar todos los valores de $z$ tales que:}	
+\begin{enumerate}
+	\item $|e^{-z}|<1$ ** \tabto{4cm} Rta: $x>0$
+	\item $e^{\bar{z}}=\overline{e^z}$	 \tabto{4cm} Rta: \textit{se cumple para todo z}
+	\item $Re\{e^{2z}\}=0$ ** \tabto{4cm} Rta: $y=\dfrac{\pi}{4}(1\pm2k);k=0,1,2,\cdots$
+\end{enumerate}
+
+% ***********************************************
+% 					Ejercicio 11
+% ***********************************************
+\item {Resolver las ecuaciones dadas:}	
+\begin{enumerate}
+	\item $e^z=12$ ** \tabto{4cm} Rta: $2.4849\pm2k\pi i; ~~ k=0,1,2,\cdots$
+	\item $e^z=-7$	** \tabto{4cm} Rta: $1.9459\pm(2k+1)\pi i; ~~ k=0,1,2,\cdots$
+	\item $e^z=4+3i$  \tabto{4cm} Rta: $1.6094+(0.6435\pm 2k\pi)i; ~~ k=0,1,2,\cdots$
+\end{enumerate}
+
+% ***********************************************
+% 					Ejercicio 12
+% ***********************************************
+\textbf{Funciones trigonométricas e hiperbólicas}
+\item {Calcular:}	
+\begin{enumerate}
+	\item $\cos 6i$			\tabto{4cm} Rta: $201.7156$
+	\item $\sin 3i$ ** 		\tabto{4cm} Rta: $10.0179i$
+	\item $\cosh i$ 		\tabto{4cm} Rta: $0.5403$
+	\item $\cos(3-4i)$ ** 	\tabto{4cm} Rta: $-27.0349+3.8512i$
+	\item $\sin(2+5i)$		\tabto{4cm} Rta: $67.4789-30.8794i$
+	\item $\cosh(1+3i)$	**	\tabto{4cm}	Rta: $-1.5276+0.1658i$
+	\item $\sinh(2-i)$		\tabto{4cm} Rta: $1.9596-3.1658i$
+\end{enumerate}
+
+% ***********************************************
+% 					Ejercicio 13
+% ***********************************************
+\item {Demostrar que:}	
+\begin{enumerate}
+	\item $|\cos z|^2 = (\cos x)^2 + (\sinh y)^2$
+	\item $|\sin z|^2 = (\sin x)^2 + (\sinh y)^2$
+\end{enumerate}
+
+% ***********************************************
+% 					Ejercicio 14
+% ***********************************************
+\item {Determinar todas las soluciones de:}	
+\begin{enumerate}
+	\item $\cos z = 15$				\tabto{4cm} Rta: $z=\pm 2k\pi + 3.4001i; ~~ k=0,1,2,\cdots$
+	\item $\sin z = 32$ 			\tabto{4cm} Rta: $z=\left( \dfrac{\pi}{2}\pm2k\pi\right)-4.1586i; ~~ k=0,1,2,\cdots$
+	\item $\cosh z = 0.5$		 	\tabto{4cm} Rta: $\left(\pm \dfrac{\pi}{3}\pm2k\pi\right)i; ~~ k=0,1,2,\cdots$
+	\item $\sin z =i\sinh 1$ ** 	\tabto{4cm} Rta: $z=\pm2k\pi+i; ~~ k=0,1,2,\cdots$
+\end{enumerate}
+
+% ***********************************************
+% 					Ejercicio 15
+% ***********************************************
+\textbf{Función logarítmica}
+\item {Calcular:}	
+\begin{enumerate}
+	\item $\ln 1$			\tabto{4cm} Rta: $(\pm2k\pi)i; ~~ k=0,1,2,\cdots$
+	\item $\ln(-1)$ ** 		\tabto{4cm} Rta: $(\pi\pm2k\pi)i; ~~ k=0,1,2,\cdots$
+	\item $\ln i$ 			\tabto{4cm} Rta: $(\frac{\pi}{2}\pm2k\pi)i; ~~ k=0,1,2,\cdots$
+\end{enumerate}
+
+% ***********************************************
+% 					Ejercicio 16
+% ***********************************************
+\item {Calcular y representar gráficamente al menos cuatro valores de la solución:}	
+\begin{enumerate}
+	\item $\ln (3+5i)$			\tabto{4cm} Rta: $1.7632+(1.0304\pm2k\pi)i; ~~ k=0,1,2,\cdots$
+	\item $\ln(\sqrt 3-2i)$ ** 	\tabto{4cm} Rta: $0.9730+(-0.8571\pm2k\pi)i; ~~ k=0,1,2,\cdots$
+\end{enumerate}
+
+% ***********************************************
+% 					Ejercicio 17
+% ***********************************************
+\item {Demostrar que:}	
+\begin{enumerate}
+	\item $\ln (-ie)=1-i\frac{\pi}{2}$
+	\item $\ln(1-i)=\frac{1}{2}\ln 2-i\frac{\pi}{4}$
+\end{enumerate}
+
+% ***********************************************
+% 					Ejercicio 18
+% ***********************************************
+\textbf{Regiones del plano complejo}
+\item {Graficar los lugares geométricos correspondientes a:}	
+\begin{enumerate}
+	\item $|z|\leq 3$					\tabto{5cm} Rta: \textit{círculo de radio 3 centrado en el origen.}
+	\item $Re\{z\}\geq -2$  			\tabto{5cm} Rta: \textit{eje $x=-2$ y semiplano a la derecha de dicho eje.}
+	\item $Im\{z\} < 4$ **				\tabto{5cm} Rta: \textit{semiplano inferior al eje $y=4$, excluyendo el mismo.}
+	\item $|Arg ~ z|<\frac{\pi}{2}$	**	\tabto{5cm} Rta: \textit{semiplano derecho (sin el eje imaginario).}
+	\item $0< Arg ~ z <\frac{2\pi}{3}$ **								\tabto{5cm} Rta: \textit{ángulo en semiplano superior desde 0º a 120º.}
+	\item $|z+1|\leq3;-\frac{\pi}{4}\leq Arg ~ z \leq \frac{\pi}{4}$	\tabto{5cm} Rta: \textit{interior del arco de circunferencia centrada en -1 de radio 3 
+																		\tabto{5cm}	(incluyendo el arco) intersección con arco centrado en origen 
+																		\tabto{5cm} desde -45º hasta 45º.}
+	\item $|z|\leq 1; 0\leq Arg ~z \leq \frac{\pi}{3}$	**				\tabto{5cm} Rta: \textit{interior del arco de circunferencia centrada en origen de 
+																		\tabto{5cm}	radio 1 (incluyendo el arco), desde 0º hasta 60º} 
+	\item $1\leq|z-3|\leq2$												\tabto{5cm} Rta: \textit{anillo centrado en (3,0) de radio interior 1 y exterior 2 
+																		\tabto{5cm}	Puntos que verifican: $1\leq\sqrt{(x-3)^2+y^2}\leq2$} 
+	\item $|z+3+3i|>3$													\tabto{5cm} Rta: \textit{exterior de la circunferencia: $\sqrt{(x+3)^2+(y+3)^2}=3$}
+	\item $|\frac{z+1}{z-1}|=\sqrt2$									\tabto{5cm} Rta: \textit{circunferencia: $(x-3)^2+y^2=8$}
+	\item $Im\lbrace \frac{z+1}{z-1}\rbrace\leq2$	**					\tabto{5cm} Rta: \textit{puntos de la circunferencia: $(x-1)^2+\left(y+\frac{1}{2}\right)^2=\frac{1}{4}$ 
+																		\tabto{5cm}	y puntos exteriores a esta.} 
+\end{enumerate}
+
+
+
+\end{enumerate}
+
+
+% ***********************************************
+% 					Herramientas Teóricas (HT)
+% ***********************************************
+% Esta sección esta pensada para incluir toda la ayuda teórica necesaria para resolver el practico
+% Algunas reglas generales:
+%	-Mantener el contenido al minimo, referir a la bibliografía para mayor información (hay q armar un archivo .bib)
+%	-Enumerar todas las ecuaciones
+%	-No repetir ecuaciones ya dadas en las HT de otro práctico, solo referir a ella
+%	-Para resaltar palabras usar \textit
+%	-Utilizar la nomencaltura oficial de la cátedra !!
+%	-
+\section*{Herramientas Te\'oricas:}
+\label{sec:herr}
+\subsection*{Representación analítica de un número complejo z}
+Forma cartesiana (útil al trabajar con sumas algebraicas):
+\begin{equation}
+z = x+iy \to Re(z)=x=\frac{1}{2}(z+\bar z)~\wedge~Im(z)=y=\frac{1}{2i}(z-\bar z).
+\label{eq:p1_ht1}
+\end{equation}
+Forma polar (útil la trabajar con productos y divisiones):
+\begin{equation}
+z = re^{i\theta} \to 
+\mod(z)=|z|=r=\sqrt{x^2+y^2}~\wedge~\arg(z)=\theta=\arctan \Big(\frac{y}{x}\Big),
+\label{eq:p1_ht2}
+\end{equation}
+\textbf{Nota:} Al calcular el $\arg{(z)}$, recordar que $\arctan$ es una función multivaluada (por ser la inversa de 
+una función periódica). Por lo que debe interpretarse correctamente el resultado arrojado por la calculadora (solo es 
+correcto en el primer y cuarto cuadrante). Frecuentemente resulta mas práctico interpretar el resultado de las 
+funciones trigonométricas inversas si se usa la calculadora en modo Deg (grados sexagesimales).\\
+
+Forma trigonométrica (útil la trabajar con sumas algebraicas). Utilizado la importante relación de Euler, podemos 
+escribir:
+\begin{equation}
+z=r[\cos{(\theta)}+i\sin{(\theta)}] \to r\cos{(\theta)}=x~\wedge~r\sin{(\theta)}=y.
+\label{eq:p1_ht3}
+\end{equation}
+
+\subsection*{Representación gráfica de un número complejo z}
+Las variables de la representación analítica  pueden identificarse en el plano complejo $"z"$, como se 
+muestra en la figura \ref{fig:ht_01}.
+\begin{figure}
+	\centering
+	\includegraphics[scale=0.5]{ht_01.png}
+	\caption{Representación gráfica de un número complejo en el plano z.}
+	\label{fig:ht_01}
+\end{figure}
+
+\subsection*{Raíz enésima de un número complejo $z$}
+\begin{equation}
+w=\sqrt[n]{z} \to z=w^n \to r_ze^{i\theta_z}=\Big(r_we^{i\theta_w}\Big)^n=r_w^ne^{in\theta_w}.
+\label{eq:p1_ht4}
+\end{equation}
+Igualando complejos se obtiene la expresión para calcular la raíz ($w$) en forma polar,
+\begin{equation}
+r_w=\sqrt[n]{r_z}~\wedge~\theta_w=\frac{\theta_z+2k\pi}{n},~k=0 ,1,2,...,n-1
+\label{eq:p1_ht5}
+\end{equation}
+\textbf{Nota:} La raíz enésima es una función multivaluada con infinitas soluciones pero con solo $n$ soluciones fundamentales distintas. Estas están distribuidas en el 
+plano complejo de manera equidistante 
+sobre la circunferencia de radio $r_w$.
+
+\subsection*{Potencia real de un número complejo $z$}
+\begin{equation}
+w=z^n=\Big(r_ze^{i\theta_z}\Big)^n=r_z^ne^{in\theta_z}.
+\label{eq:p1_ht41}
+\end{equation}
+Igualando complejos se obtiene la expresión para calcular la potencia ($w$) en forma polar,
+\begin{equation}
+r_w=r_z^n~\wedge~\theta_w=n\theta_z+2k\pi,~k=0,1,2,...
+\label{eq:p1_ht51}
+\end{equation}
+
+%% Funciones trigonométricas e hiperbólicas
+\subsection*{Funciones trigonométricas e hiperbólicas}
+
+Se presenta una serie de fórmulas de utilidad que serán usadas en posteriores desarrollos.
+
+\begin{equation}\label{trigo_cos_e}
+\cos z = \frac{1}{2}(e^{iz}+e^{-iz}).
+\end{equation}
+
+\begin{equation}\label{trigo_sin_e}
+\sin z = \frac{1}{2i}(e^{iz}-e^{-iz}).
+\end{equation}
+
+\begin{equation}\label{trigo_cos_z}
+\cos z = \cos x \cosh y - i \sin x \sinh y.
+\end{equation}
+
+\begin{equation}\label{trigo_sin_z}
+\sin z = \sin x \cosh y + i \cos x \sinh y.
+\end{equation}
+
+\begin{equation}\label{trigo_cos_sin}
+\cos ^2 z + \sin ^2 z = 1.
+\end{equation}
+
+\begin{equation}\label{hiper_cos_e}
+\cosh z = \frac{1}{2}(e^{z}+e^{-z}).
+\end{equation}
+
+\begin{equation}\label{hiper_sin_e}
+\sinh z = \frac{1}{2i}(e^{z}-e^{-z}).
+\end{equation}
+
+\begin{equation}\label{hiper_cos_z}
+\cosh z = \cosh x \cos y + i \sinh x \sin y.
+\end{equation}
+
+\begin{equation}\label{hiper_sin_z}
+\sinh z = \sinh x \cos y + i \cosh x \sin y.
+\end{equation}
+
+\begin{equation}\label{hiper_cos_sin}
+\cosh ^2 z - \sinh ^2 z = 1.
+\end{equation}
+
+%% Logaritmo de un número complejo
+\subsection*{Logaritmo de un número complejo $z$}
+\begin{equation}
+w=\ln{(z)}=\ln{(r_ze^{i\theta_z})}=\ln{(r_z)}+i(\theta_z+2k\pi),~k=0,1,2,...
+\label{eq:p1_ht6}
+\end{equation}
+Igualando complejos se obtiene la expresión para calcular el logaritmo ($w$) en forma cartesiana,
+\begin{equation}
+\operatorname{Re}(w)=ln{(r_z)}~\wedge~\operatorname{Im}{(w)}=\theta_z+2k\pi,~k=0,1,2,...
+\label{eq:p1_ht7}
+\end{equation}
+
+\subsection*{Potencia compleja de un numero real}
+\begin{equation}
+w=A^z\to w=e^{\ln{(A)}z}=e^{\ln{(A)}x} e^{i\ln{(A)}y}
+\label{eq:p1_ht8}
+\end{equation}
+Igualando complejos se obtiene la expresión para calcular la potencia ($w$) en forma polar,
+\begin{equation}
+r_w=e^{\ln{(A)}x}~\wedge~\theta_w=\ln{(A)y}+2k\pi,~k=0,1,2,...
+\label{eq:p1_ht9}
+\end{equation}
+Notar que si la base es $A=e$ la resolución es directa:
+\begin{equation}
+w=e^{z}=e^{x+iy}=e^xe^{iy} \to r_w=e^x \wedge \theta_w=y+2k\pi,~k=0,1,2,...
+\label{eq:p1_ht10}
+\end{equation}
+
+% ***********************************************
+% 					Soluciones
+% ***********************************************
+% Esta sección está pensada para incluir toda la ayuda teórica necesaria para resolver el practico
+% Algunas reglas generales:
+%	-Utilizar la resolucion mas didactica posible y que sea consistente con los otros prácticos
+%	-
+\section*{Soluciones}
+\label{sec:sol}
+
+\begin{enumerate}
+%ej 1	
+\item 
+ \begin{enumerate}
+ 	\item Se realiza el producto multiplicando término a término y recordando que $i^2=-1$:
+ 	\begin{equation}
+ 	z_1z_2=(3-6i)(2+5i)=3\times2+3\times5i+(-6i\times2)+(-6i\times5i)=6+15i-12i+30=36+3i
+ 	\end{equation}
+ 	Notar que solo los productos cruzados (parte real por parte imaginaria) contribuyen a la parte imaginaria del 
+ 	resultado. 
+ \end{enumerate}	
+%ej 2	
+\item
+ \begin{enumerate}
+ 	\item[b)] Utilizando la Eq. \ref{eq:p1_ht2}  se puede escribir:
+	\begin{equation}
+	z=-\frac{2}{5} \to r=\sqrt{\frac{2}{5}^2+0^2}=\frac{2}{5} \wedge \theta=\arctan{\Big(-\frac{0}{2/5}\Big) }=\pi.
+	\end{equation}
+	Por lo que obtenemos la representación en forma polar:
+	\begin{equation}
+	z=\frac{2}{5}e^{i\pi},
+	\end{equation}
+	y mediante la Ec. \ref{eq:p1_ht3}, la representación trigonométrica,
+	\begin{equation}
+	\boxed{z=	\frac{2}{5}[\cos{(\pi)}+i\sin{(\pi)}].}
+	\end{equation}
+	La representación gráfica del número $z$ en el plano complejo es:
+	\begin{figure}[htb]
+		\centering
+	\includegraphics[height=6cm]{tp1_2b.png}
+	\end{figure}	
+\end{enumerate}	
+%ej 3
+\item
+\begin{enumerate}
+	\item Puesto que está involucrada una suma algebraica de números complejos, elegimos la representación binomial,
+	\begin{equation}
+		z+\bar{z}=x+iy+\overline{x+iy}=x+iy+x-iy=\boxed{2x.}
+	\end{equation}
+\end{enumerate}
+%ej 4 
+\item
+\begin{enumerate}
+	\item[b)] Puesto que está involucrada una división de números complejos, elegimos la representación polar,
+	\begin{equation}
+	\Big|\frac{z}{\bar{z}}\Big|=\Big|\frac{re^{i\theta}}{\overline{re^{i\theta}}}\Big|=
+	\Big|\frac{re^{i\theta}}{re^{-i\theta}}\Big|=\Big|e^{i2\theta}\Big|=\boxed{1.}
+	\end{equation}
+	Una demostración alternativa puede hacerse utilizando la propiedad distributiva del módulo respecto a la división:
+	\begin{equation}
+	\Big|\frac{z}{\bar{z}}\Big|=\frac{|re^{i\theta}|}{|\overline{re^{i\theta}}|}=
+	\frac{|re^{i\theta}|}{|{re^{-i\theta}}|}=\frac{r}{r}=1
+	\end{equation}	
+\end{enumerate}
+% ej 5
+\item
+\begin{enumerate}
+	\item Como está involucrada un operación de potenciación, representamos la base en forma polar,
+	\begin{equation}
+	(-1+\sqrt{3}i)^{10} \to r=\sqrt{(-1)^2+(\sqrt{3})^2}=\sqrt{4}=2 \wedge 
+	\theta=\arctan{\Big(-\frac{\sqrt{3}}{1}\Big)}=\frac{2}{3}\pi
+	\end{equation}
+	Luego resolvemos distribuyendo el exponente, ver Ec. \ref{eq:p1_ht51},
+	\begin{equation}
+	\Big(2e^{i\frac{2}{3}\pi}\Big)^{10}=2^{10}e^{i\frac{20}{3}\pi}=
+	\boxed{1024\big[\cos{(\frac{20}{3}\pi)}+i\sin{(\frac{20}{3}\pi)}\big].}
+	\end{equation}	
+\end{enumerate}
+%el 6
+\item
+\begin{enumerate}
+	\item[c)] Como está involucrada un operación de radicación, representamos la base en forma polar, ver Ec. 
+	\ref{eq:p1_ht4},
+	\begin{equation}
+	w=\sqrt[4]{1} \to r_z=\sqrt{1^2}=1 \wedge \theta_z=\arctan{(0)}=0
+	\end{equation}
+	Luego resolvemos utilizando la Ec. \ref{eq:p1_ht5},
+	\begin{equation}
+	r_w=\sqrt[4]{1}=1 \wedge \theta_w=\frac{0+2k\pi}{4}~\text{para}~k=0,1,2,3.
+	\end{equation}	
+	Por lo que las 4 soluciones son:
+	\begin{equation}
+	\boxed{w_0=1e^{i0}=1 ; w_1=1e^{i\frac{\pi}{2}}=i ; w_2=1e^{i\pi}=-1; w_3=1e^{i\frac{3\pi}{2}}=-i.}
+	\end{equation}		
+	Como puede verse las 4 soluciones están distribuidas de forma equidistante sobre una circunferencia de radio 
+	$r_w=1$:
+	\begin{figure}[htb]
+	\centering
+	\includegraphics[height=6cm]{tp1_6c.png}
+\end{figure}	
+\end{enumerate}
+%ej 7
+\item
+\begin{enumerate}
+	\item[c)] Utilizando la Ec. \ref{eq:p1_ht2},
+	\begin{equation}
+	z=e^{1+4i}=e^1e^{4i} \to r=e \wedge \theta=4 \to z=e[\cos{(4)}+i\sin{(4)}]=\boxed{-1,7768-2,0572i.}
+	\end{equation}
+\end{enumerate}
+%ej 8
+\item
+\begin{enumerate}
+	\item[a)] Puesto que la base es $e$, la resolución es directa, ver Ec. \ref{eq:p1_ht10},
+	\begin{equation}
+	e^{5z}=e^{5(x+iy)}=e^{5x}e^{i5y}=\boxed{e^{5x}\cos{(5y)}+ie^{5x}\sin{(5y)}.}
+	\end{equation}
+	\item[c)] Puesto que la base es $3$, la solucion se obtiene mediante la Ec. \ref{eq:p1_ht9},
+	\begin{equation}
+	3^{z}=e^{\ln{(3)}z}=e^{\ln{(3)}x}e^{i\ln{(3)}y}=\boxed{e^{\ln{(3)}x}\cos{[\ln{(3)}y]}+
+		ie^{\ln{(3)}x}\sin{[\ln{(3)}y]}.}	
+	\end{equation}
+\end{enumerate}
+
+%% ej 9
+\item Se pide graficar la función exponencial compleja para distintos casos de incremento en los valores del exponente. Para mayor claridad en la explicación, escribimos la función exponencial compleja como:
+\begin{equation}
+f(z) = e^z = e^{x+iy} = e^x \cdot e^{iy}.
+\end{equation}
+Comparando la expresión con la representación en forma exponencial de un número complejo, se observa que $e^x$ es el módulo de la función y que $y$ es el argumento. 
+\begin{gather}
+|f(z)| = e^x, \\
+Arg\{z\} = y.
+\end{gather}
+Entonces, un incremento en la variable $x$ producirá un incremento en el módulo (que crecerá de forma exponencial), y un incremento en la variable $y$ producirá un incremento en el argumento. Veamos un ejemplo.
+
+\begin{enumerate}
+%% ej 9.a
+\item En este punto la condición es que la variable $x$ tiene un valor constante $x=5$, y la variable $y$ varía entre $0$ y $\frac{7}{6}\pi$ con un incremento $\Delta y=\frac{\pi}{6}$. Numéricamente esto queda de la siguiente forma:
+\begin{align}
+f(5,0) &= e^5 \cdot e^{i0} = e^5 \cos(0) + ie^5 \sin(0) = 148.4, \\
+f(5,\tfrac{\pi}{6}) &= e^5 \cdot e^{i\frac{\pi}{6}} = 
+		e^5 \cos(\tfrac{\pi}{6}) + ie^5 \sin(\tfrac{\pi}{6}) = 128.5+i74.21, \\
+f(5,2\tfrac{\pi}{6}) &= e^5 \cdot e^{i2\frac{\pi}{6}} = 
+		e^5 \cos(2\tfrac{\pi}{6}) + ie^5 \sin(2\tfrac{\pi}{6}) = 74.21+i128.5, \\
+f(5,3\tfrac{\pi}{6}) &= e^5 \cdot e^{i3\frac{\pi}{6}} = 
+		e^5 \cos(3\tfrac{\pi}{6}) + ie^5 \sin(3\tfrac{\pi}{6}) = 0+i148.4, \\
+f(5,4\tfrac{\pi}{6}) &= e^5 \cdot e^{i4\frac{\pi}{6}} = 
+		e^5 \cos(4\tfrac{\pi}{6}) + ie^5 \sin(4\tfrac{\pi}{6}) = -74.21+i128.5, \\
+f(5,5\tfrac{\pi}{6}) &= e^5 \cdot e^{i5\frac{\pi}{6}} = 
+		e^5 \cos(5\tfrac{\pi}{6}) + ie^5 \sin(5\tfrac{\pi}{6}) = -128.5+i74.21, \\
+f(5,6\tfrac{\pi}{6}) &= e^5 \cdot e^{i6\frac{\pi}{6}} = 
+		e^5 \cos(6\tfrac{\pi}{6}) + ie^5 \sin(6\tfrac{\pi}{6}) = -148.1+i0, \\
+f(5,7\tfrac{\pi}{6}) &= e^5 \cdot e^{i7\frac{\pi}{6}} = 
+		e^5 \cos(7\tfrac{\pi}{6}) + ie^5 \sin(7\tfrac{\pi}{6}) = -128.5-i74.21.
+\end{align}
+
+En la gráfica se puede observar cómo para este caso el módulo se mantiene constante y el argumento va cambiando a razón de $\tfrac{\pi}{6}$.
+
+\begin{center}
+\includegraphics[height=8cm]{tp1_9a}
+\end{center}
+
+\end{enumerate}
+
+%% ej 10
+\item Se pide determinar los valores de $z$ que cumplan con la condición dada.
+
+\begin{enumerate}
+%% ej 10.a
+\item En este punto se debe cumplir la condición $|e^{-z}|<1$. El primer paso es reemplazar $z=x+iy$, y luego operar el miembro izquierdo de la ecuación.
+\begin{align}
+|e^{-z}| &< 1, \\
+|e^{-x-iy}| &< 1, \\
+|e^{-x} \cdot e^{-iy}| &< 1,	~~~~~~~~\text{\textit{El módulo es $e^{-x}$}}, \\
+e^{-x} &< 1, \\
+-x &< \ln 1, 	~~~~~\text{\textit{Se aplica logaritmo natural en ambos miembros}},\\
+-x &< 0, \\
+x &> 0.
+\end{align}
+\begin{profesor}
+	\item 
+	
+	%% ej 10.c
+	
+	\item En este punto se solicita encontrar $z$ que cumpla la condición $Re\{e^{2z}\}=0$. 
+	El primer paso es desarrollar $e^{2z}$ reemplazando $z$ por $x+iy$. Luego se debe aplicar la fórmula de Euler.
+	\begin{align}
+		e^{2z}&=e^{2(x+iy)}, \\
+		e^{2x+i2y}&=e^{2x}\cos(2y)+ie^{2x}\sin(2y), \\
+	\end{align}
+	Ahora tomamos la parte real de $e^{2z}$ y la igualamos a $0$
+	\begin{align}
+		e^{2x}\cos(2y) &=0	
+	\end{align}
+	Por inspección vemos que $e^{2x}$ es mayor que $0$ para todo $x$. Para que se cumpla la igualdad planteamos los valores de $y$ que producen $cos(2y)=0$. Esto es: 
+	\begin{align}
+		2y&=\frac{\pi}{2}\pm k\pi  ~~~~~~~~\text{\textit{para $k=0,1,2,\dots$}} \\
+		y&=\frac{\pi}{4}\pm \frac{k\pi}{2} \\
+		y &=\frac{\pi}{4}(1 \pm 2k\pi) ~~~~~~~~\text{\textit{para $k=0,1,2,\dots$}} 
+	\end{align}
+	
+	
+\end{profesor}
+
+
+\end{enumerate}
+
+%% ej 11
+\item Se deben encontrar los valores de $z$ que cumplan con la ecuación dada.
+
+\begin{enumerate}
+%% ej 11.c
+\item 
+\item 
+\begin{profesor}
+Desarrollamos el exponente en forma cartesiana y el termino derecho en forma polar,
+\begin{align}
+\label{eq:p1_ej11b}
+e^z &= -7 , \\
+e^xe^{iy} &= 7e^{\pm i\pi}.
+\end{align}
+Igualando complejos, podemos escribir:
+\begin{align}
+e^x&= 7 \to \ln|x|=7 , \\
+y&=\pm \pi \pm 2k\pi.
+\end{align}
+Donde se ha sumado $\pm 2k\pi$ debido a la periodicidad de la exponencial compleja. Con esto podemos escribir el 
+resultado de la Ec. \ref{eq:p1_ej11b} como:
+\begin{align}
+z &=x+iy,\\
+ &=\ln(7)\pm (2k+1)\pi,\\ 
+ &=1.9459\pm (2k+1)\pi.\\
+\end{align}
+\end{profesor}
+
+\item Tomamos este punto como ejemplo. \\ Se deben encontrar los valores de $z$ de modo que se cumpla que $e^z= 4+3i$. \\
+Una forma para resolverlo es reemplazando $z=x+iy$ obteniendo la siguiente ecuación:
+\begin{equation}\label{ej11.c_a}
+e^x.e^{iy} = 4 +3i.
+\end{equation}
+Calculamos el módulo y el argumento de $4 +3i$ y lo expresamos en forma polar:
+\begin{align}
+|4+3i|&= \sqrt{4^2+3^2}=5, \\
+Arg\{4+3i\}&=\arctan{\frac{3}{4}}=0.6435 
+\end{align}
+Reescribiendo \eqref{ej11.c_a}
+\begin{equation}
+	e^x.e^{iy} = 5 e^{i 0.6435},
+\end{equation}
+
+y por inspección podemos plantear:
+\begin{align}
+	e^x &= 5, \\
+	x &= \ln 5, \\
+	x &= 1.609. \\
+	y &=0.6435\pm2k\pi.~~~~ k = 0, 1, 2, \cdots.
+\end{align}
+
+La respuesta completa sería:
+\begin{equation}
+\boxed{z = 1.609 + i(0.6435\pm k2\pi), ~~~~ k = 0, 1, 2, \cdots.}
+\end{equation}
+
+
+\end{enumerate}
+
+
+%% ej 12
+\item Este ejercicio se resuelve de forma sencilla usando la identidad trigonométrica correspondiente.
+
+\begin{enumerate}
+
+\item Para calcular el valor de $\cos 6i$ se usa la identidad para el coseno dada en la Ec. \ref{trigo_cos_z}, a saber,
+\begin{align}
+\cos(6i) &= \cos 0 \cosh 6 - i \sin 0 \sinh 6, \\
+\cos(6i) &= \boxed{201,7}.
+\end{align}
+
+\begin{profesor}
+	\item 
+\end{profesor}
+
+\end{enumerate}
+
+%% ej 13
+\item Para la demostración siguiente, se hace uso de las Ec. \ref{trigo_cos_z}, \ref{trigo_cos_sin} y \ref{hiper_cos_sin}.
+
+\begin{enumerate}
+\item
+\begin{align}
+|\cos z|^2 &= \cos ^2 (x) \cosh ^2 (y) + \sin ^2 (x) \sinh ^2 (y), \\
+&= \cos ^2 (x) \cosh ^2 (y) + (1-\cos ^2 (x)) \sinh ^2 (y), \\
+&= \cos ^2 (x) \cosh ^2 (y) + \sinh ^2 (y) - \cos ^2 (x) \sinh ^2 (y), \\
+&= \cos ^2 (x) [\cosh ^2 (y) - \sinh ^2 (y)] - \sinh ^2 (y), \\
+&= \boxed{\cos ^2 (x) + \sinh ^2 (y)}
+\end{align}
+\end{enumerate}
+
+%% ej 14
+\item Se deben encontrar los valores para la variable $z$ que cumplan con la ecuación dada.
+
+\begin{enumerate}
+\item[c)]
+	Usando la identidad dada en la Ec. \ref{hiper_cos_z},
+	\begin{align}
+	\cosh z	&= 0.5,		\\
+	\cosh x \cos y + i \sinh x \sin y.		&= 0.5
+	\end{align}
+	Igualando parte real con parte real, e imaginaria con imaginaria,
+	\begin{align}
+	\cosh x \cos y &= 0.5,		\\
+	\sinh x \sin y &= 0.
+	\end{align}
+	Por inspección tratamos de identificar qué valores pueden tomar las variables $x$ e $y$ para que se cumplan las igualdades. En la primera ecuaci\'on, si $ x=0 $, $ \cosh 0 = 1 $, y despejando para la $ y $,
+	\begin{equation*}
+	y = \arccos 0.5 = \pm\dfrac{\pi}{3} \pm k2\pi, \hspace{1cm} k=0,1,2, \cdots.
+	\end{equation*}
+	Es importante recordar que las funciones trigonométricas son periódicas cada $2\pi$, por lo que se debe agregar el término $k2\pi$ en el resultado. \\
+	La segunda ecuaci\'on se cumple debido a que $ \sinh 0 = 0 $. Por lo tanto, 
+	\begin{align}
+	\boxed{z = i \left(\pm \dfrac{\pi}{3} \pm k2\pi \right).}
+	\end{align}
+
+\end{enumerate}
+
+%% ej 15
+\item Para resolver los logaritmos complejos usamos la expresión dada en la Ec. \ref{eq:p1_ht6}.
+
+	\item[c)] Expresamos en forma exponencial al complejo $z$ que está en el argumento de la función logaritmo natural, para identificar módulo y argumento,
+	\begin{equation*}
+	z = 1 e^{i\frac{\pi}{2}}.
+	\end{equation*}
+	Reemplazando y tomando las consideraciones correspondientes,
+	\begin{align}
+	\ln z = \ln 1 + i\left(\frac{\pi}{2} \pm k2\pi\right) = \boxed{0 + i\left(\frac{\pi}{2} \pm k2\pi\right)} \hspace{1cm} k=0,1,2,\cdots
+	\end{align}
+
+%% ej 16
+\item Se usa nuevamente la Ec. \ref{eq:p1_ht6}.
+
+\begin{enumerate}
+\item En primer lugar se calcula módulo y argumento para el complejo $3+5i$,
+\begin{align}
+|z| &= \sqrt{9+25} = \sqrt{34}, \\
+Arg\{z\} &= \arctan \left( \frac{5}{3} \right) = 1.03.
+\end{align}
+Ahora se calcula,
+\begin{align}
+\ln (3+5i) &= \ln(\sqrt 34) + i(1.03 \pm k2\pi), \\
+&= 1.76 + i(1.03 \pm k2\pi) ~~~~~~ k=0,1,2,\cdots.
+\end{align}
+Para la representación gráfica, se toman los valores $k=0, 1, 2$. Con esto queda,
+\begin{align}
+w_{0} &= 1.76 + i 1.03, \\
+w_{1} &= 1.76 + i (1.03+2\pi) = 1.76 + i 7.31, \\
+w_{1^-} &= 1.76 + i (1.03-2\pi) = 1.76 - i 5.25, \\
+w_{2} &= 1.76 + i (1.03+4\pi) = 1.76 + i 13.6, \\
+w_{2^-} &= 1.76 + i (1.03-4\pi) = 1.76 - i 11.5.
+\end{align}
+
+\begin{center}
+\includegraphics[height=8cm]{tp1_16a.png}
+\end{center}
+
+%% ej 17
+\end{enumerate}
+\item
+%% ej 18
+\item Sabiendo que la distancia entre dos puntos $ z $ y $ a $ es $ |z-a| $, se consideran las siguientes regiones:
+\begin{itemize}
+\item Circunferencia de radio $ \rho $ y centro $ a $: $ |z-a|=\rho. $
+\item Disco circular abierto: $ |z-a|<\rho. $
+\item Disco circular cerrado: $ |z-a|\leqslant\rho. $
+\item Parte exterior de una circunferencia: $ |z-a|>\rho $, $ |z-a|\geqslant\rho. $
+\item Anillo circular (puede ser combinaci\'on de abierto y cerrado): $ \rho_1 < |z-a| < \rho_2$.
+\end{itemize}
+
+\textit{Algunos ejemplos de semiplanos son:}
+\begin{itemize}
+\item Semiplano superior abierto: $ Im (z) > 0 $
+\item Semiplano derecho: $ Re (z) > 0$
+\end{itemize}
+\begin{enumerate}
+	\item $ |z| \leq 3 $									% a
+	
+	De la definici\'on se puede inferir que esta regi\'on es disco circular cerrado con radio $ \rho = 3 $ y centro en $ a=0 $. Es decir, es la circunferencia unitaria.
+	
+	Tambi\'en, resolviendo,
+	\begin{align}
+	|z|					&\leq 3,	\\
+	|x+jy|				&\leq 3,	\\
+	\sqrt{x^2 + y^2}	&\leq 3,	\\
+	x^2 + y^2			&\leq 3^2.	
+	\end{align}
+	Que es la ecuaci\'on de una circunferencia de radio unitario, centrada en el origen.
+		
+	
+	\item[k)] $ \text{Im} \left( \dfrac{z+1}{z-1} \right) \leq 2 $	% g
+	\begin{align}
+	\dfrac{z+1}{z-1}	&= \dfrac{x+1+jy}{x-1+jy},			\\
+						&= \dfrac{x+1+jy}{x-1+jy} \cdot \dfrac{x-1-jy}{x-1-jy},		\\
+						&= \dfrac{(x+1)(x-1) + y^2}{(x-1)^2+y^2}  +j \dfrac{[y(x-1)-y(x+1)])}{(x-1)^2+y^2},			\\
+						&= \dfrac{(x+1)(x-1) + y^2}{(x-1)^2+y^2} -j \dfrac{2y}{(x-1)^2+y^2}.
+	\end{align}
+	\begin{align}
+	\text{Im} \left( \dfrac{z+1}{z-1} \right) & \leq 2,		\\
+	-\dfrac{2y}{(x-1)^2+y^2}	& \leq 2,			\\
+	-2y	& \leq 2[(x-1)^2+y^2],			\\
+	-y 	& \leq (x-1)^2+y^2,				\\
+	0 & \leq (x-1)^2+y^2+y +\dfrac{1}{4}-\dfrac{1}{4},		\\
+	\dfrac{1}{4} & \leq (x-1)^2+\left(y+\dfrac{1}{2}\right)^2.
+	\end{align}
+	Circunferencia cerrada de radio $ \rho = \frac{1}{2} $, centrada en $ a = 1 -j \frac{1}{2}. $
+
+\end{enumerate}
+
+
+
+
+
+\end{enumerate}
+
+
+
+
+
+
+
+%% \end{comment}
+
+
+
+
+\begin{center}
+	---------------------------------------
+\end{center}
+\end{document}

@@ -1,0 +1,797 @@
+% ***********************************************
+%***********COSAS A MEJORAR O CORREGIR***********
+%	
+% Sol de ej 8, exp de Cn
+% eq9 y 10		
+% Exp de Cn y an y bn en her teoricas		
+% Incluir respuestas en todos los ej
+%
+% ***********************************************
+% Preamble
+% ---
+\documentclass[10pt,a4paper]{article}
+
+% Packages
+% ---
+\usepackage[latin1]{inputenc}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{layout}
+\usepackage{graphics}
+\usepackage{graphicx}
+\usepackage[spanish]{babel}
+\usepackage{lastpage}
+\usepackage{tabto}
+\usepackage{xcolor,colortbl}
+\usepackage{verbatim}
+\usepackage[a4paper, top=1 in,bottom=1in, left=1 in, right=0.7 in]{geometry}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\usepackage{comment}
+\usepackage{bigints}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{width=7cm,compat=1.5}
+
+\usepackage{tcolorbox}
+\usepgfplotslibrary{external}
+
+\usetikzlibrary{calc}
+\usepackage{gnuplottex}
+\usepackage{extarrows}
+\usepackage{mathrsfs}
+
+
+\newtheorem{teorema}{Teorema}
+
+%\usetikzlibrary{circuits,arrows,positioning}
+
+\usepackage[export]{adjustbox}
+
+
+\newcommand{\mc}[2]{\multicolumn{#1}{c}{#2}}
+\definecolor{Gray}{gray}{0.85}
+\definecolor{LightCyan}{rgb}{0.88,1,1}
+%
+\newcolumntype{a}{>{\columncolor{Gray}}c}
+\newcolumntype{b}{>{\columncolor{white}}c}
+
+
+%ELEGIR VERSION 
+%Comentar para eliminar la solucion de todos los ejercicios y dejar la version para los 
+% alumnos, a saber con un solo punto resuelto por ejercicio.
+
+\includecomment{profesor}    % version profesor
+%\excludecomment{profesor}	  % version alumnos
+
+\lhead{\footnotesize An\'alisis de Se\~nales y Sistemas  - A\~no 2020}
+\chead{}
+\rhead{\footnotesize Trabajo Pr\'actico N$^\text o$7: Serie y Transformada de Fourier}
+\lfoot{}
+\cfoot{}
+\rfoot{\footnotesize P\'agina \thepage\ de \pageref{LastPage}}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+\title{
+	\textsc{\includegraphics[width=0.55\textwidth]{logoUTN.jpg}} ~\\
+	{\large Departamento de Electr\'onica}\\ 
+	[0.1cm]
+	{\Huge{An\'alisis de Se\~nales y Sistemas}} \\
+	[0.25cm]
+	{\Large{Trabajo Pr\'{a}ctico N$^{\text {o}}$7: Serie y Transformada de Fourier}		\\
+	}}
+\author{}
+\date{}
+
+
+% Main document ********************************************
+% ---
+\begin{document}
+\maketitle
+\begin{profesor}
+	\hspace{6cm}(Versión PROFESOR)
+\end{profesor}
+\thispagestyle{fancy}
+
+\section*{Enunciados:}
+\label{sec:enun}
+
+\begin{enumerate}
+\subsubsection*{Ortogonalidad de funciones}
+% ***********************************************
+% 					Ejercicio 1
+% ***********************************************
+	\item {Determinar si las funciones $ f(x)=x $ y $ g(x)=x^2 $ cumplen con la condici\'on de ortogonalidad en el 
+	intervalo $ [-1;1] $}~~**
+
+% ***********************************************
+% 					Ejercicio 2
+% ***********************************************
+	\item {Demostrar la ortogonalidad en el intervalo $ [-1;1] $ y con 
+	funci\'on de peso $ w(x)=1 $, entre los siguientes polinomios de Legendre}:
+	\begin{enumerate}
+	\item $P_0$ y $P_3$				
+	\item $P_1$ y $P_2$	
+	\item $P_1$ y $P_3$				
+	\end{enumerate}	
+	
+
+% ***********************************************
+% 					Ejercicio 3
+% ***********************************************
+\item {Demostrar la ortogonalidad de las siguientes funciones sinusoidales armónicas en cualquier intervalo de longitud 
+$T$, siendo $T=\frac{2\pi}{w_0}$, y con funci\'on de peso $ w(t)=1 $}:
+\begin{enumerate}
+	\item $\cos{(nw_0t)}$ y $\sin{(nw_0t)}$
+	\item $\cos{(mw_0t)}$ y $\cos{(nw_0t)}$~~**
+	\item $\sin{(mw_0t)}$ y $\sin{(nw_0t)}$			
+\end{enumerate}		
+	
+% ***********************************************
+% 					Ejercicio 4
+% ***********************************************	
+\item {Demostrar que las normas al cuadrado de $\sin{(nw_0t)}$ y $\cos{(nw_0t)}$, son iguales 
+a $T/2$ si $n\geq1$, con $T=\frac{2\pi}{w_0}$.}% 
+
+\subsubsection*{Serie de Fourier}
+%***********************************************
+%					Ejercicio 5
+% ***********************************************
+\item {Desarrollar en serie trigonométrica de Fourier las siguientes señales periódicas:}
+\begin{enumerate}
+\item
+$x(t)=A$ para $-\frac{\tau}{2}<t<\frac{\tau}{2}$ y $T=2\tau$ ** \tabto{9cm}
+%\textit{Rta}: $x(t)=\frac{A}{2}+\sum_{n=1}^{\infty}\left[\frac{2A}{\tau}\frac{\sin(n\frac{\pi}{2})}{n\frac{\pi}{2}}\right]\cos(n\frac{\pi}{\tau}t)$
+\textit{Rta}: $x(t)=\frac{A}{2}+\sum_{n=1}^{\infty}\left[A\frac{\sin(n\frac{\pi}{2})}{n\frac{\pi}{2}}\right]\cos(n\frac{\pi}{\tau}t)$
+\item
+Asignar al resultado anterior los valores $A=3$ y $\tau=2$
+\item
+$x(t)=t$ para $-1<t<1$, siendo $T=2$ \tabto{9cm}
+\textit{Rta}: $b_n=(-1)^{n+1}\frac{2}{n\pi}$
+\item
+$x(t)=
+\begin{cases}
+t, & 0<t<1, \\
+2-t, & 1<t<2,
+\end{cases}
+\text{siendo } T=2.$ **
+\item 
+$
+x(t) = 
+\begin{cases}
+-1, & \text{para } -2<t<0, \\
+1, & \text{para } ~~~ 0<t<2,
+\end{cases}
+~~~~~~\text{siendo } T=6. 
+$
+
+\end{enumerate}
+
+%***********************************************
+%					Ejercicio 6
+% ***********************************************
+\item {Desarrollar la serie exponencial de Fourier de:}
+\begin{enumerate}
+	\item $x(t)=1$ para $-1/4<t<1/4$, con $T=1$	
+	\item $x(t)=e^{-t}$ para $0<t<1$, con $T=1$~~**
+	\item $x(t)=e^{t}$ para $0<t<1$, con $T=2$~~**
+\end{enumerate}		
+
+
+%***********************************************
+%					Ejercicio 7
+% ***********************************************
+\item {Comprobar las siguientes relaciones entre los coeficientes de la serie exponencial de Fourier y los de la serie trigonométrica:}
+\begin{enumerate}
+\item
+$C_n=\frac{1}{2}(a_n-ib_n)$, $\forall n>0$
+\item
+$C_{-n}=\frac{1}{2}(a_n+ib_n)$, $\forall n>0$
+\item
+$C_0=\frac{a_0}{2}$, $\forall n=0$
+\item
+$a_n=2 ~Re \{C_n\}$, $\forall n>0$
+\item
+$b_n=-2 ~Im \{C_n\}$, $\forall n>0$
+\end{enumerate}
+
+%***********************************************
+%					Ejercicio 8
+% ***********************************************
+\item Utilizando las relaciones del punto anterior, determinar los coeficientes de la serie exponencial de la señal 
+triangular del punto 5\textit{c}).
+
+\subsection*{Transformada de Fourier}
+
+%***********************************************
+%					Ejercicio 9
+% ***********************************************
+\item Calcular la transformada de Fourier para el pulso rectangular 
+$r(t)=
+\begin{cases}
+A & \forall t: -\frac{\tau}{2}<t<\frac{\tau}{2}, \\
+0 & \forall t: t<-\frac{\tau}{2} ~\land~ t>\frac{\tau}{2}.
+\end{cases}$
+Graficar módulo y fase. **
+
+
+%***********************************************
+%					Ejercicio 10
+% ***********************************************
+\item
+\begin{enumerate}
+\item
+Calcular la transformada de Fourier para el siguiente pulso rectangular de ancho $\tau$ desplazado $t=t_0$: 
+$r(t)=
+\begin{cases}
+A & \forall t: t_0-\frac{\tau}{2}<t<t_0+\frac{\tau}{2}, \\
+0 & \forall t: t<t_0-\frac{\tau}{2} ~\land~ t>t_0+\frac{\tau}{2}.
+\end{cases}$ **
+\item Qué impacto tiene en la transformada el valor del desplazamiento $t_0$ ?
+\item Cuál es la máxima amplitud que alcanza la transformada?
+\item Cómo incide el valor del ancho de pulso $\tau$ en los valores de cruce por cero?
+\item Realizar el cálculo para $t_0=10$ y $\tau=2$
+\end{enumerate}
+
+%***********************************************
+%					Ejercicio 11
+% ***********************************************
+\item Determinar la transformada de Fourier del pulso rectangular:
+$r(t)=
+\begin{cases}
+A & \forall t: -\frac{\tau}{2}<t<\frac{\tau}{2}, \\
+0 & \forall t: t<-\frac{\tau}{2} ~\land~ t>\frac{\tau}{2}.
+\end{cases}$
+Considerando $A=\frac{1}{\tau}$, y $\tau\to0$. Graficar. **
+%***********************************************
+%					Ejercicio 12
+% ***********************************************
+\item Obtener el espectro de $\delta(t-t_0)$ para $t_0>0$. Graficar **
+
+%***********************************************
+%					Ejercicio 13
+% ***********************************************
+\item Graficar la señal $x(t)=te^{-2t}u(t)$ y calcular su transformada de Fourier. **
+
+%***********************************************
+%					Ejercicio 14
+% ***********************************************
+\item Para la señal periódica $x(t)=1~ \forall t: -\frac{\tau}{2}<t<\frac{\tau}{2}$ y $T=2\tau$:
+\begin{enumerate}
+	\item Obtener la serie exponencial de Fourier
+	\item Determinar y graficar $|C_n|$
+	\item Obtener la transformada de Fourier para el pulso aislado: 
+	$y(t)=
+	\begin{cases}
+	1 & \forall t: -\frac{\tau}{2}<t<\frac{\tau}{2}, \\
+	0 & \forall t: t<-\frac{\tau}{2} ~\land~ t>\frac{\tau}{2}.
+	\end{cases}$	
+	\item Graficar $|Y(iw)|$
+	\item Comparar  $|Y(iw)|$ con $|C_n|$
+\end{enumerate}
+\end{enumerate}
+
+% ***********************************************
+% 			Herramientas Teóricas (HT)
+% ***********************************************
+
+% *** PAUTAS A SEGUIR ***
+\begin{comment}
+Esta sección esta pensada para incluir toda la ayuda teórica necesaria 
+para resolver el practico.
+Algunas reglas generales:
+	-Mantener el contenido al minimo, referir a la bibliografía para mayor 
+		información (hay q armar un archivo .bib).
+	-Enumerar todas las ecuaciones.
+	-No repetir ecuaciones ya dadas en las HT de otro práctico, 
+		solo referir a ella.
+	-Para resaltar palabras usar \textit.
+	-Utilizar la nomencaltura oficial de la catátedra !!  
+		(Hay que definirlo, yo diria seguir al pie de la letra el kreizig)
+\end{comment}
+
+% *** CONTENIDO ***
+\section*{Herramientas Te\'oricas:}
+\label{sec:herr}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%	
+\subsection*{Producto interno, ortogonalidad y norma de funciones}
+Tomemos un conjunto, posiblemente infinito, de funciones $x_1(t),x_2(t),...x_n(t)$ continuas en el intervalo $[a,b]$. 
+Se define el producto 
+interno entre dos funciones cualesquiera de este conjunto, $x_m(t)$ y $x_n(t)$, en el intervalo $[a,b]$ y con función 
+de peso $w(t)$, de la siguiente forma:
+\begin{equation}
+	<x_m(t),x_n(t)>=\int_{a}^{b} x_m(t) x_n(t) w(t) dt.
+\end{equation}
+
+De manera análoga a lo que sucede con cantidades vectoriales, se dice que dos funciones distintas son ortogonales entre 
+si, cuando su producto interno es nulo: 
+\begin{equation}
+<x_m(t),x_n(t)>=0~~~\text{con}~~n\neq m.
+\end{equation}
+
+Siguiendo con la analogía vectorial, se define el cuadrado de la \textbf{norma} de una función $x_n(t)$, mediante el 
+producto:
+\begin{equation}
+||x_n(t)||^2=<x_n(t),x_n(t)>=\int_{a}^{b} x^2_n(t) w(t) dt.
+\end{equation}
+Si todas las funciones de un conjunto son ortogonales entre si y tienen norma unitaria: $||x_n(t)||=1~\forall n$, se 
+dice que el conjunto es \textbf{ortonormal}.
+ 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%	
+\subsection*{Polinomios de Legendre}
+Los polinomios de Legendre $P_n(x)$, son un conjunto de funciones ortogonales en el intervalo $ [-1;1] $ y con 
+funci\'on de peso $ w(x)=1$, que satisfacen la siguiente relación de recurrencia: 
+\begin{equation}
+	P_{n+1}(x)=\frac{2n+1}{n+1}xP(x)-\frac{2n+1}{n+1}P_{n-1}(x)
+\end{equation}
+Los primeros polinomios de Legendre son:
+\begin{align}
+P_0(x)	&= 1,	&	P_1(x)	&= x,		\\
+P_2(x)	&= \dfrac{1}{2}\left( 3 x^2 -1 \right),		&	P_3(x)	&= \dfrac{1}{2}\left( 5x^3 - 3x \right),			\\
+P_4(x)	&= \dfrac{1}{8}\left( 35x^4 - 30x^2 +3 \right),	&	P_5(x)	&= \dfrac{1}{8}\left( 63x^5 - 70x^3 + 15x \right),	
+\end{align}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%	
+\subsection*{Sinusoides y exponenciales complejas armónicas}
+Las funciones sinusoidales que tienen una relación armónica entre sus frecuencias, es decir, el conjunto:
+\begin{equation}
+\left\lbrace \sin n\omega_0 t, \cos m\omega_0 t \right\rbrace, \hspace{1cm} n=0,1,2,\cdots; \hspace{.3cm} 
+m=0,1,2,\cdots.
+\end{equation}
+son ortogonales con funci\'on de peso 
+$ w(t)=1$ para cualquier intervalo de longitud $T$, siendo $T=\frac{2\pi}{w_0}$. Por ejemplo $[-T/2;T/2]$ ó 
+$[0;T]$.
+
+Notar que debido a la relación de Euler, lo anterior implica que el conjunto de funciones exponenciales complejas 
+relacionadas armónicamente, $\{e^{inw_0t}\}$ con $n=0,1,...$, es también un conjunto ortogonal en el intervalo $T$ y 
+con $ w(t)=1$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%	
+\subsection*{Serie exponencial de Fourier}
+La serie exponencial de Fourier de una señal periódica $x(t)$, con periodo $T$, se define como:
+\begin{equation}
+	x(t)=\sum _{n=-\infty}^{\infty}C_ne^{inw_0t},
+\end{equation}
+donde los coeficientes \textbf{complejos} de la serie están dados por:
+\begin{equation}
+C_n=\frac{1}{T}\int_{T} x(t) e^{-inw_0t} dt
+\label{ec:sef_coef}
+\end{equation}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%	
+	\subsection*{Serie trigonométrica de Fourier}
+	La serie trigonométrica de Fourier de una señal periódica $ x(t) $ con período $ T $ es:
+	\begin{equation}\label{serieTrigFourier}
+	x(t) = \dfrac{a_0}{2} + \sum _{n=1}^{\infty} \left( a_n \cos n\omega_0 t + b_n \sin n\omega_0 t \right),
+	\end{equation}
+	donde los coeficientes \textbf{reales} de la serie están dados por:
+	\begin{align}
+	a_0 &= \dfrac{2}{T} \int_{-\frac{T}{2}}^{\frac{T}{2}} x(t) dt		\\
+	a_n &= \dfrac{2}{T} \int_{-\frac{T}{2}}^{\frac{T}{2}} x(t) \cos (n\omega_0 t) ~ dt	\hspace{1cm} n=1,2,\cdots,	\\
+	b_n &= \dfrac{2}{T} \int_{-\frac{T}{2}}^{\frac{T}{2}} x(t) \sin (n\omega_0 t) ~ dt	\hspace{1cm} n=1,2,\cdots.\label{eq:bn}
+	\end{align}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	\subsection*{Serie trigonométrica de Fourier y paridad de señales}	
+	Si $ x(t) $ es una señal par y est\'a en el integrando de una integral definida con limites de integración 
+	simétricos, podemos escribir:
+	\begin{equation}
+	\int_{-\frac{T}{2}}^{\frac{T}{2}} x(t) ~ dt = 2 \int_{0}^{\frac{T}{2}} x(t) ~ dt \hspace{2cm} (x \text{ par}).
+	\end{equation}
+	
+	Por otro lado, si $ x(t) $ es una señal impar, entonces
+	\begin{equation}
+	\int_{-\frac{T}{2}}^{\frac{T}{2}} x(t) ~ dt = 0 \hspace{3cm} (x \text{ impar}).
+	\end{equation}
+
+	Las señales pares e impares se comportan de manera análoga a los enteros pares e impares bajo la
+	multiplicación, a saber: 
+	\begin{itemize}
+		\item {El producto de una señal par por otra impar es una señal impar.}
+		\item {El producto de dos señales pares da otra señal par.}
+		\item {El producto de dos señales impares da una señal par.}
+	\end{itemize}
+
+	Es importante tener en cuenta esto al calcular los coeficientes de Fourier, pues en los integrandos se 
+	tiene el producto de la señal $x(t)$ por un coseno (señal par) o un seno (señal impar). 
+	
+	De lo anterior se desprende que la serie de Fourier de una señal par de período T es una \textbf{``Serie de 
+	Fourier de cosenos"}
+	\begin{equation}
+	x(t) = \dfrac{a_0}{2} + \sum _{n=1}^{\infty} a_n \cos (n\omega_0 t),
+	\end{equation}
+	con coeficientes
+	\begin{equation}
+	a_0 = \dfrac{2}{T}\cdot 2 \int_{0}^{\frac{T}{2}} x(t) ~ dt, \hspace{1cm} a_n = \dfrac{2}{T} \cdot 
+	2\int_{0}^{\frac{T}{2}} x(t) \cos (n\omega_0t) ~dt, \hspace{1cm} n=1,2,\cdots.
+	\end{equation}
+	Es decir que para una funci\'on par, se tiene que $b_n=0$.
+	
+	La serie de Fourier de una función impar de período T es una \textbf{``Serie de Fourier de senos"}
+	\begin{equation}
+	x(t) = \sum _{n=1}^{\infty} b_n \sin (n\omega_0 t),
+	\end{equation}
+	con coeficientes
+	\begin{equation}
+	b_n = \dfrac{2}{T} \cdot 2\int_{0}^{\frac{T}{2}} x(t) \sin (n\omega_0t) ~dt, \hspace{1cm} n=1,2,\cdots. 
+	\end{equation}
+	Es decir que para una funci\'on impar, se tiene que $a_0=0$ y $a_n=0$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%	
+\subsection*{Transformada de Fourier}
+La transformada de Fourier de una funci\'on aperi\'odica $f(t)$ se define como
+\begin{equation}\label{eq:transf_fourier}
+F(\omega)=\int_{-\infty}^{+\infty}f(t)e^{-i\omega t}dt,
+\end{equation}
+y la transformada inversa o antitransformada es
+\begin{equation}\label{eq:antitransf_fourier}
+f(t)=\frac{1}{2\pi}\int_{-\infty}^{+\infty}F(\omega)e^{i\omega t}d\omega.
+\end{equation}
+
+La Ec. \ref{eq:antitransf_fourier} representa una se\~nal aperi\'odica como una combinaci\'on lineal de exponenciales complejas. Las exponenciales complejas ocurren en una sucesi\'on continua de frecuencias. La Ec. \ref{eq:transf_fourier} tambi\'en se conoce como \textit{espectro} de $f(t)$, ya que proporciona la informaci\'on necesaria para describir a $f(t)$ como una combinaci\'on lineal de se\~nales senoidales a diferentes frecuencias.
+
+
+% ***********************************************
+% 					SOLUCIONES
+% ***********************************************
+% *** PAUTAS A SEGUIR ***
+\begin{comment}
+En esta sección se resuelven los ejercicios paso a paso.
+Algunas reglas generales:
+	-Utilizar la resolución mas didáctica posible y 
+		que sea consistente con los otros prácticos.
+	-Dar la suficiente cantidad de detalle para que sea sencillo
+		entender lo que se está haciendo, pero sin caer en trivialidades.
+	-Para explicar lo que se hace en un desarrollo, ir comentando a la derecha
+		de cada paso, usando usando "\begin{align}" u otro que lo permita
+	-Todas las soluciones finales de los ejercicios deben estar recuadradas 
+		con \boxed{}
+	-Cuando haya que desarrollar partes con jerarquía, usar primero negrita
+		y luego cursiva para sub partes.
+\end{comment}
+
+% *** DESARROLLO ***
+\section*{Soluciones}
+\label{sec:sol}
+
+\begin{enumerate}
+% ***********************************************
+% 					Ejercicio 1
+% ***********************************************
+\item 
+Se considera $ w(x) = 1 $. Con esto se tiene
+\begin{equation}
+\int_{-1}^{1} x \cdot x^2 ~ dt = \dfrac{x^4}{4} \bigg\vert_{-1}^1 = \dfrac{1}{4} - \dfrac{1}{4} = 0.
+\end{equation}
+Se cumple la condición de ortogonalidad.
+
+
+% ***********************************************
+% 					Ejercicio 2
+% ***********************************************
+\item A resolver por el alumno.
+
+% ***********************************************
+% 					Ejercicio 3
+% ***********************************************
+\item 
+\begin{enumerate}
+	\item[\textit{b)}]
+Escribimos el producto interno de las señales con $w(t)=1$ en el intervalo $T=\frac{2\pi}{w_0}$:
+\begin{align}
+< \cos{(mw_0t)},\cos{(nw_0t)}>=&\int_{-T/2}^{T/2} \cos{(mw_0t)} \cos{(nw_0t)} ~ dt,\\
+=&2\int_{0}^{T/2} \cos{(mw_0t)} \cos{(nw_0t)} ~ dt.
+\end{align}
+Donde utilizamos el hecho de que el integrando es par para simplificar el intervalo  de integración.
+Utilizando la identidad trigonométrica: $cos(A)cos(B)=\frac{1}{2}[cos(A-B)+cos(A+B)]$, podemos resolver la integral:
+\begin{align}
+	< 
+	\cos{(mw_0t)},\cos{(nw_0t)}>=&\int_{0}^{\pi/w_0}
+	\cos{[(m-n)w_0t]}~dt+\int_{0}^{\pi/w_0}\cos{[(m+n)w_0t]}~dt,\\
+	=&\frac{\sin{[(m-n)w_0t]}}{m-n}+\frac{\sin{[(m+n)w_0t]}}{m+n} \Big|_0^{\pi/w_0},\\
+	=&\frac{\sin{[(m-n)\pi]}}{m-n}+\frac{\sin{[(m+n)\pi]}}{m+n},\\
+	=&\boxed{0.}
+\end{align} 
+Por lo que se demuestra que las señales son ortogonales para $m\ne n$.
+\end{enumerate}
+% ***********************************************
+% 					Ejercicio 4
+% ***********************************************
+\item A resolver por el alumno.
+% ***********************************************
+% 					Ejercicio 5
+% ***********************************************
+\item 
+\begin{enumerate}
+	\item[\textit{e)}]
+Para encontrar el desarrollo en serie trigonométrica de Fourier de la señal peri\'odica:
+\begin{equation}\label{eq:serie_ej}
+x(t) = 
+\begin{cases}
+-1, & \text{para } -2<t<0, \\
+1, & \text{para } ~~~ 0<t<2,
+\end{cases}
+~~~~~~\text{con } T=6, 
+\end{equation}
+se deben encontrar las 
+expresiones de los coeficientes de Fourier. Esto consiste en calcular $a_0$, $a_n$ y $b_n$ seg\'un las expresiones 
+dadas, y luego reemplazar en la Ec. \ref{serieTrigFourier}.
+
+La gr\'afica correspondiente a esta $x(t)$ es la mostrada en la Figura \ref{fig:ej8},
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics[height=4cm,frame]{tp3_ej8.png}
+\end{center}
+\caption{Gr\'afica para la funci\'on de la Ec. \ref{eq:serie_ej}.}
+\label{fig:ej8}
+\end{figure}
+
+Previo al c\'alculo de los coeficientes, podemos observar las características de simetr\'ia de la funci\'on, para que en caso de presentar alguna simetr\'ia, evitemos realizar el c\'alculo de los coeficientes que se anulan. Se puede observar que estamos ante el caso de una funci\'on con simetr\'ia impar. Para las funciones impares solo subsiste el coeficiente $b_n$, siendo $a_0=0$ y $a_n=0$. Por lo tanto, para este caso solo calculamos $b_n$.
+
+Observando la Ec. \ref{eq:bn}, vemos que siendo $T=6$, deber\'iamos integrar entre $-\frac{T}{2}=-3$ y $\frac{T}{2}=3$, pero la funci\'on tiene valor nulo en ciertas partes de ese intervalo. De este modo, el intervalo efectivo de integraci\'on debe ser desde $t=-2$ hasta $t=2$. Y por las caracter\'isticas que tiene la funci\'on, la integral deber\'ia calcularse en dos partes. Se debe tomar $x(t)=-1$ para $-2<t<0$ y $x(t)=1$ para $0<t<2$. 
+
+Teniendo en cuenta que $x(t)$ es impar y la funci\'on seno tambi\'en es impar, su producto dar\'a como resultado una 
+funci\'on par. Entonces, es suficiente con s\'olo calcular la integral para $0<t<2$, y luego multiplicar el resultado 
+por 2. Tomando estas consideraciones, ahora s\'i procedemos con el c\'alculo. Seg\'un la Ec. \ref{eq:bn} tenemos,
+\begin{align*}
+b_n &= 2\cdot \frac{2}{6}\int_{0}^{2} 1\cdot\sin(n\omega_0 t)dt, \\
+	&= \frac{2}{3}\left(\frac{-\cos(n\omega_0 t)}{n\omega_0}\right|_0^2, \\
+	&= \frac{2}{3}\left(\frac{-\cos(n\frac{2\pi}{6}2)+\cos(n\frac{2\pi}{6}0)}{n\frac{2\pi}{6}}\right), \qquad \qquad \omega_0=\tfrac{2\pi}{T}, \\
+	&= \boxed{\frac{2}{n\pi}\left[1-\cos\left(n\tfrac{2\pi}{3}\right)\right]}.
+\end{align*}
+
+Resolviendo para algunos valores de $n$ tenemos,
+\begin{equation}
+b_1=0.955, \quad b_2=0.477, \quad b_3=0, \quad b_4=0.239, \quad b_5=0.191, \quad b_6=0, \quad b_7=0.136, \quad\cdots.
+\end{equation}
+
+Ahora, seg\'un la Ec. \ref{serieTrigFourier} podemos escribir a la serie como,
+\begin{equation}
+x(t) = \sum _{n=1}^{\infty} \left\{\tfrac{2}{n\pi}\left[1-\cos\left(n\tfrac{2\pi}{3}\right)\right]\right\} \sin (n\tfrac{\pi}{3} t).
+\end{equation}
+
+Y desarrollando la serie para algunos valores de $n$, obtenemos,
+\begin{equation}
+\boxed{x(t)=0.955\sin(\tfrac{\pi}{3}t)+0.477\sin(\tfrac{2\pi}{3}t)+0.239\sin(\tfrac{4\pi}{3}t)+0.191\sin(\tfrac{5\pi}{3}t)+0.136\sin(\tfrac{7\pi}{3}t)+\cdots.}
+\end{equation}
+
+Se ve en la gr\'afica de la Figura \ref{fig:ej8_n10} el resultado que se obtiene con un desarrollo hasta $n=10$. En la parte superior se muestra cada uno de los t\'erminos por separado. Se puede ver c\'omo a medida que aumenta $n$, aumenta la frecuencia de cada componente, siendo estas frecuencias arm\'onicas de la frecuencia fundamental. Y se puede observar tambi\'en como disminuye la amplitud ante el incremento de $n$. En la parte inferior vemos el resultado para la $x(t)$ que se obtiene del desarrollo en serie de Fourier, es decir, la sumatoria. Se observa claramente c\'omo la gr\'afica se va aproximando a la de la funci\'on original.
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics[width=12cm]{tp3_ej8_Serie_n10.png}
+\end{center}
+\caption{Desarrollo de la serie del ej. 6.e) hasta $n=10$.}
+\label{fig:ej8_n10}
+\end{figure}
+
+Y ahora, en la gr\'afica de la Figura \ref{fig:ej8_n100} observamos lo que sucede para el desarrollo de la serie hasta $n=100$. Se ve claramente en la gr\'afica de abajo c\'omo a medida que se agregan m\'as t\'erminos en el desarrollo de la serie, la $x(t)$ de la serie va pareci\'endose cada vez m\'as a la funci\'on original.
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=12cm]{tp3_ej8_Serie_n100.png}
+\caption{Desarrollo de la serie del ej. 6.e) hasta $n=100$.}
+\label{fig:ej8_n100}
+\end{figure}
+
+\end{enumerate}
+
+
+% ***********************************************
+% 					Ejercicio 6
+% ***********************************************
+\item[6.]
+\begin{enumerate}
+	\item Notar que la señal dada representa un pulso rectangular como el mostrado en la Fig. \ref{fig:ej6_a}. Para 
+	calcular su 
+	desarrollo en serie exponencial de Fourier, debemos obtener los coeficientes $C_n$ usando la Ec.~\ref{ec:sef_coef}, 
+	con 
+	$T=1$ y por ende $w_0=2\pi$:
+	\begin{align}
+		C_n=&\frac{1}{1}\int_{-1/2}^{1/2} x(t) e^{-in2\pi t} dt \\
+		=&\int_{-1/4}^{1/4} 1 e^{-in 2\pi t} dt \\
+		=&\frac{1}{-in2\pi}e^{-in2 \pi t}\Big|_{-1/4}^{1/4}\\
+		=&\frac{i}{n2\pi}[e^{-in\frac{\pi}{2}}-e^{in\frac{\pi}{2}}]\\ 
+		=&\frac{i}{n2\pi}[-2i\sin{(n\frac{\pi}{2})}]\\
+		=&\boxed{\frac{1}{2}\frac{\sin{(n\frac{\pi}{2}})}{n\frac{\pi}{2}}}.
+	\end{align}
+Como puede verse la envolvente de los coeficientes $C_n$ adopta la forma de un seno cardinal. Evaluando el numerador 
+de la ultima expresión, $\sin{(n\frac{\pi}{2}})$, para $n=[1,2,3,4,5,6,7]$, obtenemos 
+$[1,0,-1,0,1,0,-1]$. Puede verse y demostrarse que si $n$ es par, $\sin{(n\frac{\pi}{2}})$ se anula. 
+Por otro lado, si $n$ es impar, $\sin{(n\frac{\pi}{2}})$ alterna entre 1 y -1. Por lo que podemos escribir:
+\begin{equation}
+	C_n=
+	\begin{cases}
+	0, & ~\text{n par}, \\
+	\frac{(-1)^{\frac{n-1}{2}}}{\pi n}, &  ~\text{n impar},
+	\end{cases}
+\end{equation}
+
+En la Fig. \ref{fig:ej6_a} puede verse las gráficas de los primeros 20 coeficientes complejos $C_n$, su modulo 
+(espectro de amplitudes) y su argumento (espectro de fases), así como la suma de la serie. En esta última puede 
+apreciarse como el error al truncar la serie, es mayor cerca de las discontinuidades de la señal (fenómeno de Gibbs). 
+En la Fig.~\ref{fig:ej6_a2} se muestra lo mismo pero considerando los primeros 60 coeficientes. 
+
+\begin{figure}[h]
+	\begin{center}
+		\includegraphics[width=17cm]{tp7_ej6_a.eps}
+	\end{center}
+	\caption{Desarrollo de la serie del ej. 6.a) de $n=-20$ hasta $n=20$. Notar que el espectro de fases $Arg[C_n]$ 
+	calculado por el programa no es impar como debería ser, pues $x(t)$ es una señal real. Esto se debe a que el 
+	programa calcula numéricamente la fase de un número real negativo siempre como $\pi$, cuando en 
+	realidad hay dos posibles soluciones $\pi$ y $-\pi$. Otro problema numérico ocurre al calcular la fase de las 
+	componentes que valen 0, que son numéricamente mal condicionadas debido a la división por zero involucrada. Estos 
+	puntos fueron corregidos en la Fig.~\ref{fig:ej6_a2} }
+	\label{fig:ej6_a}
+\end{figure}
+
+\begin{figure}[h]
+	\begin{center}
+		\includegraphics[width=17cm]{tp7_ej6_a2.eps}
+	\end{center}
+	\caption{Desarrollo de la serie del ej. 6.a) de $n=-60$ hasta $n=60$. Notar la reducción del error respecto a la 
+	Fig.~\ref{fig:ej6_a} y como el error residual se concentra alrededor de las discontinuidades de la señal de acuerdo 
+	al fenómeno de Gibbs. En el espectro de fases se corrigieron los errores numéricos comentados en la 
+	Fig.~\ref{fig:ej6_a}.}
+	\label{fig:ej6_a2}
+\end{figure}
+
+\end{enumerate}
+
+% ***********************************************
+% 					Ejercicio 7
+% ***********************************************
+\item[7.] A resolver por el alumno.
+
+% ***********************************************
+% 					Ejercicio 8
+% ***********************************************
+\item[8.] Los coeficientes de la serie trigonométrica Fourier obtenidos para el ejercicio 5.c) son $a_n=0$ y 
+$b_n=-2\frac{Cos(n\pi)}{n\pi}$. 
+Utilizando la relación $C_{\pm n}=a_n\mp i b_n$ (notar la inversión en los signos), podemos derivar los coeficientes de 
+la serie exponencial de Fourier, a saber: $C_{\pm n}=\pm 2i\frac{Cos(n\pi)}{n\pi}$.
+
+% ***********************************************
+% 					Ejercicio 9
+% ***********************************************
+\item[9.]
+Según la Ec. \ref{eq:transf_fourier}, la transformada de Fourier para este ejercicio se resuelve como
+\begin{align}
+R(\omega) 	&=\int_{-\frac{\tau}{2}}^{\frac{\tau}{2}}A e^{-i\omega t}dt,\\
+			&=A\left.\frac{e^{-i\omega t}}{-i\omega}\right|_{-\frac{\tau}{2}}^{\frac{\tau}{2}}\\
+			&=A\left(\frac{e^{-i\omega\frac{\tau}{2}}-e^{i\omega\frac{\tau}{2}}}{-i\omega}\right) \\
+			&=\frac{2A}{\omega}\left(\frac{e^{i\omega\frac{\tau}{2}}-e^{-i\omega\frac{\tau}{2}}}{2i}\right) \\
+			&=\frac{2A}{\omega}\sin \left(\omega\tfrac{\tau}{2}\right) \\
+			&=\boxed{\tau A~~\frac{\sin\left(\omega\tfrac{\tau}{2}\right)}{\omega\tfrac{\tau}{2}}}
+\end{align}
+
+\begin{figure}[h]
+	\begin{center}
+		\includegraphics[width=14cm]{ej_9.jpg}
+	\end{center}
+	\caption{Gráficas del ej. 9, con $A=1$ y $\tau=2$.}
+	\label{fig:ej_9}
+\end{figure}
+
+
+% ***********************************************
+% 					Ejercicio 10
+% ***********************************************
+\item[10.]
+\begin{enumerate}
+	\item Obtenemos la transformada de Fourier de la señal (ver Fig.~\ref{fig:ej_10}) aplicando la 
+	definición:
+	\begin{align}
+	R_d(iw)&=\int_{-\infty}^{\infty}r(t) e^{-iwt}dt, \\
+	&=\int_{t_0-\frac{\tau}{2}}^{t_0+\frac{\tau}{2}}A e^{-iwt}dt, \\
+	&=\frac{A}{-iw} \Big[e^{-iwt}\Big]_{t_0-\frac{\tau}{2}}^{t_0+\frac{\tau}{2}},\\
+	&=\frac{A}{-iw} \Big[e^{-iw(t_0+\frac{\tau}{2})}-e^{-iw(t_0-\frac{\tau}{2})}\Big],\\
+	&=\frac{A}{-iw}e^{-iwt_0} \Big[e^{-iw\frac{\tau}{2}}-e^{iw\frac{\tau}{2}}\Big],\\
+	&=\frac{A}{-iw}e^{-iwt_0} \Big[-2isin\Big(w\frac{\tau}{2}\Big)\Big],\\
+	&=\boxed{e^{-iwt_0} A\tau\frac{sin\Big(w\frac{\tau}{2}\Big)}{w\frac{\tau}{2}}}.
+	\end{align}
+
+	\begin{figure}[h]
+		\begin{center}
+			\includegraphics[width=14cm]{ej_10.jpg}
+		\end{center}
+		\caption{Gráficas del ej. 10, con $A=1$,  $\tau=2$ y $t_0=0.5$. Notar que la pendiente de la recta que se 
+		suma al espectro de fases vale $-t_0$.}
+		\label{fig:ej_10}
+	\end{figure}
+
+	\item Comparando la transformada de Fourier del pulso desplazado que acabamos de derivar, $R_d(iw)$, con la 
+	transformada de Fourier del pulso sin desplazar del ej. 9, $R(iw)$, vemos que el desplazamiento en el tiempo 
+	produce la 
+	aparición de la exponencial compleja $e^{-iwt_0}$, es decir que:
+	\begin{equation}
+	R_d(iw)=e^{-iwt_0}R(iw).
+	\end{equation}
+	Este producto no modifica el módulo (espectro de amplitudes), solo el argumento (espectro de fases) de la función 
+	compleja $R(iw)$. En particular, se suma una función 
+	lineal de $w$ ($-t_0w$), al espectro de fases de $R(iw)$, ver Fig.~\ref{fig:ej_10}:
+	\begin{equation}
+	arg\Big\{R_d(iw)\Big\}=arg\Big\{R(iw)\Big\}-t_0w.
+	\end{equation}
+	\item El máximo de $R_d(iw)$ se da cuando el seno cardinal es máximo. Como sabemos el máximo del seno cardinal vale 
+	1 y se da cuando el argumento tiende a cero, es decir para $w\to0$, es decir: 
+	\begin{equation}
+		\max{[R_d(iw)]}=\lim_{	w\to0} R_d(iw)=A\tau
+	\end{equation}
+	\item Los cruces por cero de  $R_d(iw)$ se dan cuando el seno se anula. Esto sucede para valores del argumento que 
+	son múltiplos enteros de $\pi$, es decir para $w\tau/2=k\pi\to w=2k\pi/\tau$ con $k=1,2,3...$. Esto implica que 
+	para pulsos mas 
+	angostos en el tiempo ($\tau$ mas chico), los cruces por cero del espectro se desplazan a frecuencias mayores.
+	\item Notar que para $\tau=2$, los cruces por cero se dan cada $k\pi$ con $k=1,2,3...$, ver Fig.~\ref{fig:ej_10}.
+\end{enumerate}
+
+% ***********************************************
+% 					Ejercicio 11
+% ***********************************************
+\item[11.] Utilizando el resultado del Ej. 9, podemos escribir la transformada solicitada como:
+\begin{equation}
+	R(iw)=\frac{\sin\left(\omega\tfrac{\tau}{2}\right)}{\omega\tfrac{\tau}{2}}
+\end{equation} 
+Tomando el limite $\tau \to 0$, vemos que el ancho del pulso rectangular tiende a cero y su amplitud tiende a $\infty$. 
+Por lo que $r(t) \to \delta(t)$. Por otro lado, su trasformada tiende a 1 (ver Fig.~\ref{fig:ej_11}):
+\begin{equation}
+\lim_{\tau \to 0}R(iw)=1
+\end{equation}
+De donde puede verse que la transformada de Fourier del impulso, $\delta(t)$, es el numero real 1 y por ende contiene 
+todas las frecuencias posibles en la misma proporción (espectro de amplitudes constante e igual a 1) y con fase cero 
+(espectro de fases constante e igual a 0 y $2\pi$)
+
+\begin{figure}[h]
+	\begin{center}
+		\includegraphics[width=14cm]{ej_11.jpg}
+	\end{center}
+	\caption{Gráficas del ej. 11. Se muestra un pulso rectangular de amplitud $1/\tau$ y duración $\tau$, para $\tau$ 
+	igual a 1 (azul), 0.3 (rojo) y 0.1 (naranja). Notar como el espectro de amplitudes tiende a 1.}
+	\label{fig:ej_11}
+\end{figure}
+
+% ***********************************************
+% 					Ejercicio 12
+% ***********************************************
+\item[12.] A cargo del alumno. Tener presente las conclusiones del Ej. 10.
+
+% ***********************************************
+% 					Ejercicio 13
+% ***********************************************
+\item[13.] Obtenemos la transformada de Fourier de la señal (ver Fig.~\ref{fig:ej_13}) aplicando la definición:
+\begin{align}
+X(iw)&=\int_{-\infty}^{\infty}te^{-2t}u(t) e^{-iwt}dt, \\
+&=\int_{0}^{\infty}te^{-(iw+2)t}dt.
+\end{align}
+Integrando por partes (y notando que al reemplazar el limite superior la anti-derivada se anula) obtenemos:
+\begin{align}
+X(iw)&=\Big[-\frac{e^{-(iw+2)t}((iw+2)t+1)}{(iw+2)^2}\Big]_{0}^{\infty},\\
+&=\boxed{\frac{1}{(iw+2)^2}}.
+\end{align}
+Puede verse por el espectro de amplitudes de la Fig.~\ref{fig:ej_13}, que si la $x(t)$ fuese la respuesta impulsiva de 
+un sistema LTI, el mismo actuaría como un filtro pasa bajos, a saber, un sistema que atenúa las frecuencias altas 
+(mayor $w$) de la señal de entrada. 
+
+\begin{figure}[h]
+	\begin{center}
+		\includegraphics[width=14cm]{ej_13.jpg}
+	\end{center}
+	\caption{Gráficas del ej. 13.}
+	\label{fig:ej_13}
+\end{figure}
+
+% ***********************************************
+% 					Ejercicio 14
+% ***********************************************
+\item[14.] A cargo del alumno. 
+
+\end{enumerate}
+\begin{center}
+	---------------------------------------
+\end{center}
+\end{document}

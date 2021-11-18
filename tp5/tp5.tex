@@ -1,0 +1,953 @@
+% ***********************************************
+%***********COSAS A MEJORAR O CORREGIR***********
+%-Agregar ej. de energía para una señal de duracion finita
+%
+%
+%
+%
+% ***********************************************% Preamble
+% ---
+\documentclass[10pt,a4paper]{article}
+
+% Packages
+% ---
+\usepackage[latin1]{inputenc}
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{mathabx}
+\usepackage{layout}
+\usepackage{graphics}
+\usepackage{graphicx}
+\usepackage[spanish]{babel}
+\usepackage{lastpage}
+\usepackage{tabto}
+\usepackage{xcolor}
+\usepackage{verbatim}
+\usepackage[a4paper, top=1 in,bottom=1in, left=1 in, right=0.7 in]{geometry}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\usepackage{subfigure}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{width=7cm,compat=1.15}
+\usepackage{comment}
+\usepackage{bigints}
+
+%ELEGIR VERSION 
+%Comentar para eliminar la solucion de todos los ejercicios y dejar la version para los 
+% alumnos, a saber con un solo punto resuelto por ejercicio.
+
+%\includecomment{profesor}    % version profesor
+\excludecomment{profesor}	  % version alumnos
+
+\lhead{\footnotesize An\'alisis de Se\~nales y Sistemas  - A\~no 2021}
+\chead{}
+\rhead{\footnotesize Trabajo Pr\'actico N$^\text o$5: Señales}
+\lfoot{}
+\cfoot{}
+\rfoot{\footnotesize P\'agina \thepage\ de \pageref{LastPage}}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+\title{
+	\textsc{\includegraphics[width=0.55\textwidth]{logoUTN.jpg}} ~\\
+	{\large Departamento de Electr\'onica}\\ 
+	[0.1cm]
+	{\Huge{An\'alisis de Se\~nales y Sistemas}} \\
+	[0.25cm]
+	{\Large{Trabajo Pr\'{a}ctico N$^{\text {o}}$5: Señales} \\
+	}}
+\author{}
+\date{}
+
+% Main document ********************************************
+% ---
+\begin{document}
+\maketitle
+\begin{profesor}
+	\hspace{6cm}(Versión PROFESOR)
+\end{profesor}
+\thispagestyle{fancy}
+
+\section*{Enunciados:}
+\label{sec:enun}
+
+
+\begin{enumerate}
+% ***********************************************
+% 					Ejercicio 1
+% ***********************************************
+\item {Graficar las siguientes señales}
+\begin{enumerate}
+	\item $x_1(t)=2u(t)+u(t-1)-3u(t-4)$ 
+	\item $x_2(t)=tu(t)-(t-1)u(t-1)-2u(t-3)$
+	\item $x_3(t)=2u(t)-tu(t)+(t-2)u(t-2)$ **
+	\item $x_4(t)=u(t)u(2-t)$ **
+	\item $x_5(t)=tu(t)u(1-t)$ **
+\end{enumerate}
+
+
+% ***********************************************
+% 					Ejercicio 2
+% ***********************************************
+\item {Graficar las siguientes se\~nales}
+\begin{enumerate}
+	\item $x_1[n] = u[n+2]-u[n-3]$
+	\item $x_2[n] = u[n+1]+u[n-1]-u[n-3]-u[n-5]$
+	\item $x_3[n] = (n+3)u[n+3]-4u[n-1]-(n-4)u[n-4]$
+\end{enumerate}
+
+% ***********************************************
+% 					Ejercicio 3
+% ***********************************************
+\item {Expresar matemáticamente las siguientes señales utilizando señales elementales: **}
+\begin{figure}[htb]
+	\centering
+%	\includegraphics[width=5in]{3.png}
+	
+	% ___ gráfica x1
+	\begin{tikzpicture}[scale=0.8]
+	\begin{axis}[
+		axis y line=center,
+		axis x line=middle,
+		xmin=-8,	xmax=8,
+		ymin=-8,	ymax=8,
+		xlabel={$t$},
+		ylabel=$x_1(t)$,
+		grid=both,
+		grid style={line width=.1pt, draw=gray!40},
+    major grid style={line width=.2pt,draw=gray!60},
+		minor tick num=4,
+		]
+		\addplot[line width=.8pt] coordinates {(-3,0) (-3,5) (3,5) (3,0)};
+	\end{axis}	
+	\end{tikzpicture}
+	\quad
+	% ___ gráfica x2
+	\begin{tikzpicture}[scale=0.8]
+		\begin{axis}[
+		axis y line=center,
+		axis x line=middle,
+		xmin=-8,	xmax=8,
+		ymin=-8,	ymax=8,
+		xlabel=$t$,
+		ylabel=$x_2(t)$,
+		grid=both,
+		grid style={line width=.1pt, draw=gray!40},
+    major grid style={line width=.2pt,draw=gray!60},
+		minor tick num=4,
+		]
+		\addplot[line width=.8pt] coordinates {(-5,0) (-5,3) (-2,3) (-2,-2) (5,5) (5,1) (7.2,1)};
+	\end{axis}
+	\end{tikzpicture}
+	\quad
+		% ___ gráfica x3
+	\begin{tikzpicture}[scale=0.8]
+		\begin{axis}[
+		axis y line=center,
+		axis x line=middle,
+		xmin=-8,	xmax=8,
+		ymin=-8,	ymax=8,
+		xlabel={$n$},
+		ylabel={$x_3[n]$},
+		grid=both,
+		grid style={line width=.1pt, draw=gray!40},
+    major grid style={line width=.2pt,draw=gray!60},
+		minor tick num=4,
+    cycle list name=mark list,
+    mark size=1.3,
+		]
+		\addplot+[ycomb,black,thick,line width=.8pt] plot coordinates {(-5,5) (-4,5) (-3,5) (-2,3)
+		(-1,1) (0,-1) (1,-3) (2,-5) (3,-7)};
+	\end{axis}
+	\end{tikzpicture}
+
+\end{figure}
+
+% ***********************************************
+%					Ejercicio 4
+% ***********************************************
+\item {Demostrar que:}
+\begin{enumerate}
+	\item $x_p(t)=\frac{1}{2}[x(t)+x(-t)]$ es una funci\'on par;
+	\item $x_i(t)=\frac{1}{2}[x(t)-x(-t)]$ es una funci\'on impar;	
+\end{enumerate}
+
+% ***********************************************
+% 					Ejercicio 5
+% ***********************************************
+\item {Determinar las componentes par e impar de $x(t)=e^{-t}$. **} \\	
+
+
+% ***********************************************
+%					Ejercicio 6
+% ***********************************************
+\item {Dada la señal $x[n]=\{6 \quad 4 \quad \underset{\uparrow}{-2} \quad -2\}$, determinar las componentes par e 
+impar.Graficar}
+% ***********************************************
+%					Ejercicio 7
+% ***********************************************
+\item Dada la se\~nal $x(t)=
+\begin{cases}
+t+1, & ~~-1\leq t\leq 1, \\
+2, & ~~~~~1<t\leq 2, \\
+0, & \forall ~t<-1 \wedge t>2.
+\end{cases}$
+, determinar anal\'itica y gr\'aficamente: **
+\begin{enumerate}
+	\item $x(2t)$
+	\item $x\left(\frac{1}{2}t\right)$
+	\item $x(t-3)$
+	\item $x(-t)$
+	\item $x(3-t)$
+\end{enumerate}
+
+% ***********************************************
+%					Ejercicio 8
+% ***********************************************
+\item Dada la se\~nal $x(t)=
+\begin{cases}
+t+1, & ~~-1\leq t\leq 0, \\
+1, & ~~~~~0<t\leq 2, \\
+-t+3, & ~~~~~2<t\leq 3, \\
+0, & \forall ~t<-1 \wedge t>3.
+\end{cases}$
+, determinar anal\'itica y gr\'aficamente $x(3t-6)$
+
+% ***********************************************
+%					Ejercicio 9
+% ***********************************************
+\item {Dada la se\~nal $x[n]=\{-2 \quad -1 \quad \underset{\uparrow}{1} \quad 1\}$, determinar y graficar: **}
+\begin{enumerate}
+	\item $x[n-3]$
+	\item $x[2-n]$
+\end{enumerate}
+
+% ***********************************************
+%					Ejercicio 10
+% ***********************************************
+\item {Dada la se\~nal $x[n]=\{1 \quad -1 \quad \underset{\uparrow}{-1} \quad 2 \quad 1 \quad 3 \quad \}$:}
+\begin{enumerate}
+	\item Diezmarla por 2 y graficar
+	\item Interpolarla por 3 y graficar
+\end{enumerate}
+
+% ***********************************************
+%					Ejercicio 11
+% ***********************************************
+\item {Para la se\~nal $x[n]=
+\begin{cases}
+1, &\text{si $n$ es par},\\
+-1, &\text{si $n$ es impar}.
+\end{cases}$, realizar escalado temporal seg\'un $x[2n]$. Graficar y obtener conclusiones.}
+
+% ***********************************************
+%					Ejercicio 12
+% ***********************************************
+\item {Determinar la periodicidad, frecuencia fundamental y período fundamental, en caso de existir, para las 
+siguientes señales.}
+\begin{enumerate}
+	\item $x(t)=3 \cos(60t)-4\sin(30t)-5\cos(10t)$  
+	\item $x(t)=5\sin(\frac{\pi}{3}t)-3\cos(\frac{8\pi}{3}t)$~~**
+	\item $x(t)=2\cos(2\pi t)+6\sin(10t)-3\cos(4t)$~~**
+	\item $x(t)=e^{i\frac{5\pi}{6}t}+e^{i\frac{7\pi}{6}t}$
+	\item $x[n]=e^{i\frac{\pi}{5}n}+e^{-i\frac{3\pi}{5}n}$~~**		
+\end{enumerate}
+
+% ***********************************************
+%					Ejercicio 13
+% ***********************************************
+\item {Determinar si es peri\'odica la se\~nal discreta dada: **}
+\begin{enumerate}
+	\item $x[n]=4\cos(15n)$
+	\item $x[n]=3\cos(5\pi n)$
+\end{enumerate}
+
+% ***********************************************
+%					Ejercicio 14
+% ***********************************************
+\item {La señal $x(t)=3\cos(20t)$ se muestrea de manera tal que x[n] resulta periódica cada 10 muestras. 
+	Determinar:~~**}
+\begin{enumerate}
+	\item El valor del intervalo de muestreo $\Delta t$
+	\item El valor de la frecuencia digital $\Omega$ 
+	\item Si son únicos $\Delta t$ y $\Omega$
+	\item Cada cuántos ciclos de la envolvente se da la periodicidad
+\end{enumerate}
+
+% ***********************************************
+%					Ejercicio 15
+% ***********************************************
+\item {Determinar si las siguientes se\~nales son de energ\'ia finita, de potencia finita o de ninguno de esos tipos. Justificar la respuesta. **}
+\begin{enumerate}
+	\item $x(t)=A\cos t$, para $-\infty<t<\infty$
+	\item $x(t)=A[u(t-1)-u(t+1)]$
+	\item $x(t)=tu(t)$
+	\item $x(t)=tu(t)u(1-t)$
+	\item $x(t)=Ae^{\beta t}$, para $\beta>0$
+\end{enumerate}
+
+%cierra seccion ejercicios
+\end{enumerate}
+
+% ***********************************************
+% 			Herramientas Teóricas (HT)
+% ***********************************************
+
+% *** PAUTAS A SEGUIR ***
+\begin{comment}
+Esta sección esta pensada para incluir toda la ayuda teórica necesaria 
+para resolver el practico.
+Algunas reglas generales:
+	-Mantener el contenido al minimo, referir a la bibliografía para mayor 
+		información (hay q armar un archivo .bib).
+	-Enumerar todas las ecuaciones.
+	-No repetir ecuaciones ya dadas en las HT de otro práctico, 
+		solo referir a ella.
+	-Para resaltar palabras usar \textit.
+	-Utilizar la nomencaltura oficial de la catátedra !!  
+		(Hay que definirlo, yo diria seguir al pie de la letra el kreiszig)
+	-
+\end{comment}
+
+% *** CONTENIDO ***
+\section*{Herramientas Te\'oricas:}
+\label{sec:herr}
+
+%--------------------------------
+\subsection*{Impulso}
+El impulso de tiempo continuo o delta de Dirac, que puede definirse (de manera no muy rigurosa) como
+$\delta(t)=
+\begin{cases}
++\infty, & t=0 \\
+0, & t\neq 0
+\end{cases}$, cumple con la siguiente propiedad de selección:
+\begin{equation}\label{eq:select}
+\int_{-\infty}^{\infty}\delta(t)x(t) dt=x(0),~\text{debido a que}~\int_{-\infty}^{\infty}\delta(t)dt=1.
+\end{equation}
+De manera análoga, el impulso de tiempo discreto o delta de Kronecker, $\delta[n]=
+\begin{cases}
+1, & n=0 \\
+0, & n\neq 0
+\end{cases}$, cumple con la siguiente propiedad de selección:
+\begin{equation}\label{eq:selecn}
+\sum_{-\infty}^{\infty}\delta[n]x[n]=x[0],~\text{debido a que}~\sum_{-\infty}^{\infty}\delta[n]=1.
+\end{equation}
+
+%--------------------------------
+\subsection*{Escalón}
+El escalón de tiempo continuo o de Heaviside, $u(t)=
+\begin{cases}
+1, & t>0 \\
+0, & t< 0
+\end{cases}$, cumple con $\frac{du(t)}{dt}=\delta(t)$. Notar que el valor en $t=0$ no esta definido y se asume según 
+diferentes convenciones que vale 0, 0.5 o 1.
+
+El escalón de tiempo discreto, $u[n]=
+\begin{cases}
+1, & n\ge 0 \\
+0, & n<0
+\end{cases}$, cumple con $u[n]-u[n-1]=\delta[n]$.
+
+\subsection*{Periodicidad}
+\label{sec:per}
+Una señal de tiempo continuo $x(t)$ o tiempo discreto $x[n]$ es periódica si:
+
+\begin{align}
+	x(t)&=x(t+T_0)~~\forall~T_0 \in \mathbb{R},  \\
+	x[n]&=x[n+N_0]~~\forall~N_0 \in \mathbb{N}, 
+\end{align}
+donde $T_0$ y $N_0$ son los periodos fundamentales y $w_0=\frac{2\pi}{T_0}$ y $\Omega_0=\frac{2\pi}{N_0}$ son las 
+frecuencias 
+angulares y digitales fundamentales, respectivamente. Notar que las funciones son periódicas también cada $T=kT_0$ y 
+$N=kN_0$ con $k\in \mathbb{N}$.
+
+\textit{Sinusoides:} 
+La señal sinusoidal de tiempo continuo $\cos(\omega t)$ es periódica en $t$ {para toda frecuencia 
+angular positiva $w \in \mathbb{R}$}, siendo el periodo fundamental $T_0=\frac{2\pi}{w}$. Por otro lado, la señal 
+sinusoidal de 
+tiempo discreto $\cos(\Omega n)$ es periódica en $n$ {solo para frecuencias digitales positivas
+ $\Omega \in \mathbb{R}$ que son múltiplos de $\pi$}. Por lo que $\frac{\Omega}{2\pi}$ debe ser un número racional, 
+ siendo el periodo $N=\frac{2k\pi}{\Omega}$. Notar que el sinusoide discreto es periódico también en la frecuencia, 
+	 pues $\cos[(\Omega + 2k\pi)n]=\cos[\Omega n]$. Esto ocurre unicamente en tiempo discreto pues $n \in \mathbb{Z}$.
+
+Para que una combinación lineal de sinusoides sea periódica, debe cumplirse que todos los términos 
+tengan una frecuencia que sea múltiplo de una misma frecuencia fundamental. Se dice que los términos deben ser 
+armónicos.
+
+\textit{Función exponencial:} 
+Fruto de la relación de Euler, lo dicho para sinusoides se cumple para las 
+funciones exponenciales complejas de tiempo continuo $e^{i\omega t}$ y discreto $e^{i\Omega n}$.
+
+\subsection*{Paridad}
+Toda señal puede separarse en su parte par, $x_p(t)$, e impar,$x_i(t)$ ,según:
+\begin{equation}
+	x(t)=x_p(t)+x_i(t),
+\end{equation} 	
+donde,
+\begin{align}
+	\label{eq:paridad}
+	x_p(t)&=\frac{1}{2}[x(t)+x(-t)],\\
+	x_i(t)&=\frac{1}{2}[x(t)-x(-t)].
+\end{align}
+
+%--------------------------------
+\subsection*{Transformaciones de la variable independiente}
+\textit{Traslación o desplazamiento de tiempo:} se produce cuando se suma, o se resta, un valor determinado a la 
+variable independiente. Para tiempo continuo esto sería pasar de $x(t)$ a $x(t-t_0)$. Y para tiempo discreto se pasaría 
+de $x[n]$ a $x[n-n_0]$. En ambos casos se obtienen réplicas idénticas de las señales respectivas, pero que están 
+desplazadas una de otra. Notar que una sustracción de la variable independiente, $t-t_0$ para $t_0\ge0$, representa un 
+retraso (desplazamiento a la derecha).
+
+\textit{Reflexión o inversión de tiempo:} se produce cuando se cambia el signo a la variable independiente. Para tiempo 
+continuo sería $x(-t)$, y para tiempo discreto $x[-n]$. Con esto se obtiene una señal ``reflejada'' con respecto a 
+$t=0$, o $n=0$, según sea el caso. Notar que las transformaciones de reflexión y traslación no conmutan.  Así, para una 
+reflexión seguida de un desplazamiento, $-t-t_0$ para $t_0\ge0$, el desplazamiento se invierte, osea que es hacia la 
+izquierda (adelanto).
+
+\textit{Escalamiento de tiempo:} se produce cuando se multiplica a la variable independiente por una constante. Para 
+tiempo continuo se representa $x(at)$, y para tiempo discreto $x[an]$. En ambos casos, si $|a|>1$ la señal resulta 
+comprimida. Mientras que si $|a|<1$, la señal se ve dilatada. En tiempo discreto esto implica remover una de cada $a$ 
+muestras (compresión o diezmado), o agregar $a-1$ muestras entre entre cada par de muestras (dilatación o 
+interpolación), respectivamente.
+
+% SEÑALES DE POTENCIA Y ENERGÍA
+\subsection*{Se\~nales de energ\'ia y potencia}
+\label{sec:enepot}
+
+La energ\'ia total en un intervalo de tiempo $t_1\leq t\leq t_2$ en una se\~nal continua $x(t)$ se define como
+\begin{equation}\label{eq:energycont}
+\int_{t_1}^{t_2}|x(t)|^2dt.
+\end{equation}
+La potencia promediada en tiempo se obtiene dividiendo la Ec. \ref{eq:energycont} entre la longitud, $t_2-t_1$, del 
+intervalo de tiempo.
+
+La energ\'ia total en una se\~nal discreta $x[n]$ en el intervalo de tiempo $n_1\leq n\leq n_2$ se define como
+\begin{equation}\label{eq:energydisc}
+\sum_{n_1}^{n_2}|x[n]|^2dt.
+\end{equation}
+La potencia promediada en tiempo se obtiene dividiendo la Ec. \ref{eq:energydisc} entre el n\'umero de puntos en el 
+intervalo $n_2-n_1+1$.
+
+En muchos sistemas es de inter\'es examinar la potencia y la energ\'ia en se\~nales sobre un intervalo de tiempo 
+infinito. Se define a esta energ\'ia total en tiempo continuo como,
+\begin{equation}\label{eq:energycontinf}
+E_\infty \triangleq \lim_{T \to \infty} \int_{-T}^{T}|x(t)|^2dt = \int_{-\infty}^{\infty}|x(t)|^2dt,
+\end{equation}
+y en tiempo discreto,
+\begin{equation}\label{eq:energydicinf}
+E_\infty \triangleq \lim_{N \to \infty} \sum_{n=-N}^{+N}|x(n)|^2 = \sum_{n=-\infty}^{\infty}|x(n)|^2.
+\end{equation}
+
+De manera an\'aloga, la potencia promedio en el tiempo en un intervalo infinito se define como
+\begin{equation}\label{eq:potcontinf}
+P_\infty \triangleq \lim_{T \to \infty} \frac{1}{2T}\int_{-T}^{T}|x(t)|^2dt
+\end{equation}
+y,
+\begin{equation}\label{eq:potdiscinf}
+P_\infty \triangleq \lim_{N \to \infty} \frac{1}{2N+1}\sum_{n=-N}^{+N}|x(n)|^2.
+\end{equation}
+
+% Del libro de Ambardar
+Las definiciones para potencia y energía sirven para clasificar las señales ya sea como de potencia o de energía. Una 
+señal con energía finita se denomina \textbf{señal de energía}. Las señales de energía tienen potencia de señal cero, 
+porque estamos promediando energía finita sobre un tiempo infinito. \textit{Todas las señales limitadas en el tiempo 
+que tienen una amplitud finita son señales de energía.} Esto incluye por ejemplo a las exponenciales decrecientes 
+y las sinusoides amortiguadas. 
+
+Las señales con potencia finita reciben el nombre de \textbf{señales de potencia}. Las señales de potencia poseen 
+potencia promedio finita (no cero) y energía infinita. Los ejemplos más comunes de señales de potencia son las señales 
+periódicas y sus combinaciones.
+
+\textit{Observación:} las señales de potencia y las señales de energía son mutuamente excluyentes, puesto que las 
+primeras tienen energía infinita y las segundas tienen potencia cero. Es posible, desde luego, que una señal no sea de 
+energía ni de potencia si tiene energía infinita y potencia infinita, o energía infinita y potencia cero.
+
+% ***********************************************
+% 					SOLUCIONES
+% ***********************************************
+% *** DESARROLLO ***
+\section*{Soluciones}
+\label{sec:sol}
+
+\begin{enumerate}
+% ***********************************************
+% 					Ejercicio 1
+% ***********************************************
+\item 
+\begin{enumerate}
+	\item Ver Fig. \ref{fig:1a}.
+\begin{figure}[!htb] 
+	\centering
+	\includegraphics[width=4.5in]{1a.jpg}
+	\caption{Solución ejercicio 1a.}
+	\label{fig:1a}
+\end{figure}
+\begin{profesor}
+	\item Ver Fig. \ref{fig:1b}.
+	\begin{figure}[!htb] 
+		\centering
+		\includegraphics[width=4.5in]{1b.jpg}
+		\caption{Solución ejercicio 1b.}
+		\label{fig:1b}
+	\end{figure}
+	\item Ver Fig. \ref{fig:1c}.
+	\begin{figure}[!htb] 
+		\centering
+		\includegraphics[width=4.5in]{1c.jpg}
+		\caption{Solución ejercicio 1c.}
+		\label{fig:1c}
+	\end{figure}
+	\item Ver Fig. \ref{fig:1d}.
+	\begin{figure}[!htb] 
+		\centering
+		\includegraphics[width=4.5in]{1d.jpg}
+		\caption{Solución ejercicio 1d.}
+		\label{fig:1d}
+	\end{figure}
+	\item Ver Fig. \ref{fig:1e}.
+	\begin{figure}[!htb] 
+		\centering
+		\includegraphics[width=4.5in]{1e.jpg}
+		\caption{Solución ejercicio 1e.}
+		\label{fig:1e}
+	\end{figure}
+\end{profesor}
+\end{enumerate}
+
+% ***********************************************
+% 					Ejercicio 2
+% ***********************************************
+\item  
+\begin{enumerate}
+\item
+Ver Fig. \ref{fig:2a}.
+\begin{figure}[htb]
+	\centering
+	\begin{subfigure}{} 
+		\includegraphics[width=4.5in]{2a.jpg}
+	\end{subfigure}
+	\caption{Solución del ejercicio 2a.}
+	\label{fig:2a}	
+\end{figure}
+\end{enumerate}
+
+% ***********************************************
+% 					Ejercicio 3
+% ***********************************************
+\item 
+\begin{enumerate}
+\item Ver Fig. \ref{fig:3a}.
+\begin{figure}[!htb] 
+	\centering
+	\includegraphics[width=4.5in]{3a.jpg}
+	\caption{Solución ejercicio 3a.}
+	\label{fig:3a}
+\end{figure}
+
+\begin{profesor}
+\item Ver Fig. \ref{fig:3b}.
+\begin{figure}[!htb] 
+	\centering
+	\includegraphics[width=4.5in]{3b.jpg}
+	\caption{Solución ejercicio 3b.}
+	\label{fig:3b}
+\end{figure}
+\item Ver Fig. \ref{fig:3c}.
+\begin{figure}[!htb] 
+	\centering
+	\includegraphics[width=4.5in]{3c.jpg}
+	\caption{Solución ejercicio 3c.}
+	\label{fig:3c}
+\end{figure}
+\end{profesor}
+\end{enumerate}
+
+% ***********************************************
+% 					Ejercicio 4
+% ***********************************************
+\item  Podemos escribir
+\begin{equation}
+x(t)=\dfrac{1}{2}x(t)+\dfrac{1}{2}x(t)+\dfrac{1}{2}x(-t)-\dfrac{1}{2}x(-t),
+\end{equation}
+donde agrupando t\'erminos se obtiene
+\begin{equation}
+\begin{split}
+x(t)&=\dfrac{1}{2}[x(t)+x(-t)]+\dfrac{1}{2}[x(t)-x(-t)], \\
+x(t)&=x_p(t)+x_i(t).
+\end{split}
+\end{equation}
+
+Para que $x_p(t)$ sea par, se debe cumplir $x_p(t)=x_p(-t)$. Entonces,
+\begin{equation}
+x_p(-t)=\dfrac{1}{2}[x(-t)+x(-(-t))]=\dfrac{1}{2}[x(-t)+x(t)]=x_p(t).
+\end{equation}
+
+Para que $x_i(t)$ sea impar, se debe cumplir $x_i(-t)=-x_i(t)$. Entonces,
+\begin{equation}
+x_i(-t)=\dfrac{1}{2}[x(-t)-x(-(-t))]=\dfrac{1}{2}[x(-t)-x(t)]=-x_i(t).
+\end{equation}
+
+Queda entonces demostrado.
+
+% ***********************************************
+% 					Ejercicio 5
+% ***********************************************
+\item Aplicando la Ec.~\ref{eq:paridad}, podemos escribir:
+\begin{align}
+	x_p(t)=&\frac{1}{2}[e^{-t}+e^{t}]=\cosh(t)\\
+	x_i(t)=&\frac{1}{2}[e^{-t}-e^{t}]=-\sinh(t)
+\end{align}  
+
+% ***********************************************
+% 					Ejercicio 6
+% ***********************************************
+\item  Alumno
+
+% ***********************************************
+% 					Ejercicio 7
+% ***********************************************
+\item
+\begin{enumerate}
+	\item[$e)$] Para hallar $x(3-t)$ de forma analítica, reemplazamos $t$ por $3-t$ en la definición de la función:
+	\begin{equation}
+		x(3-t)=
+	\begin{cases}
+	(3-t)+1, & ~~-1\leq 3-t\leq 1, \\
+	2, & ~~~~~1<3-t\leq 2, \\
+	0, & \forall ~3-t<-1 \wedge 3-t>2,
+	\end{cases}
+	\end{equation}
+	que reacomodando queda,
+	\begin{equation}
+		x(3-t)=
+	\begin{cases}
+	-t+4, & 2\leq t\leq 4, \\
+	2, 		& 1\leq t< 2, \\
+	0, 		& \forall ~t<1 \wedge t>4.
+	\end{cases}	
+	\end{equation}
+En la Fig. \ref{fig:ej7_x(t)} puede verse la gráfica de $x(t)$, y en la Fig: \ref{fig:ej7_x(3-t)} la de $x(2t)$.
+
+% gráfica de x(t)
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}[scale=0.8]
+	\begin{axis}[
+	width=8cm, height=4cm,
+	axis y line=center,
+	axis x line=middle,
+	xmin=-5,	xmax=5,
+	ymin=-1,	ymax=3,
+	xlabel={$t$},
+	ylabel={$x(t)$},
+	grid=both,
+	grid style={line width=.1pt, draw=gray!40},
+  major grid style={line width=.2pt,draw=gray!60},
+	minor tick num=1,	
+	]
+	\addplot[line width=.8pt] coordinates {(-1,0) (1,2) (2,2) (2,0)}; 
+	\end{axis}
+\end{tikzpicture}
+\caption{$x(t)$ para el ejercicio 7.}
+\label{fig:ej7_x(t)}
+\end{figure}
+% gráfica de x(3-t)
+\begin{figure}[h]
+\centering
+\begin{tikzpicture}[scale=0.8]
+	\begin{axis}[
+	width=8cm, height=4cm,	
+	axis y line=center,
+	axis x line=middle,
+	xmin=-5,	xmax=5,
+	ymin=-1,	ymax=3,
+	xlabel={$t$},
+	ylabel={$x(3-t)$},
+	grid=both,
+	grid style={line width=.1pt, draw=gray!40},
+  major grid style={line width=.2pt,draw=gray!60},
+	minor tick num=1,	
+	]
+	\addplot[line width=.8pt] coordinates {(1,0) (1,2) (2,2) (4,0)}; 
+	\end{axis}
+\end{tikzpicture}
+\caption{$x(3-t)$ para el ejercicio 7.$e)$.}
+\label{fig:ej7_x(3-t)}
+\end{figure}
+
+\end{enumerate}
+
+% ***********************************************
+% 					Ejercicio 8
+% ***********************************************
+\item  Alumno
+
+% ***********************************************
+% 					Ejercicio 9
+% ***********************************************
+\item
+\begin{enumerate}
+	\item Ver Fig.~\ref{fig:9a}.
+\begin{figure}[!htb]
+	\centering
+	\begin{subfigure}{} 
+		\includegraphics[width=4.5in]{9.jpg}
+	\end{subfigure}
+	\begin{subfigure}{} 
+		\includegraphics[width=4.5in]{9a.jpg}
+	\end{subfigure}
+	\caption{Solución ejercicio 9.$a)$.}
+	\label{fig:9a}
+\end{figure}
+
+\begin{profesor}
+		\item Ver Fig. \ref{fig:9b}.
+		\begin{figure}[!htb] 
+			\centering
+			\includegraphics[width=4.5in]{9b.jpg}
+			\caption{Solución ejercicio 9.$b)$.}
+			\label{fig:9b}
+		\end{figure}
+	\end{profesor}
+\end{enumerate}
+
+% ***********************************************
+% 					Ejercicio 10
+% ***********************************************
+\item  
+\begin{enumerate}
+	\item Ver Fig.~\ref{fig:10a}.
+\begin{figure}[htb]
+	\centering
+	\begin{subfigure}{} 
+		\includegraphics[width=4.5in]{10.jpg}
+	\end{subfigure}
+	\begin{subfigure}{} 
+		\includegraphics[width=4.5in]{10a.jpg}
+	\end{subfigure}
+	\caption{Solución ejercicio 10.$a)$.}
+	\label{fig:10a}	
+\end{figure}
+
+\begin{profesor}
+	\item Ver Fig. \ref{fig:10b}.
+	\begin{figure}[!htb] 
+		\centering
+		\includegraphics[width=4.5in]{10b.jpg}
+		\caption{Solución ejercicio 10.$b)$.}
+		\label{fig:10b}
+	\end{figure}
+\end{profesor}
+\end{enumerate}
+
+
+% ***********************************************
+% 					Ejercicio 11
+% ***********************************************
+\item
+En la Fig. \ref{fig:ej11_x[n]} se muestra la gráfica de $x[n]$. Para observar lo que sucede al hacer el escalado de tiempo, construimos una tabla de valores como se muestra en la Fig. \ref{fig:ej11}. El efecto producido se puede ver en la Fig. \ref{fig:ej11_x[2n]}.
+
+\begin{figure}[h!]
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
+$n$ 	&		$x[n]$	&		$x[2n]$  \\
+\hline
+$-7$	&		$-1$		&		$x[-14]=1$\\
+\hline
+$-6$	&		$1$		&		$x[-12]=1$\\
+\hline
+$-5$	&		$-1$		&		$x[-10]=1$\\
+\hline
+$-4$	&		$1$		&		$x[-8]=1$\\
+\hline
+$-3$	&		$-1$		&		$x[-6]=1$\\
+\hline
+$-2$	&		$1$		&		$x[-4]=1$\\
+\hline
+$-1$	&		$-1$		&		$x[-2]=1$\\
+\hline
+$0$	&		$-$		&		$-$\\
+\hline
+$1$	&		$-1$		&		$x[2]=1$\\
+\hline
+$2$	&		$1$		&		$x[4]=1$\\
+\hline
+$3$	&		$-1$		&		$x[6]=1$\\
+\hline
+$4$	&		$1$		&		$x[8]=1$\\
+\hline
+$5$	&		$-1$		&		$x[10]=1$\\
+\hline
+$6$	&		$1$		&		$x[12]=1$\\
+\hline
+$7$	&		$-1$		&		$x[14]=1$\\
+\hline
+\end{tabular}
+\end{center}
+\caption{valores para $x[n]$ y $x[2n]$ del ejercicio 11.}
+\label{fig:ej11}
+\end{figure}%
+
+
+\begin{figure}[h!]
+\centering
+	\begin{tikzpicture}[scale=0.8]
+		\begin{axis}[
+		width=16cm,	height=4cm,
+		axis y line=center,
+		axis x line=middle,
+		xmin=-8,	xmax=8,
+		ymin=-2,	ymax=2,
+		xtick={-8,-7,...,8},
+		xticklabels={\empty,\empty,-6,\empty,-4,\empty,-2,\empty,\empty,\empty,2,\empty,4,\empty,6,\empty,},
+		xlabel={$n$},
+		ytick={-2,-1,...,2},
+		yticklabels={\empty,-1,\empty,1,\empty},
+		ylabel={$x[n]$},
+		grid=both,
+		grid style={line width=.1pt, draw=gray!40},
+    major grid style={line width=.2pt,draw=gray!60},
+    cycle list name=mark list,
+    mark size=1.3,
+		]
+		\addplot+[ycomb,black,thick,line width=.8pt] plot coordinates {(-7,-1) (-6,1) (-5,-1) (-4,1) (-3,-1) (-2,1)
+		(-1,-1) (1,-1) (2,1) (3,-1) (4,1) (5,-1) (6,1) (7,-1)};
+	\end{axis}
+	\end{tikzpicture}
+\caption{$x[n]$ para el ejercicio 11.}
+\label{fig:ej11_x[n]}
+\end{figure}
+
+\begin{figure}[h!]
+\centering
+	\begin{tikzpicture}[scale=0.8]
+		\begin{axis}[
+		width=16cm,	height=4cm,
+		axis y line=center,
+		axis x line=middle,
+		xmin=-8,	xmax=8,
+		ymin=-2,	ymax=2,
+		xtick={-8,-7,...,8},
+		xticklabels={\empty,\empty,-6,\empty,-4,\empty,-2,\empty,\empty,\empty,2,\empty,4,\empty,6,\empty,},
+		xlabel={$n$},
+		ytick={-2,-1,...,2},
+		yticklabels={\empty,-1,\empty,1,\empty},
+		ylabel={$x[n]$},
+		grid=both,
+		grid style={line width=.1pt, draw=gray!40},
+    major grid style={line width=.2pt,draw=gray!60},
+    cycle list name=mark list,
+    mark size=1.3,
+		]
+		\addplot+[ycomb,black,thick,line width=.8pt] plot coordinates {(-7,1) (-6,1) (-5,1) (-4,1) (-3,1) (-2,1)
+		(-1,1) (1,1) (2,1) (3,1) (4,1) (5,1) (6,1) (7,1)};
+	\end{axis}
+	\end{tikzpicture}
+\caption{$x[2n]$ para el ejercicio 11.}
+\label{fig:ej11_x[2n]}
+\end{figure}
+
+% ***********************************************
+% 					Ejercicio 12
+% ***********************************************
+% --- a ---
+\item
+\begin{enumerate}
+	\item Como puede verse, las tres componentes de la señal $x(t)=3 \cos(60t)-4\sin(30t)-5\cos(10t)$ son armónicos. Es 
+	decir que sus frecuencias son múltiplos (6, 3 y 1 respectivamente) de la fundamental $w_0=10$. Por lo que $x(t)$ es 
+	periódica. El periodo fundamental es $T_0=\frac{2\pi}{w_0}=0.2\pi$.
+\end{enumerate}
+
+% ***********************************************
+% 					Ejercicio 13
+% ***********************************************
+% --- a ---
+\item
+Para que la señal discreta sea periódica (ver sección de herramientas teóricas), se debe cumplir que 
+$\frac{k}{N}=\frac{\Omega}{2\pi}$. Es decir, la relación $\frac{\Omega}{2\pi}$ debe ser un número racional.
+\begin{enumerate}
+\item
+Para la señal de este ejercicio se tiene $\Omega_0=15$. Se puede observar que
+\begin{equation}
+\frac{k}{N}\neq \frac{15}{2\pi},
+\end{equation}
+ya que $k$ y $N$ deben ser enteros.
+
+\begin{profesor}
+	\item
+	Para este ejercicio se tiene $\Omega_0=5\pi$. Se puede observar que
+	\begin{equation}
+	\frac{k}{N}= \frac{5\pi}{2\pi}=\frac{5}{2},
+	\end{equation}
+	donde se observa que sí se cumple la relación, y por lo tanto esta señal sí es periódica.
+\end{profesor}
+
+\end{enumerate}
+
+
+% ***********************************************
+% 					Ejercicio 14
+% ***********************************************
+% --- a ---
+\item Alumno
+\begin{profesor}
+\begin{enumerate}	
+	\item La señal muestreada puede escribirse como $x[n]=3\cos(20\Delta t n)$, ya que es periódica cada $N=10$ 
+	muestras, debe cumplirse:
+	\begin{align}
+		x[n]=&x[n+N],\\
+		3\cos(20\Delta t n)=&3\cos[20\Delta t(n+N)].
+	\end{align}
+Por lo tanto, 
+	\begin{align}
+		20\Delta tN=&2k\pi\\
+		\Delta t=&\frac{k2\pi}{200}=\frac{\pi}{100}, ~~\text{para}~k=1.
+		\label{eq:14a}
+	\end{align}
+	\item La frecuencia digital fundamental queda entonces $\Omega_0=\frac{2\pi}{N}=\frac{\pi}{5}$.
+	\item Notar que $\Delta t$ y en consecuencia $\Omega$ no son únicos pues puede tomarse otro valor de $k$ en la 
+	Ec~\ref{eq:14a}.
+	\item La señal de tiempo continuo original, la envolvente, tiene periodo fundamental 
+	$T_0=\frac{2\pi}{20}=\frac{\pi}{10}$. La señal muestreada, $x[n]$, tiene periodo fundamental expresado en unidades 
+	de 
+	tiempo $N_0 \Delta t=10 \frac{\pi}{100}=\frac{\pi}{10}$. Por lo que un ciclo de la envolvente se da en un periodo 
+	de la señal muestreada.
+\end{enumerate}
+\end{profesor}
+
+% ***********************************************
+% 					Ejercicio 15
+% ***********************************************
+\item
+\begin{enumerate}
+% --- a ---
+\item 
+Según las definiciones dadas para las señales de energía y potencia, se puede identificar que la señal $A\cos(t)$ es 
+una señal de potencia, ya que es una señal periódica acotada.
+
+Podemos calcular el valor de la potencia usando la Ec. \ref{eq:potcontinf},
+\begin{align}
+P_\infty &= \lim_{T \to \infty} \frac{1}{2T}\int_{-T}^{T} A^2\cos^2(t)dt ,
+& \textit{Usamos:  }\cos^2(t) = \frac{1}{2}(1+\cos(2t)),\\
+&= \lim_{T \to \infty}\frac{1}{2T} \int_{-T}^{T} A^2\frac{1}{2}(1+\cos(2t))dt,\\
+&= \frac{A^2}{2} \lim_{T \to \infty} \frac{1}{2T}\left[ \int_{-T}^{T} 1 dt + \int_{-T}^{T}\cos(2t)dt \right],
+\end{align}
+\begin{align}
+	&= \frac{A^2}{2}\lim_{T \to \infty} \frac{1}{2T}\left[(t|_{-T}^{T}+\left(\frac{\sin(2t)}{2}\right|_{-T}^{T}\right],
+\end{align}
+\begin{align}
+&=\frac{A^2}{2}\lim_{T \to \infty}\frac{1}{2T}\left(2T+\sin(2T)\right)=\boxed{\frac{A^2}{2}}.
+\end{align}
+
+\end{enumerate}
+
+%Sec. soluciones
+\end{enumerate}
+\begin{center}
+	---------------------------------------
+\end{center}
+\end{document}
