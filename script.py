@@ -1,5 +1,4 @@
 import fileinput
-from os import replace
 import sys
 
 
