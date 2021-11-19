@@ -21,7 +21,7 @@ str3='\\excludecomment{profesor}\n'
 
 def replaceAll(file):
     print(file)
-    for line in fileinput.input(file, inplace=1):
+    for line in fileinput.input(file, inplace=1, encoding='latin-1'):
         if (str1 in line) or (str2 in line):
             line = str3
         sys.stdout.write(line)
