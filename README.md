@@ -15,7 +15,7 @@ Referencias:
 - [Latex](https://github.com/marketplace/actions/github-action-for-latex)
 
 - [FTP](https://github.com/marketplace/actions/ftp-deploy)
-    - Acá hay que crear un (secreto)[https://docs.github.com/es/actions/security-guides/encrypted-secrets] para usar el pass
+    - Acá hay que crear un [secreto](https://docs.github.com/es/actions/security-guides/encrypted-secrets) para usar el pass
 
 
 
