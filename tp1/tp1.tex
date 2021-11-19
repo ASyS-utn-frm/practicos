@@ -14,7 +14,6 @@
 % ---
 \documentclass[10pt,a4paper]{article}
 
-
 % Packages
 % ---
 \usepackage[latin1]{inputenc}
@@ -151,7 +150,7 @@
 % ***********************************************
 % 					Ejercicio 6
 % ***********************************************
-\textbf{Raí­z enésima de un número complejo}
+\textbf{Raíz enésima de un número complejo}
 \item {Determinar el valor correspondiente y graficar.}	
 \begin{enumerate}
 	\item $w=\sqrt{1}$	\tabto{4cm} Rta: $1;-1$
@@ -252,7 +251,7 @@
 % ***********************************************
 % 					Ejercicio 15
 % ***********************************************
-\textbf{Función logarí­tmica}
+\textbf{Función logarítmica}
 \item {Calcular:}	
 \begin{enumerate}
 	\item $\ln 1$			\tabto{4cm} Rta: $(\pm2k\pi)i; ~~ k=0,1,2,\cdots$
@@ -284,16 +283,16 @@
 \textbf{Regiones del plano complejo}
 \item {Graficar los lugares geométricos correspondientes a:}	
 \begin{enumerate}
-	\item $|z|\leq 3$					\tabto{5cm} Rta: \textit{cí­rculo de radio 3 centrado en el origen.}
+	\item $|z|\leq 3$					\tabto{5cm} Rta: \textit{círculo de radio 3 centrado en el origen.}
 	\item $Re\{z\}\geq -2$  			\tabto{5cm} Rta: \textit{eje $x=-2$ y semiplano a la derecha de dicho eje.}
 	\item $Im\{z\} < 4$ **				\tabto{5cm} Rta: \textit{semiplano inferior al eje $y=4$, excluyendo el mismo.}
 	\item $|Arg ~ z|<\frac{\pi}{2}$	**	\tabto{5cm} Rta: \textit{semiplano derecho (sin el eje imaginario).}
-	\item $0< Arg ~ z <\frac{2\pi}{3}$ **								\tabto{5cm} Rta: \textit{ángulo en semiplano superior desde 0Âº a 120Âº.}
+	\item $0< Arg ~ z <\frac{2\pi}{3}$ **								\tabto{5cm} Rta: \textit{ángulo en semiplano superior desde 0º a 120º.}
 	\item $|z+1|\leq3;-\frac{\pi}{4}\leq Arg ~ z \leq \frac{\pi}{4}$	\tabto{5cm} Rta: \textit{interior del arco de circunferencia centrada en -1 de radio 3 
 																		\tabto{5cm}	(incluyendo el arco) intersección con arco centrado en origen 
-																		\tabto{5cm} desde -45Âº hasta 45Âº.}
+																		\tabto{5cm} desde -45º hasta 45º.}
 	\item $|z|\leq 1; 0\leq Arg ~z \leq \frac{\pi}{3}$	**				\tabto{5cm} Rta: \textit{interior del arco de circunferencia centrada en origen de 
-																		\tabto{5cm}	radio 1 (incluyendo el arco), desde 0Âº hasta 60Âº} 
+																		\tabto{5cm}	radio 1 (incluyendo el arco), desde 0º hasta 60º} 
 	\item $1\leq|z-3|\leq2$												\tabto{5cm} Rta: \textit{anillo centrado en (3,0) de radio interior 1 y exterior 2 
 																		\tabto{5cm}	Puntos que verifican: $1\leq\sqrt{(x-3)^2+y^2}\leq2$} 
 	\item $|z+3+3i|>3$													\tabto{5cm} Rta: \textit{exterior de la circunferencia: $\sqrt{(x+3)^2+(y+3)^2}=3$}
@@ -312,7 +311,7 @@
 % ***********************************************
 % Esta sección esta pensada para incluir toda la ayuda teórica necesaria para resolver el practico
 % Algunas reglas generales:
-%	-Mantener el contenido al minimo, referir a la bibliografí­a para mayor información (hay q armar un archivo .bib)
+%	-Mantener el contenido al minimo, referir a la bibliografía para mayor información (hay q armar un archivo .bib)
 %	-Enumerar todas las ecuaciones
 %	-No repetir ecuaciones ya dadas en las HT de otro práctico, solo referir a ella
 %	-Para resaltar palabras usar \textit
@@ -320,7 +319,7 @@
 %	-
 \section*{Herramientas Te\'oricas:}
 \label{sec:herr}
-\subsection*{Representación analÃ­tica de un número complejo z}
+\subsection*{Representación analítica de un número complejo z}
 Forma cartesiana (útil al trabajar con sumas algebraicas):
 \begin{equation}
 z = x+iy \to Re(z)=x=\frac{1}{2}(z+\bar z)~\wedge~Im(z)=y=\frac{1}{2i}(z-\bar z).
@@ -345,7 +344,7 @@ z=r[\cos{(\theta)}+i\sin{(\theta)}] \to r\cos{(\theta)}=x~\wedge~r\sin{(\theta)}
 \end{equation}
 
 \subsection*{Representación gráfica de un número complejo z}
-Las variables de la representación analí­tica  pueden identificarse en el plano complejo $"z"$, como se 
+Las variables de la representación analítica  pueden identificarse en el plano complejo $"z"$, como se 
 muestra en la figura \ref{fig:ht_01}.
 \begin{figure}
 	\centering
@@ -354,17 +353,17 @@ muestra en la figura \ref{fig:ht_01}.
 	\label{fig:ht_01}
 \end{figure}
 
-\subsection*{Raí­z enésima de un número complejo $z$}
+\subsection*{Raíz enésima de un número complejo $z$}
 \begin{equation}
 w=\sqrt[n]{z} \to z=w^n \to r_ze^{i\theta_z}=\Big(r_we^{i\theta_w}\Big)^n=r_w^ne^{in\theta_w}.
 \label{eq:p1_ht4}
 \end{equation}
-Igualando complejos se obtiene la expresión para calcular la raí­z ($w$) en forma polar,
+Igualando complejos se obtiene la expresión para calcular la raíz ($w$) en forma polar,
 \begin{equation}
 r_w=\sqrt[n]{r_z}~\wedge~\theta_w=\frac{\theta_z+2k\pi}{n},~k=0 ,1,2,...,n-1
 \label{eq:p1_ht5}
 \end{equation}
-\textbf{Nota:} La raí­z enésima es una función multivaluada con infinitas soluciones pero con solo $n$ soluciones fundamentales distintas. Estas están distribuidas en el 
+\textbf{Nota:} La raíz enésima es una función multivaluada con infinitas soluciones pero con solo $n$ soluciones fundamentales distintas. Estas están distribuidas en el 
 plano complejo de manera equidistante 
 sobre la circunferencia de radio $r_w$.
 
@@ -436,7 +435,7 @@ Igualando complejos se obtiene la expresión para calcular el logaritmo ($w$) en 
 \label{eq:p1_ht7}
 \end{equation}
 
-\subsection*{Potencia compleja de un número real}
+\subsection*{Potencia compleja de un numero real}
 \begin{equation}
 w=A^z\to w=e^{\ln{(A)}z}=e^{\ln{(A)}x} e^{i\ln{(A)}y}
 \label{eq:p1_ht8}
@@ -589,7 +588,7 @@ Entonces, un incremento en la variable $x$ producirá un incremento en el módulo 
 
 \begin{enumerate}
 %% ej 9.a
-\item En este punto la condición es que la variable $x$ tiene un valor constante $x=5$, y la variable $y$ varí­a entre $0$ y $\frac{7}{6}\pi$ con un incremento $\Delta y=\frac{\pi}{6}$. Numéricamente esto queda de la siguiente forma:
+\item En este punto la condición es que la variable $x$ tiene un valor constante $x=5$, y la variable $y$ varía entre $0$ y $\frac{7}{6}\pi$ con un incremento $\Delta y=\frac{\pi}{6}$. Numéricamente esto queda de la siguiente forma:
 \begin{align}
 f(5,0) &= e^5 \cdot e^{i0} = e^5 \cos(0) + ie^5 \sin(0) = 148.4, \\
 f(5,\tfrac{\pi}{6}) &= e^5 \cdot e^{i\frac{\pi}{6}} = 
@@ -710,7 +709,7 @@ y por inspección podemos plantear:
 	y &=0.6435\pm2k\pi.~~~~ k = 0, 1, 2, \cdots.
 \end{align}
 
-La respuesta completa serí­a:
+La respuesta completa sería:
 \begin{equation}
 \boxed{z = 1.609 + i(0.6435\pm k2\pi), ~~~~ k = 0, 1, 2, \cdots.}
 \end{equation}

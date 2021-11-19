@@ -159,7 +159,7 @@ resultante. ¿Cómo se ve la componente $\omega=460~rad/s$?}.
 % ***********************************************
 % 					Ejercicio 7
 % ***********************************************
-\item {Un sistema puede realizar la operación de muestreo con un perí­odo mí­nimo $\Delta t_{min}=1~\mu s$. ¿Qué valores 
+\item {Un sistema puede realizar la operación de muestreo con un período mínimo $\Delta t_{min}=1~\mu s$. ¿Qué valores 
 puede tomar $\omega_{max}$?}.
 
 % ***********************************************
@@ -232,7 +232,7 @@ puede tomar $\omega_{max}$?}.
 Esta sección esta pensada para incluir toda la ayuda teórica necesaria 
 para resolver el practico.
 Algunas reglas generales:
-	-Mantener el contenido al minimo, referir a la bibliografí­a para mayor 
+	-Mantener el contenido al minimo, referir a la bibliografía para mayor 
 		información (hay q armar un archivo .bib).
 	-Enumerar todas las ecuaciones.
 	-No repetir ecuaciones ya dadas en las HT de otro práctico, 
@@ -259,7 +259,7 @@ muestreo $\omega_s=2\pi/\Delta t$ sea
 \subsection*{Frecuencia digital}
 
 Al muestrear una señal de tiempo continuo, tomamos valores de su variable independiente solo 
-para múltiplos enteros del periodo de muestreo $\Delta t$. Para el caso de una señal periódica con perí­odo $T$, por 
+para múltiplos enteros del periodo de muestreo $\Delta t$. Para el caso de una señal periódica con período $T$, por 
 ejemplo un sinusoide, podemos escribir:
 \begin{equation}
 x(t)=\sin(wt)\to x[n]=\sin(\omega n\Delta t)=\sin(\Omega n)
@@ -304,7 +304,7 @@ siendo $\Omega_0=2\pi/N$. Y los coeficientes $a_k$ están dados por,
 a_k = \frac{1}{N} \sum_{n=\langle N\rangle} x[n]e^{-jk\Omega_0n}.
 \end{equation}
 
-Notar que a diferencia de las ecuaciones de Fourier para tiempo continuo, la series involucradas aquí­ son de longitud 
+Notar que a diferencia de las ecuaciones de Fourier para tiempo continuo, la series involucradas aquí son de longitud 
 finita $N$ (debido a la periodicidad de los $a_k$). En consecuencia, puede evitarse el truncamiento y sintetizar la 
 señal $x[n]$ exactamente a partir de los $N$ coeficientes $a_k$.
 
@@ -336,7 +336,7 @@ Algunas reglas generales:
 		de cada paso, usando usando "\begin{align}" u otro que lo permita
 	-Todas las soluciones finales de los ejercicios deben estar recuadradas 
 		con \boxed{}
-	-Cuando haya que desarrollar partes con jerarquí­a, usar primero negrita
+	-Cuando haya que desarrollar partes con jerarquía, usar primero negrita
 
 		y luego cursiva para sub partes.
 \end{comment}
@@ -358,7 +358,7 @@ Para poder adoptar una frecuencia útil de muestreo es necesario en primer lugar 
 \omega_2 &= 5\pi ~rad/s \approx 15.7 ~rad/s, \\
 \omega_3 &= 60 ~rad/s,
 \end{align}
-donde claramente se observa que la máxima frecuencia es $\omega_3 = 60 ~rad/s$. A continuación lo que se debe hacer es determinar una frecuencia de muestreo que cumpla con el teorema de muestreo definido en la Ec. \ref{eq:teorema_muestreo}, la que podrí­a ser por ejemplo,
+donde claramente se observa que la máxima frecuencia es $\omega_3 = 60 ~rad/s$. A continuación lo que se debe hacer es determinar una frecuencia de muestreo que cumpla con el teorema de muestreo definido en la Ec. \ref{eq:teorema_muestreo}, la que podría ser por ejemplo,
 \begin{equation}
 \omega_s = 2.5 \cdot\omega_3 = 150 ~rad/s.
 \end{equation}
@@ -438,10 +438,10 @@ Para realizar un muestreo apropiado de la señal se debe cumplir el teorema del m
 
 \item
 La porción de la señal bien muestreada es la correspondiente al rango de frecuencias donde no se produce solapamiento. 
-Esto serí­a todas las frecuencias por debajo de $\omega_s - \omega_{m} = 32.9~rad/s$
+Esto sería todas las frecuencias por debajo de $\omega_s - \omega_{m} = 32.9~rad/s$
 
 \item
-Sí­ se produce deterioro. Para este caso puntual se pierde la frecuencia $\omega_m=47.1~rad/s$.
+Sí se produce deterioro. Para este caso puntual se pierde la frecuencia $\omega_m=47.1~rad/s$.
 
 \item
 La frecuencia ``alias'' de la componente mal muestreada se obtiene como,
@@ -463,12 +463,12 @@ Comparar este resultado con el del punto 3.b
 \item
 Una forma de realizar el muestreo de forma adecuada sin afectar el espectro (A) es utilizando un filtro pasa-bajos que elimine el espectro (B) de ruido, y adoptar una frecuencia de muestreo adecuada según el espectro (A). 
 
-Como $\omega_{max} = 1000~rad/s$ y $\omega_1=1500~rad/s$, la frecuencia de corte del filtro deberí­a estar entre estas dos frecuencias y la frecuencia de muestreo podrí­a ser por ejemplo,
+Como $\omega_{max} = 1000~rad/s$ y $\omega_1=1500~rad/s$, la frecuencia de corte del filtro debería estar entre estas dos frecuencias y la frecuencia de muestreo podría ser por ejemplo,
 \begin{equation}
 \omega_s = 2.2~\omega_{max} = 2200~rad/s.
 \end{equation}
 
-Otra forma de realizar el muestreo sin afectar el espectro (A) serí­a adoptar una frecuencia de muestreo tal que el espectro de ruido (B) no se superponga con el espectro (A). Se dejan los detalles numéricos al alumno.
+Otra forma de realizar el muestreo sin afectar el espectro (A) sería adoptar una frecuencia de muestreo tal que el espectro de ruido (B) no se superponga con el espectro (A). Se dejan los detalles numéricos al alumno.
 
 
 % ***********************************************
@@ -517,7 +517,7 @@ componente $\omega=460~rad/s$ está en el intervalo de solapamiento, por lo que p
 \item Del enunciado sabemos que el espectro de una señal de voz posee $f_{max}=5~kHz$, a partir de la que 
 podemos determinar:
 \begin{enumerate}
-	\item La frecuencia teórica mí­nima dada por el teorema del muestreo es la frecuencia de Nyquist, 
+	\item La frecuencia teórica mínima dada por el teorema del muestreo es la frecuencia de Nyquist, 
 	$f_{nyquist}=2f_{max}=10 ~kHz$. El intervalo de Nyquist vale entonces,  
 	$\Delta t_{nyquist}=1/f_{nyquist}=100~\mu s$
 	\item Para facilitar la implementación del filtro pasa-bajos que permita recuperar la señal a partir de su versión 

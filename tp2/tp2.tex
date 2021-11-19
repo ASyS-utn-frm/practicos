@@ -70,7 +70,7 @@
 % 					Ejercicio 1
 % ***********************************************
 \begin{enumerate}
-\item {Determinar la derivada de las siguientes funciones analí­ticas en forma convencional y utilizando derivadas 
+\item {Determinar la derivada de las siguientes funciones analíticas en forma convencional y utilizando derivadas 
 parciales.}
 \begin{enumerate}
 	\item $f(z)=5z^2+7z-12$		\tabto{5cm}Rta:$f'(z)=10z+7$
@@ -82,13 +82,13 @@ parciales.}
 % 					Ejercicio 2
 % ***********************************************
 \item {Aplicando las condiciones de Cauchy-Riemann (forma cartesiana o polar), determinar si las funciones dadas son 
-analí­ticas.}
+analíticas.}
 \begin{enumerate}
-	\item $f(z)=\frac{1}{z}$				\tabto{5cm}Rta: Sí­ (excepto para $z=0$)
+	\item $f(z)=\frac{1}{z}$				\tabto{5cm}Rta: Sí (excepto para $z=0$)
 	\item $f(z)=Im\{z\}$ (*)				\tabto{5cm}Rta: No
-	\item $f(z)=\tfrac{1}{1-z}$				\tabto{5cm}Rta: Sí­ (excepto para $z=1$)
+	\item $f(z)=\tfrac{1}{1-z}$				\tabto{5cm}Rta: Sí (excepto para $z=1$)
 	\item $f(z)=z+\bar z$					\tabto{5cm}Rta: No
-	\item $f(z)=\tfrac{1}{z^2}$ (*)			\tabto{5cm}Rta: Sí­ (excepto para $z=0$)
+	\item $f(z)=\tfrac{1}{z^2}$ (*)			\tabto{5cm}Rta: Sí (excepto para $z=0$)
 	\item $f(z)=e^{\bar z}$ (*)				\tabto{5cm}Rta: No
 \end{enumerate}
 
@@ -141,7 +141,7 @@ conjugada.}
 % ***********************************************
 % Esta sección esta pensada para incluir toda la ayuda teórica necesaria para resolver el practico
 % Algunas reglas generales:
-%	-Mantener el contenido al minimo, referir a la bibliografí­a para mayor información (hay q armar un archivo .bib)
+%	-Mantener el contenido al minimo, referir a la bibliografía para mayor información (hay q armar un archivo .bib)
 %	-Enumerar todas las ecuaciones
 %	-No repetir ecuaciones ya dadas en las HT de otro práctico, solo referir a ella
 %	-Para resaltar palabras usar \textit
@@ -175,7 +175,7 @@ Las derivadas parciales de una función compleja $f(z)=f(x,y)$ pueden escribirse 
 %% Ecuaciones de Cauchy-Riemann
 \subsection*{Ecuaciones de Cauchy-Riemann}
 Las ecuaciones de Cauchy-Riemann permiten verificar la analiticidad de una función compleja. En términos generales, $f$ 
-es analí­tica en un dominio $D$ si y sólo si las primeras derivadas parciales de $u$ y $v$ satisfacen las dos ecuaciones
+es analítica en un dominio $D$ si y sólo si las primeras derivadas parciales de $u$ y $v$ satisfacen las dos ecuaciones
 \begin{equation}
 \label{eq:cauchy-riemann}
 \frac{\partial u}{\partial x} = \frac{\partial v}{\partial y}, \qquad \qquad
@@ -296,7 +296,7 @@ Se cumple la primer ecuación $\frac{\partial u}{\partial x} = \frac{\partial v}{
 \frac{\partial u}{\partial y} = \frac{-x2y}{(x^2+y^2)^2} = \frac{-2xy}{(x^2+y^2)^2}.
 \end{equation}
 Se cumple la segunda ecuación $\frac{\partial v}{\partial x} = -\frac{\partial u}{\partial y}$, por lo que se concluye 
-que $f(z)$ es analí­tica, salvo en $z=0$.
+que $f(z)$ es analítica, salvo en $z=0$.
 
 \textit{Forma polar}
 
@@ -319,7 +319,7 @@ lo que verifica la ecuación $\frac{\partial u}{\partial r} = \frac{1}{r}\frac{\p
 \frac{\partial u}{\partial \theta} = \frac{-\sin \theta \cdot r}{r^2} = \frac{-\sin \theta}{r},
 \end{equation}
 Que verifica la ecuación $\frac{\partial v}{\partial r} = -\frac{1}{r}\frac{\partial u}{\partial \theta}$. Verificando 
-nuevamente que $f(z)$ es analí­tica.
+nuevamente que $f(z)$ es analítica.
 
 \begin{profesor}
 	\item Buscamos la parte real e imaginaria de la función dada,
@@ -338,7 +338,7 @@ Escribimos las condiciones de Cauchy-Riemann, Ec. \ref{eq:cauchy-riemann}:
 	\frac{\partial u}{\partial y}&=1~~;~~\frac{\partial v}{\partial x}=0.			
 	\end{align}	
 Donde puede verse que la segunda condición de Cauchy-Riemann, 
-$\frac{\partial u}{\partial y}=-\frac{\partial v}{\partial x}$, no se cumple y la función no es analí­tica.
+$\frac{\partial u}{\partial y}=-\frac{\partial v}{\partial x}$, no se cumple y la función no es analítica.
 \end{profesor}
 \end{enumerate}
 
