@@ -13,6 +13,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+      - run: ls
 
       - name: Run a one-line script
         run: mkdir ./tps
@@ -28,43 +29,43 @@ jobs:
 
       - uses: xu-cheng/latex-action@v2
         with:
-          root_file: tp1/tp1.tex
+          root_file: tp1.tex
           working_directory: ./tp1/
       - uses: xu-cheng/latex-action@v2
         with:
-          root_file: tp2/tp2.tex
+          root_file: tp2.tex
           working_directory: ./tp2/
       - uses: xu-cheng/latex-action@v2
         with:
-          root_file: tp3/tp3.tex
+          root_file: tp3.tex
           working_directory: ./tp3/
       - uses: xu-cheng/latex-action@v2
         with:
-          root_file: tp4/tp4.tex
+          root_file: tp4.tex
           working_directory: ./tp4/
       - uses: xu-cheng/latex-action@v2
         with:
-          root_file: tp5/tp5.tex
+          root_file: tp5.tex
           working_directory: ./tp5/
       - uses: xu-cheng/latex-action@v2
         with:
-          root_file: tp6/tp6.tex
+          root_file: tp6.tex
           working_directory: ./tp6/
       - uses: xu-cheng/latex-action@v2
         with:
-          root_file: tp1/tp7.tex
+          root_file: tp7.tex
           working_directory: ./tp7/
       - uses: xu-cheng/latex-action@v2
         with:
-          root_file: tp8/tp8.tex
+          root_file: tp8.tex
           working_directory: ./tp8/
       - uses: xu-cheng/latex-action@v2
         with:
-          root_file: tp9/tp9.tex
+          root_file: tp9.tex
           working_directory: ./tp9/
       - uses: xu-cheng/latex-action@v2
         with:
-          root_file: tp10/tp10.tex
+          root_file: tp10.tex
           working_directory: ./tp10/
       
       - run: mv ./tp1/tp1.pdf ./tps
