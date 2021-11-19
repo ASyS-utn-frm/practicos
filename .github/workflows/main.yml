@@ -87,4 +87,4 @@ jobs:
           username: franciscoiglesias
           password: ${{ secrets.ftp_password }}
           local-dir: ./tps/
-          server-dir: /electronica/analisisdsys/assets/files/
+          server-dir: /electronica/analisisdsys/assets/files/tps/
