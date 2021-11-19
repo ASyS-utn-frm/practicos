@@ -17,6 +17,10 @@ Referencias:
 - [FTP](https://github.com/marketplace/actions/ftp-deploy)
     - Acá hay que crear un [secreto](https://docs.github.com/es/actions/security-guides/encrypted-secrets) para usar el pass
 
+    ## TO-DO
+
+    [Solo compilar los tps que realimente tienen cambios](https://github.com/marketplace/actions/file-changes-action)
+
 
 
 
