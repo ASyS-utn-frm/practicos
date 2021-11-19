@@ -13,6 +13,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+      - run: ls
 
       - name: Run a one-line script
         run: mkdir ./tps
@@ -28,18 +29,56 @@ jobs:
 
       - uses: xu-cheng/latex-action@v2
         with:
-          root_file: |
-            tp1/tp1.tex
-            tp2/tp2.tex
-            tp3/tp3.tex
-            tp4/tp4.tex
-            tp5/tp5.tex
-            tp6/tp6.tex
-            tp7/tp7.tex
-            tp8/tp8.tex
-            tp9/tp9.tex
-            tp10/tp10.tex
-          args: -output-directory ./tps
+          root_file: tp1.tex
+          working_directory: ./tp1/
+      - uses: xu-cheng/latex-action@v2
+        with:
+          root_file: tp2.tex
+          working_directory: ./tp2/
+      - uses: xu-cheng/latex-action@v2
+        with:
+          root_file: tp3.tex
+          working_directory: ./tp3/
+      - uses: xu-cheng/latex-action@v2
+        with:
+          root_file: tp4.tex
+          working_directory: ./tp4/
+      - uses: xu-cheng/latex-action@v2
+        with:
+          root_file: tp5.tex
+          working_directory: ./tp5/
+      - uses: xu-cheng/latex-action@v2
+        with:
+          root_file: tp6.tex
+          working_directory: ./tp6/
+      - uses: xu-cheng/latex-action@v2
+        with:
+          root_file: tp7.tex
+          working_directory: ./tp7/
+      - uses: xu-cheng/latex-action@v2
+        with:
+          root_file: tp8.tex
+          working_directory: ./tp8/
+      - uses: xu-cheng/latex-action@v2
+        with:
+          root_file: tp9.tex
+          working_directory: ./tp9/
+      - uses: xu-cheng/latex-action@v2
+        with:
+          root_file: tp10.tex
+          working_directory: ./tp10/
+      
+      - run: mv ./tp1/tp1.pdf ./tps
+      - run: mv ./tp2/tp2.pdf ./tps
+      - run: mv ./tp3/tp3.pdf ./tps
+      - run: mv ./tp4/tp4.pdf ./tps
+      - run: mv ./tp5/tp5.pdf ./tps
+      - run: mv ./tp6/tp6.pdf ./tps
+      - run: mv ./tp7/tp7.pdf ./tps
+      - run: mv ./tp8/tp8.pdf ./tps
+      - run: mv ./tp9/tp9.pdf ./tps
+      - run: mv ./tp10/tp10.pdf ./tps
+
           
       - name: Sync files
         uses: SamKirkland/FTP-Deploy-Action@4.1.0
@@ -48,4 +87,5 @@ jobs:
           username: franciscoiglesias
           password: ${{ secrets.ftp_password }}
           local-dir: ./tps/
-          server-dir: /electronica/analisisdsys/assets/files/
+          server-dir: /electronica/analisisdsys/assets/files/tps/
+          dangerous-clean-slate: true
