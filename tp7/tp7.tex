@@ -283,7 +283,7 @@ Considerando $A=\frac{1}{\tau}$, y $\tau\to0$. Graficar. **
 Esta sección esta pensada para incluir toda la ayuda teórica necesaria 
 para resolver el practico.
 Algunas reglas generales:
-	-Mantener el contenido al minimo, referir a la bibliografía para mayor 
+	-Mantener el contenido al minimo, referir a la bibliografí­a para mayor 
 		información (hay q armar un archivo .bib).
 	-Enumerar todas las ecuaciones.
 	-No repetir ecuaciones ya dadas en las HT de otro práctico, 
@@ -313,7 +313,7 @@ si, cuando su producto interno es nulo:
 <x_m(t),x_n(t)>=0~~~\text{con}~~n\neq m.
 \end{equation}
 
-Siguiendo con la analogía vectorial, se define el cuadrado de la \textbf{norma} de una función $x_n(t)$, mediante el 
+Siguiendo con la analogí­a vectorial, se define el cuadrado de la \textbf{norma} de una función $x_n(t)$, mediante el 
 producto:
 \begin{equation}
 ||x_n(t)||^2=<x_n(t),x_n(t)>=\int_{a}^{b} x^2_n(t) w(t) dt.
@@ -364,7 +364,7 @@ C_n=\frac{1}{T}\int_{T} x(t) e^{-inw_0t} dt
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%	
 	\subsection*{Serie trigonométrica de Fourier}
-	La serie trigonométrica de Fourier de una señal periódica $ x(t) $ con período $ T $ es:
+	La serie trigonométrica de Fourier de una señal periódica $ x(t) $ con perí­odo $ T $ es:
 	\begin{equation}\label{serieTrigFourier}
 	x(t) = \dfrac{a_0}{2} + \sum _{n=1}^{\infty} \left( a_n \cos n\omega_0 t + b_n \sin n\omega_0 t \right),
 	\end{equation}
@@ -399,7 +399,7 @@ C_n=\frac{1}{T}\int_{T} x(t) e^{-inw_0t} dt
 	Es importante tener en cuenta esto al calcular los coeficientes de Fourier, pues en los integrandos se 
 	tiene el producto de la señal $x(t)$ por un coseno (señal par) o un seno (señal impar). 
 	
-	De lo anterior se desprende que la serie de Fourier de una señal par de período T es una \textbf{``Serie de 
+	De lo anterior se desprende que la serie de Fourier de una señal par de perí­odo T es una \textbf{``Serie de 
 	Fourier de cosenos"}
 	\begin{equation}
 	x(t) = \dfrac{a_0}{2} + \sum _{n=1}^{\infty} a_n \cos (n\omega_0 t),
@@ -411,7 +411,7 @@ C_n=\frac{1}{T}\int_{T} x(t) e^{-inw_0t} dt
 	\end{equation}
 	Es decir que para una funci\'on par, se tiene que $b_n=0$.
 	
-	La serie de Fourier de una función impar de período T es una \textbf{``Serie de Fourier de senos"}
+	La serie de Fourier de una función impar de perí­odo T es una \textbf{``Serie de Fourier de senos"}
 	\begin{equation}
 	x(t) = \sum _{n=1}^{\infty} b_n \sin (n\omega_0 t),
 	\end{equation}
@@ -450,7 +450,7 @@ Algunas reglas generales:
 		de cada paso, usando usando "\begin{align}" u otro que lo permita
 	-Todas las soluciones finales de los ejercicios deben estar recuadradas 
 		con \boxed{}
-	-Cuando haya que desarrollar partes con jerarquía, usar primero negrita
+	-Cuando haya que desarrollar partes con jerarquí­a, usar primero negrita
 		y luego cursiva para sub partes.
 \end{comment}
 
@@ -531,7 +531,7 @@ La gr\'afica correspondiente a esta $x(t)$ es la mostrada en la Figura \ref{fig:
 \label{fig:ej8}
 \end{figure}
 
-Previo al c\'alculo de los coeficientes, podemos observar las características de simetr\'ia de la funci\'on, para que en caso de presentar alguna simetr\'ia, evitemos realizar el c\'alculo de los coeficientes que se anulan. Se puede observar que estamos ante el caso de una funci\'on con simetr\'ia impar. Para las funciones impares solo subsiste el coeficiente $b_n$, siendo $a_0=0$ y $a_n=0$. Por lo tanto, para este caso solo calculamos $b_n$.
+Previo al c\'alculo de los coeficientes, podemos observar las caracterí­sticas de simetr\'ia de la funci\'on, para que en caso de presentar alguna simetr\'ia, evitemos realizar el c\'alculo de los coeficientes que se anulan. Se puede observar que estamos ante el caso de una funci\'on con simetr\'ia impar. Para las funciones impares solo subsiste el coeficiente $b_n$, siendo $a_0=0$ y $a_n=0$. Por lo tanto, para este caso solo calculamos $b_n$.
 
 Observando la Ec. \ref{eq:bn}, vemos que siendo $T=6$, deber\'iamos integrar entre $-\frac{T}{2}=-3$ y $\frac{T}{2}=3$, pero la funci\'on tiene valor nulo en ciertas partes de ese intervalo. De este modo, el intervalo efectivo de integraci\'on debe ser desde $t=-2$ hasta $t=2$. Y por las caracter\'isticas que tiene la funci\'on, la integral deber\'ia calcularse en dos partes. Se debe tomar $x(t)=-1$ para $-2<t<0$ y $x(t)=1$ para $0<t<2$. 
 
@@ -613,7 +613,7 @@ Por otro lado, si $n$ es impar, $\sin{(n\frac{\pi}{2}})$ alterna entre 1 y -1. P
 \end{equation}
 
 En la Fig. \ref{fig:ej6_a} puede verse las gráficas de los primeros 20 coeficientes complejos $C_n$, su modulo 
-(espectro de amplitudes) y su argumento (espectro de fases), así como la suma de la serie. En esta última puede 
+(espectro de amplitudes) y su argumento (espectro de fases), así­ como la suma de la serie. En esta última puede 
 apreciarse como el error al truncar la serie, es mayor cerca de las discontinuidades de la señal (fenómeno de Gibbs). 
 En la Fig.~\ref{fig:ej6_a2} se muestra lo mismo pero considerando los primeros 60 coeficientes. 
 
@@ -622,7 +622,7 @@ En la Fig.~\ref{fig:ej6_a2} se muestra lo mismo pero considerando los primeros 6
 		\includegraphics[width=17cm]{tp7_ej6_a.eps}
 	\end{center}
 	\caption{Desarrollo de la serie del ej. 6.a) de $n=-20$ hasta $n=20$. Notar que el espectro de fases $Arg[C_n]$ 
-	calculado por el programa no es impar como debería ser, pues $x(t)$ es una señal real. Esto se debe a que el 
+	calculado por el programa no es impar como deberí­a ser, pues $x(t)$ es una señal real. Esto se debe a que el 
 	programa calcula numéricamente la fase de un número real negativo siempre como $\pi$, cuando en 
 	realidad hay dos posibles soluciones $\pi$ y $-\pi$. Otro problema numérico ocurre al calcular la fase de las 
 	componentes que valen 0, que son numéricamente mal condicionadas debido a la división por zero involucrada. Estos 
@@ -774,7 +774,7 @@ X(iw)&=\Big[-\frac{e^{-(iw+2)t}((iw+2)t+1)}{(iw+2)^2}\Big]_{0}^{\infty},\\
 &=\boxed{\frac{1}{(iw+2)^2}}.
 \end{align}
 Puede verse por el espectro de amplitudes de la Fig.~\ref{fig:ej_13}, que si la $x(t)$ fuese la respuesta impulsiva de 
-un sistema LTI, el mismo actuaría como un filtro pasa bajos, a saber, un sistema que atenúa las frecuencias altas 
+un sistema LTI, el mismo actuarí­a como un filtro pasa bajos, a saber, un sistema que atenúa las frecuencias altas 
 (mayor $w$) de la señal de entrada. 
 
 \begin{figure}[h]
