@@ -39,7 +39,9 @@ jobs:
             tp8/tp8.tex
             tp9/tp9.tex
             tp10/tp10.tex
-          args: -output-directory ./tps
+      - name: ls
+        run: ls
+
           
       - name: Sync files
         uses: SamKirkland/FTP-Deploy-Action@4.1.0
