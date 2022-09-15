@@ -2,7 +2,6 @@ import fileinput
 import sys
 
 
-
 files_list=[
     'tp1/tp1.tex',
     'tp2/tp2.tex',
