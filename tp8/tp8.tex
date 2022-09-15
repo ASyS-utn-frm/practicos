@@ -56,8 +56,9 @@
 \includecomment{profesor}    % version profesor
 %\excludecomment{profesor}	  % version alumnos
 
-\lhead{\footnotesize An\'alisis de Se\~nales y Sistemas  - A\~no \the\year{} Ver. 2022.09.15}\chead{}
-\rhead{\footnotesize Trabajo Pr\'actico N$^\text o$8: Muestreo y an√°lisis de Fourier en tiempo discreto}
+\lhead{\footnotesize An\'alisis de Se\~nales y Sistemas - Ver. 2021.11.19}
+\chead{}
+\rhead{\footnotesize Trabajo Pr\'actico N$^\text o$8: Muestreo y an·lisis de Fourier en tiempo discreto}
 \lfoot{}
 \cfoot{}
 \rfoot{\footnotesize P\'agina \thepage\ de \pageref{LastPage}}
@@ -70,7 +71,7 @@
 	[0.1cm]
 	{\Huge{An\'alisis de Se\~nales y Sistemas}} \\
 	[0.25cm]
-	{\Large{Trabajo Pr\'{a}ctico N$^{\text {o}}$8: Muestreo y an√°lisis de Fourier en tiempo discreto}		
+	{\Large{Trabajo Pr\'{a}ctico N$^{\text {o}}$8: Muestreo y an·lisis de Fourier en tiempo discreto}		
 	\\
 	}}
 \author{}
@@ -82,7 +83,7 @@
 \begin{document}
 \maketitle
 \begin{profesor}
-	\hspace{6cm}(Versi√≥n PROFESOR)
+	\hspace{6cm}(VersiÛn PROFESOR)
 \end{profesor}
 \thispagestyle{fancy}
 
@@ -94,7 +95,7 @@
 % ***********************************************
 % 					Ejercicio 1
 % ***********************************************
-\item {Dadas las siguientes se√±ales, adoptar una frecuencia √∫til de muestreo y determinar el intervalo $\Delta t$ 
+\item {Dadas las siguientes seÒales, adoptar una frecuencia ˙til de muestreo y determinar el intervalo $\Delta t$ 
 correspondiente:}
 \begin{enumerate}
 \item $x(t)=10\cos(5t)-5\sin(7\pi t)+3\cos(30t)$ **				
@@ -111,32 +112,32 @@ $\Omega_4=\pi/2$.~~**}
 % ***********************************************
 % 					Ejercicio 3
 % ***********************************************
-\item {Para la se√±al $z(t)$ del ejercicio 1, se adopta $\omega_s=80~rad/s$}.~~**
+\item {Para la seÒal $z(t)$ del ejercicio 1, se adopta $\omega_s=80~rad/s$}.~~**
 \begin{enumerate}
 	\item Determinar el efecto que se produce				
-	\item ¬øCu√°l es la porci√≥n de la se√±al bien muestreada?
-	\item ¬øSe produce deterioro? ¬øQu√© frecuencia o frecuencias se pierden?
-	\item ¬øCu√°l es la frecuencia ``alias'' de la componente mal muestreada?			
+	\item øCu·l es la porciÛn de la seÒal bien muestreada?
+	\item øSe produce deterioro? øQuÈ frecuencia o frecuencias se pierden?
+	\item øCu·l es la frecuencia ``alias'' de la componente mal muestreada?			
 \end{enumerate}	
 
 % ***********************************************
 % 					Ejercicio 4
 % ***********************************************
-\item {Una se√±al $x(t)$ ha sido recuperada por sus muestras obtenidas con una frecuencia de muestreo 
-$\omega_s=5000\pi$. ¬øPara qu√© valores de $\omega$ debe garantizarse que $X(j\omega)$ sea cero?}.~~**
+\item {Una seÒal $x(t)$ ha sido recuperada por sus muestras obtenidas con una frecuencia de muestreo 
+$\omega_s=5000\pi$. øPara quÈ valores de $\omega$ debe garantizarse que $X(j\omega)$ sea cero?}.~~**
 
 % ***********************************************
 % 					Ejercicio 5
 % ***********************************************
-\item {Sea una se√±al $x(t)$ tal que $X(j\omega)$ tiene el espectro (A) que se muestra en la Fig.~\ref{fig:ej_5}. Se 
+\item {Sea una seÒal $x(t)$ tal que $X(j\omega)$ tiene el espectro (A) que se muestra en la Fig.~\ref{fig:ej_5}. Se 
 suma ruido con espectro (B). Suponiendo que 	$\omega_{max}=1.000~rad/s$; $\omega_{1}=1.500~rad/s$; 
-$\omega_{2}=2.000~rad/s$; proponer dos formas de realizar el muestreo sin afectar el espectro (A) de la se√±al.}~~**
+$\omega_{2}=2.000~rad/s$; proponer dos formas de realizar el muestreo sin afectar el espectro (A) de la seÒal.}~~**
 
 \begin{figure}[h]
 	\begin{center}
 		\includegraphics[width=12cm]{tp8_ej5.png}
 	\end{center}
-	\caption{Gr√°fica del ej. 5}
+	\caption{Gr·fica del ej. 5}
 	\label{fig:ej_5}
 \end{figure}
 
@@ -144,78 +145,78 @@ $\omega_{2}=2.000~rad/s$; proponer dos formas de realizar el muestreo sin afecta
 % 					Ejercicio 6
 % ***********************************************
 \item {Suponer que $x(t)$ tiene por espectro a $X(j\omega)$, que se muestra en la Fig.~\ref{fig:ej_6}. Si se adopta una 
-frecuencia de muestreo de $f_s=150~Hz$, ¬øqu√© porci√≥n del espectro presenta solapamiento?. Graficar el espectro 
-resultante. ¬øC√≥mo se ve la componente $\omega=460~rad/s$?}.
+frecuencia de muestreo de $f_s=150~Hz$, øquÈ porciÛn del espectro presenta solapamiento?. Graficar el espectro 
+resultante. øCÛmo se ve la componente $\omega=460~rad/s$?}.
 
 \begin{figure}[h]
 	\begin{center}
 		\includegraphics[width=8cm]{tp8_ej6.png}
 	\end{center}
-	\caption{Gr√°fica del ej. 6}
+	\caption{Gr·fica del ej. 6}
 	\label{fig:ej_6}
 \end{figure}
 
 % ***********************************************
 % 					Ejercicio 7
 % ***********************************************
-\item {Un sistema puede realizar la operaci√≥n de muestreo con un per√≠odo m√≠nimo $\Delta t_{min}=1~\mu s$. ¬øQu√© valores 
+\item {Un sistema puede realizar la operaciÛn de muestreo con un perÌodo mÌnimo $\Delta t_{min}=1~\mu s$. øQuÈ valores 
 puede tomar $\omega_{max}$?}.
 
 % ***********************************************
 % 					Ejercicio 8
 % ***********************************************
-\item {Una se√±al de audio abarca de $20~Hz$ hasta $20~kHz$. Muestrearla y representarla en $\Omega$.}
+\item {Una seÒal de audio abarca de $20~Hz$ hasta $20~kHz$. Muestrearla y representarla en $\Omega$.}
 
 % ***********************************************
 % 					Ejercicio 9
 % ***********************************************
-\item {Una se√±al de RF tiene componentes desde $992~kHz$ hasta $1008~kHz$}.
+\item {Una seÒal de RF tiene componentes desde $992~kHz$ hasta $1008~kHz$}.
 \begin{enumerate}
 	\item Muestrearla y representarla en $\Omega$			
-	\item Comparar la gr√°fica con la del ejercicio 8
-	\item ¬øCu√°nto representa $\Omega=\pi/3$ en cada caso?			
+	\item Comparar la gr·fica con la del ejercicio 8
+	\item øCu·nto representa $\Omega=\pi/3$ en cada caso?			
 \end{enumerate}	
 
 % ***********************************************
 % 					Ejercicio 10
 % ***********************************************
-\item {El espectro de una se√±al de voz es pr√°cticamente nulo a frecuencias superiores de $5~kHz$.}~~**
+\item {El espectro de una seÒal de voz es pr·cticamente nulo a frecuencias superiores de $5~kHz$.}~~**
 \begin{enumerate}
 	\item Determinar la frecuencia y el intervalo de Nyquist.		
-	\item Proponer una frecuencia de utilidad pr√°ctica para el muestreo.
-	\item Graficar el espectro de amplitud de la se√±al en funci√≥n de $\Omega$ despu√©s del muestreo.
-	\item Si el espectro de la se√±al muestreada tiene una componente en $\Omega=1.75~rad$, ¬øcu√°l es su correspondiente 
+	\item Proponer una frecuencia de utilidad pr·ctica para el muestreo.
+	\item Graficar el espectro de amplitud de la seÒal en funciÛn de $\Omega$ despuÈs del muestreo.
+	\item Si el espectro de la seÒal muestreada tiene una componente en $\Omega=1.75~rad$, øcu·l es su correspondiente 
 	frecuencia $\omega$?
-	\item Analizar qu√© sucede si se elige la frecuencia de muestreo de $8~kHz$.
+	\item Analizar quÈ sucede si se elige la frecuencia de muestreo de $8~kHz$.
 \end{enumerate}	
 	
-\subsubsection*{Serie de Fourier para se√±ales en tiempo discreto}
+\subsubsection*{Serie de Fourier para seÒales en tiempo discreto}
 
 % ***********************************************
 % 					Ejercicio 11
 % ***********************************************
-\item {Para la se√±al peri√≥dica discreta $x[n]$, tal que $x[n]=1$ para $-1 \leq n \leq 2$ y $N=10$, determinar:}~~**
+\item {Para la seÒal periÛdica discreta $x[n]$, tal que $x[n]=1$ para $-1 \leq n \leq 2$ y $N=10$, determinar:}~~**
 \begin{enumerate}
 	\item La serie de Fourier		
-	\item M√≥dulo y fase de $a_k$
-	\item Las gr√°ficas correspondientes al m√≥dulo y la fase de $a_k$
+	\item MÛdulo y fase de $a_k$
+	\item Las gr·ficas correspondientes al mÛdulo y la fase de $a_k$
 \end{enumerate}	
 
 % ***********************************************
 % 					Ejercicio 12
 % ***********************************************
-\item {Para la se√±al peri√≥dica discreta $x[n]$, tal que $x[n]=0.7^n$ para $0 \leq n \leq 4$ y $N=5$, determinar:}
+\item {Para la seÒal periÛdica discreta $x[n]$, tal que $x[n]=0.7^n$ para $0 \leq n \leq 4$ y $N=5$, determinar:}
 \begin{enumerate}
 	\item La serie de Fourier		
-	\item M√≥dulo y fase de $a_k$
-	\item Las gr√°ficas correspondientes al m√≥dulo y la fase de $a_k$
+	\item MÛdulo y fase de $a_k$
+	\item Las gr·ficas correspondientes al mÛdulo y la fase de $a_k$
 \end{enumerate}
 
-\subsubsection*{Transformada de Fourier para se√±ales en tiempo discreto}
+\subsubsection*{Transformada de Fourier para seÒales en tiempo discreto}
 % ***********************************************
 % 					Ejercicio 13
 % ***********************************************
-\item {Dada la se√±al transitoria $x[n]$, obtener y graficar $|X(e^{j\Omega})|$:}~~**
+\item {Dada la seÒal transitoria $x[n]$, obtener y graficar $|X(e^{j\Omega})|$:}~~**
 \begin{enumerate}
 	\item $x[n]=\{3\quad 2\quad 1\quad 0\quad -1\}$
 	\item $x[n]=\{-2\quad -1\quad 3\quad 1\}$
@@ -223,21 +224,21 @@ puede tomar $\omega_{max}$?}.
 
 \end{enumerate}
 % ***********************************************
-% 			Herramientas Te√≥ricas (HT)
+% 			Herramientas TeÛricas (HT)
 % ***********************************************
 
 % *** PAUTAS A SEGUIR ***
 \begin{comment}
-Esta secci√≥n esta pensada para incluir toda la ayuda te√≥rica necesaria 
+Esta secciÛn esta pensada para incluir toda la ayuda teÛrica necesaria 
 para resolver el practico.
 Algunas reglas generales:
-	-Mantener el contenido al minimo, referir a la bibliograf√≠a para mayor 
-		informaci√≥n (hay q armar un archivo .bib).
+	-Mantener el contenido al minimo, referir a la bibliografÌa para mayor 
+		informaciÛn (hay q armar un archivo .bib).
 	-Enumerar todas las ecuaciones.
-	-No repetir ecuaciones ya dadas en las HT de otro pr√°ctico, 
+	-No repetir ecuaciones ya dadas en las HT de otro pr·ctico, 
 		solo referir a ella.
 	-Para resaltar palabras usar \textit.
-	-Utilizar la nomencaltura oficial de la cat√°tedra !!  
+	-Utilizar la nomencaltura oficial de la cat·tedra !!  
 		(Hay que definirlo, yo diria seguir al pie de la letra el kreizig)
 \end{comment}
 
@@ -247,8 +248,8 @@ Algunas reglas generales:
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%	
 \subsection*{Teorema de muestreo}
-Sea $x(t)$ una se√±al de banda limitada, es decir que se cumple: $X(j\omega)=0$ para todo $|\omega|>\omega_{max}$. Puede 
-determinarse univocamente $x(t)$ a partir de su versi√≥n muestreada $x[n]=x(n\Delta t)$ siempre que la frecuencia de 
+Sea $x(t)$ una seÒal de banda limitada, es decir que se cumple: $X(j\omega)=0$ para todo $|\omega|>\omega_{max}$. Puede 
+determinarse univocamente $x(t)$ a partir de su versiÛn muestreada $x[n]=x(n\Delta t)$ siempre que la frecuencia de 
 muestreo $\omega_s=2\pi/\Delta t$ sea 
 \begin{equation}\label{eq:teorema_muestreo}
 \omega_s>2\omega_{max}.
@@ -257,25 +258,25 @@ muestreo $\omega_s=2\pi/\Delta t$ sea
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%	
 \subsection*{Frecuencia digital}
 
-Al muestrear una se√±al de tiempo continuo, tomamos valores de su variable independiente solo 
-para m√∫ltiplos enteros del periodo de muestreo $\Delta t$. Para el caso de una se√±al peri√≥dica con per√≠odo $T$, por 
+Al muestrear una seÒal de tiempo continuo, tomamos valores de su variable independiente solo 
+para m˙ltiplos enteros del periodo de muestreo $\Delta t$. Para el caso de una seÒal periÛdica con perÌodo $T$, por 
 ejemplo un sinusoide, podemos escribir:
 \begin{equation}
 x(t)=\sin(wt)\to x[n]=\sin(\omega n\Delta t)=\sin(\Omega n)
 \end{equation} 
 Mientras que para $x(t)$ la variable independiente $t$ tiene unidades de tiempo ($s$) y su frecuencia angular 
-$\omega=2\pi/T$ se mide en $rad/s$; para la se√±al muestreada $x[n]$, la variable independiente es el indice discreto 
-adimensional $n$. Para mantener la relaci√≥n conocida entre tiempo y frecuencia, es conveniente  al trabajar con se√±ales 
-peri√≥dicas de tiempo discreto, definir una frecuencia digital $\Omega=2\pi/N$ que se mide en $rad$ y cumple la 
-siguiente relaci√≥n,
+$\omega=2\pi/T$ se mide en $rad/s$; para la seÒal muestreada $x[n]$, la variable independiente es el indice discreto 
+adimensional $n$. Para mantener la relaciÛn conocida entre tiempo y frecuencia, es conveniente  al trabajar con seÒales 
+periÛdicas de tiempo discreto, definir una frecuencia digital $\Omega=2\pi/N$ que se mide en $rad$ y cumple la 
+siguiente relaciÛn,
 \begin{equation}
 \Omega=\omega \Delta t
 \end{equation} 
-Como se ilustra en la Fig.~\ref{fig:frec_dig}, la representaci√≥n en el dominio de la frecuencia de se√±ales de 
-tiempo discreto presenta espectros peri√≥dicos cada $\omega_s=2\pi/\Delta t$. Al expresar el espectro en funci√≥n de la 
-frecuencia digital, se ve que siempre es peri√≥dico cada  $\Omega_{s}=\omega_{s}\Delta t=2\pi~rad$. 
+Como se ilustra en la Fig.~\ref{fig:frec_dig}, la representaciÛn en el dominio de la frecuencia de seÒales de 
+tiempo discreto presenta espectros periÛdicos cada $\omega_s=2\pi/\Delta t$. Al expresar el espectro en funciÛn de la 
+frecuencia digital, se ve que siempre es periÛdico cada  $\Omega_{s}=\omega_{s}\Delta t=2\pi~rad$. 
 
-Adem√°s, al comparar las amplitudes del espectro de la se√±al de tiempo continuo $X(j\omega)$, con el de la se√±al 
+Adem·s, al comparar las amplitudes del espectro de la seÒal de tiempo continuo $X(j\omega)$, con el de la seÒal 
 muestreada $X(e^{j\Omega})$ obtenido mediante la transformada 
 de Fourier de tiempo discreto, se hace manifiesto el factor de escala $1/\Delta t$.
 
@@ -283,9 +284,9 @@ de Fourier de tiempo discreto, se hace manifiesto el factor de escala $1/\Delta 
 	\begin{center}
 		\includegraphics[width=6cm]{frec_dig.png}
 	\end{center}
-	\caption{Espectro de una se√±al no periodica de tiempo continuo de banda limitada (superior) y de la misma se√±al 
+	\caption{Espectro de una seÒal no periodica de tiempo continuo de banda limitada (superior) y de la misma seÒal 
 		luego de ser 
-		muestreada con un intervalo de muestreo $\Delta t$. Este √∫ltimo se muestra tanto en funci√≥n de la frecuencia 
+		muestreada con un intervalo de muestreo $\Delta t$. Este ˙ltimo se muestra tanto en funciÛn de la frecuencia 
 		angular 
 		$\omega$ (centro) como de la 
 		frecuencia digital $\Omega$ (inferior).}
@@ -294,26 +295,26 @@ de Fourier de tiempo discreto, se hace manifiesto el factor de escala $1/\Delta 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%	
 \subsection*{Serie de Fourier de tiempo discreto}
-La ecuaci√≥n que define a la serie de Fourier para se√±ales de tiempo discreto (a veces llamada serie discreta de Fourier) es,
+La ecuaciÛn que define a la serie de Fourier para seÒales de tiempo discreto (a veces llamada serie discreta de Fourier) es,
 \begin{equation}
 x[n] = \sum_{k=\langle N\rangle} a_k e^{jk\Omega_0n},
 \end{equation}
-siendo $\Omega_0=2\pi/N$. Y los coeficientes $a_k$ est√°n dados por,
+siendo $\Omega_0=2\pi/N$. Y los coeficientes $a_k$ est·n dados por,
 \begin{equation}
 a_k = \frac{1}{N} \sum_{n=\langle N\rangle} x[n]e^{-jk\Omega_0n}.
 \end{equation}
 
-Notar que a diferencia de las ecuaciones de Fourier para tiempo continuo, la series involucradas aqu√≠ son de longitud 
+Notar que a diferencia de las ecuaciones de Fourier para tiempo continuo, la series involucradas aquÌ son de longitud 
 finita $N$ (debido a la periodicidad de los $a_k$). En consecuencia, puede evitarse el truncamiento y sintetizar la 
-se√±al $x[n]$ exactamente a partir de los $N$ coeficientes $a_k$.
+seÒal $x[n]$ exactamente a partir de los $N$ coeficientes $a_k$.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%	
 \subsection*{Transformada de Fourier de tiempo discreto}
-La ecuaci√≥n que define la transformada de Fourier para se√±ales de tiempo discreto no peri√≥dicas es,
+La ecuaciÛn que define la transformada de Fourier para seÒales de tiempo discreto no periÛdicas es,
 \begin{equation}
 X(e^{j\Omega}) = \sum_{n=-\infty}^{+\infty}x[n]e^{-j\Omega n}.
 \end{equation}
-Mientras que la transformaci√≥n inversa es:
+Mientras que la transformaciÛn inversa es:
 \begin{equation}
 x[n] = \frac{1}{2\pi} \int_{\langle 2\pi \rangle} X(e^{j\Omega})e^{j\Omega n} d\Omega.
 \end{equation}
@@ -325,17 +326,17 @@ x[n] = \frac{1}{2\pi} \int_{\langle 2\pi \rangle} X(e^{j\Omega})e^{j\Omega n} d\
 % ***********************************************
 % *** PAUTAS A SEGUIR ***
 \begin{comment}
-En esta secci√≥n se resuelven los ejercicios paso a paso.
+En esta secciÛn se resuelven los ejercicios paso a paso.
 Algunas reglas generales:
-	-Utilizar la resoluci√≥n mas did√°ctica posible y 
-		que sea consistente con los otros pr√°cticos.
+	-Utilizar la resoluciÛn mas did·ctica posible y 
+		que sea consistente con los otros pr·cticos.
 	-Dar la suficiente cantidad de detalle para que sea sencillo
-		entender lo que se est√° haciendo, pero sin caer en trivialidades.
+		entender lo que se est· haciendo, pero sin caer en trivialidades.
 	-Para explicar lo que se hace en un desarrollo, ir comentando a la derecha
 		de cada paso, usando usando "\begin{align}" u otro que lo permita
 	-Todas las soluciones finales de los ejercicios deben estar recuadradas 
 		con \boxed{}
-	-Cuando haya que desarrollar partes con jerarqu√≠a, usar primero negrita
+	-Cuando haya que desarrollar partes con jerarquÌa, usar primero negrita
 
 		y luego cursiva para sub partes.
 \end{comment}
@@ -351,13 +352,13 @@ Algunas reglas generales:
 \item 
 \begin{enumerate}
 \item[\textit{b})]
-Para poder adoptar una frecuencia √∫til de muestreo es necesario en primer lugar identificar cu√°l es la m√°xima frecuencia de la se√±al. Observamos que para este caso tenemos las componentes con frecuencias
+Para poder adoptar una frecuencia ˙til de muestreo es necesario en primer lugar identificar cu·l es la m·xima frecuencia de la seÒal. Observamos que para este caso tenemos las componentes con frecuencias
 \begin{align}
 \omega_1 &= 10 ~rad/s, \\
 \omega_2 &= 5\pi ~rad/s \approx 15.7 ~rad/s, \\
 \omega_3 &= 60 ~rad/s,
 \end{align}
-donde claramente se observa que la m√°xima frecuencia es $\omega_3 = 60 ~rad/s$. A continuaci√≥n lo que se debe hacer es determinar una frecuencia de muestreo que cumpla con el teorema de muestreo definido en la Ec. \ref{eq:teorema_muestreo}, la que podr√≠a ser por ejemplo,
+donde claramente se observa que la m·xima frecuencia es $\omega_3 = 60 ~rad/s$. A continuaciÛn lo que se debe hacer es determinar una frecuencia de muestreo que cumpla con el teorema de muestreo definido en la Ec. \ref{eq:teorema_muestreo}, la que podrÌa ser por ejemplo,
 \begin{equation}
 \omega_s = 2.5 \cdot\omega_3 = 150 ~rad/s.
 \end{equation}
@@ -372,7 +373,7 @@ El intervalo de muestreo para esta $\omega_s$ es
 % 					Ejercicio 2
 % ***********************************************
 \item
-La relaci√≥n entre las variables de frecuencia $\omega$, para tiempo continuo, y $\Omega$, para tiempo discreto, esta dada por
+La relaciÛn entre las variables de frecuencia $\omega$, para tiempo continuo, y $\Omega$, para tiempo discreto, esta dada por
 \begin{equation}
 \Omega = \omega \Delta t.
 \end{equation}
@@ -391,7 +392,7 @@ Para un valor de frecuencia $\Omega_4=\pi/2$ se tiene,
 
 \begin{figure}[htb]
 	\centering	
-	% ___ gr√°fica
+	% ___ gr·fica
 	\begin{tikzpicture}[scale=1]
 		\begin{axis}[
 		axis y line=center,
@@ -421,7 +422,7 @@ Para un valor de frecuencia $\Omega_4=\pi/2$ se tiene,
 				};
 	\end{axis}
 	\end{tikzpicture}
-	\caption{Gr√°fico del ej. 2}
+	\caption{Gr·fico del ej. 2}
 \end{figure}
 
 
@@ -431,16 +432,16 @@ Para un valor de frecuencia $\Omega_4=\pi/2$ se tiene,
 \item
 \begin{enumerate}
 \item
-Para poder determinar el efecto que produce muestrear la se√±al con una frecuencia de muestreo $\omega_s =80 ~rad/s$ primero se debe determinar cu√°l es la frecuencia m√°xima para la se√±al considerada. Se puede identificar f√°cilmente que la frecuencia m√°xima es $\omega_m=15\pi ~rad/s\approx 47.1 ~rad/s$.
+Para poder determinar el efecto que produce muestrear la seÒal con una frecuencia de muestreo $\omega_s =80 ~rad/s$ primero se debe determinar cu·l es la frecuencia m·xima para la seÒal considerada. Se puede identificar f·cilmente que la frecuencia m·xima es $\omega_m=15\pi ~rad/s\approx 47.1 ~rad/s$.
 
-Para realizar un muestreo apropiado de la se√±al se debe cumplir el teorema del muestreo, es decir, que la frecuencia de muestreo debe ser mayor que dos veces la m√°xima frecuencia presente en la se√±al, lo que claramente vemos que no se cumple, siendo que $2\omega_m=94.2~rad/s$ para este caso. De esta forma, se estar√° ante una situaci√≥n de \textbf{submuestreo} o \textbf{aliasing}.
-
-\item
-La porci√≥n de la se√±al bien muestreada es la correspondiente al rango de frecuencias donde no se produce solapamiento. 
-Esto ser√≠a todas las frecuencias por debajo de $\omega_s - \omega_{m} = 32.9~rad/s$
+Para realizar un muestreo apropiado de la seÒal se debe cumplir el teorema del muestreo, es decir, que la frecuencia de muestreo debe ser mayor que dos veces la m·xima frecuencia presente en la seÒal, lo que claramente vemos que no se cumple, siendo que $2\omega_m=94.2~rad/s$ para este caso. De esta forma, se estar· ante una situaciÛn de \textbf{submuestreo} o \textbf{aliasing}.
 
 \item
-S√≠ se produce deterioro. Para este caso puntual se pierde la frecuencia $\omega_m=47.1~rad/s$.
+La porciÛn de la seÒal bien muestreada es la correspondiente al rango de frecuencias donde no se produce solapamiento. 
+Esto serÌa todas las frecuencias por debajo de $\omega_s - \omega_{m} = 32.9~rad/s$
+
+\item
+SÌ se produce deterioro. Para este caso puntual se pierde la frecuencia $\omega_m=47.1~rad/s$.
 
 \item
 La frecuencia ``alias'' de la componente mal muestreada se obtiene como,
@@ -460,14 +461,14 @@ Comparar este resultado con el del punto 3.b
 % 					Ejercicio 5
 % ***********************************************
 \item
-Una forma de realizar el muestreo de forma adecuada sin afectar el espectro (A) es utilizando un filtro pasa-bajos que elimine el espectro (B) de ruido, y adoptar una frecuencia de muestreo adecuada seg√∫n el espectro (A). 
+Una forma de realizar el muestreo de forma adecuada sin afectar el espectro (A) es utilizando un filtro pasa-bajos que elimine el espectro (B) de ruido, y adoptar una frecuencia de muestreo adecuada seg˙n el espectro (A). 
 
-Como $\omega_{max} = 1000~rad/s$ y $\omega_1=1500~rad/s$, la frecuencia de corte del filtro deber√≠a estar entre estas dos frecuencias y la frecuencia de muestreo podr√≠a ser por ejemplo,
+Como $\omega_{max} = 1000~rad/s$ y $\omega_1=1500~rad/s$, la frecuencia de corte del filtro deberÌa estar entre estas dos frecuencias y la frecuencia de muestreo podrÌa ser por ejemplo,
 \begin{equation}
 \omega_s = 2.2~\omega_{max} = 2200~rad/s.
 \end{equation}
 
-Otra forma de realizar el muestreo sin afectar el espectro (A) ser√≠a adoptar una frecuencia de muestreo tal que el espectro de ruido (B) no se superponga con el espectro (A). Se dejan los detalles num√©ricos al alumno.
+Otra forma de realizar el muestreo sin afectar el espectro (A) serÌa adoptar una frecuencia de muestreo tal que el espectro de ruido (B) no se superponga con el espectro (A). Se dejan los detalles numÈricos al alumno.
 
 
 % ***********************************************
@@ -479,13 +480,13 @@ $\omega_{alias}=\omega_s-\omega_{max}=942.48-500=442.48~rad/s$.
 
 Debido a que $\omega_{alias}<\omega_{max}$ hay 
 solapamiento para toda $442.48~rad/s<\omega<500~rad/s$, como se ve en la Fig.~\ref{fig:ej_6r}. Notar que la 
-componente $\omega=460~rad/s$ est√° en el intervalo de solapamiento, por lo que presenta una amplitud mayor a la real.
+componente $\omega=460~rad/s$ est· en el intervalo de solapamiento, por lo que presenta una amplitud mayor a la real.
 
 \begin{figure}[h]
 	\begin{center}
 		\includegraphics[width=14cm]{tp8_ej6_res.png}
 	\end{center}
-	\caption{Resoluci√≥n del ej. 6}
+	\caption{ResoluciÛn del ej. 6}
 	\label{fig:ej_6r}
 \end{figure}
 
@@ -513,13 +514,13 @@ componente $\omega=460~rad/s$ est√° en el intervalo de solapamiento, por lo que 
 % ***********************************************
 % 					Ejercicio 10
 % ***********************************************
-\item Del enunciado sabemos que el espectro de una se√±al de voz posee $f_{max}=5~kHz$, a partir de la que 
+\item Del enunciado sabemos que el espectro de una seÒal de voz posee $f_{max}=5~kHz$, a partir de la que 
 podemos determinar:
 \begin{enumerate}
-	\item La frecuencia te√≥rica m√≠nima dada por el teorema del muestreo es la frecuencia de Nyquist, 
+	\item La frecuencia teÛrica mÌnima dada por el teorema del muestreo es la frecuencia de Nyquist, 
 	$f_{nyquist}=2f_{max}=10 ~kHz$. El intervalo de Nyquist vale entonces,  
 	$\Delta t_{nyquist}=1/f_{nyquist}=100~\mu s$
-	\item Para facilitar la implementaci√≥n del filtro pasa-bajos que permita recuperar la se√±al a partir de su versi√≥n 
+	\item Para facilitar la implementaciÛn del filtro pasa-bajos que permita recuperar la seÒal a partir de su versiÛn 
 	muestreada, se aconseja tomar una frecuencia de muestreo mayor que la de Nyquist. Elegimos,  
 	$f_{s}=2.5f_{max}=12.5~kHz$, que resulta en un intervalo de muestreo $\Delta t_s=80~\mu s$
 	\item  Ver la Fig.~\ref{fig:ej_10}, donde $\Omega_{max}=\omega_{max}\Delta t_s=2\pi f_{max}\Delta t_s=0.8\pi~rad$ 
@@ -527,17 +528,17 @@ podemos determinar:
 	$\Omega_{alias}=2\pi (f_{s}-f_{max})\Delta t_s=1.2\pi~rad$. Notar que siempre $\Omega_{s}=2\pi f_{s}\Delta 
 	t_s=2\pi~rad$.
 	\item La frecuencia angular correspondiente a $\Omega=1.75~rad$ es $\omega=\Omega/\Delta t_s= 21.875~rad/s$
-	\item Si se elije una frecuencia de muestreo $f_s=8~kHz$, se producir√° perdida de informaci√≥n (aliasing), pues no 
-	se cumple con el teorema del muestreo. En particular, toda la informaci√≥n contenida en frecuencias mayores a la de  
+	\item Si se elije una frecuencia de muestreo $f_s=8~kHz$, se producir· perdida de informaciÛn (aliasing), pues no 
+	se cumple con el teorema del muestreo. En particular, toda la informaciÛn contenida en frecuencias mayores a la de  
 	alias, $f_{alias}=f_s-f_{max}=3~kHz$, resulta destruida debido al solapamiento de los espectros (se deja al alumno 
-	la representaci√≥n gr√°fica de este caso). 
+	la representaciÛn gr·fica de este caso). 
 \end{enumerate} 
 
 \begin{figure}[h]
 	\begin{center}
 		\includegraphics[width=14cm]{tp8_ej10.png}
 	\end{center}
-	\caption{Resoluci√≥n del ej. 10}
+	\caption{ResoluciÛn del ej. 10}
 	\label{fig:ej_10}
 \end{figure}
 
@@ -553,14 +554,14 @@ podemos determinar:
 % ***********************************************
 \item 
 \begin{enumerate}
-	\item Calculamos los coeficientes de la serie de Fourier de tiempo discreto para la se√±al: $x[n]=0.7^n$ para 
+	\item Calculamos los coeficientes de la serie de Fourier de tiempo discreto para la seÒal: $x[n]=0.7^n$ para 
 	$0\leq n\leq 4$ con periodo $N=5$. Notar que $\Omega_0=2\pi/N=2\pi/5$:
 	\begin{align}
 	a_k &= \frac{1}{N} \sum_{n=\langle N\rangle} x[n]e^{-jk\Omega_0n},\\
 	&= \frac{1}{5} \sum_{n=\langle 5\rangle} 0.7^n e^{-jk\frac{2\pi}{5}n},\\
     &= \frac{1}{5} \sum_{n=\langle 5\rangle} \Big( 0.7 e^{-jk\frac{2\pi}{5}} \Big) ^n.
    	\end{align}
-	Que es una serie geom√©trica, por lo que su suma puede escribirse:
+	Que es una serie geomÈtrica, por lo que su suma puede escribirse:
 	\begin{align}
 	a_k  &= \frac{1}{5}\frac{1-0.7^5}{1-0.7e^{-jk\frac{2\pi}{5}}},\\
 	 &=\boxed{\frac{0.1664}{1-0.7e^{-jk\frac{2\pi}{5}}}}.
@@ -569,7 +570,7 @@ podemos determinar:
 	\begin{equation}
 	x[n] = \sum_{k=\langle 5\rangle} \frac{0.1664}{1-0.7e^{-jk\frac{2\pi}{5}}} e^{jk\frac{2\pi}{5}n},
 	\end{equation}
-	\item Debido a que solo hay $N=5$ coeficientes diferentes, podemos calcularlos num√©ricamente en forma polar, por 
+	\item Debido a que solo hay $N=5$ coeficientes diferentes, podemos calcularlos numÈricamente en forma polar, por 
 	ejemplo:
 	\begin{itemize}
 		\item $a_0=\frac{0.1664}{1-0.7e^{-j0\frac{2\pi}{5}}}=\frac{0.1664}{1-0.7}=0.5546+0i=0.55e^{j0}$
@@ -583,7 +584,7 @@ podemos determinar:
 		\begin{center}
 			\includegraphics[width=16cm]{tp8_ej12.jpg}
 		\end{center}
-		\caption{Resoluci√≥n del ej. 12}
+		\caption{ResoluciÛn del ej. 12}
 		\label{fig:ej_12}
 	\end{figure}
 	
@@ -596,25 +597,25 @@ podemos determinar:
 % ***********************************************
 \item
 \begin{enumerate}
-\item Para obtener la transformada de Fourier de una se√±al no peri√≥dica de duraci√≥n finita como la dada, 
-$x[n]=\{3\quad 2\quad 1\quad 0 \quad -1\}$, aplicamos la definici√≥n y resolvemos la suma num√©ricamente:
+\item Para obtener la transformada de Fourier de una seÒal no periÛdica de duraciÛn finita como la dada, 
+$x[n]=\{3\quad 2\quad 1\quad 0 \quad -1\}$, aplicamos la definiciÛn y resolvemos la suma numÈricamente:
 \begin{align}
 X(e^{j\Omega}) &= \sum_{n=-\infty}^{+\infty}x[n]e^{-j\Omega n}\\
 &= \sum_{n=0}^{4}x[n]e^{-j\Omega n}\\
 &= \boxed{3+2e^{-j\Omega}+e^{-j\Omega 2}-e^{-j\Omega 4}}.
 \end{align}
-La se√±al y su transformada se muestran en la Fig.~\ref{fig:ej_13a}.
+La seÒal y su transformada se muestran en la Fig.~\ref{fig:ej_13a}.
 \begin{figure}[h]
 	\begin{center}
 		\includegraphics[width=16cm]{tp8_ej13a.jpg}
 	\end{center}
-	\caption{Resoluci√≥n del ej. 13a. Notar que se muestra un solo periodo de los espectros.}
+	\caption{ResoluciÛn del ej. 13a. Notar que se muestra un solo periodo de los espectros.}
 	\label{fig:ej_13a}
 \end{figure}
 
 \begin{profesor}
-	\item Para obtener la transformada de Fourier de una se√±al no peri√≥dica de duraci√≥n finita como la dada, 
-	$x[n]=\{-2\quad -1\quad 3\quad 1\}$, aplicamos la definici√≥n y resolvemos la suma num√©ricamente:
+	\item Para obtener la transformada de Fourier de una seÒal no periÛdica de duraciÛn finita como la dada, 
+	$x[n]=\{-2\quad -1\quad 3\quad 1\}$, aplicamos la definiciÛn y resolvemos la suma numÈricamente:
 	\begin{align}
 	X(e^{j\Omega}) &= \sum_{n=-\infty}^{+\infty}x[n]e^{-j\Omega n}\\
 	&= \sum_{n=0}^{3}x[n]e^{-j\Omega n}\\
