@@ -53,10 +53,10 @@
 %Comentar para eliminar la solucion de todos los ejercicios y dejar la version para los 
 % alumnos, a saber con un solo punto resuelto por ejercicio.
 
-\includecomment{profesor}    % version profesor
-%\excludecomment{profesor}	  % version alumnos
+%\includecomment{profesor}    % version profesor
+\excludecomment{profesor}	  % version alumnos
 
-\lhead{\footnotesize An\'alisis de Se\~nales y Sistemas  - A\~no 2020}
+\lhead{\footnotesize An\'alisis de Se\~nales y Sistemas  - A\~no 2022}
 \chead{}
 \rhead{\footnotesize Trabajo Pr\'actico N$^\text o$8: Muestreo, serie y transformada de Fourier en tiempo discreto}
 \lfoot{}
@@ -398,7 +398,7 @@ Para un valor de frecuencia $\Omega_4=\pi/2$ se tiene,
 		axis y line=center,
 		axis x line=middle,
 		xmin=-4.2*pi,	xmax=4.2*pi,
-		ymin=0,	ymax=25/0.04,
+		ymin=0,	ymax=25/0.04/2,
 		xlabel={$\Omega$},
 		ylabel={$|X(e^{j\Omega})|$},
 		grid=both,
@@ -410,15 +410,15 @@ Para un valor de frecuencia $\Omega_4=\pi/2$ se tiene,
 		]
 		\addplot+[ycomb,black,thick,line width=.8pt] 
 			plot coordinates {
-				(-4*pi+0.13*pi,18/0.042) (-4*pi+0.21*pi,15/0.042) (-4*pi+0.8*pi,5/0.042)
-				(-2*pi-0.8*pi,5/0.042) (-2*pi-0.21*pi,15/0.042) (-2*pi-0.13*pi,18/0.042)
-				(-2*pi+0.13*pi,18/0.042) (-2*pi+0.21*pi,15/0.042) (-2*pi+0.8*pi,5/0.042)
-				(-0.8*pi,5/0.042) (-0.21*pi,15/0.042) (-0.13*pi,18/0.042) 
+				(-4*pi+0.13*pi,18/0.042/2) (-4*pi+0.21*pi,15/0.042/2) (-4*pi+0.8*pi,5/0.042/2)
+				(-2*pi-0.8*pi,5/0.042/2) (-2*pi-0.21*pi,15/0.042/2) (-2*pi-0.13*pi,18/0.042/2)
+				(-2*pi+0.13*pi,18/0.042/2) (-2*pi+0.21*pi,15/0.042/2) (-2*pi+0.8*pi,5/0.042/2)
+				(-0.8*pi,5/0.042/2) (-0.21*pi,15/0.042/2) (-0.13*pi,18/0.042/2) 
 				% Omega positivo
-				(0.13*pi,18/0.042) (0.21*pi,15/0.042) (0.8*pi,5/0.042) 
-				(2*pi-0.8*pi,5/0.042) (2*pi-0.21*pi,15/0.042) (2*pi-0.13*pi,18/0.042)
-				(2*pi+0.13*pi,18/0.042) (2*pi+0.21*pi,15/0.042) (2*pi+0.8*pi,5/0.042)
-				(4*pi-0.8*pi,5/0.042) (4*pi-0.21*pi,15/0.042) (4*pi-0.13*pi,18/0.042)
+				(0.13*pi,18/0.042/2) (0.21*pi,15/0.042/2) (0.8*pi,5/0.042/2) 
+				(2*pi-0.8*pi,5/0.042/2) (2*pi-0.21*pi,15/0.042/2) (2*pi-0.13*pi,18/0.042/2)
+				(2*pi+0.13*pi,18/0.042/2) (2*pi+0.21*pi,15/0.042/2) (2*pi+0.8*pi,5/0.042/2)
+				(4*pi-0.8*pi,5/0.042/2) (4*pi-0.21*pi,15/0.042/2) (4*pi-0.13*pi,18/0.042/2)
 				};
 	\end{axis}
 	\end{tikzpicture}
